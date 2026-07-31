@@ -1,0 +1,319 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* =====================================================================
+   THEME TOKENS — dark is default; [data-theme="light"] overrides.
+   ===================================================================== */
+:root,
+[data-theme="dark"] {
+  --brand: #ef4444; --brand-dark: #dc2626; --brand-deep: #991b1b;
+  --bg: #020205; --bg-2: #060210; --bg-card: #0d0d14; --bg-elev: #030306;
+  --text: #ffffff; --text-2: #e2e8f0; --text-3: #94a3b8; --text-4: #64748b;
+  --border: rgba(255,255,255,0.08); --border-2: rgba(255,255,255,0.12);
+  --border-red: rgba(239,68,68,0.3); --glass: rgba(13,13,20,0.8);
+  --surface-soft: rgba(255,255,255,0.05); --surface-soft-2: rgba(255,255,255,0.08);
+  --r-card: 20px; --r-btn: 12px;
+}
+[data-theme="light"] {
+  --brand: #dc2626; --brand-dark: #b91c1c; --brand-deep: #991b1b;
+  --bg: #f7f7fb; --bg-2: #eef0f7; --bg-card: #ffffff; --bg-elev: #ffffff;
+  --text: #0b1020; --text-2: #334155; --text-3: #64748b; --text-4: #94a3b8;
+  --border: rgba(15,23,42,0.10); --border-2: rgba(15,23,42,0.14);
+  --border-red: rgba(220,38,38,0.28); --glass: rgba(255,255,255,0.85);
+  --surface-soft: rgba(15,23,42,0.035); --surface-soft-2: rgba(15,23,42,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+[data-theme="dark"] { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: var(--text); background: var(--bg); min-height: 100vh;
+  line-height: 1.65; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease;
+}
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] li,
+[dir="rtl"] a,
+[dir="rtl"] button,
+[dir="rtl"] label,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select { font-family: var(--font-arabic), var(--font-inter), sans-serif !important; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+[dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[dir="rtl"] .font-display { font-family: var(--font-arabic), Georgia, serif !important; font-weight: 700 !important; letter-spacing: 0 !important; line-height: 1.4 !important; }
+[dir="rtl"] .label { letter-spacing: 0; text-transform: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--text);
+}
+h1 { font-size: clamp(2.4rem, 5vw + 0.8rem, 4.5rem); }
+h2 { font-size: clamp(1.9rem, 3vw + 0.8rem, 3.2rem); }
+h3 { font-size: clamp(1.25rem, 2vw + 0.5rem, 1.9rem); }
+p { color: var(--text-2); line-height: 1.7; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ef4444, #991b1b); border-radius: 99px; }
+::selection { background: rgba(239,68,68,0.4); color: #fff; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; font-weight: 700; font-size: 1rem; border-radius: var(--r-btn);
+  background: linear-gradient(135deg, #ef4444, #dc2626, #991b1b);
+  color: #fff !important; border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer; position: relative; overflow: hidden;
+  box-shadow: 0 6px 20px rgba(239,68,68,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.4,1); text-decoration: none; white-space: nowrap;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%); transition: transform 0.5s;
+}
+.btn-primary:hover::before { transform: translateX(100%); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(239,68,68,0.5); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; font-weight: 600; font-size: 1rem; border-radius: var(--r-btn);
+  background: var(--surface-soft); color: var(--text) !important;
+  border: 1px solid var(--border-2); backdrop-filter: blur(10px);
+  transition: all 0.2s; text-decoration: none; white-space: nowrap;
+}
+.btn-ghost:hover { background: var(--surface-soft-2); border-color: rgba(239,68,68,0.4); transform: translateY(-1px); }
+
+/* ── Cards ── */
+.card {
+  background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-red); border-radius: var(--r-card); transition: all 0.3s ease;
+}
+[data-theme="light"] .card { box-shadow: 0 10px 30px rgba(15,23,42,0.06); border-color: rgba(220,38,38,0.18); background: #ffffff; }
+.card:hover { border-color: rgba(239,68,68,0.35); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+[data-theme="light"] .card:hover { box-shadow: 0 24px 50px rgba(15,23,42,0.12); }
+
+.card-plain {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-card); transition: all 0.3s ease;
+}
+[data-theme="light"] .card-plain { box-shadow: 0 8px 24px rgba(15,23,42,0.05); }
+.card-plain:hover { border-color: var(--border-red); transform: translateY(-4px); }
+[data-theme="light"] .card-plain:hover { box-shadow: 0 20px 40px rgba(15,23,42,0.1); }
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #f87171, #ef4444, #dc2626);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent; display: inline-block;
+}
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+  -webkit-background-clip: text; background-clip: text;
+}
+
+.section-pad { padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 768px) { .container { padding: 0 2rem; } }
+
+.label {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.35rem 0.9rem; border-radius: 99px;
+  background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+[data-theme="light"] .label { background: rgba(220,38,38,0.08); color: #b91c1c; }
+
+.globe-grid {
+  background-image: linear-gradient(rgba(239,68,68,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239,68,68,0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-dot {
+  position: relative;
+  width: 7px; height: 7px; border-radius: 50%; background: #ef4444;
+  box-shadow: 0 0 8px #ef4444, 0 0 18px rgba(239,68,68,0.6);
+}
+.glow-dot::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  box-shadow: 0 0 16px #ef4444, 0 0 36px rgba(239,68,68,0.8);
+  animation: glow-pulse 2s ease-in-out infinite;
+  will-change: opacity;
+}
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes orbit1 { from { transform: rotate(0deg) translateX(115px) rotate(0deg); } to { transform: rotate(360deg) translateX(115px) rotate(-360deg); } }
+@keyframes orbit2 { from { transform: rotate(120deg) translateX(115px) rotate(-120deg); } to { transform: rotate(480deg) translateX(115px) rotate(-480deg); } }
+@keyframes orbit3 { from { transform: rotate(240deg) translateX(115px) rotate(-240deg); } to { transform: rotate(600deg) translateX(115px) rotate(-600deg); } }
+.orbit-1 { animation: orbit1 8s linear infinite; }
+.orbit-2 { animation: orbit2 10s linear infinite; }
+.orbit-3 { animation: orbit3 12s linear infinite; }
+
+canvas.particles { position: absolute; inset: 0; pointer-events: none; }
+
+/* Shimmer — GPU-composited via transform (no background-position paint).
+   A moving highlight bar rides across the element on the compositor thread,
+   so it no longer triggers main-thread paints or affects CLS. */
+.shimmer-bg { position: relative; overflow: hidden; }
+.shimmer-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: translateX(-100%); animation: shimmer 2s linear infinite;
+  will-change: transform; pointer-events: none;
+}
+@keyframes shimmer { to { transform: translateX(100%); } }
+
+input, textarea, select {
+  background: var(--bg-card); border: 1.5px solid var(--border-2);
+  color: var(--text); font-size: 1rem; padding: 0.875rem 1rem;
+  border-radius: 12px; width: 100%; transition: all 0.2s; font-family: inherit;
+}
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(239,68,68,0.15); }
+input::placeholder, textarea::placeholder { color: var(--text-4); }
+label { font-weight: 600; font-size: 0.88rem; color: var(--text-2); margin-bottom: 0.45rem; display: block; }
+select option { background: var(--bg-card); color: var(--text); }
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+.float-1 { animation: float 6s ease-in-out infinite; }
+.float-2 { animation: float 6s ease-in-out 2s infinite; }
+.float-3 { animation: float 6s ease-in-out 4s infinite; }
+
+/* Funnel strip — static gradient base + composited moving sheen overlay,
+   instead of animating background-size/position on the main thread. */
+.funnel-strip { position: relative; overflow: hidden; background: linear-gradient(90deg, #991b1b, #ef4444, #991b1b); }
+.funnel-strip::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: translateX(-100%); animation: shimmer 6s linear infinite;
+  will-change: transform; pointer-events: none;
+}
+
+/* Premium toggle */
+.theme-toggle { background: var(--surface-soft); border-color: var(--border-2); }
+.theme-toggle:hover { border-color: rgba(239,68,68,0.4); }
+.theme-toggle-knob { background: linear-gradient(135deg, #1e1e2a, #0d0d14); border: 1px solid rgba(255,255,255,0.12); }
+[data-theme="light"] .theme-toggle-knob { background: linear-gradient(135deg, #ffffff, #fde68a); border: 1px solid rgba(220,38,38,0.25); }
+
+/* =====================================================================
+   LIGHT THEME COMPATIBILITY LAYER  (escaped Tailwind class selectors —
+   reliable across all browsers, no attribute-selector tricks).
+   ===================================================================== */
+
+/* ── Solid dark backgrounds → light surfaces ── */
+[data-theme="light"] .bg-\[\#020205\],
+[data-theme="light"] .bg-\[\#020205\]\/95,
+[data-theme="light"] .bg-\[\#020205\]\/98,
+[data-theme="light"] .bg-\[\#030306\] { background-color: var(--bg) !important; }
+[data-theme="light"] .bg-\[\#0d0d14\] { background-color: #ffffff !important; }
+
+/* ── Dark gradient FROMs → light/transparent ──
+   Setting --tw-gradient-from to the light bg makes the whole gradient
+   blend into the page; combined with via/to overrides below the dark
+   overlay disappears entirely in light mode. */
+[data-theme="light"] .from-\[\#020205\],
+[data-theme="light"] .from-\[\#080212\],
+[data-theme="light"] .from-\[\#0a0215\],
+[data-theme="light"] .from-\[\#0d0d14\] {
+  --tw-gradient-from: #f7f7fb var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(247,247,251,0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+[data-theme="light"] .via-\[\#04020a\],
+[data-theme="light"] .via-\[\#060210\],
+[data-theme="light"] .via-\[\#080212\],
+[data-theme="light"] .via-\[\#090215\],
+[data-theme="light"] .via-\[\#0a0215\],
+[data-theme="light"] .via-\[\#0d0d14\],
+[data-theme="light"] .via-\[\#0d0d14\]\/30 {
+  --tw-gradient-via: #ffffff !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+}
+[data-theme="light"] .to-\[\#020205\],
+[data-theme="light"] .to-\[\#060210\],
+[data-theme="light"] .to-\[\#0a0215\] {
+  --tw-gradient-to: #f7f7fb var(--tw-gradient-to-position) !important;
+}
+
+/* Belt-and-suspenders sledgehammer: any absolute inset-0 gradient overlay
+   that combines a dark "from" with a dark "to" hex → fully transparent. */
+[data-theme="light"] .absolute.inset-0.bg-gradient-to-b.from-\[\#020205\],
+[data-theme="light"] .absolute.inset-0.bg-gradient-to-br.from-\[\#020205\],
+[data-theme="light"] .absolute.inset-0.bg-gradient-to-br.from-\[\#0a0215\],
+[data-theme="light"] .absolute.inset-0.bg-gradient-to-b.from-\[\#0d0d14\],
+[data-theme="light"] .absolute.inset-0.bg-gradient-to-t.from-\[\#0d0d14\] {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* ── Text remaps: slate/white → dark-on-light, hierarchy preserved ── */
+[data-theme="light"] .text-white { color: #0b1020 !important; }
+[data-theme="light"] .text-slate-200 { color: #1e293b !important; }
+[data-theme="light"] .text-slate-300 { color: #334155 !important; }
+[data-theme="light"] .text-slate-400 { color: #475569 !important; }
+[data-theme="light"] .text-slate-500 { color: #64748b !important; }
+
+[data-theme="light"] .text-red-300,
+[data-theme="light"] .text-red-400 { color: #dc2626 !important; }
+[data-theme="light"] .text-green-400 { color: #16a34a !important; }
+[data-theme="light"] .text-amber-400 { color: #d97706 !important; }
+
+/* ── Translucent white/black surfaces → dark-on-light ── */
+[data-theme="light"] .bg-white\/3,
+[data-theme="light"] .bg-white\/4,
+[data-theme="light"] .bg-white\/5,
+[data-theme="light"] .bg-white\/8 { background-color: rgba(15,23,42,0.04) !important; }
+[data-theme="light"] .bg-white\/10,
+[data-theme="light"] .bg-white\/12,
+[data-theme="light"] .bg-white\/14,
+[data-theme="light"] .bg-white\/15,
+[data-theme="light"] .bg-white\/20,
+[data-theme="light"] .bg-white\/25 { background-color: rgba(15,23,42,0.08) !important; }
+[data-theme="light"] .hover\:bg-white\/5:hover,
+[data-theme="light"] .hover\:bg-white\/8:hover,
+[data-theme="light"] .hover\:bg-white\/10:hover,
+[data-theme="light"] .hover\:bg-white\/14:hover { background-color: rgba(15,23,42,0.08) !important; }
+[data-theme="light"] .bg-black\/20 { background-color: rgba(15,23,42,0.10) !important; }
+[data-theme="light"] .bg-black\/40 { background-color: rgba(15,23,42,0.16) !important; }
+
+/* Borders */
+[data-theme="light"] .border-white\/8,
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/12,
+[data-theme="light"] .border-white\/15 { border-color: rgba(15,23,42,0.12) !important; }
+
+/* Tone down heavy glow blobs on white */
+[data-theme="light"] .blur-\[120px\],
+[data-theme="light"] .blur-\[100px\] { opacity: 0.4; }
+
+/* Particle canvas: red dots become invisible-ish on white. Hide on light. */
+[data-theme="light"] canvas.particles { opacity: 0.15; }
+
+@media (max-width: 640px) {
+  .btn-primary, .btn-ghost { padding: 0.75rem 1.4rem; font-size: 0.88rem; }
+}
+
+/* ── Accessibility: brighten low-contrast text on dark backgrounds ──
+   Keeps the same visual language but lifts contrast to WCAG AA. */
+.text-green-400 { color: #4ade80; }
+[data-theme="dark"] .text-green-400,
+:root .text-green-400 { color: #5cf08a; }
+[data-theme="dark"] .text-slate-500,
+:root .text-slate-500 { color: #94a3b8; }
+[data-theme="dark"] .text-slate-400,
+:root .text-slate-400 { color: #a3b2c7; }

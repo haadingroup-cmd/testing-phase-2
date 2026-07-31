@@ -1,0 +1,13 @@
+{
+  "name": "HaadinGlobal Digital Agency",
+  "short_name": "HaadinGlobal",
+  "description": "Results-driven digital marketing agency — Meta Ads, Google Ads, SEO & more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020205",
+  "theme_color": "#dc2626",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
