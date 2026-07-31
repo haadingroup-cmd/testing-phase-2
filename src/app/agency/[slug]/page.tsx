@@ -73,7 +73,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {l.heroPoints.map((p) => (
                   <div key={p} className="flex items-center gap-2 text-slate-200 text-sm">
-                    <CheckCircle size={15} className="text-green-400 flex-shrink-0" /> {p}
+                    <CheckCircle size={15} className="text-green-300 flex-shrink-0" /> {p}
                   </div>
                 ))}
               </div>
@@ -107,7 +107,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
               <div key={p.problem} className="card p-6">
                 <p className="text-red-400 font-semibold text-sm mb-2">✕ {p.problem}</p>
                 <p className="text-slate-300 text-sm leading-relaxed flex gap-2">
-                  <CheckCircle size={16} className="text-green-400 flex-shrink-0 mt-0.5" /> {p.solution}
+                  <CheckCircle size={16} className="text-green-300 flex-shrink-0 mt-0.5" /> {p.solution}
                 </p>
               </div>
             ))}

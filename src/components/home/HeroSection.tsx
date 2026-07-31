@@ -14,52 +14,84 @@ function Particles() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    let W = canvas.offsetWidth, H = canvas.offsetHeight;
-    canvas.width = W; canvas.height = H;
 
-    type P = { x:number; y:number; vx:number; vy:number; r:number; a:number };
-    const pts: P[] = Array.from({ length: 70 }, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.8 + 0.4, a: Math.random() * 0.5 + 0.1,
-    }));
+    // Respect users who prefer reduced motion — skip the animation entirely.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let raf: number;
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H);
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(239,68,68,${p.a})`;
-        ctx.fill();
-      });
-      // connections
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
-          if (d < 130) {
-            ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(239,68,68,${0.06 * (1 - d / 130)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+    let raf = 0;
+    let started = false;
+    let cleanupResize = () => {};
+
+    // Defer ALL canvas work until the browser is idle (i.e. after first paint /
+    // LCP). This stops the 70-point animation loop from blocking the main
+    // thread during initial render — the subtitle text paints first, particles
+    // start a moment later. Visual result is identical; LCP is no longer held up.
+    const start = () => {
+      if (started) return;
+      started = true;
+
+      let W = canvas.offsetWidth, H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
+
+      type P = { x:number; y:number; vx:number; vy:number; r:number; a:number };
+      const pts: P[] = Array.from({ length: 70 }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.8 + 0.4, a: Math.random() * 0.5 + 0.1,
+      }));
+
+      const draw = () => {
+        ctx.clearRect(0, 0, W, H);
+        pts.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(239,68,68,${p.a})`;
+          ctx.fill();
+        });
+        // connections
+        for (let i = 0; i < pts.length; i++) {
+          for (let j = i + 1; j < pts.length; j++) {
+            const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
+            if (d < 130) {
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.strokeStyle = `rgba(239,68,68,${0.06 * (1 - d / 130)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
         }
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
+        raf = requestAnimationFrame(draw);
+      };
+      draw();
 
-    const onResize = () => {
-      W = canvas.offsetWidth; H = canvas.offsetHeight;
-      canvas.width = W; canvas.height = H;
+      const onResize = () => {
+        W = canvas.offsetWidth; H = canvas.offsetHeight;
+        canvas.width = W; canvas.height = H;
+      };
+      window.addEventListener("resize", onResize);
+      cleanupResize = () => window.removeEventListener("resize", onResize);
     };
-    window.addEventListener("resize", onResize);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", onResize); };
+
+    // requestIdleCallback runs after the browser finishes critical work (paint).
+    // Fallback to a short timeout for Safari, which lacks it.
+    const ric = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    const idleId = ric
+      ? ric(start, { timeout: 2000 })
+      : (setTimeout(start, 1200) as unknown as number);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      cleanupResize();
+      const cic = (window as any).cancelIdleCallback as ((id: number) => void) | undefined;
+      if (ric && cic) cic(idleId); else clearTimeout(idleId as unknown as ReturnType<typeof setTimeout>);
+    };
   }, []);
 
   return <canvas ref={ref} className="absolute inset-0 w-full h-full particles pointer-events-none opacity-70" />;
@@ -247,7 +279,7 @@ export default function HeroSection() {
             >
               <div className="flex -space-x-2">
                 {["UT","AS","HR","JH","SM"].map((s,i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#020205] flex items-center justify-center text-[10px] font-black text-white ${["bg-red-600","bg-rose-600","bg-orange-600","bg-amber-700","bg-red-700"][i]}`}>{s}</div>
+                  <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#020205] flex items-center justify-center text-[10px] font-black text-white ${["bg-red-700","bg-rose-700","bg-orange-800","bg-amber-900","bg-red-800"][i]}`}>{s}</div>
                 ))}
               </div>
               <div>
@@ -274,7 +306,7 @@ export default function HeroSection() {
               </div>
               <p className="text-3xl font-black text-white">102</p>
               <p className="text-[11px] text-slate-500">FashionHub Today</p>
-              <div className="mt-2 flex items-center gap-1 text-green-400 text-[11px] font-bold">
+              <div className="mt-2 flex items-center gap-1 text-green-300 text-[11px] font-bold">
                 <TrendingUp size={11}/> +28% vs yesterday
               </div>
             </FloatCard>
@@ -298,7 +330,7 @@ export default function HeroSection() {
               <ShoppingBag size={15} className="text-red-400 mb-1"/>
               <p className="text-[11px] text-slate-400">Revenue Generated</p>
               <p className="text-2xl font-black text-white">$2M+</p>
-              <p className="text-[11px] text-green-400 font-bold">For our clients</p>
+              <p className="text-[11px] text-green-300 font-bold">For our clients</p>
             </FloatCard>
           </motion.div>
         </div>

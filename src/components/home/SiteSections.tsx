@@ -103,7 +103,7 @@ export function CTASection() {
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {["Free consultation, no payment", "24hr response guaranteed", "ROI-focused strategy", "Global market expertise"].map(g => (
               <div key={g} className="flex items-center gap-2 text-sm text-slate-300">
-                <CheckCircle size={13} className="text-green-400 flex-shrink-0" /> {g}
+                <CheckCircle size={13} className="text-green-300 flex-shrink-0" /> {g}
               </div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export function CTASection() {
               {t("cta_book_free")} <ArrowRight size={17} />
             </Link>
             <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-ghost text-base py-4 px-8 justify-center inline-flex">
-              <MessageCircle size={17} className="text-green-400" /> WhatsApp Us
+              <MessageCircle size={17} className="text-green-300" /> WhatsApp Us
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-slate-400 text-sm">

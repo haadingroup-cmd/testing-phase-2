@@ -50,7 +50,7 @@ export default function PortfolioPreview() {
                   ))}
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-green-400 bg-green-500/8 px-3 py-1.5 rounded-lg">✓ {item.result}</span>
+                  <span className="text-xs font-bold text-green-300 bg-green-500/8 px-3 py-1.5 rounded-lg">✓ {item.result}</span>
                   <ArrowRight size={14} className="text-red-400 group-hover:translate-x-1 transition-transform"/>
                 </div>
               </div>

@@ -42,7 +42,7 @@ export default function ConsultationPage() {
 
             {/* LEFT */}
             <motion.div initial={{opacity:0,x:-30}} animate={{opacity:1,x:0}} transition={{duration:0.6}}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/12 border border-green-500/25 text-green-400 text-sm font-bold mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/12 border border-green-500/25 text-green-300 text-sm font-bold mb-6">
                 <Zap size={13}/> 100% Free · No Obligation
               </div>
               <h1 className="font-display font-black text-white mb-5">
@@ -93,7 +93,7 @@ export default function ConsultationPage() {
                   <>
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="text-white font-black text-xl">Book Your Free Session</h2>
-                      <span className="text-xs text-green-400 px-2 py-1 rounded-full bg-green-500/10 border border-green-500/20 font-bold">FREE</span>
+                      <span className="text-xs text-green-300 px-2 py-1 rounded-full bg-green-500/10 border border-green-500/20 font-bold">FREE</span>
                     </div>
                     <form onSubmit={submit} className="space-y-4">
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -149,7 +149,7 @@ export default function ConsultationPage() {
                         }
                       </button>
                       <p className="text-center text-slate-500 text-xs">
-                        Or WhatsApp: <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-green-400 font-semibold hover:underline">+{SITE.whatsapp}</a>
+                        Or WhatsApp: <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</a>
                       </p>
                     </form>
                   </>

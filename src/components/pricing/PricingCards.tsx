@@ -68,7 +68,7 @@ export function PricingCards() {
           <div className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${yearly ? "translate-x-7" : "translate-x-1"}`} />
         </button>
         <span className={`text-sm font-semibold ${yearly ? "text-white" : "text-slate-500"}`}>
-          Yearly <span className="text-green-400 text-xs font-bold">Save 17%</span>
+          Yearly <span className="text-green-300 text-xs font-bold">Save 17%</span>
         </span>
       </div>
 
@@ -132,7 +132,7 @@ export function PricingCards() {
                             <span className="text-slate-500 text-sm font-semibold">/mo</span>
                           </div>
                           {yearly && savingYear && (
-                            <p className="text-green-400 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
+                            <p className="text-green-300 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
                           )}
                         </div>
                       )}
@@ -167,9 +167,9 @@ export function PricingCards() {
         })}
       </div>
 
-      <p className="text-center text-slate-500 text-xs mt-8">
+      <p className="text-center text-slate-400 text-xs mt-8">
         💡 14-day money-back guarantee · Cancel anytime · No setup fees
-        {!isPkr && <span className="block mt-1 text-slate-500">Prices shown in USD for international clients.</span>}
+        {!isPkr && <span className="block mt-1 text-slate-400">Prices shown in USD for international clients.</span>}
       </p>
     </div>
   );

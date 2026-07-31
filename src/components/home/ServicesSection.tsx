@@ -48,7 +48,7 @@ export default function ServicesSection() {
                       <span className="text-[10px] font-medium text-slate-500 ml-0.5">/mo</span>
                     </span>
                     {svc.results && (
-                      <span className="text-[10px] text-green-400 font-bold bg-green-500/8 px-2 py-1 rounded-md whitespace-nowrap">✓ {svc.results}</span>
+                      <span className="text-[10px] text-green-300 font-bold bg-green-500/8 px-2 py-1 rounded-md whitespace-nowrap">✓ {svc.results}</span>
                     )}
                     <ArrowRight size={15} className="text-red-400 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   </div>

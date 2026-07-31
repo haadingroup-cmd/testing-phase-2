@@ -156,7 +156,7 @@ function ProjectRow({ project, onDeleted }: { project: Project; onDeleted: () =>
 
   const badge = {
     submitted: { icon: <Clock size={12} />, text: "Pending", cls: "text-amber-400 bg-amber-500/10" },
-    approved: { icon: <CheckCircle size={12} />, text: "Approved", cls: "text-green-400 bg-green-500/10" },
+    approved: { icon: <CheckCircle size={12} />, text: "Approved", cls: "text-green-300 bg-green-500/10" },
     rejected: { icon: <XCircle size={12} />, text: "Rejected", cls: "text-red-400 bg-red-500/10" },
   }[project.status];
 

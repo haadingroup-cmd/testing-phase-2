@@ -24,7 +24,7 @@ export default function ServicePriceTag({ pricePkr, priceUsd, size = "lg", prefi
 
   if (size === "sm") {
     return (
-      <span className="text-xs text-green-400 font-bold">
+      <span className="text-xs text-green-300 font-bold">
         {prefix}{text}/mo
       </span>
     );

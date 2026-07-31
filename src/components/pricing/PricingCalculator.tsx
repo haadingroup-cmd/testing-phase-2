@@ -186,7 +186,7 @@ export default function PricingCalculator() {
                     <p className="text-slate-500 text-xs mt-1">
                       – {currency === "PKR" ? `PKR ${est.max.toLocaleString()}` : `$${est.max.toLocaleString()}`}/month
                     </p>
-                    {selected.length >= 2 && <p className="text-green-400 text-xs mt-2 font-bold">🎉 Bundle discount applied!</p>}
+                    {selected.length >= 2 && <p className="text-green-300 text-xs mt-2 font-bold">🎉 Bundle discount applied!</p>}
                   </div>
                   <div className="mb-5">
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-3">{t("calc_included")}</p>

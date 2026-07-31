@@ -27,7 +27,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="font-black text-xl text-white">HaadinGlobal</p>
-                <p className="text-xs text-slate-500 font-mono">Global Digital Excellence</p>
+                <p className="text-xs text-slate-400 font-mono">Global Digital Excellence</p>
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">

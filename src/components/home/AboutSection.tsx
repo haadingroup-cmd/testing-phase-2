@@ -69,7 +69,7 @@ export default function AboutSection() {
                 {[
                   { icon:<TrendingUp size={15} className="text-red-400"/>,  v:"500+",  l:"Projects", route:"/portfolio" },
                   { icon:<Target size={15} className="text-amber-400"/>,     v:"98%",   l:"Retention", route:"/about" },
-                  { icon:<Globe size={15} className="text-green-400"/>,      v:"5",     l:"Countries", route:"/portfolio" },
+                  { icon:<Globe size={15} className="text-green-300"/>,      v:"5",     l:"Countries", route:"/portfolio" },
                   { icon:<Award size={15} className="text-blue-400"/>,       v:"5.0★",  l:"Rating", route:"/#testimonials" },
                 ].map(m => (
                   <Link 

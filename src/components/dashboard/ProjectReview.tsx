@@ -24,7 +24,7 @@ export default function ProjectReview({
 
   const badge = {
     submitted: { icon: <Clock size={12} />, text: "Pending", cls: "text-amber-400 bg-amber-500/10" },
-    approved: { icon: <CheckCircle size={12} />, text: "Approved", cls: "text-green-400 bg-green-500/10" },
+    approved: { icon: <CheckCircle size={12} />, text: "Approved", cls: "text-green-300 bg-green-500/10" },
     rejected: { icon: <XCircle size={12} />, text: "Rejected", cls: "text-red-400 bg-red-500/10" },
   }[current];
 
@@ -44,7 +44,7 @@ export default function ProjectReview({
         </div>
         <div className="flex items-center gap-2">
           <button onClick={() => decide("approved")} disabled={pending || current === "approved"}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-lg bg-green-500/10 text-green-400 hover:bg-green-500/20 disabled:opacity-40">
+            className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-lg bg-green-500/10 text-green-300 hover:bg-green-500/20 disabled:opacity-40">
             {pending ? <Loader2 size={14} className="animate-spin" /> : <CheckCircle size={14} />} Approve
           </button>
           <button onClick={() => decide("rejected")} disabled={pending || current === "rejected"}

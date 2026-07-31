@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 items-end">
-                  <span className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold">✓ {item.result}</span>
+                  <span className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-300 text-xs font-bold">✓ {item.result}</span>
                   <span className="px-3 py-1 rounded-lg bg-red-500/8 border border-red-500/15 text-red-300 text-xs">{item.service}</span>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function TestimonialsSection() {
               <img src={item.avatarUrl} alt={item.name} width={36} height={36} loading="lazy"
                 className={`w-9 h-9 rounded-lg mx-auto mb-1.5 bg-gradient-to-br ${item.color}`}/>
               <p className="text-[10px] font-semibold text-white truncate">{item.name.split(" ")[0]}</p>
-              <p className="text-[9px] text-green-400 font-bold truncate">{item.result.split(" ").slice(0,2).join(" ")}</p>
+              <p className="text-[9px] text-green-300 font-bold truncate">{item.result.split(" ").slice(0,2).join(" ")}</p>
             </motion.button>
           ))}
         </div>
