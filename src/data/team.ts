@@ -23,6 +23,16 @@ export interface TeamMember {
   skills: string[];
   stars: number;        // 0–5 (admin-set)
   is_public: boolean;
+  // ── Optional rich-profile fields (safe to omit; profile page adapts) ──────
+  photo_position?: string;   // object-position for framing, e.g. "top" | "center"
+  tagline?: string;          // one-line headline under the name
+  location?: string;         // e.g. "Faisalabad, Pakistan"
+  experience?: string;       // e.g. "5+ years"
+  stats?: { label: string; value: string }[];  // achievement counters
+  expertise?: { title: string; detail: string }[]; // what they do, expanded
+  projects?: string[];       // notable work / clients
+  quote?: string;            // a personal line, shown as a pull-quote
+  languages?: string[];      // spoken languages
 }
 
 export const TEAM: TeamMember[] = [
@@ -31,10 +41,27 @@ export const TEAM: TeamMember[] = [
     full_name: "Muhammad Haseeb",
     title: "Founder & CEO",
     level: "Lead",
-    bio: "Founder of HaadinGlobal. Leads strategy, client growth, and the team behind campaigns that have driven measurable results for businesses across Pakistan, the UAE, Qatar, Saudi Arabia, the UK and the USA.",
+    bio: "Muhammad Haseeb is the founder and driving force behind HaadinGlobal. He leads growth strategy, client success, and the team behind campaigns that have delivered measurable results for businesses across Pakistan, the UAE, Qatar, Saudi Arabia, the UK and the USA. His approach is simple: understand the client's real business goal first, then engineer the marketing and technology to hit it — no vanity metrics, just outcomes that show up in revenue.",
     photo_url: "/team/muhammad-haseeb.png",
+    photo_position: "top",
+    tagline: "Building growth systems that turn ad spend into real revenue.",
+    location: "Faisalabad, Pakistan",
+    experience: "Agency Founder",
     email: "haadinglobal@gmail.com",
-    skills: ["Growth Strategy", "Paid Ads", "Team Leadership", "Client Success"],
+    skills: ["Growth Strategy", "Paid Ads", "Team Leadership", "Client Success", "Meta Ads", "Google Ads"],
+    stats: [
+      { label: "Businesses Served", value: "150+" },
+      { label: "Countries", value: "6" },
+      { label: "Client Revenue Driven", value: "$2M+" },
+    ],
+    expertise: [
+      { title: "Growth Strategy", detail: "Maps the full funnel — from first ad impression to closed sale — and builds the system to move people through it profitably." },
+      { title: "Paid Advertising", detail: "Plans and scales Meta & Google Ads campaigns focused on ROAS, not reach, across multiple international markets." },
+      { title: "Team Leadership", detail: "Leads a multidisciplinary team of developers, marketers and designers to deliver work that clients actually come back for." },
+    ],
+    projects: ["150+ businesses across Pakistan, UAE, Qatar, KSA, UK & USA", "eCommerce & Shopify scaling campaigns", "Lead-generation systems for service businesses"],
+    quote: "Marketing isn't about being everywhere — it's about the right message reaching the right buyer at the right moment.",
+    languages: ["English", "Urdu"],
     stars: 5,
     is_public: true,
   },
@@ -43,10 +70,27 @@ export const TEAM: TeamMember[] = [
     full_name: "Malaika Farooq",
     title: "Relationship Manager",
     level: "Senior",
-    bio: "Drives client onboarding and long-term relationships — managing follow-ups, sourcing strategic leads, coordinating client meetings, mentoring the team, and overseeing the agency's day-to-day operations and account handling.",
+    bio: "Malaika Farooq is the relationship engine of HaadinGlobal. She owns client onboarding and long-term account health — managing follow-ups, sourcing strategic leads, coordinating client meetings, mentoring the team, and keeping the agency's day-to-day operations running smoothly. Clients stay with HaadinGlobal because Malaika makes sure they feel heard, updated, and looked after at every step.",
     photo_url: "/team/malaika-farooq.jpeg",
+    photo_position: "top",
+    tagline: "The reason clients feel looked after — and stay for the long run.",
+    location: "Faisalabad, Pakistan",
+    experience: "Client Relations & Operations",
     email: "malaikafarooq381@gmail.com",
-    skills: ["Client Management", "Lead Generation", "Operations", "Team Coordination"],
+    skills: ["Client Management", "Lead Generation", "Operations", "Team Coordination", "Onboarding", "Account Handling"],
+    stats: [
+      { label: "Client Retention Focus", value: "100%" },
+      { label: "Accounts Managed", value: "Multi" },
+      { label: "Response Time", value: "Fast" },
+    ],
+    expertise: [
+      { title: "Client Onboarding", detail: "Turns a new signup into a confident, well-informed client with a smooth, structured onboarding experience." },
+      { title: "Relationship Management", detail: "Keeps every account warm — proactive follow-ups, clear updates, and a real relationship rather than transactional contact." },
+      { title: "Operations & Coordination", detail: "Coordinates meetings, keeps projects moving, and mentors the team so nothing slips through the cracks." },
+    ],
+    projects: ["End-to-end client onboarding & account handling", "Strategic lead sourcing", "Team coordination & agency operations"],
+    quote: "A happy client isn't the one who paid — it's the one who felt taken care of the whole way through.",
+    languages: ["English", "Urdu"],
     stars: 5,
     is_public: true,
   },
@@ -55,11 +99,28 @@ export const TEAM: TeamMember[] = [
     full_name: "Arooba Shafique",
     title: "Full-Stack Developer",
     level: "Mid",
-    bio: "Full-stack developer with a portfolio of real-world builds — from a complete ISP management system to professional websites deployed for international businesses. Focused on clean, reliable delivery.",
+    bio: "Arooba Shafique is a full-stack developer with a portfolio of real, shipped products — from a complete ISP management system to professional websites deployed for international businesses. She's focused on clean, reliable delivery: code that works, scales, and doesn't come back to haunt the client three months later. Whether it's the front-end a customer sees or the database logic behind it, Arooba builds the whole stack.",
     photo_url: "/team/arooba-shafique.jpeg",
+    photo_position: "top",
+    tagline: "Ships clean, reliable products across the entire stack.",
+    location: "Faisalabad, Pakistan",
+    experience: "Full-Stack Development",
     email: "aroobas2004@gmail.com",
     linkedin: "https://linkedin.com/in/arooba-shafique",
-    skills: ["Full-Stack Development", "Web Apps", "Databases", "Deployment"],
+    skills: ["Full-Stack Development", "Web Apps", "Databases", "Deployment", "React", "APIs"],
+    stats: [
+      { label: "Systems Built", value: "Multiple" },
+      { label: "Focus", value: "Full-Stack" },
+      { label: "Delivery", value: "Reliable" },
+    ],
+    expertise: [
+      { title: "Full-Stack Web Apps", detail: "Builds complete applications end to end — user-facing interfaces plus the server logic and databases that power them." },
+      { title: "Systems Engineering", detail: "Delivered a full ISP management system — real, complex software handling real business operations." },
+      { title: "Deployment & Delivery", detail: "Takes projects from local code to live, deployed products for international clients." },
+    ],
+    projects: ["Complete ISP management system", "Professional websites for international businesses", "Database-driven web applications"],
+    quote: "Good software is invisible — it just works, so the business can get on with business.",
+    languages: ["English", "Urdu"],
     stars: 5,
     is_public: true,
   },
@@ -68,11 +129,28 @@ export const TEAM: TeamMember[] = [
     full_name: "Nafia Aziz",
     title: "Full-Stack Developer",
     level: "Mid",
-    bio: "Full-stack developer who has built and delivered professional websites for international clients — including Royal Painters Dubai — alongside ISP management systems and business catalogues, with a strong focus on quality and client satisfaction.",
+    bio: "Nafia Aziz is a full-stack developer who has built and delivered professional websites for international clients — including Royal Painters Dubai — alongside ISP management systems and business catalogues. She pairs technical skill with a strong focus on quality and client satisfaction: the goal isn't just to finish a build, it's to hand over something the client is genuinely proud to put their name on.",
     photo_url: "/team/nafia-aziz.jpeg",
+    photo_position: "top",
+    tagline: "Delivers polished websites international clients are proud of.",
+    location: "Faisalabad, Pakistan",
+    experience: "Full-Stack Development",
     email: "nafiaaziz.500@gmail.com",
     linkedin: "https://linkedin.com/in/nafia-aziz059",
-    skills: ["Full-Stack Development", "Client Websites", "eCommerce", "UI Development"],
+    skills: ["Full-Stack Development", "Client Websites", "eCommerce", "UI Development", "React", "Web Design"],
+    stats: [
+      { label: "Intl. Clients", value: "Delivered" },
+      { label: "Focus", value: "Quality" },
+      { label: "Stack", value: "Full" },
+    ],
+    expertise: [
+      { title: "Client Websites", detail: "Builds professional, production-ready websites for real international businesses from the ground up." },
+      { title: "eCommerce & Catalogues", detail: "Develops online stores and business catalogues that are clean, usable, and built to convert." },
+      { title: "UI Development", detail: "Turns designs into responsive, polished interfaces that look right on every screen." },
+    ],
+    projects: ["Royal Painters Dubai — website delivery", "ISP management systems", "Business catalogues & eCommerce sites"],
+    quote: "Every project carries my name too — so it ships only when it's something I'd be proud of.",
+    languages: ["English", "Urdu"],
     stars: 5,
     is_public: true,
   },
