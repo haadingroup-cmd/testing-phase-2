@@ -50,6 +50,13 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
           acceptedAnswer: { "@type": "Answer", text: f.a },
         })),
       },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+          { "@type": "ListItem", position: 2, name: `Digital Marketing Agency in ${l.city}`, item: `https://www.haadinglobal.com/agency/${l.slug}` },
+        ],
+      },
     ],
   };
 
