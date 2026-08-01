@@ -16,7 +16,7 @@ export const SITE = {
     instagram: "https://www.instagram.com/haadinglobal/",
     youtube:   "https://www.youtube.com/@haadinglobal",
   },
-  address: "Faisalabad, Punjab, Pakistan",
+  address: "Sahiwal, Punjab, Pakistan",
   markets: ["Pakistan 🇵🇰","UAE 🇦🇪","Qatar 🇶🇦","Saudi Arabia 🇸🇦","United Kingdom 🇬🇧","United States 🇺🇸"],
 };
 
