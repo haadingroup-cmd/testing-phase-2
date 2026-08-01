@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="font-display font-black text-white mb-5">From Faisalabad to the <span className="gradient-text">World Stage</span></h2>
+              <h2 className="font-display font-black text-white mb-5">From Sahiwal to the <span className="gradient-text">World Stage</span></h2>
               <div className="space-y-4 text-slate-400 leading-relaxed">
                 <p>Founded in 2020, HaadinGlobal started with a mission: bring international-quality digital marketing to businesses of all sizes across Pakistan and beyond.</p>
                 <p>What began as a small passionate team has grown into a full-service digital agency serving clients in Pakistan, UAE, the UK, the USA, and Saudi Arabia — managing over $2 million in ad spend and delivering 500+ successful projects.</p>
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   <p className="text-red-400 text-sm font-semibold">Founder &amp; CEO, HaadinGlobal</p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed italic">&quot;From Faisalabad to serving clients globally — our mission has always been to deliver real, measurable results for every business we work with.&quot;</p>
+              <p className="text-slate-400 text-sm leading-relaxed italic">&quot;From Sahiwal to serving clients globally — our mission has always been to deliver real, measurable results for every business we work with.&quot;</p>
             </div>
           </div>
         </div>
