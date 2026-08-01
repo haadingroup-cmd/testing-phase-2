@@ -26,7 +26,7 @@ export default function TermsPage() {
               { h:"5. Intellectual Property", t:"All creative work produced by HaadinGlobal for clients becomes the client's property upon full payment. HaadinGlobal retains the right to showcase work in our portfolio unless otherwise agreed." },
               { h:"6. Termination", t:"Either party may terminate services with 30 days written notice. Clients are responsible for fees incurred up to the termination date." },
               { h:"7. Limitation of Liability", t:"HaadinGlobal's liability is limited to the amount paid for services in the preceding 3 months. We are not liable for indirect or consequential damages." },
-              { h:"8. Governing Law", t:"These terms are governed by the laws of Pakistan. Any disputes will be resolved through arbitration in Faisalabad, Punjab, Pakistan." },
+              { h:"8. Governing Law", t:"These terms are governed by the laws of Pakistan. Any disputes will be resolved through arbitration in Sahiwal, Punjab, Pakistan." },
               { h:"9. Contact", t:"Questions about these terms: haadinglobal@gmail.com or WhatsApp +92 305 4782677." },
             ].map(s => (
               <div key={s.h}>
