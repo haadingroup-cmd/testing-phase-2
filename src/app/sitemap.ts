@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { LANDINGS } from '@/data/landings'
 
 const base = 'https://www.haadinglobal.com'
 
@@ -24,9 +25,6 @@ const pages = [
   { url: '/blog', pri: 0.8, chg: 'weekly' as const },
   { url: '/contact', pri: 0.8, chg: 'monthly' as const },
   { url: '/consultation', pri: 0.9, chg: 'monthly' as const },
-  { url: '/agency/digital-marketing-agency-dubai', pri: 0.9, chg: 'monthly' as const },
-  { url: '/agency/digital-marketing-agency-qatar', pri: 0.9, chg: 'monthly' as const },
-  { url: '/agency/digital-marketing-agency-saudi-arabia', pri: 0.9, chg: 'monthly' as const },
   { url: '/careers', pri: 0.6, chg: 'monthly' as const },
   { url: '/privacy-policy', pri: 0.3, chg: 'yearly' as const },
   { url: '/terms', pri: 0.3, chg: 'yearly' as const },
@@ -35,10 +33,22 @@ const pages = [
 export default function sitemap(): MetadataRoute.Sitemap {
   // Use build-time date so search engines see fresh content on each deploy.
   const now = new Date()
-  return pages.map(p => ({
+
+  // All city landing pages (Pakistan + Gulf) generated straight from data,
+  // so every city we add is automatically in the sitemap — no manual editing.
+  const cityPages = LANDINGS.map((l) => ({
+    url: `${base}/agency/${l.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
+  const staticPages = pages.map(p => ({
     url: `${base}${p.url}`,
     lastModified: now,
     changeFrequency: p.chg,
     priority: p.pri,
   }))
+
+  return [...staticPages, ...cityPages]
 }
