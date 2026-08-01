@@ -20,18 +20,7 @@ export const FAQS = [
   { q: "Do you offer flexible contracts?", a: "We recommend a 3-month minimum engagement for best results but offer month-to-month flexibility. Most clients stay long-term by choice." },
   { q: "How do I get started?", a: "Book a free 30-minute consultation. We analyze your digital presence and present a custom strategy — no pressure, no obligation." },
   { q: "What reports do you provide?", a: "All clients receive a dedicated analytics dashboard and regular reports (weekly or monthly) tracking the KPIs that matter to your business." },
-];
-
-/** FAQ structured data — import and render this once (e.g. on the home page). */
-export const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+] as const;
 
 export function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
