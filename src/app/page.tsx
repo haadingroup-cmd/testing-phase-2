@@ -64,7 +64,7 @@ export default function HomePage() {
                 {[
                   { icon:"📞", t:"Phone & WhatsApp", v:"+92 305 4782677", href:"https://wa.me/923054782677" },
                   { icon:"📧", t:"Email", v:"haadinglobal@gmail.com", href:"mailto:haadinglobal@gmail.com" },
-                  { icon:"📍", t:"Office", v:"Faisalabad, Punjab, Pakistan", href:"#" },
+                  { icon:"📍", t:"Office", v:"Sahiwal, Punjab, Pakistan", href:"#" },
                   { icon:"🕐", t:"Response Time", v:"Within 2–4 hours", href:"#" },
                 ].map(c => (
                   <a key={c.t} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
