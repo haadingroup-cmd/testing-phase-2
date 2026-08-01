@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const OPENINGS = [
-  { title:"Meta Ads Specialist", type:"Full-time", location:"Faisalabad / Remote", dept:"Paid Media" },
-  { title:"SEO Content Writer", type:"Full-time", location:"Faisalabad / Remote", dept:"Content" },
-  { title:"Next.js Developer", type:"Full-time", location:"Faisalabad / Remote", dept:"Technology" },
-  { title:"Graphic Designer", type:"Full-time", location:"Faisalabad", dept:"Design" },
-  { title:"Social Media Manager", type:"Full-time", location:"Faisalabad / Remote", dept:"Marketing" },
+  { title:"Meta Ads Specialist", type:"Full-time", location:"Sahiwal / Remote", dept:"Paid Media" },
+  { title:"SEO Content Writer", type:"Full-time", location:"Sahiwal / Remote", dept:"Content" },
+  { title:"Next.js Developer", type:"Full-time", location:"Sahiwal / Remote", dept:"Technology" },
+  { title:"Graphic Designer", type:"Full-time", location:"Sahiwal", dept:"Design" },
+  { title:"Social Media Manager", type:"Full-time", location:"Sahiwal / Remote", dept:"Marketing" },
   { title:"AI Automation Engineer", type:"Full-time", location:"Remote", dept:"Technology" },
 ];
 
