@@ -211,3 +211,40 @@ export const SERVICES: Service[] = [
     results: "Premium quality designs",
   },
 ];
+
+/**
+ * AEO/GEO — generates snippet-ready FAQs per service.
+ * -------------------------------------------------------------
+ * 2026 answer-engine best practice: question-format headings + concise,
+ * definitive 40–60 word answers that AI Overviews / People Also Ask can
+ * extract directly. Built from each service's real data so every one of the
+ * 12 service pages ships unique, factual Q&A (and FAQPage structured data).
+ */
+export function serviceFaqs(svc: Service): { q: string; a: string }[] {
+  const title = svc.title.replace(/ Services?$/i, "");
+  const resultLine = svc.results ? ` Clients typically see results like ${svc.results.toLowerCase()}.` : "";
+  return [
+    {
+      q: `How much does ${title} cost in Pakistan?`,
+      a: `${title} at HaadinGlobal starts from PKR ${svc.pricePkr.toLocaleString()}/month for Pakistani businesses (around $${svc.priceUsd}/month for international clients), plus any ad budget. The exact price depends on your goals and scope — book a free consultation for a tailored quote.`,
+    },
+    {
+      q: `What does your ${title} service include?`,
+      a: `Our ${title} service covers ${svc.features.slice(0, 5).join(", ")} and more. Everything is managed by specialists and reported regularly, so you always know exactly what's being done and what results it's driving.${resultLine}`,
+    },
+    {
+      q: `How long until I see results from ${title}?`,
+      a: svc.category === "Paid Ads"
+        ? `Paid campaigns like ${title} usually show measurable results within 2–4 weeks as we test and optimise. We share a clear timeline and regular performance reports from the start.`
+        : `${title} builds over time — typically meaningful results in 1–3 months, with SEO and organic work compounding over 3–6 months. We set clear expectations before we begin.`,
+    },
+    {
+      q: `Do you offer ${title} for international clients?`,
+      a: `Yes. HaadinGlobal is based in Sahiwal, Pakistan and delivers ${title} to clients across Pakistan, the UAE, Qatar, Saudi Arabia, the UK and the USA. Everything is managed remotely with fast communication across time zones.`,
+    },
+    {
+      q: `Why choose HaadinGlobal for ${title}?`,
+      a: `We combine international-level expertise with ROI-focused execution — every ${title} campaign is data-backed and optimised for real business growth, not vanity metrics. We've served 150+ businesses and report on the KPIs that actually matter to you.`,
+    },
+  ];
+}
