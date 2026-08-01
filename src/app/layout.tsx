@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     creator: "@haadinglobal",
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "TsWZj-bZ3ii9Q_Rfk9AoI1eFzagPGWpyqPoFjMJ_M7A",
+  },
   alternates: { canonical: "https://www.haadinglobal.com" },
 };
 
