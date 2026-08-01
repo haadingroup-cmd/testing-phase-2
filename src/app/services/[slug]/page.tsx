@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle, ArrowRight, MessageCircle } from "lucide-react";
-import { SERVICES } from "@/data/services";
+import { SERVICES, serviceFaqs } from "@/data/services";
 import { CTASection } from "@/components/home/SiteSections";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
@@ -40,30 +40,54 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   const svc = SERVICES.find(s => s.id === params.slug);
   if (!svc) notFound();
 
+  const faqs = serviceFaqs(svc);
+  const url = `https://www.haadinglobal.com/services/${svc.id}`;
+
+  // Combined structured data (@graph): Service + FAQPage + Breadcrumb.
+  // FAQPage feeds People Also Ask / AI Overviews; Breadcrumb gives search
+  // engines clear site hierarchy; Service describes the offering + price.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: svc.title,
+        description: svc.shortDesc,
+        provider: { "@type": "Organization", name: "HaadinGlobal", url: "https://www.haadinglobal.com" },
+        areaServed: ["PK", "AE", "GB", "US", "SA", "QA"],
+        category: svc.category,
+        offers: {
+          "@type": "Offer",
+          price: svc.pricePkr,
+          priceCurrency: "PKR",
+          url,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://www.haadinglobal.com/services" },
+          { "@type": "ListItem", position: 3, name: svc.title, item: url },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
-      {/* Service-level structured data for richer search results */}
+      {/* Service + FAQ + Breadcrumb structured data for rich results & AI answers */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: svc.title,
-          description: svc.shortDesc,
-          provider: {
-            "@type": "Organization",
-            name: "HaadinGlobal",
-            url: "https://www.haadinglobal.com",
-          },
-          areaServed: ["PK", "AE", "GB", "US", "SA"],
-          category: svc.category,
-          offers: {
-            "@type": "Offer",
-            price: svc.pricePkr,
-            priceCurrency: "PKR",
-            url: `https://www.haadinglobal.com/services/${svc.id}`,
-          },
-        }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* HERO — 2-column on desktop: title + description on left, pricing card on right (instantly visible) */}
       <section className="pt-32 pb-12 relative overflow-hidden">
@@ -123,6 +147,30 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 <CheckCircle size={15} className="text-red-400 flex-shrink-0 mt-0.5"/>
                 <span className="text-slate-300 text-sm">{f}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* FAQ — question headings + concise answers, optimised for AI Overviews
+          & People Also Ask (matches the FAQPage schema above). */}
+      <section className="py-16 bg-[#020205]" id="faq">
+        <div className="container max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="label mb-3">FAQ</div>
+            <h2 className="font-display font-black text-white mb-3">
+              {svc.title} — <span className="gradient-text">Common Questions</span>
+            </h2>
+            <p className="text-slate-400">Everything you need to know before getting started.</p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((f) => (
+              <details key={f.q} className="card rounded-2xl p-5 group">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-white font-bold text-[15px] pr-4">{f.q}</h3>
+                  <ArrowRight size={16} className="text-red-400 flex-shrink-0 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>
