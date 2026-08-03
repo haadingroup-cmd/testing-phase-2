@@ -1,4 +1,4 @@
-# HaadiGlobale — Pakistan's #1 Digital Marketing Agency
+# HaadinGlobal — Results-Driven Digital Marketing Agency
 
 ## 🚀 Quick Start
 

@@ -145,3 +145,53 @@ create policy "own files delete" on storage.objects for delete
 -- ============================================================================
 -- After running this: create your first ADMIN via the app's setup guide.
 -- ============================================================================
+
+-- ============================================================================
+-- 6) LEADS / CRM  (added for the agency CRM dashboard)
+-- ============================================================================
+-- Every enquiry (from the website form, popup, WhatsApp, manual entry) lands
+-- here with a status you move through a pipeline. Staff (admin/manager) manage
+-- all leads; members see only leads assigned to them.
+create table if not exists public.leads (
+  id           uuid primary key default gen_random_uuid(),
+  name         text not null default '',
+  phone        text not null default '',          -- WhatsApp / phone
+  email        text not null default '',
+  service      text not null default '',          -- what they want
+  message      text not null default '',
+  source       text not null default 'website'    -- website | popup | whatsapp | manual | ads
+               check (source in ('website','popup','whatsapp','manual','ads','referral')),
+  status       text not null default 'new'
+               check (status in ('new','contacted','meeting','won','lost')),
+  value        numeric not null default 0,         -- estimated/closed value
+  notes        text not null default '',
+  assigned_to  uuid references public.profiles(id) on delete set null,
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now()
+);
+
+alter table public.leads enable row level security;
+
+-- Staff see & manage all leads; members see leads assigned to them.
+drop policy if exists "leads read" on public.leads;
+create policy "leads read" on public.leads for select
+  using (public.is_staff() or assigned_to = auth.uid());
+
+drop policy if exists "leads insert" on public.leads;
+create policy "leads insert" on public.leads for insert
+  with check (public.is_staff());
+
+drop policy if exists "leads update" on public.leads;
+create policy "leads update" on public.leads for update
+  using (public.is_staff() or assigned_to = auth.uid());
+
+drop policy if exists "leads delete" on public.leads;
+create policy "leads delete" on public.leads for delete
+  using (public.is_admin());
+
+-- Allow the public website form to INSERT a lead (anon), but not read others.
+-- This lets the contact/popup form save leads straight into the CRM.
+drop policy if exists "public can submit lead" on public.leads;
+create policy "public can submit lead" on public.leads for insert
+  to anon
+  with check (true);
