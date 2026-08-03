@@ -306,6 +306,19 @@ select option { background: var(--bg-card); color: var(--text); }
 
 @media (max-width: 640px) {
   .btn-primary, .btn-ghost { padding: 0.75rem 1.4rem; font-size: 0.88rem; }
+  /* Space for the sticky mobile CTA bar so it never covers footer content */
+  body { padding-bottom: 68px; }
+  /* Tighter, cleaner headings on small screens (less overwhelming) */
+  h1 { font-size: clamp(2rem, 8vw, 2.6rem); line-height: 1.15; }
+  h2 { font-size: clamp(1.6rem, 6vw, 2.1rem); line-height: 1.2; }
+  h3 { font-size: clamp(1.15rem, 4.5vw, 1.5rem); }
+  /* Tighter section spacing so content isn't pushed too far down */
+  .section-pad { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .container { padding: 0 1.15rem; }
+  /* Any full-buttons stack nicely and are thumb-friendly */
+  .btn-primary, .btn-ghost { min-height: 46px; }
+  /* Prevent wide elements from causing horizontal scroll */
+  img, video, canvas, svg { max-width: 100%; }
 }
 
 /* ── Accessibility: brighten low-contrast text on dark backgrounds ──
@@ -317,3 +330,10 @@ select option { background: var(--bg-card); color: var(--text); }
 :root .text-slate-500 { color: #94a3b8; }
 [data-theme="dark"] .text-slate-400,
 :root .text-slate-400 { color: #a3b2c7; }
+
+/* Entry popup animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

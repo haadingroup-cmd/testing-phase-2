@@ -100,7 +100,7 @@ function Particles() {
 /* ── CSS 3D Globe ── */
 function Globe3D() {
   return (
-    <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto select-none">
+    <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-80 md:h-80 mx-auto select-none">
       {/* Outer glow halo */}
       <div className="absolute inset-0 rounded-full bg-red-600/15 blur-3xl animate-pulse pointer-events-none" />
 
@@ -172,14 +172,15 @@ function Globe3D() {
   );
 }
 
-/* ── Floating Card ── */
+/* ── Floating Card (desktop only — on mobile these overlap, so we hide them
+      and show a clean stats grid instead) ── */
 function FloatCard({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.88 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay, duration: 0.6, type: "spring", stiffness: 200 }}
-      className={`absolute z-20 card p-3 md:p-4 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] ${className || ""}`}
+      className={`hidden md:block absolute z-20 card p-3 md:p-4 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.6)] ${className || ""}`}
     >
       {children}
     </motion.div>
@@ -294,9 +295,29 @@ export default function HeroSection() {
           {/* ── RIGHT: Globe + Cards ── */}
           <motion.div
             initial={{ opacity:0, scale:0.85 }} animate={{ opacity:1, scale:1 }} transition={{ duration:0.8, delay:0.25 }}
-            className="relative flex items-center justify-center min-h-[380px] md:min-h-[480px]"
+            className="relative flex flex-col items-center justify-center min-h-[300px] md:min-h-[480px]"
           >
             <Globe3D />
+
+            {/* Mobile-only clean stats grid (replaces the overlapping float cards) */}
+            <div className="grid grid-cols-2 gap-3 w-full max-w-sm mt-6 md:hidden">
+              <div className="card rounded-2xl p-3 text-center">
+                <p className="text-2xl font-black gradient-text">6.2x</p>
+                <p className="text-[11px] text-slate-400">Avg ROAS (Meta Ads)</p>
+              </div>
+              <div className="card rounded-2xl p-3 text-center">
+                <p className="text-2xl font-black text-white">$2M+</p>
+                <p className="text-[11px] text-slate-400">Revenue Generated</p>
+              </div>
+              <div className="card rounded-2xl p-3 text-center">
+                <p className="text-2xl font-black text-white">150+</p>
+                <p className="text-[11px] text-slate-400">Happy Clients</p>
+              </div>
+              <div className="card rounded-2xl p-3 text-center">
+                <div className="flex justify-center text-amber-400 text-sm">★★★★★</div>
+                <p className="text-[11px] text-slate-400 mt-0.5">5.0 · 150+ Reviews</p>
+              </div>
+            </div>
 
             {/* Card: Live orders */}
             <FloatCard className="-top-4 -left-2 md:-left-6 w-48" delay={0.85}>

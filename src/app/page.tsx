@@ -6,7 +6,7 @@ import StatsSection from "@/components/home/StatsSection";
 import AboutSection from "@/components/home/AboutSection";
 import PortfolioPreview from "@/components/home/PortfolioPreview";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import { FAQSection, CTASection } from "@/components/home/SiteSections";
+import { FAQSection, CTASection, ProofCallSection } from "@/components/home/SiteSections";
 import { faqJsonLd } from "@/data/faqs";
 import { PricingCards } from "@/components/pricing/PricingCards";
 import PricingCalculator from "@/components/pricing/PricingCalculator";
@@ -32,6 +32,7 @@ export default function HomePage() {
       <StatsSection />
       <AboutSection />
       <PortfolioPreview />
+      <ProofCallSection />
       <TestimonialsSection />
 
       {/* Pricing */}

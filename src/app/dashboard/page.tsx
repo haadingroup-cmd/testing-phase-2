@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireProfile } from "@/lib/auth";
 import { supabaseServer } from "@/lib/supabase-server";
-import { Users, FolderOpen, Upload, Star } from "lucide-react";
+import { Users, FolderOpen, Upload, Star, Target } from "lucide-react";
 import MemberProjects from "@/components/dashboard/MemberProjects";
 
 export const metadata = { title: "Dashboard", robots: { index: false } };
@@ -37,6 +37,13 @@ export default async function DashboardHome() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
+          <Link href="/dashboard/leads" className="card p-6 hover:-translate-y-1 transition-all">
+            <Target size={22} className="text-red-400 mb-3" />
+            <h2 className="font-bold text-white mb-1">Leads / CRM</h2>
+            <p className="text-slate-400 text-sm">
+              Every enquiry in one pipeline — track status from new to won, add notes and values.
+            </p>
+          </Link>
           <Link href="/dashboard/team" className="card p-6 hover:-translate-y-1 transition-all">
             <Users size={22} className="text-red-400 mb-3" />
             <h2 className="font-bold text-white mb-1">Manage Team</h2>

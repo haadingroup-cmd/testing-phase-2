@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 
 const BADGES = [
-  { icon:"🎯", label:"Meta Business Partner" },
-  { icon:"📊", label:"Google Partner" },
-  { icon:"🛍️", label:"Shopify Expert" },
-  { icon:"🔍", label:"SEMrush Certified" },
-  { icon:"🤖", label:"AI Specialists" },
-  { icon:"🏆", label:"150+ Clients" },
-  { icon:"⭐", label:"5.0 Star Rating" },
-  { icon:"🇵🇰", label:"Pakistani Experts" },
+  { icon:"🎯", label:"Meta Ads Experts" },
+  { icon:"📊", label:"Google Ads Experts" },
+  { icon:"🛍️", label:"Shopify Developers" },
+  { icon:"🔍", label:"SEO Specialists" },
+  { icon:"🤖", label:"AI Automation" },
+  { icon:"🏆", label:"150+ Clients Served" },
+  { icon:"⭐", label:"5.0 Client Rating" },
+  { icon:"🌍", label:"6 Countries" },
 ];
 
 export default function TrustBadges() {

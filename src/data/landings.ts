@@ -71,7 +71,7 @@ function pkLanding(slug: string, city: string, blurb: string): Landing {
     currency: "PKR",
     headline: `Digital Marketing Agency in ${city}`,
     subhead: `More leads, more sales, more growth for ${city} businesses — with Meta Ads, Google Ads and SEO managed by specialists who care about your ROI.`,
-    metaTitle: `Digital Marketing Agency in ${city} | HaadinGlobal Pakistan`,
+    metaTitle: `Digital Marketing Agency in ${city}, Pakistan`,
     metaDescription: `Grow your ${city} business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing agency serving ${city} and all of Pakistan.`,
     heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "Fast WhatsApp response", "English & Urdu campaigns"],
     painPoints: [
@@ -102,7 +102,7 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency in Dubai",
     subhead: "More leads, more sales, more growth — with Meta Ads, Google Ads and SEO managed by specialists who care about your ROI.",
-    metaTitle: "Digital Marketing Agency in Dubai | HaadinGlobal",
+    metaTitle: "Digital Marketing Agency in Dubai, UAE",
     metaDescription: "Grow your Dubai business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for the UAE.",
     heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
     painPoints: [
@@ -122,7 +122,7 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency in Qatar",
     subhead: "Win more customers in Doha and across Qatar with paid ads, SEO and websites built to convert — not just to look nice.",
-    metaTitle: "Digital Marketing Agency in Qatar | HaadinGlobal",
+    metaTitle: "Digital Marketing Agency in Qatar",
     metaDescription: "Grow your Qatar business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for Doha & Qatar.",
     heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
     painPoints: [
@@ -142,7 +142,7 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency in Saudi Arabia",
     subhead: "Scale your business in Riyadh, Jeddah and across the Kingdom with data-driven Meta Ads, Google Ads and SEO.",
-    metaTitle: "Digital Marketing Agency in Saudi Arabia | HaadinGlobal",
+    metaTitle: "Digital Marketing Agency in Saudi Arabia",
     metaDescription: "Grow your Saudi business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for KSA.",
     heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
     painPoints: [

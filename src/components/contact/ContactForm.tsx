@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
 
@@ -24,6 +25,23 @@ export default function ContactForm() {
     setStatus("sending");
     const fd = new FormData(e.currentTarget);
     const name = (fd.get("name") as string) || "";
+
+    // Save the lead into the CRM (Supabase) too, so it appears in the dashboard
+    // pipeline automatically. Best-effort: if it fails, the email still sends.
+    if (SUPABASE_READY) {
+      try {
+        await supabaseBrowser().from("leads").insert({
+          name,
+          phone: (fd.get("phone") as string) || (fd.get("whatsapp") as string) || "",
+          email: (fd.get("email") as string) || "",
+          service: (fd.get("service") as string) || "",
+          message: (fd.get("message") as string) || "",
+          source: "website",
+          status: "new",
+        });
+      } catch { /* non-blocking — email path below still runs */ }
+    }
+
     try {
       const r = await fetch(`https://formspree.io/f/${SITE.formspree}`, {
         method: "POST", body: fd, headers: { Accept: "application/json" },

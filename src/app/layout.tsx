@@ -4,6 +4,8 @@ import "../styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
+import EntryPopup from "@/components/common/EntryPopup";
+import MobileCTABar from "@/components/common/MobileCTABar";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProvider";
 
@@ -121,6 +123,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main id="main">{children}</main>
             <Footer />
             <WhatsAppButton />
+            <EntryPopup />
+            <MobileCTABar />
           </LanguageProvider>
         </ThemeProvider>
       </body>

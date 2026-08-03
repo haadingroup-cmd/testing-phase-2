@@ -16,21 +16,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!svc) return { title: "Service Not Found" };
   const url = `https://www.haadinglobal.com/services/${svc.id}`;
   return {
-    title: `${svc.title} — HaadinGlobal`,
+    // Keyword-rich title; the root layout template adds "| HaadinGlobal" once,
+    // so we don't repeat the brand here (was producing "… — HaadinGlobal | HaadinGlobal").
+    title: `${svc.title} Services in Pakistan`,
     description: svc.shortDesc,
-    keywords: [svc.title, svc.category, "Pakistan", "HaadinGlobal", "digital marketing"],
+    keywords: [svc.title, `${svc.title} Pakistan`, svc.category, "HaadinGlobal", "digital marketing agency"],
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       url,
-      title: `${svc.title} — HaadinGlobal`,
+      title: `${svc.title} Services | HaadinGlobal`,
       description: svc.shortDesc,
       siteName: "HaadinGlobal",
       images: [{ url: "/logo.png", width: 1200, height: 630, alt: `HaadinGlobal — ${svc.title}` }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${svc.title} — HaadinGlobal`,
+      title: `${svc.title} Services | HaadinGlobal`,
       description: svc.shortDesc,
     },
   };

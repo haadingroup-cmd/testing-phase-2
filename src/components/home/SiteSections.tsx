@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Plus, Minus, CheckCircle, MessageCircle, Phone, Zap } from "lucide-react";
+import { ArrowRight, Plus, Minus, CheckCircle, MessageCircle, Phone, Zap, Video, BarChart3, ShieldCheck, Eye } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
 
@@ -61,6 +61,53 @@ export function FAQSection() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ProofCallSection() {
+  const points = [
+    { icon: <Eye size={20} />, title: "See real dashboards, live", detail: "On a quick video call we'll screen-share actual client ad accounts, analytics and results — not screenshots you have to take on faith." },
+    { icon: <BarChart3 size={20} />, title: "Real numbers, real accounts", detail: "ROAS, leads, traffic growth — shown live from the platforms themselves, so you know exactly what we deliver." },
+    { icon: <ShieldCheck size={20} />, title: "No contracts to find out", detail: "Judge us on proof before you commit. If the results don't convince you, there's no obligation to continue." },
+  ];
+  return (
+    <section className="py-20 bg-[#030306] relative overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-red-600/8 blur-[120px] pointer-events-none -translate-y-1/2" />
+      <div className="container relative z-10">
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/10 border border-red-500/20 text-red-300 text-sm font-semibold mb-5">
+            <Video size={14} /> Proof Over Promises
+          </div>
+          <h2 className="font-display font-black text-white mb-4">
+            Don&apos;t Just Take Our Word — <span className="gradient-text">We&apos;ll Show You Live</span>
+          </h2>
+          <p className="text-slate-400 text-lg leading-relaxed">
+            Anyone can put big numbers on a website. On a free video call, we&apos;ll screen-share real client results — live dashboards, real ad accounts, real ROI — so you can see exactly what we deliver before you ever pay a rupee.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto mb-12">
+          {points.map((p) => (
+            <div key={p.title} className="card rounded-2xl p-6 text-center">
+              <div className="w-12 h-12 rounded-xl bg-red-600/15 border border-red-500/25 flex items-center justify-center text-red-300 mx-auto mb-4">
+                {p.icon}
+              </div>
+              <h3 className="text-white font-bold mb-2">{p.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{p.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/consultation" className="btn-primary text-base py-4 px-9 inline-flex justify-center">
+            Book a Free Results Call <ArrowRight size={17} />
+          </Link>
+          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-ghost text-base py-4 px-8 inline-flex justify-center">
+            <MessageCircle size={17} className="text-green-300" /> Ask on WhatsApp
+          </a>
         </div>
       </div>
     </section>
