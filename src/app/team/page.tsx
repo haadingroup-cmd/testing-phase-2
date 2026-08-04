@@ -25,37 +25,53 @@ interface DisplayMember {
 }
 
 /**
- * Reads live team rows from Supabase when configured; otherwise falls back to
- * the static seed list. Either way the page always renders (SEO-safe).
+ * Public team roster.
+ * Merges dashboard-managed members (Supabase) WITH the static team.ts list,
+ * de-duplicated by name — so live/editable members override their static
+ * version, and the rest of the roster still shows. Always SEO-safe.
  */
 async function loadTeam(): Promise<DisplayMember[]> {
-  const ready = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-  if (ready) {
-    try {
-      const supabase = supabaseServer();
-      const { data } = await supabase
-        .from("profiles")
-        .select("id, full_name, title, level, photo_url, stars, is_public")
-        .eq("is_public", true)
-        .order("sort_order", { ascending: true });
-      if (data && data.length) {
-        return data.map((m) => ({
-          slug: m.id,
-          full_name: m.full_name,
-          title: m.title,
-          level: m.level,
-          photo_url: m.photo_url || "/logo-small.png",
-          stars: m.stars,
-        }));
-      }
-    } catch {
-      /* fall through to static */
-    }
-  }
-  return TEAM.filter((m) => m.is_public).map((m) => ({
-    slug: m.slug, full_name: m.full_name, title: m.title, level: m.level,
-    photo_url: m.photo_url, stars: m.stars,
+  const staticMembers: DisplayMember[] = TEAM.filter((m) => m.is_public).map((m) => ({
+    slug: m.slug,
+    full_name: m.full_name,
+    title: m.title,
+    level: m.level,
+    photo_url: m.photo_url,
+    stars: m.stars,
   }));
+
+  const ready = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+  if (!ready) return staticMembers;
+
+  try {
+    const supabase = supabaseServer();
+    const { data } = await supabase
+      .from("profiles")
+      .select("id, full_name, title, level, photo_url, stars, is_public")
+      .eq("is_public", true)
+      .order("sort_order", { ascending: true });
+
+    if (!data || !data.length) return staticMembers;
+
+    const liveMembers: DisplayMember[] = data.map((m) => ({
+      slug: m.id,
+      full_name: m.full_name,
+      title: m.title,
+      level: m.level,
+      photo_url: m.photo_url || "/logo-small.png",
+      stars: m.stars,
+    }));
+
+    const norm = (s: string) => s.trim().toLowerCase();
+    const liveNames = new Set(liveMembers.map((m) => norm(m.full_name)));
+    const staticExtras = staticMembers.filter((m) => !liveNames.has(norm(m.full_name)));
+
+    return [...liveMembers, ...staticExtras];
+  } catch {
+    return staticMembers;
+  }
 }
 
 export default async function TeamPage() {
@@ -74,7 +90,6 @@ export default async function TeamPage() {
           </p>
         </div>
       </section>
-
       <section className="pb-20 bg-[#030306]">
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -97,7 +112,6 @@ export default async function TeamPage() {
           </div>
         </div>
       </section>
-
       <CTASection />
     </>
   );
