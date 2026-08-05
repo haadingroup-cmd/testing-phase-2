@@ -1,9 +1,10 @@
 "use client";
 import { useState, useTransition } from "react";
-import { Star, Trash2, Plus, Loader2, X, ShieldCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Star, Trash2, Plus, Loader2, X, ShieldCheck, Download } from "lucide-react";
 import type { Profile, Role } from "@/lib/auth";
 import {
-  createMember, removeMember, setRole, setLevel, setStars, setPublic,
+  createMember, removeMember, setRole, setLevel, setStars, setPublic, importStaticTeam,
 } from "@/app/dashboard/team/actions";
 
 const LEVELS = ["Junior", "Mid", "Senior", "Lead"] as const;
@@ -17,9 +18,12 @@ export default function TeamManager({ members, myRole, myId }: { members: Profil
     <div>
       {isAdmin && (
         <div className="mb-6">
-          <button onClick={() => setShowAdd((v) => !v)} className="btn-primary text-sm py-2.5 px-5 inline-flex">
-            {showAdd ? <><X size={15} /> Close</> : <><Plus size={15} /> Add Member</>}
-          </button>
+          <div className="flex flex-wrap gap-3">
+            <button onClick={() => setShowAdd((v) => !v)} className="btn-primary text-sm py-2.5 px-5 inline-flex">
+              {showAdd ? <><X size={15} /> Close</> : <><Plus size={15} /> Add Member</>}
+            </button>
+            <ImportButton />
+          </div>
           {showAdd && <AddMemberForm onDone={() => setShowAdd(false)} />}
         </div>
       )}
@@ -30,6 +34,38 @@ export default function TeamManager({ members, myRole, myId }: { members: Profil
         ))}
       </div>
     </div>
+  );
+}
+
+function ImportButton() {
+  const router = useRouter();
+  const [pending, start] = useTransition();
+
+  function run() {
+    if (!confirm("Import your original team (Malaika, Arooba, Nafia, Rohab) as editable accounts?\n\nEach gets the login firstname@haadinglobal.com with temp password Haadin@2026.")) return;
+    start(async () => {
+      const res = await importStaticTeam();
+      if (!res.ok) { alert(res.error || "Import failed."); return; }
+      const created = res.created || [];
+      if (created.length) {
+        alert(
+          "Imported: " + created.join(", ") +
+          "\n\nLogin email:  firstname@haadinglobal.com  (e.g. malaika@haadinglobal.com)" +
+          "\nTemp password:  Haadin@2026" +
+          "\n\nShare these with each member. They can log in and update their own profile."
+        );
+      } else {
+        alert("Nothing new to import — they may already exist.");
+      }
+      router.refresh();
+    });
+  }
+
+  return (
+    <button onClick={run} disabled={pending}
+      className="text-sm py-2.5 px-5 inline-flex items-center gap-2 rounded-xl border border-white/15 text-slate-200 hover:bg-white/5 disabled:opacity-50">
+      {pending ? <><Loader2 size={15} className="animate-spin" /> Importing…</> : <><Download size={15} /> Import previous team</>}
+    </button>
   );
 }
 
@@ -126,7 +162,6 @@ function MemberCard({ member, isAdmin, isSelf }: { member: Profile; isAdmin: boo
         )}
       </div>
 
-      {/* Stars */}
       <div className="flex items-center gap-1 mb-3">
         {[1, 2, 3, 4, 5].map((n) => (
           <button key={n} onClick={() => { setStarsLocal(n); run(() => setStars(member.id, n)); }} disabled={pending} aria-label={`${n} stars`}>
