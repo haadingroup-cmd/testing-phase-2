@@ -2,6 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase-server";
 import { getCurrentProfile } from "@/lib/auth";
+import { getMember } from "@/data/team";
 
 /**
  * Server actions for the team-management dashboard.
@@ -131,4 +132,61 @@ export async function setPublic(userId: string, isPublic: boolean): Promise<Acti
   revalidatePath("/dashboard/team");
   revalidatePath("/team");
   return { ok: true };
+}
+
+/**
+ * ADMIN: one-click import of the original static roster into real, editable
+ * accounts. Each member gets the login firstname@haadinglobal.com with a
+ * temporary password. Skips anyone who already exists.
+ */
+const IMPORT_SLUGS = ["malaika-farooq", "arooba-shafique", "nafia-aziz", "rohab-abdullah"];
+const IMPORT_TEMP_PASSWORD = "Haadin@2026";
+
+export async function importStaticTeam(): Promise<ActionResult & { created?: string[]; skipped?: string[] }> {
+  const g = await guard(true);
+  if (!g.ok) return g;
+
+  const admin = supabaseAdmin();
+  const created: string[] = [];
+  const skipped: string[] = [];
+
+  for (const slug of IMPORT_SLUGS) {
+    const m = getMember(slug);
+    if (!m) continue;
+
+    const email = `${slug.split("-")[0]}@haadinglobal.com`;
+
+    const { data: byEmail } = await admin.from("profiles").select("id").eq("email", email).limit(1).maybeSingle();
+    const { data: byName } = await admin.from("profiles").select("id").ilike("full_name", m.full_name).limit(1).maybeSingle();
+    if (byEmail || byName) { skipped.push(m.full_name); continue; }
+
+    const { data: createdUser, error: authErr } = await admin.auth.admin.createUser({
+      email, password: IMPORT_TEMP_PASSWORD, email_confirm: true,
+    });
+    if (authErr || !createdUser.user) { skipped.push(`${m.full_name} (${authErr?.message || "auth failed"})`); continue; }
+
+    const { error: profErr } = await admin.from("profiles").insert({
+      id: createdUser.user.id,
+      email,
+      full_name: m.full_name,
+      title: m.title,
+      bio: m.bio,
+      photo_url: m.photo_url,
+      skills: m.skills,
+      level: m.level,
+      stars: m.stars,
+      role: "member",
+      is_public: true,
+    });
+    if (profErr) {
+      await admin.auth.admin.deleteUser(createdUser.user.id);
+      skipped.push(`${m.full_name} (${profErr.message})`);
+      continue;
+    }
+    created.push(m.full_name);
+  }
+
+  revalidatePath("/dashboard/team");
+  revalidatePath("/team");
+  return { ok: true, created, skipped };
 }
