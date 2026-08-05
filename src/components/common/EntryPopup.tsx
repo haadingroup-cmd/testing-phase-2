@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, MessageCircle, Send, Sparkles } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 
 /**
  * Entry popup — appears once per browser session, a few seconds after load
@@ -36,6 +37,14 @@ export default function EntryPopup() {
 
   function toWhatsApp() {
     const msg = `Hi HaadinGlobal! I'm ${name || "interested"} and I'd like help with ${service || "growing my business"}.`;
+    // Capture the lead in the CRM too (fire-and-forget so the WhatsApp window
+    // still opens instantly and isn't blocked by the browser).
+    if (SUPABASE_READY) {
+      supabaseBrowser().from("leads").insert({
+        name: name || "", service: service || "", source: "popup", status: "new",
+        message: "Started via entry popup → WhatsApp",
+      }).then(() => {}, () => {});
+    }
     window.open(`${SITE.social.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     close();
   }
@@ -103,7 +112,7 @@ export default function EntryPopup() {
               <MessageCircle size={17} /> Chat on WhatsApp
             </button>
 
-            <a
+            
               href="/consultation"
               onClick={close}
               className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-white/90 text-red-700 font-bold text-sm transition-colors shadow-lg"
