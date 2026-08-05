@@ -58,11 +58,14 @@ async function loadTeam(): Promise<DisplayMember[]> {
       stars: m.stars,
     }));
 
+    // Static profiles win (they hold the full rich data + real photos).
+    // Only add DB members who are NOT already in the static list
+    // (e.g. future dashboard-only members with no static entry).
     const norm = (s: string) => s.trim().toLowerCase();
-    const liveNames = new Set(liveMembers.map((m) => norm(m.full_name)));
-    const staticExtras = staticMembers.filter((m) => !liveNames.has(norm(m.full_name)));
+    const staticNames = new Set(staticMembers.map((m) => norm(m.full_name)));
+    const liveExtras = liveMembers.filter((m) => !staticNames.has(norm(m.full_name)));
 
-    return [...liveMembers, ...staticExtras];
+    return [...staticMembers, ...liveExtras];
   } catch {
     return staticMembers;
   }
