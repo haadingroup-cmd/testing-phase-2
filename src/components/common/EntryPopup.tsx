@@ -42,7 +42,7 @@ export default function EntryPopup() {
     if (SUPABASE_READY) {
       supabaseBrowser().from("leads").insert({
         name: name || "", service: service || "", source: "popup", status: "new",
-        message: "Started via entry popup → WhatsApp",
+        message: "Started via entry popup to WhatsApp",
       }).then(() => {}, () => {});
     }
     window.open(`${SITE.social.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
