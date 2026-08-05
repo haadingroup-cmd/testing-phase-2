@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Send, Loader2 } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 
 /**
  * Compact lead-capture form for Gulf Ads landing pages.
@@ -20,18 +21,38 @@ export default function LandingLeadForm({ source, city, priceNote }: { source: s
     // Honeypot: bots fill everything; humans can't see this field.
     if ((fd.get("company_website") as string)?.length) return;
 
-    fd.append("_landing", source);
-    fd.append("_city", city);
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const phone = String(fd.get("phone") || "").trim();
+    const service = String(fd.get("service") || "").trim();
+    const userMsg = String(fd.get("message") || "").trim();
+    const message = city ? `(${city} landing) ${userMsg}`.trim() : userMsg;
+
     setStatus("sending");
+    let saved = false;
+
+    // 1) Save straight into the CRM (Manage Leads) — the main goal.
+    if (SUPABASE_READY) {
+      try {
+        const { error } = await supabaseBrowser().from("leads").insert({
+          name, email, phone, service, message, source: "ads", status: "new",
+        });
+        if (!error) saved = true;
+      } catch { /* fall through to email */ }
+    }
+
+    // 2) Also send an email alert via Formspree (best effort).
     try {
+      fd.append("_landing", source);
+      fd.append("_city", city);
       const r = await fetch(`https://formspree.io/f/${SITE.formspree}`, {
         method: "POST", body: fd, headers: { Accept: "application/json" },
       });
-      if (r.ok) { router.push("/thank-you"); return; }
-      setStatus("err");
-    } catch {
-      setStatus("err");
-    }
+      if (r.ok) saved = true;
+    } catch { /* ignore */ }
+
+    if (saved) { router.push("/thank-you"); return; }
+    setStatus("err");
   }
 
   return (
