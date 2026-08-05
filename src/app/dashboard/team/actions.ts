@@ -143,50 +143,55 @@ const IMPORT_SLUGS = ["malaika-farooq", "arooba-shafique", "nafia-aziz", "rohab-
 const IMPORT_TEMP_PASSWORD = "Haadin@2026";
 
 export async function importStaticTeam(): Promise<ActionResult & { created?: string[]; skipped?: string[] }> {
-  const g = await guard(true);
-  if (!g.ok) return g;
+  try {
+    const g = await guard(true);
+    if (!g.ok) return g;
 
-  const admin = supabaseAdmin();
-  const created: string[] = [];
-  const skipped: string[] = [];
+    const admin = supabaseAdmin();
+    const created: string[] = [];
+    const existed: string[] = [];
+    const failed: string[] = [];
 
-  for (const slug of IMPORT_SLUGS) {
-    const m = getMember(slug);
-    if (!m) continue;
+    for (const slug of IMPORT_SLUGS) {
+      try {
+        const m = getMember(slug);
+        if (!m) { failed.push(`${slug} (not in roster)`); continue; }
 
-    const email = `${slug.split("-")[0]}@haadinglobal.com`;
+        const email = `${slug.split("-")[0]}@haadinglobal.com`;
 
-    const { data: byEmail } = await admin.from("profiles").select("id").eq("email", email).limit(1).maybeSingle();
-    const { data: byName } = await admin.from("profiles").select("id").ilike("full_name", m.full_name).limit(1).maybeSingle();
-    if (byEmail || byName) { skipped.push(m.full_name); continue; }
+        const { data: byEmail } = await admin.from("profiles").select("id").eq("email", email).limit(1).maybeSingle();
+        const { data: byName } = await admin.from("profiles").select("id").ilike("full_name", m.full_name).limit(1).maybeSingle();
+        if (byEmail || byName) { existed.push(m.full_name); continue; }
 
-    const { data: createdUser, error: authErr } = await admin.auth.admin.createUser({
-      email, password: IMPORT_TEMP_PASSWORD, email_confirm: true,
-    });
-    if (authErr || !createdUser.user) { skipped.push(`${m.full_name} (${authErr?.message || "auth failed"})`); continue; }
+        const { data: createdUser, error: authErr } = await admin.auth.admin.createUser({
+          email, password: IMPORT_TEMP_PASSWORD, email_confirm: true,
+        });
+        if (authErr || !createdUser?.user) { failed.push(`${m.full_name}: ${authErr?.message || "account creation failed"}`); continue; }
 
-    const { error: profErr } = await admin.from("profiles").insert({
-      id: createdUser.user.id,
-      email,
-      full_name: m.full_name,
-      title: m.title,
-      bio: m.bio,
-      photo_url: m.photo_url,
-      skills: m.skills,
-      level: m.level,
-      stars: m.stars,
-      role: "member",
-      is_public: true,
-    });
-    if (profErr) {
-      await admin.auth.admin.deleteUser(createdUser.user.id);
-      skipped.push(`${m.full_name} (${profErr.message})`);
-      continue;
+        const { error: profErr } = await admin.from("profiles").insert({
+          id: createdUser.user.id, email, full_name: m.full_name, title: m.title,
+          bio: m.bio, photo_url: m.photo_url, skills: m.skills, level: m.level,
+          stars: m.stars, role: "member", is_public: true,
+        });
+        if (profErr) {
+          await admin.auth.admin.deleteUser(createdUser.user.id).catch(() => {});
+          failed.push(`${m.full_name}: ${profErr.message}`);
+          continue;
+        }
+        created.push(m.full_name);
+      } catch (e) {
+        failed.push(`${slug}: ${e instanceof Error ? e.message : "unexpected error"}`);
+      }
     }
-    created.push(m.full_name);
-  }
 
-  revalidatePath("/dashboard/team");
-  revalidatePath("/team");
-  return { ok: true, created, skipped };
+    revalidatePath("/dashboard/team");
+    revalidatePath("/team");
+
+    if (created.length === 0 && failed.length > 0) {
+      return { ok: false, error: "Import failed for: " + failed.join(" | "), created, skipped: [...existed, ...failed] };
+    }
+    return { ok: true, created, skipped: [...existed, ...failed] };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Import failed unexpectedly." };
+  }
 }
