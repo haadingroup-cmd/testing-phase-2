@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | HaadinGlobal",
   },
   description:
-    "HaadinGlobal — results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI automation. Proven results for 150+ clients in Pakistan, UAE, UK, USA.",
+    "HaadinGlobal — results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI automation. Real results for businesses in Pakistan, UAE, UK & USA.",
   keywords: [
     "digital marketing agency Pakistan","digital marketing agency Sahiwal",
     "Meta Ads agency Pakistan","Google Ads Pakistan","SEO services Pakistan",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://www.haadinglobal.com",
     siteName: "HaadinGlobal",
     title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
-    description: "Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. 150+ happy clients worldwide.",
+    description: "Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. Serving businesses in Pakistan, UAE, UK & USA.",
     images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal Digital Agency" }],
   },
   twitter: {
@@ -144,7 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="dark"
       suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${notoArabic.variable}`}
     >
