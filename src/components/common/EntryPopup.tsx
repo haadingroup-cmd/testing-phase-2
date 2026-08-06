@@ -8,9 +8,8 @@ import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 /**
  * Entry popup — appears once per browser session, a few seconds after load
  * (top-agency pattern). Offers the two fastest paths to contact: WhatsApp
- * (the primary goal) and a 3-field quick form that also routes to WhatsApp
- * with a pre-filled message. Closing it sets a sessionStorage flag so it
- * never nags the same visitor again in that session.
+ * (the primary goal) and a quick route to the consultation page. Closing it
+ * sets a sessionStorage flag so it never nags the same visitor again.
  */
 const SERVICES = ["Meta Ads", "Google Ads", "SEO", "Website / Shopify", "Social Media", "Branding", "Not sure — need advice"];
 
@@ -20,13 +19,12 @@ export default function EntryPopup() {
   const [service, setService] = useState("");
 
   useEffect(() => {
-    // Only once per session
     if (typeof window === "undefined") return;
     try {
       if (sessionStorage.getItem("hg_popup_seen")) return;
     } catch { /* sessionStorage blocked — just show once in memory */ }
 
-    const timer = setTimeout(() => setOpen(true), 3500); // 3.5s delay
+    const timer = setTimeout(() => setOpen(true), 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,8 +35,7 @@ export default function EntryPopup() {
 
   function toWhatsApp() {
     const msg = `Hi HaadinGlobal! I'm ${name || "interested"} and I'd like help with ${service || "growing my business"}.`;
-    // Capture the lead in the CRM too (fire-and-forget so the WhatsApp window
-    // still opens instantly and isn't blocked by the browser).
+    // Capture the lead in the CRM too (fire-and-forget so the WhatsApp window opens instantly).
     if (SUPABASE_READY) {
       supabaseBrowser().from("leads").insert({
         name: name || "", service: service || "", source: "popup", status: "new",
@@ -63,7 +60,6 @@ export default function EntryPopup() {
         className="relative w-full max-w-md rounded-3xl border border-red-400/30 bg-gradient-to-br from-[#e11d48] via-[#b91c1c] to-[#7f1d1d] p-6 md:p-8 shadow-[0_20px_70px_-10px_rgba(225,29,72,0.6)] animate-[popIn_0.25s_cubic-bezier(0.16,1,0.3,1)]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* glow */}
         <div className="absolute -top-20 -right-16 w-56 h-56 rounded-full bg-white/20 blur-3xl pointer-events-none" />
 
         <button
@@ -112,13 +108,12 @@ export default function EntryPopup() {
               <MessageCircle size={17} /> Chat on WhatsApp
             </button>
 
-            
-              href="/consultation"
-              onClick={close}
+            <button
+              onClick={() => { close(); window.location.assign("/consultation"); }}
               className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-white/90 text-red-700 font-bold text-sm transition-colors shadow-lg"
             >
               <Send size={15} /> Book a Free Consultation
-            </a>
+            </button>
           </div>
 
           <button onClick={close} className="w-full text-center text-white/70 text-xs mt-4 hover:text-white transition-colors">
