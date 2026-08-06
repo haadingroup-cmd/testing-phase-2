@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PricingCards } from "@/components/pricing/PricingCards";
 import PricingCalculator from "@/components/pricing/PricingCalculator";
 import { CTASection } from "@/components/home/SiteSections";
+import LandingLeadForm from "@/components/landing/LandingLeadForm";
 
 export const metadata: Metadata = {
   title: "Pricing — Transparent Plans | HaadinGlobal",
@@ -23,6 +24,22 @@ export default function PricingPage() {
         <div className="container"><PricingCards /></div>
       </section>
       <PricingCalculator />
+      {/* FREE QUOTE / LEAD FORM — captures straight into the CRM */}
+      <section className="py-16 bg-[#020205]">
+        <div className="container max-w-xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="label mb-3">Free Quote</div>
+            <h2 className="font-display font-black text-white text-3xl mb-3">Not Sure Which Plan Fits?</h2>
+            <p className="text-slate-400">
+              Tell us about your business and we&apos;ll recommend the right plan with a custom quote within 24 hours — no cost, no obligation.
+            </p>
+          </div>
+          <div className="card p-6 md:p-8">
+            <LandingLeadForm source="pricing" city="" priceNote="Free consultation" leadSource="website" />
+          </div>
+        </div>
+      </section>
+
       <CTASection />
     </>
   );
