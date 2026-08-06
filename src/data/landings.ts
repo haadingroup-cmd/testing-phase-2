@@ -49,7 +49,7 @@ function faqsForPK(city: string) {
     { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) usually show measurable results within 2–4 weeks. SEO builds over 3–6 months. We give you a clear timeline before starting." },
     { q: "What does it cost?", a: "Management packages start affordably depending on scope, plus your ad budget. Book a free consultation and we'll give you an exact quote for your goals and city." },
     { q: "Do I need a long contract?", a: "No. We suggest a 3-month minimum for meaningful results but work month-to-month. Most clients stay for the results, not a lock-in." },
-    { q: `Why choose HaadinGlobal for ${city}?`, a: `We understand the local Pakistani market and buyer behaviour, run campaigns in English and Urdu, and focus on real ROI — leads and sales — not vanity metrics. We've helped 150+ businesses across Pakistan and the Gulf.` },
+    { q: `Why choose HaadinGlobal for ${city}?`, a: `We understand the local Pakistani market and buyer behaviour, run campaigns in English and Urdu, and focus on real ROI — leads and sales — not vanity metrics.` },
   ];
 }
 
@@ -86,7 +86,58 @@ function pkLanding(slug: string, city: string, blurb: string): Landing {
 }
 
 export const LANDINGS: Landing[] = [
-  pkLanding("digital-marketing-agency-sahiwal", "Sahiwal", "Affordable packages + ad budget — free consultation"),
+  {
+    slug: "digital-marketing-agency-sahiwal",
+    city: "Sahiwal",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Sahiwal",
+    subhead:
+      "HaadinGlobal is a Sahiwal-based digital marketing agency helping local shops, academies, clinics, property dealers and online stores get more customers with Meta Ads, Google Ads and SEO — managed by specialists who care about your ROI.",
+    metaTitle: "Digital Marketing Agency in Sahiwal | HaadinGlobal",
+    metaDescription:
+      "Grow your Sahiwal business with HaadinGlobal — expert SEO, Meta & Google Ads, social media and web development. Local team, real ROI. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "Based in Sahiwal — local team",
+      "ROI-focused Meta & Google Ads",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      {
+        problem: "Boosting posts but getting no real customers",
+        solution:
+          "We replace random boosts with properly targeted Meta & Google Ad campaigns aimed at real buyers in Sahiwal and nearby areas — so your budget brings leads, not just likes.",
+      },
+      {
+        problem: "Invisible on Google when people search locally",
+        solution:
+          "Local SEO and Google Business Profile optimization so you show up for searches like 'best [your service] in Sahiwal' and on Google Maps.",
+      },
+      {
+        problem: "A website that looks fine but never brings enquiries",
+        solution:
+          "Fast, mobile-first, conversion-focused pages built to turn visitors into WhatsApp messages, calls and orders.",
+      },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for what Sahiwal customers actually search, and bring in steady free organic traffic." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Location-targeted campaigns that reach the right customers in Sahiwal and surrounding areas with a clear return on spend." },
+      { name: "Google Ads", desc: "Appear at the top of Google the moment someone searches for your product or service — perfect for ready-to-buy customers." },
+      { name: "Website & Shopify Development", desc: "Fast, mobile-friendly websites and online stores designed to convert visitors into customers 24/7." },
+      { name: "Social Media Management", desc: "Consistent, professional content in English and Urdu that builds trust and keeps your brand top of mind." },
+      { name: "Branding & Graphic Design", desc: "A clean, memorable brand identity and ad creative that make your Sahiwal business look premium." },
+    ],
+    faqs: [
+      { q: "Do you have an office in Sahiwal?", a: "Yes. HaadinGlobal is based in Sahiwal, near Pakpattan Chowk Flyover in Canal View Town. We work with local businesses both in person and online, with fast WhatsApp communication." },
+      { q: "How much does digital marketing cost in Sahiwal?", a: "It depends on your goals and the services you need. Our packages start affordably for small local businesses and scale up as you grow, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads on Meta and Google usually show measurable results within 2-4 weeks. SEO builds over 3-6 months and delivers lasting organic traffic. We give you a clear timeline before we start." },
+      { q: "Can you help a small business in Sahiwal get more customers?", a: "Absolutely. Many of the businesses we help are small and local. We build affordable, targeted campaigns designed to bring in real leads and sales — not just online engagement." },
+      { q: "Which types of businesses do you work with in Sahiwal?", a: "Retail shops, academies and schools, clinics, restaurants and cafes, property dealers, boutiques and online sellers — any Sahiwal business that wants more customers from Google, Facebook and Instagram." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
   pkLanding("digital-marketing-agency-multan", "Multan", "Affordable packages + ad budget — free consultation"),
   pkLanding("digital-marketing-agency-jhang", "Jhang", "Affordable packages + ad budget — free consultation"),
   pkLanding("digital-marketing-agency-okara", "Okara", "Affordable packages + ad budget — free consultation"),
