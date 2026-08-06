@@ -337,3 +337,8 @@ select option { background: var(--bg-card); color: var(--text); }
   from { opacity: 0; transform: translateY(16px) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
+/* ── Readability boost: clearer muted text on dark backgrounds ── */
+html:not([data-theme="light"]) .text-slate-200 { color: #eef2f8 !important; }
+html:not([data-theme="light"]) .text-slate-300 { color: #dbe4f1 !important; }
+html:not([data-theme="light"]) .text-slate-400 { color: #b7c3d6 !important; }
+html:not([data-theme="light"]) p { color: #dbe4f1; }
