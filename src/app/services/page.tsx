@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SERVICES } from "@/data/services";
 import { ArrowRight } from "lucide-react";
 import { CTASection } from "@/components/home/SiteSections";
+import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceCardText from "@/components/services/ServiceCardText";
 
