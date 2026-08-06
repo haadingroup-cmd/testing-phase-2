@@ -31,12 +31,12 @@ function Counter({ to, suffix, duration = 1800 }: { to: number; suffix: string; 
 }
 
 const STATS = [
-  { to:500, suffix:"+",  icon:"🏆", key:"stats_projects" },
-  { to:150, suffix:"+",  icon:"😊", key:"stats_clients" },
-  { to:98,  suffix:"%",  icon:"❤️", key:"stats_retention" },
-  { to:6,   suffix:"+",  icon:"⚡", key:"stats_years" },
-  { to:25,  suffix:"+",  icon:"🌍", key:"stats_countries" },
-  { to:10,  suffix:"M+", icon:"💰", key:"stats_revenue" },
+  { to:120, suffix:"+",  icon:"🏆", key:"stats_projects" },
+  { to:40,  suffix:"+",  icon:"😊", key:"stats_clients" },
+  { to:90,  suffix:"%",  icon:"❤️", key:"stats_retention" },
+  { to:1,   suffix:"+",  icon:"⚡", key:"stats_years" },
+  { to:6,   suffix:"",   icon:"🌍", key:"stats_countries" },
+  { to:500, suffix:"K+", icon:"💰", key:"stats_revenue" },
 ];
 
 export default function StatsSection() {
