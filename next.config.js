@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-
 const securityHeaders = [
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -19,14 +18,13 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://*.supabase.co https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://www.facebook.com",
+      "connect-src 'self' https://*.supabase.co https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://connect.facebook.net https://www.facebook.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self' https://formspree.io",
     ].join("; "),
   },
 ];
-
 const nextConfig = {
   typescript: { ignoreBuildErrors: false },
   eslint: { ignoreDuringBuilds: false },
@@ -45,5 +43,4 @@ const nextConfig = {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
-
 module.exports = nextConfig;
