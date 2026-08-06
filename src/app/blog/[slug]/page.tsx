@@ -37,7 +37,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed">
             <p className="text-xl mb-6">{post.excerpt}</p>
-            <p>This is a comprehensive guide covering all aspects of {post.title.toLowerCase()}. Our team at HaadinGlobal has compiled insights from 150+ successful client campaigns to bring you actionable strategies you can implement today.</p>
+            <p>This is a comprehensive guide covering all aspects of {post.title.toLowerCase()}. Our team at HaadinGlobal has compiled insights from real client campaigns to bring you actionable strategies you can implement today.</p>
             <p className="mt-4">Want to apply these strategies to your business? <Link href="/consultation" className="text-red-400 hover:underline">Book a free consultation</Link> with our team.</p>
           </div>
           <div className="mt-12 flex flex-wrap gap-2">
