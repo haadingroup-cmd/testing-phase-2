@@ -5,7 +5,7 @@ import { CTASection } from "@/components/home/SiteSections";
 
 export const metadata: Metadata = {
   title: "Portfolio & Case Studies | HaadinGlobal",
-  description: "Real results for real businesses. 150+ case studies from Meta Ads, SEO, Shopify, YouTube Automation, and more.",
+  description: "Real results for real businesses. Case studies across Meta Ads, SEO, Shopify, YouTube Automation, and more.",
 };
 
 export default function PortfolioPage() {
