@@ -32,7 +32,7 @@ export const SERVICES: Service[] = [
     basePrice: 399,
     pricePkr: 15000,
     priceUsd: 54,
-    results: "Avg 6.2x ROAS",
+    results: "Avg 4x+ ROAS",
   },
   {
     id: "google-ads",
@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
     basePrice: 349,
     pricePkr: 15000,
     priceUsd: 54,
-    results: "Avg 2M+ views/mo",
+    results: "Avg 500K+ views/mo",
   },
   {
     id: "graphic-design",
@@ -244,7 +244,7 @@ export function serviceFaqs(svc: Service): { q: string; a: string }[] {
     },
     {
       q: `Why choose HaadinGlobal for ${title}?`,
-      a: `We combine international-level expertise with ROI-focused execution — every ${title} campaign is data-backed and optimised for real business growth, not vanity metrics. We've served 150+ businesses and report on the KPIs that actually matter to you.`,
+      a: `We combine international-level expertise with ROI-focused execution — every ${title} campaign is data-backed and optimised for real business growth, not vanity metrics. We've served businesses and report on the KPIs that actually matter to you.`,
     },
   ];
 }
