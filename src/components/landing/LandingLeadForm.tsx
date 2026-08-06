@@ -6,11 +6,11 @@ import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 
 /**
- * Compact lead-capture form for Gulf Ads landing pages.
- * Includes a honeypot field ("company_website") to block spam bots:
- * real users never fill a hidden field, so if it's filled we drop the submit.
+ * Compact lead-capture form. Saves straight into the CRM (Manage Leads) and
+ * also emails an alert via Formspree. Has a honeypot ("company_website") to
+ * block spam bots. `leadSource` sets how the lead is tagged in the CRM.
  */
-export default function LandingLeadForm({ source, city, priceNote }: { source: string; city: string; priceNote: string }) {
+export default function LandingLeadForm({ source, city, priceNote, leadSource = "ads" }: { source: string; city: string; priceNote: string; leadSource?: string }) {
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "sending" | "err">("idle");
 
@@ -18,8 +18,7 @@ export default function LandingLeadForm({ source, city, priceNote }: { source: s
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
 
-    // Honeypot: bots fill everything; humans can't see this field.
-    if ((fd.get("company_website") as string)?.length) return;
+    if ((fd.get("company_website") as string)?.length) return; // honeypot
 
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
@@ -31,17 +30,15 @@ export default function LandingLeadForm({ source, city, priceNote }: { source: s
     setStatus("sending");
     let saved = false;
 
-    // 1) Save straight into the CRM (Manage Leads) — the main goal.
     if (SUPABASE_READY) {
       try {
         const { error } = await supabaseBrowser().from("leads").insert({
-          name, email, phone, service, message, source: "ads", status: "new",
+          name, email, phone, service, message, source: leadSource, status: "new",
         });
         if (!error) saved = true;
       } catch { /* fall through to email */ }
     }
 
-    // 2) Also send an email alert via Formspree (best effort).
     try {
       fd.append("_landing", source);
       fd.append("_city", city);
@@ -57,7 +54,6 @@ export default function LandingLeadForm({ source, city, priceNote }: { source: s
 
   return (
     <form onSubmit={onSubmit} className="space-y-3">
-      {/* honeypot (hidden from humans) */}
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off"
         className="hidden" aria-hidden="true" />
 
