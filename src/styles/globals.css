@@ -342,3 +342,10 @@ html:not([data-theme="light"]) .text-slate-200 { color: #eef2f8 !important; }
 html:not([data-theme="light"]) .text-slate-300 { color: #dbe4f1 !important; }
 html:not([data-theme="light"]) .text-slate-400 { color: #b7c3d6 !important; }
 html:not([data-theme="light"]) p { color: #dbe4f1; }
+/* Hero radial background — dark by default, light-friendly in light mode */
+.hero-radial {
+  background: radial-gradient(ellipse at 30% 20%, #1a0a14 0%, #0a0210 55%, #020205 100%);
+}
+[data-theme="light"] .hero-radial {
+  background: radial-gradient(ellipse at 30% 20%, #fdeef0 0%, #f6eef6 55%, #f7f7fb 100%);
+}
