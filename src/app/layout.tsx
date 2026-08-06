@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProvider";
+import Analytics from "@/components/analytics/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.haadinglobal.com"),
@@ -162,6 +163,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <Analytics />
         <ThemeProvider>
           <LanguageProvider>
             <SiteChrome>{children}</SiteChrome>
