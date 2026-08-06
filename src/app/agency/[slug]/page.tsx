@@ -66,7 +66,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
 
       {/* Hero */}
       <section className="pt-32 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 20%, #1a0a14 0%, #0a0210 55%, #020205 100%)" }} />
+        <div className="absolute inset-0 hero-radial" />
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
