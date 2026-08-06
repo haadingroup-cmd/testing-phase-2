@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CheckCircle, ArrowRight, MessageCircle } from "lucide-react";
 import { SERVICES, serviceFaqs } from "@/data/services";
 import { CTASection } from "@/components/home/SiteSections";
+import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 
@@ -174,6 +175,23 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.a}</p>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+      {/* FREE QUOTE / LEAD FORM — captures straight into the CRM */}
+      <section className="py-16 bg-[#030306]">
+        <div className="container max-w-xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="label mb-3">Free Quote</div>
+            <h2 className="font-display font-black text-white text-3xl mb-3">
+              Get a Free {svc.title} Plan
+            </h2>
+            <p className="text-slate-400">
+              Tell us about your business and we&apos;ll send a tailored plan within 24 hours — no cost, no obligation.
+            </p>
+          </div>
+          <div className="card p-6 md:p-8">
+            <LandingLeadForm source={`service-${svc.id}`} city="" priceNote="Free consultation" leadSource="website" />
           </div>
         </div>
       </section>
