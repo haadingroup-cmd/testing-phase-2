@@ -38,11 +38,11 @@ export default function AboutPage() {
               <h2 className="font-display font-black text-white mb-5">From Sahiwal to the <span className="gradient-text">World Stage</span></h2>
               <div className="space-y-4 text-slate-400 leading-relaxed">
                 <p>Founded in 2020, HaadinGlobal started with a mission: bring international-quality digital marketing to businesses of all sizes across Pakistan and beyond.</p>
-                <p>What began as a small passionate team has grown into a full-service digital agency serving clients in Pakistan, UAE, the UK, the USA, and Saudi Arabia — managing over $2 million in ad spend and delivering 500+ successful projects.</p>
-                <p>Today, HaadinGlobal is recognized as one of the most trusted and results-driven digital agencies in the region, with a 98% client retention rate and 5.0-star reviews.</p>
+                <p>What began as a small passionate team has grown into a full-service digital agency serving clients in Pakistan, UAE, the UK, the USA, and Saudi Arabia — managing meaningful ad spend and delivering successful projects for our clients.</p>
+                <p>Today, HaadinGlobal is recognized as one of the most trusted and results-driven digital agencies in the region, with a strong client retention rate and a focus on measurable, verifiable results.</p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[{v:"$2M+",l:"Ad Spend Managed"},{v:"500+",l:"Projects"},{v:"150+",l:"Happy Clients"},{v:"5",l:"Countries"}].map(s => (
+                {[{v:"$500K+",l:"Ad Spend Managed"},{v:"120+",l:"Projects"},{v:"40+",l:"Happy Clients"},{v:"6",l:"Markets"}].map(s => (
                   <div key={s.l} className="card px-5 py-4">
                     <p className="text-2xl font-black gradient-text">{s.v}</p>
                     <p className="text-sm text-slate-500">{s.l}</p>
