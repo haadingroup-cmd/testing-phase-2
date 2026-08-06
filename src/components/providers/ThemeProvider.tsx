@@ -11,7 +11,7 @@ interface ThemeCtx {
 }
 
 const ThemeContext = createContext<ThemeCtx>({
-  theme: "dark",
+  theme: "light",
   setTheme: () => {},
   toggleTheme: () => {},
   mounted: false,
@@ -19,44 +19,29 @@ const ThemeContext = createContext<ThemeCtx>({
 
 /**
  * Inline script injected before hydration so the correct theme is applied
- * on first paint (no flash, no hydration mismatch). The <html> element always
- * carries a data-theme attribute by the time React hydrates.
+ * on first paint (no flash, no hydration mismatch).
  */
 export const themeInitScript = `
 (function () {
   try {
     var stored = localStorage.getItem('hg_theme');
-    var theme = stored === 'light' || stored === 'dark'
-      ? stored
-      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    var theme = stored === 'light' || stored === 'dark' ? stored : 'light';
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.style.colorScheme = theme;
   } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 })();
 `;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Default to "dark" on the server; the inline script already set the real
-  // value on <html> before hydration, and the effect below syncs React state.
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const current = (document.documentElement.getAttribute("data-theme") as Theme) || "dark";
-    setThemeState(current === "light" ? "light" : "dark");
+    const current = (document.documentElement.getAttribute("data-theme") as Theme) || "light";
+    setThemeState(current === "dark" ? "dark" : "light");
     setMounted(true);
-
-    // Keep in sync with system preference changes when the user hasn't chosen.
-    const mq = window.matchMedia("(prefers-color-scheme: light)");
-    const onChange = (e: MediaQueryListEvent) => {
-      try {
-        if (!localStorage.getItem("hg_theme")) apply(e.matches ? "light" : "dark");
-      } catch {}
-    };
-    mq.addEventListener?.("change", onChange);
-    return () => mq.removeEventListener?.("change", onChange);
   }, []);
 
   function apply(t: Theme) {
