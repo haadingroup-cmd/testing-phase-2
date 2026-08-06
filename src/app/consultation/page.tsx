@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckCircle, Clock, TrendingUp, Users, Send, MessageCircle, Zap, Shield, Star } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 import { SERVICES } from "@/data/services";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
 
@@ -16,6 +17,22 @@ export default function ConsultationPage() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+
+    // Save into the CRM (Manage Leads) — best effort, doesn't block the redirect.
+    if (SUPABASE_READY) {
+      try {
+        const notes = [
+          form.business,
+          form.website_social && `Website/Social: ${form.website_social}`,
+          form.budget && `Budget: ${form.budget}`,
+        ].filter(Boolean).join(" · ");
+        await supabaseBrowser().from("leads").insert({
+          name: form.name, email: form.email, phone: form.phone,
+          service: form.service, message: notes, source: "website", status: "new",
+        });
+      } catch { /* ignore */ }
+    }
+
     try {
       const r = await fetch(`https://formspree.io/f/${SITE.formspree}`, {
         method:"POST",
@@ -137,7 +154,7 @@ export default function ConsultationPage() {
                       </div>
                       {status === "err" && (
                         <p className="text-red-400 text-sm bg-red-500/10 px-3 py-2 rounded-lg">
-                          Failed to send. <a href={SITE.social.whatsapp} className="underline">WhatsApp us directly</a>
+                          Failed to send. <button type="button" onClick={() => window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer")} className="underline font-semibold text-red-300">WhatsApp us directly</button>
                         </p>
                       )}
                       <button type="submit" disabled={status==="sending"}
@@ -149,7 +166,7 @@ export default function ConsultationPage() {
                         }
                       </button>
                       <p className="text-center text-slate-500 text-xs">
-                        Or WhatsApp: <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</a>
+                        Or WhatsApp: <button type="button" onClick={() => window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer")} className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</button>
                       </p>
                     </form>
                   </>
