@@ -18,8 +18,25 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) notFound();
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: `https://www.haadinglobal.com${post.image}`,
+    datePublished: post.date,
+    author: { "@type": "Person", name: post.author },
+    publisher: {
+      "@type": "Organization",
+      name: "HaadinGlobal",
+      logo: { "@type": "ImageObject", url: "https://www.haadinglobal.com/logo.png" },
+    },
+    mainEntityOfPage: `https://www.haadinglobal.com/blog/${post.slug}`,
+    keywords: post.tags.join(", "),
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <section className="pt-36 pb-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
         <div className="container relative z-10 max-w-3xl mx-auto">
