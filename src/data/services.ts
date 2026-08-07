@@ -22,7 +22,7 @@ export const SERVICES: Service[] = [
     id: "meta-ads",
     title: "Meta Ads",
     titleAr: "إعلانات ميتا",
-    shortDesc: "Hyper-targeted campaigns with 6x+ ROAS for Pakistani businesses.",
+    shortDesc: "Hyper-targeted Facebook & Instagram campaigns that turn ad spend into real leads and sales.",
     shortDescAr: "حملات دقيقة الاستهداف بعائد استثمار 6x+ للشركات الباكستانية.",
     fullDesc: "Complete Meta Ads management: audience research, ad creative design, campaign setup, A/B testing, retargeting, and weekly ROAS optimization.",
     icon: "🎯",
@@ -32,7 +32,7 @@ export const SERVICES: Service[] = [
     basePrice: 399,
     pricePkr: 15000,
     priceUsd: 54,
-    results: "Avg 4x+ ROAS",
+    results: "ROI-focused campaigns",
   },
   {
     id: "google-ads",
@@ -48,7 +48,7 @@ export const SERVICES: Service[] = [
     basePrice: 399,
     pricePkr: 25000,
     priceUsd: 91,
-    results: "Avg 4.8x ROAS",
+    results: "High-intent conversions",
   },
   {
     id: "seo",
@@ -64,7 +64,7 @@ export const SERVICES: Service[] = [
     basePrice: 299,
     pricePkr: 35000,
     priceUsd: 127,
-    results: "+340% avg traffic",
+    results: "Sustainable organic growth",
   },
   {
     id: "social-media",
@@ -80,7 +80,7 @@ export const SERVICES: Service[] = [
     basePrice: 299,
     pricePkr: 30000,
     priceUsd: 109,
-    results: "Avg 3x engagement",
+    results: "Higher engagement & reach",
   },
   {
     id: "youtube-automation",
@@ -96,7 +96,7 @@ export const SERVICES: Service[] = [
     basePrice: 499,
     pricePkr: 40000,
     priceUsd: 145,
-    results: "0→25K subscribers avg",
+    results: "Built to grow your channel",
   },
   {
     id: "web-development",
@@ -128,7 +128,7 @@ export const SERVICES: Service[] = [
     basePrice: 799,
     pricePkr: 25000,
     priceUsd: 91,
-    results: "Avg 4.5x order growth",
+    results: "Built to grow online sales",
   },
   {
     id: "branding",
@@ -160,7 +160,7 @@ export const SERVICES: Service[] = [
     basePrice: 1499,
     pricePkr: 80000,
     priceUsd: 291,
-    results: "80% less manual work",
+    results: "Less repetitive manual work",
   },
   {
     id: "content-writing",
@@ -176,7 +176,7 @@ export const SERVICES: Service[] = [
     basePrice: 199,
     pricePkr: 30000,
     priceUsd: 109,
-    results: "Top Google rankings",
+    results: "Content built to rank",
   },
   {
     id: "tiktok-ads",
@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
     basePrice: 349,
     pricePkr: 15000,
     priceUsd: 54,
-    results: "Avg 500K+ views/mo",
+    results: "Built for viral reach",
   },
   {
     id: "graphic-design",
