@@ -8,6 +8,36 @@ import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 
+// Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
+const SEO_TITLES: Record<string, string> = {
+  "meta-ads": "Meta & Facebook Ads Services in Pakistan",
+  "google-ads": "Google Ads Management in Pakistan",
+  "seo": "SEO Services in Pakistan",
+  "social-media": "Social Media Marketing in Pakistan",
+  "youtube-automation": "YouTube Automation Services",
+  "web-development": "Website Development in Pakistan",
+  "shopify": "Shopify Store Development in Pakistan",
+  "branding": "Branding & Logo Design in Pakistan",
+  "ai-automation": "AI Automation for Business",
+  "content-writing": "SEO Content Writing Services",
+  "tiktok-ads": "TikTok Ads Management in Pakistan",
+  "graphic-design": "Graphic Design Services in Pakistan",
+};
+const SEO_DESCS: Record<string, string> = {
+  "meta-ads": "Expert Meta & Facebook ads management in Pakistan. Targeted campaigns that turn ad spend into real leads and sales. Free consultation: +92 305 4782677.",
+  "google-ads": "Professional Google Ads management in Pakistan. Capture high-intent buyers the moment they search. ROI-focused, transparent reporting. Free consultation.",
+  "seo": "Affordable SEO services in Pakistan to rank on Google and grow organic traffic. Local & national SEO for real leads. Free consultation: +92 305 4782677.",
+  "social-media": "Social media marketing in Pakistan — content, management and growth across Facebook, Instagram & TikTok. Build a trusted brand. Free consultation.",
+  "youtube-automation": "YouTube automation services — we build and run faceless channels the right way, with quality content built to grow. Free consultation with HaadinGlobal.",
+  "web-development": "Fast, mobile-first website development in Pakistan. Conversion-focused business websites built to bring enquiries. Free consultation: +92 305 4782677.",
+  "shopify": "Shopify store development in Pakistan — premium, conversion-optimized online stores built to sell. Setup, design and growth. Free consultation.",
+  "branding": "Branding and logo design in Pakistan. A clean, memorable brand identity that builds trust and stands out. Free consultation with HaadinGlobal.",
+  "ai-automation": "AI automation for business — automate repetitive workflows and scale smarter. Custom AI solutions for growing companies. Free consultation.",
+  "content-writing": "SEO content writing services that rank and convert. Blog posts, web copy and articles built around buyer intent. Free consultation with HaadinGlobal.",
+  "tiktok-ads": "TikTok ads management in Pakistan — scroll-stopping campaigns that build awareness and drive sales. ROI-focused. Free consultation.",
+  "graphic-design": "Professional graphic design services in Pakistan — visuals and creative that communicate and convert. Free consultation with HaadinGlobal.",
+};
+
 export async function generateStaticParams() {
   return SERVICES.map(s => ({ slug: s.id }));
 }
@@ -19,8 +49,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     // Keyword-rich title; the root layout template adds "| HaadinGlobal" once,
     // so we don't repeat the brand here (was producing "… — HaadinGlobal | HaadinGlobal").
-    title: `${svc.title} Services in Pakistan`,
-    description: svc.shortDesc,
+    title: SEO_TITLES[svc.id] ?? `${svc.title} in Pakistan`,
+    description: SEO_DESCS[svc.id] ?? svc.shortDesc,
     keywords: [svc.title, `${svc.title} Pakistan`, svc.category, "HaadinGlobal", "digital marketing agency"],
     alternates: { canonical: url },
     openGraph: {
