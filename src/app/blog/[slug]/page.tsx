@@ -35,10 +35,18 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-10">
             <Image src={post.image} alt={post.title} fill className="object-cover"/>
           </div>
-          <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed">
-            <p className="text-xl mb-6">{post.excerpt}</p>
-            <p>This is a comprehensive guide covering all aspects of {post.title.toLowerCase()}. Our team at HaadinGlobal has compiled insights from real client campaigns to bring you actionable strategies you can implement today.</p>
-            <p className="mt-4">Want to apply these strategies to your business? <Link href="/consultation" className="text-red-400 hover:underline">Book a free consultation</Link> with our team.</p>
+          <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed blog-body">
+            {"content" in post && (post as { content?: string }).content ? (
+              <>
+                <p className="text-xl mb-6">{post.excerpt}</p>
+                <div dangerouslySetInnerHTML={{ __html: (post as { content: string }).content }} />
+              </>
+            ) : (
+              <>
+                <p className="text-xl mb-6">{post.excerpt}</p>
+                <p>Full article coming soon. In the meantime, <Link href="/consultation" className="text-red-400 hover:underline">book a free consultation</Link> and our team will help you directly.</p>
+              </>
+            )}
           </div>
           <div className="mt-12 flex flex-wrap gap-2">
             {post.tags.map(tag => (
