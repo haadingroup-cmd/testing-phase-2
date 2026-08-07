@@ -4,8 +4,6 @@ import TrustBadges from "@/components/home/TrustBadges";
 import ServicesSection from "@/components/home/ServicesSection";
 import StatsSection from "@/components/home/StatsSection";
 import AboutSection from "@/components/home/AboutSection";
-import PortfolioPreview from "@/components/home/PortfolioPreview";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import { FAQSection, CTASection, ProofCallSection } from "@/components/home/SiteSections";
 import { faqJsonLd } from "@/data/faqs";
 import { PricingCards } from "@/components/pricing/PricingCards";
@@ -15,7 +13,7 @@ import ContactForm from "@/components/contact/ContactForm";
 export const metadata: Metadata = {
   title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
   description:
-    "results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. 150+ clients in Pakistan, UAE, UK, USA. Book free consultation.",
+    "results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. Serving businesses in Pakistan, UAE, UK & USA. Book free consultation.",
   alternates: { canonical: "https://www.haadinglobal.com" },
 };
 
@@ -31,9 +29,7 @@ export default function HomePage() {
       <ServicesSection />
       <StatsSection />
       <AboutSection />
-      <PortfolioPreview />
       <ProofCallSection />
-      <TestimonialsSection />
 
       {/* Pricing */}
       <section className="section-pad bg-[#020205]" id="pricing">
