@@ -246,7 +246,7 @@ export default function HeroSection() {
               {[
                 { icon:<CheckCircle size={13}/>, text:"ROI Guaranteed" },
                 { icon:<CheckCircle size={13}/>, text:"24hr Support" },
-                { icon:<Users size={13}/>,        text:"150+ Clients" },
+                { icon:<Users size={13}/>,        text:"Real Results" },
                 { icon:<TrendingUp size={13}/>,    text:"5 Markets" },
               ].map((b,i) => (
                 <motion.div
@@ -287,7 +287,7 @@ export default function HeroSection() {
                 <div className="flex text-amber-400">
                   {[...Array(5)].map((_,i) => <Star key={i} size={13} fill="currentColor" />)}
                 </div>
-                <p className="text-slate-400 text-xs"><span className="text-white font-bold">150+</span> happy clients worldwide</p>
+                <p className="text-slate-400 text-xs">Trusted by businesses across Pakistan &amp; the Gulf</p>
               </div>
             </motion.div>
           </motion.div>
@@ -302,20 +302,20 @@ export default function HeroSection() {
             {/* Mobile-only clean stats grid (replaces the overlapping float cards) */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-sm mt-6 md:hidden">
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black gradient-text">6.2x</p>
+                <p className="text-2xl font-black gradient-text">4x+</p>
                 <p className="text-[11px] text-slate-400">Avg ROAS (Meta Ads)</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black text-white">$2M+</p>
+                <p className="text-2xl font-black text-white">$500K+</p>
                 <p className="text-[11px] text-slate-400">Revenue Generated</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black text-white">150+</p>
+                <p className="text-2xl font-black text-white">40+</p>
                 <p className="text-[11px] text-slate-400">Happy Clients</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <div className="flex justify-center text-amber-400 text-sm">★★★★★</div>
-                <p className="text-[11px] text-slate-400 mt-0.5">5.0 · 150+ Reviews</p>
+                <p className="text-2xl font-black text-white">6</p>
+                <p className="text-[11px] text-slate-400">Markets Served</p>
               </div>
             </div>
 
@@ -326,7 +326,7 @@ export default function HeroSection() {
                 <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Live Orders</span>
               </div>
               <p className="text-3xl font-black text-white">102</p>
-              <p className="text-[11px] text-slate-500">FashionHub Today</p>
+              <p className="text-[11px] text-slate-500">Sample store · today</p>
               <div className="mt-2 flex items-center gap-1 text-green-300 text-[11px] font-bold">
                 <TrendingUp size={11}/> +28% vs yesterday
               </div>
@@ -335,22 +335,21 @@ export default function HeroSection() {
             {/* Card: ROAS */}
             <FloatCard className="-bottom-4 -left-2 md:-left-6 w-40" delay={1.0}>
               <p className="text-[11px] text-slate-400 mb-1">Avg ROAS</p>
-              <p className="text-3xl font-black gradient-text">6.2x</p>
+              <p className="text-3xl font-black gradient-text">4x+</p>
               <p className="text-[10px] text-slate-500">Meta Ads</p>
             </FloatCard>
 
             {/* Card: Rating */}
             <FloatCard className="-top-4 -right-2 md:-right-6 w-36" delay={1.05}>
-              <div className="flex text-amber-400 text-base mb-1">★★★★★</div>
-              <p className="text-white font-black text-xl">5.0</p>
-              <p className="text-[10px] text-slate-400">150+ Reviews</p>
+              <p className="text-white font-black text-xl">24h</p>
+              <p className="text-[10px] text-slate-400">Avg Response Time</p>
             </FloatCard>
 
             {/* Card: Revenue */}
             <FloatCard className="-bottom-4 -right-2 md:-right-6 w-44" delay={1.15}>
               <ShoppingBag size={15} className="text-red-400 mb-1"/>
               <p className="text-[11px] text-slate-400">Revenue Generated</p>
-              <p className="text-2xl font-black text-white">$2M+</p>
+              <p className="text-2xl font-black text-white">$500K+</p>
               <p className="text-[11px] text-green-300 font-bold">For our clients</p>
             </FloatCard>
           </motion.div>
