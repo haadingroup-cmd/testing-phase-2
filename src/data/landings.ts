@@ -49,7 +49,7 @@ function faqsForPK(city: string) {
     { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) usually show measurable results within 2–4 weeks. SEO builds over 3–6 months. We give you a clear timeline before starting." },
     { q: "What does it cost?", a: "Management packages start affordably depending on scope, plus your ad budget. Book a free consultation and we'll give you an exact quote for your goals and city." },
     { q: "Do I need a long contract?", a: "No. We suggest a 3-month minimum for meaningful results but work month-to-month. Most clients stay for the results, not a lock-in." },
-    { q: `Why choose HaadinGlobal for ${city}?`, a: `We understand the local Pakistani market and buyer behaviour, run campaigns in English and Urdu, and focus on real ROI — leads and sales — not vanity metrics.` },
+    { q: `Why choose HaadinGlobal for ${city}?`, a: `We understand the local Pakistani market and buyer behaviour, run campaigns in English and Urdu, and focus on real ROI — leads and sales — not vanity metrics. We've helped 150+ businesses across Pakistan and the Gulf.` },
   ];
 }
 
@@ -138,11 +138,89 @@ export const LANDINGS: Landing[] = [
     ],
     priceNote: "Affordable local packages + ad budget",
   },
-  pkLanding("digital-marketing-agency-multan", "Multan", "Affordable packages + ad budget — free consultation"),
+  {
+    slug: "digital-marketing-agency-multan",
+    city: "Multan",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Multan",
+    subhead:
+      "HaadinGlobal helps Multan businesses — retailers, real estate, clinics, agriculture and online sellers — grow with Meta Ads, Google Ads and SEO focused on real leads and sales across South Punjab.",
+    metaTitle: "Digital Marketing Agency in Multan | HaadinGlobal",
+    metaDescription:
+      "Grow your Multan business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "ROI-focused Meta & Google Ads",
+      "Serving Multan & South Punjab",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      { problem: "Customers can't find you online", solution: "We put your business on Google Search, Maps and social so Multan customers discover you first." },
+      { problem: "Ad money spent with no clear return", solution: "Targeted Meta & Google campaigns aimed at real buyers in Multan and South Punjab, tracked for ROI." },
+      { problem: "Website that doesn't bring enquiries", solution: "Mobile-first, conversion-focused pages that turn visitors into calls, WhatsApp messages and orders." },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for what Multan customers actually search for." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Location-targeted campaigns reaching the right customers across Multan and South Punjab." },
+      { name: "Google Ads", desc: "Show up at the top when someone searches for your product or service in Multan." },
+      { name: "Website & Shopify Development", desc: "Fast, mobile-friendly websites and online stores that sell around the clock." },
+      { name: "Social Media Management", desc: "Consistent English & Urdu content that builds trust and grows your local following." },
+      { name: "Branding & Graphic Design", desc: "A polished brand identity and creative that make your Multan business memorable." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Multan?", a: "Yes. HaadinGlobal works with Multan and South Punjab businesses — retail, real estate, clinics, agriculture, food and online sellers — managing everything online with fast WhatsApp support." },
+      { q: "How much does digital marketing cost in Multan?", a: "It depends on your goals and services. Packages start affordably for small local businesses and scale up as you grow, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads on Meta and Google usually show results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic. You get a clear timeline before we start." },
+      { q: "Can you help a small Multan business get more customers?", a: "Absolutely. We build affordable, targeted campaigns for small and local Multan businesses designed to bring in real leads and sales." },
+      { q: "Do you run campaigns in Urdu and English?", a: "Yes. We run campaigns in both Urdu and English to connect with your Multan and wider Pakistani audience." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
   pkLanding("digital-marketing-agency-jhang", "Jhang", "Affordable packages + ad budget — free consultation"),
   pkLanding("digital-marketing-agency-okara", "Okara", "Affordable packages + ad budget — free consultation"),
   pkLanding("digital-marketing-agency-lahore", "Lahore", "Affordable packages + ad budget — free consultation"),
-  pkLanding("digital-marketing-agency-faisalabad", "Faisalabad", "Affordable packages + ad budget — free consultation"),
+  {
+    slug: "digital-marketing-agency-faisalabad",
+    city: "Faisalabad",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Faisalabad",
+    subhead:
+      "HaadinGlobal helps Faisalabad businesses — from textile and industrial units to retailers, wholesalers and online stores — win more customers with Meta Ads, Google Ads and SEO built around real ROI, not vanity metrics.",
+    metaTitle: "Digital Marketing Agency in Faisalabad | HaadinGlobal",
+    metaDescription:
+      "Grow your Faisalabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "ROI-focused Meta & Google Ads",
+      "Built for Faisalabad's business market",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      { problem: "Great products, but weak online presence", solution: "We build your digital storefront — website, Google and social — so Faisalabad and export customers can find and trust you." },
+      { problem: "Boosting posts with nothing to show for it", solution: "Properly structured Meta & Google Ad campaigns targeting real buyers, so your budget turns into enquiries and orders." },
+      { problem: "Competitors ranking above you on Google", solution: "Local SEO that gets your business found for high-intent searches across Faisalabad." },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the products and services Faisalabad customers search for." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Targeted campaigns for retail, wholesale and B2B buyers in Faisalabad and beyond." },
+      { name: "Google Ads", desc: "Capture ready-to-buy customers the moment they search for your product or service." },
+      { name: "Website & Shopify Development", desc: "Fast, mobile-first websites and online stores that showcase your products and convert." },
+      { name: "Social Media Management", desc: "Consistent English & Urdu content that builds a trusted brand for your business." },
+      { name: "Branding & Graphic Design", desc: "Professional identity and creative that makes your Faisalabad business stand out." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Faisalabad?", a: "Yes. HaadinGlobal works with Faisalabad businesses — textile and industrial units, wholesalers, retailers, real estate and online stores — managing everything online with fast WhatsApp communication." },
+      { q: "How much does digital marketing cost in Faisalabad?", a: "It depends on your goals and services. Packages start affordably for small businesses and scale up for larger brands, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads on Meta and Google usually show results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic. We give you a clear timeline upfront." },
+      { q: "Can you help my textile or wholesale business sell online?", a: "Yes. We build websites, Shopify stores and lead-generation systems suited to Faisalabad's textile, wholesale and export businesses, plus retail and services." },
+      { q: "Do you run ads in Urdu and English?", a: "Yes. We create and run campaigns in both Urdu and English to connect with your specific Faisalabad and Pakistani audience." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
   pkLanding("digital-marketing-agency-sargodha", "Sargodha", "Affordable packages + ad budget — free consultation"),
   pkLanding("digital-marketing-agency-pakpattan", "Pakpattan", "Affordable packages + ad budget — free consultation"),
   {
