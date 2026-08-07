@@ -121,6 +121,8 @@ const jsonLd = {
         { "@type": "Country", name: "United Kingdom" },
         { "@type": "Country", name: "United States" },
       ],
+      geo: { "@type": "GeoCoordinates", latitude: 30.6641, longitude: 73.1114 },
+      hasMap: "https://www.google.com/maps?q=HaadinGlobal+Sahiwal",
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
