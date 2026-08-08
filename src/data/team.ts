@@ -6,8 +6,14 @@
  * dashboard is live, the public page reads live rows from Supabase and this
  * list is used only to seed the database the first time.
  *
- * Real members: Muhammad Haseeb, Arooba Shafique, Nafia Aziz, Malaika Farooq.
- * The rest are placeholders — edit or remove them from the admin dashboard.
+ * ORDER:
+ * 1. Muhammad Haseeb – Founder & CEO
+ * 2. Mirza Shahzad Saleem – Co-Founder & Director of Operations
+ * 3. Rohab Abdullah
+ * 4. Malaika Farooq
+ * 5. Arooba Shafique
+ * 6. Nafia Aziz
+ * 7–12. Placeholders
  */
 export type TeamLevel = "Junior" | "Mid" | "Senior" | "Lead";
 
@@ -36,6 +42,7 @@ export interface TeamMember {
 }
 
 export const TEAM: TeamMember[] = [
+  /* ──────────────────────── 1. FOUNDER ──────────────────────── */
   {
     slug: "muhammad-haseeb",
     full_name: "Muhammad Haseeb",
@@ -65,35 +72,37 @@ export const TEAM: TeamMember[] = [
     stars: 5,
     is_public: true,
   },
+  /* ──────────────────────── 2. CO-FOUNDER ──────────────────────── */
   {
-    slug: "malaika-farooq",
-    full_name: "Malaika Farooq",
-    title: "Relationship Manager",
-    level: "Senior",
-    bio: "Malaika Farooq is the relationship engine of HaadinGlobal. She owns client onboarding and long-term account health — managing follow-ups, sourcing strategic leads, coordinating client meetings, mentoring the team, and keeping the agency's day-to-day operations running smoothly. Clients stay with HaadinGlobal because Malaika makes sure they feel heard, updated, and looked after at every step.",
-    photo_url: "/team/malaika-farooq.jpeg",
+    slug: "mirza-shahzad-saleem",
+    full_name: "Mirza Shahzad Saleem",
+    title: "Co-Founder & Director of Operations",
+    level: "Lead",
+    bio: "Over two decades of deep industry insight. A unique blend of strong technical foundations and modern digital strategy, specialising in overseeing complex online business operations, software solutions, and digital agency services. Proven track record in optimising digital storefronts (Shopify), managing performance marketing (Meta Ads), and leading technical teams to deliver scalable online services. Equipped with the strategic vision required to streamline business workflows, enhance brand visibility, and drive revenue growth in today's digital landscape.",
+    photo_url: "/team/mirza-shahzad-saleem.webp",
     photo_position: "top",
-    tagline: "The reason clients feel looked after — and stay for the long run.",
-    location: "Sahiwal, Pakistan",
-    experience: "Client Relations & Operations",
-    email: "malaikafarooq381@gmail.com",
-    skills: ["Client Management", "Lead Generation", "Operations", "Team Coordination", "Onboarding", "Account Handling"],
+    tagline: "Two decades of operations leadership — turning strategy into scalable systems.",
+    location: "Pakistan",
+    experience: "20+ years",
+    email: "haadinglobal@gmail.com",
+    skills: ["Agency Management", "Software Solutions", "Performance Marketing", "Meta Ads", "Shopify", "Operations", "Team Leadership", "Business Strategy"],
     stats: [
-      { label: "Client Retention Focus", value: "100%" },
-      { label: "Accounts Managed", value: "Multi" },
-      { label: "Response Time", value: "Fast" },
+      { label: "Experience", value: "20+" },
+      { label: "Focus", value: "Operations" },
+      { label: "Specialty", value: "Strategy" },
     ],
     expertise: [
-      { title: "Client Onboarding", detail: "Turns a new signup into a confident, well-informed client with a smooth, structured onboarding experience." },
-      { title: "Relationship Management", detail: "Keeps every account warm — proactive follow-ups, clear updates, and a real relationship rather than transactional contact." },
-      { title: "Operations & Coordination", detail: "Coordinates meetings, keeps projects moving, and mentors the team so nothing slips through the cracks." },
+      { title: "Agency Operations", detail: "Oversees the full operational engine of HaadinGlobal — from team allocation and project delivery to quality assurance and process optimisation." },
+      { title: "Software Solutions", detail: "Bridges the gap between business needs and technical execution, ensuring software and digital products are built to scale and solve real problems." },
+      { title: "Performance Marketing", detail: "Manages Meta Ads and paid media operations with a focus on ROI-driven campaigns, storefront optimisation, and sustainable revenue growth." },
     ],
-    projects: ["End-to-end client onboarding & account handling", "Strategic lead sourcing", "Team coordination & agency operations"],
-    quote: "A happy client isn't the one who paid — it's the one who felt taken care of the whole way through.",
+    projects: ["Digital agency operations & scaling", "Shopify storefront optimisation", "Performance marketing campaigns", "Technical team leadership"],
+    quote: "Operations isn't the background work — it's the foundation everything else stands on.",
     languages: ["English", "Urdu"],
     stars: 5,
     is_public: true,
   },
+  /* ──────────────────────── 3. ROHAB ──────────────────────── */
   {
     slug: "rohab-abdullah",
     full_name: "Rohab Abdullah",
@@ -123,6 +132,37 @@ export const TEAM: TeamMember[] = [
     stars: 5,
     is_public: true,
   },
+  /* ──────────────────────── 4. MALAIKA ──────────────────────── */
+  {
+    slug: "malaika-farooq",
+    full_name: "Malaika Farooq",
+    title: "Relationship Manager",
+    level: "Senior",
+    bio: "Malaika Farooq is the relationship engine of HaadinGlobal. She owns client onboarding and long-term account health — managing follow-ups, sourcing strategic leads, coordinating client meetings, mentoring the team, and keeping the agency's day-to-day operations running smoothly. Clients stay with HaadinGlobal because Malaika makes sure they feel heard, updated, and looked after at every step.",
+    photo_url: "/team/malaika-farooq.jpeg",
+    photo_position: "top",
+    tagline: "The reason clients feel looked after — and stay for the long run.",
+    location: "Sahiwal, Pakistan",
+    experience: "Client Relations & Operations",
+    email: "malaikafarooq381@gmail.com",
+    skills: ["Client Management", "Lead Generation", "Operations", "Team Coordination", "Onboarding", "Account Handling"],
+    stats: [
+      { label: "Client Retention Focus", value: "100%" },
+      { label: "Accounts Managed", value: "Multi" },
+      { label: "Response Time", value: "Fast" },
+    ],
+    expertise: [
+      { title: "Client Onboarding", detail: "Turns a new signup into a confident, well-informed client with a smooth, structured onboarding experience." },
+      { title: "Relationship Management", detail: "Keeps every account warm — proactive follow-ups, clear updates, and a real relationship rather than transactional contact." },
+      { title: "Operations & Coordination", detail: "Coordinates meetings, keeps projects moving, and mentors the team so nothing slips through the cracks." },
+    ],
+    projects: ["End-to-end client onboarding & account handling", "Strategic lead sourcing", "Team coordination & agency operations"],
+    quote: "A happy client isn't the one who paid — it's the one who felt taken care of the whole way through.",
+    languages: ["English", "Urdu"],
+    stars: 5,
+    is_public: true,
+  },
+  /* ──────────────────────── 5. AROOBA ──────────────────────── */
   {
     slug: "arooba-shafique",
     full_name: "Arooba Shafique",
@@ -153,6 +193,7 @@ export const TEAM: TeamMember[] = [
     stars: 5,
     is_public: true,
   },
+  /* ──────────────────────── 6. NAFIA ──────────────────────── */
   {
     slug: "nafia-aziz",
     full_name: "Nafia Aziz",
