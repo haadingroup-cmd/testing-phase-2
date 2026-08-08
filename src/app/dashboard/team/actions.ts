@@ -139,7 +139,7 @@ export async function setPublic(userId: string, isPublic: boolean): Promise<Acti
  * accounts. Each member gets the login firstname@haadinglobal.com with a
  * temporary password. Skips anyone who already exists.
  */
-const IMPORT_SLUGS = ["malaika-farooq", "arooba-shafique", "nafia-aziz", "rohab-abdullah"];
+const IMPORT_SLUGS = ["mirza-shahzad-saleem", "rohab-abdullah", "malaika-farooq", "arooba-shafique", "nafia-aziz"];
 const IMPORT_TEMP_PASSWORD = "Haadin@2026";
 
 export async function importStaticTeam(): Promise<ActionResult & { created?: string[]; skipped?: string[] }> {
