@@ -42,7 +42,7 @@ function ImportButton() {
   const [pending, start] = useTransition();
 
   function run() {
-    if (!confirm("Import your original team (Malaika, Arooba, Nafia, Rohab) as editable accounts?\n\nEach gets the login firstname@haadinglobal.com with temp password Haadin@2026.")) return;
+    if (!confirm("Import your team (Shahzad, Rohab, Malaika, Arooba, Nafia) as editable accounts?\n\nEach gets the login firstname@haadinglobal.com with temp password Haadin@2026.")) return;
     start(async () => {
       const res = await importStaticTeam();
       if (!res.ok) { alert(res.error || "Import failed."); return; }
