@@ -437,6 +437,162 @@ export const LANDINGS: Landing[] = [
     priceNote: "Affordable local packages + ad budget",
   },
   {
+    slug: "digital-marketing-agency-karachi",
+    city: "Karachi",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Karachi",
+    subhead:
+      "HaadinGlobal helps Karachi businesses win in Pakistan's most competitive market — from retail and e-commerce to real estate, restaurants, import/export and startups — with Meta Ads, Google Ads and SEO built for real ROI.",
+    metaTitle: "Digital Marketing Agency in Karachi | HaadinGlobal",
+    metaDescription:
+      "Grow your Karachi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "Built for Karachi's huge, fast market",
+      "ROI-focused Meta & Google Ads",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      {
+        problem: "Lost in Karachi's massive, crowded market",
+        solution:
+          "We sharpen your positioning and run precisely targeted campaigns so the right Karachi customers find you — not the dozens of competitors around you.",
+      },
+      {
+        problem: "High ad spend with unclear returns",
+        solution:
+          "Transparent tracking and ongoing optimisation so every rupee is tied to real leads and sales across Karachi.",
+      },
+      {
+        problem: "Website gets traffic but few orders",
+        solution:
+          "Fast, mobile-first pages engineered to convert Karachi's on-the-go buyers into calls, chats and orders.",
+      },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Rank across Karachi's competitive search results and on Google Maps for the terms your customers actually use." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Precision-targeted campaigns for retail, e-commerce and service brands across Karachi's diverse audience." },
+      { name: "Google Ads", desc: "Appear at the top the moment high-intent Karachi customers search for your product or service." },
+      { name: "Website & Shopify Development", desc: "Fast, modern, conversion-focused websites and online stores built for Karachi's e-commerce market." },
+      { name: "Social Media Management", desc: "Scroll-stopping English & Urdu content that builds a strong brand presence in a busy feed." },
+      { name: "Branding & Graphic Design", desc: "Standout identity and ad creative that make your Karachi business memorable." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Karachi?", a: "Yes. HaadinGlobal works with businesses across Karachi — retail, e-commerce, real estate, restaurants, import/export and startups — with fast communication and clear reporting." },
+      { q: "Karachi is very competitive — can you help me stand out?", a: "That's our focus. We combine sharp positioning, strong creative and precise targeting so you win attention and customers even in Karachi's crowded market." },
+      { q: "How much does digital marketing cost in Karachi?", a: "It depends on your goals and scope. Packages start affordably and scale up for competitive campaigns, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads usually show results within 2-4 weeks; SEO builds over 3-6 months for lasting organic traffic. You get a clear timeline before we start." },
+      { q: "Do you run campaigns in Urdu and English?", a: "Yes. We create and run campaigns in both languages to connect with Karachi's diverse audience." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
+  {
+    slug: "digital-marketing-agency-islamabad",
+    city: "Islamabad",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Islamabad",
+    subhead:
+      "HaadinGlobal helps Islamabad businesses — from corporate and tech to real estate, education, clinics and upscale retail — grow with professional, ROI-focused Meta Ads, Google Ads and SEO.",
+    metaTitle: "Digital Marketing Agency in Islamabad | HaadinGlobal",
+    metaDescription:
+      "Grow your Islamabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "Professional, ROI-focused campaigns",
+      "Serving Islamabad & the twin cities",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      {
+        problem: "A quality brand that isn't visible online",
+        solution:
+          "We build a strong digital presence — search, social and Google — so Islamabad's professional audience discovers and trusts you.",
+      },
+      {
+        problem: "Ad budget spent without clear results",
+        solution:
+          "Targeted Meta and Google campaigns aimed at real buyers in Islamabad, tracked transparently for ROI.",
+      },
+      {
+        problem: "Website that doesn't reflect your standard",
+        solution:
+          "Modern, fast, polished websites that match Islamabad's professional expectations and convert visitors.",
+      },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the services Islamabad's professional and corporate audience searches for." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Targeted campaigns reaching the right customers across Islamabad and the twin cities." },
+      { name: "Google Ads", desc: "Capture high-intent buyers the moment they search for your product or service." },
+      { name: "Website & Shopify Development", desc: "Modern, fast, conversion-focused websites and online stores built to a professional standard." },
+      { name: "Social Media Management", desc: "Polished English & Urdu content that builds a credible, premium brand presence." },
+      { name: "Branding & Graphic Design", desc: "A refined brand identity and creative that fit Islamabad's professional market." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Islamabad?", a: "Yes. HaadinGlobal works with businesses across Islamabad — corporate, tech, real estate, education, clinics and retail — managed online with clear reporting and fast communication." },
+      { q: "Can you help a corporate or professional business?", a: "Yes. We build professional campaigns and polished websites suited to Islamabad's corporate, tech and service businesses." },
+      { q: "How much does digital marketing cost in Islamabad?", a: "It depends on your goals and scope. Packages start affordably and scale with your needs, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads usually show results within 2-4 weeks; SEO builds over 3-6 months. We give you a clear timeline upfront." },
+      { q: "Do you run campaigns in Urdu and English?", a: "Yes — both, to connect with Islamabad's full audience." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
+  {
+    slug: "digital-marketing-agency-rawalpindi",
+    city: "Rawalpindi",
+    country: "Pakistan",
+    countryCode: "PK",
+    currency: "PKR",
+    headline: "Digital Marketing Agency in Rawalpindi",
+    subhead:
+      "HaadinGlobal helps Rawalpindi businesses — retail, wholesale and trade, real estate, restaurants and services — reach more customers with affordable, results-driven Meta Ads, Google Ads and SEO across Pindi and the twin cities.",
+    metaTitle: "Digital Marketing Agency in Rawalpindi | HaadinGlobal",
+    metaDescription:
+      "Grow your Rawalpindi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+    heroPoints: [
+      "Affordable & results-driven",
+      "Serving Rawalpindi & the twin cities",
+      "Free strategy consultation",
+      "Fast WhatsApp response",
+    ],
+    painPoints: [
+      {
+        problem: "Customers can't find your business online",
+        solution:
+          "We put you on Google Search, Maps and social so Rawalpindi customers discover you first.",
+      },
+      {
+        problem: "Boosting posts with no real return",
+        solution:
+          "We run properly targeted Meta and Google campaigns aimed at real buyers across Pindi and the twin cities.",
+      },
+      {
+        problem: "Website that brings no enquiries",
+        solution:
+          "Fast, mobile-first pages that turn visitors into calls, WhatsApp messages and orders.",
+      },
+    ],
+    services: [
+      { name: "SEO & Local SEO", desc: "Get found on Google and Maps for what Rawalpindi customers actually search for." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Targeted campaigns reaching the right customers across Rawalpindi and Islamabad." },
+      { name: "Google Ads", desc: "Show up at the top when high-intent customers search for your product or service." },
+      { name: "Website & Shopify Development", desc: "Fast, mobile-friendly websites and online stores that sell around the clock." },
+      { name: "Social Media Management", desc: "Consistent Urdu & English content that builds trust and a loyal local following." },
+      { name: "Branding & Graphic Design", desc: "A professional identity and creative that make your Rawalpindi business stand out." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Rawalpindi?", a: "Yes. HaadinGlobal works with businesses across Rawalpindi and the twin cities — retail, wholesale, trade, real estate, restaurants and services — managed online with fast WhatsApp support." },
+      { q: "Can you help my retail or wholesale business?", a: "Absolutely. We build targeted campaigns and simple online systems to help Rawalpindi's retail, wholesale and trade businesses reach more buyers." },
+      { q: "How much does digital marketing cost in Rawalpindi?", a: "It depends on your goals and scope. Packages start affordably and scale as you grow, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "How quickly will I see results?", a: "Paid ads usually show results within 2-4 weeks; SEO builds over 3-6 months. You get a clear timeline first." },
+      { q: "Do you run campaigns in Urdu and English?", a: "Yes — both, so you connect with your full Rawalpindi and twin-cities audience." },
+    ],
+    priceNote: "Affordable local packages + ad budget",
+  },
+  {
     slug: "digital-marketing-agency-dubai",
     city: "Dubai",
     country: "the UAE",
