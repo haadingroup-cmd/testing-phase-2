@@ -15,7 +15,7 @@ const SEO_TITLES: Record<string, string> = {
   "seo": "SEO Services in Pakistan",
   "social-media": "Social Media Marketing in Pakistan",
   "youtube-automation": "YouTube Automation Services",
-  "web-development": "Website Development in Pakistan",
+  "web-development": "Website Development in Pakistan | From PKR 80,000",
   "shopify": "Shopify Store Development in Pakistan",
   "branding": "Branding & Logo Design in Pakistan",
   "ai-automation": "AI Automation for Business",
