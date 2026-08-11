@@ -9,11 +9,11 @@ import Analytics from "@/components/analytics/Analytics";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.haadinglobal.com"),
   title: {
-    default: "HaadinGlobal — Results-Driven Digital Marketing Agency | Meta Ads, SEO, YouTube Automation",
+    default: "Digital Marketing Agency in Pakistan | HaadinGlobal",
     template: "%s | HaadinGlobal",
   },
   description:
-    "HaadinGlobal — results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI automation. Real results for businesses in Pakistan, UAE, UK & USA.",
+    "HaadinGlobal is a results-driven digital marketing agency in Pakistan. We grow businesses with Meta Ads, Google Ads, SEO, Shopify and web development. Free consultation.",
   keywords: [
     "digital marketing agency Pakistan","digital marketing agency Sahiwal",
     "Meta Ads agency Pakistan","Google Ads Pakistan","SEO services Pakistan",
