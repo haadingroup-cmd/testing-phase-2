@@ -29,7 +29,7 @@ const SEO_DESCS: Record<string, string> = {
   "seo": "Affordable SEO services in Pakistan to rank on Google and grow organic traffic. Local & national SEO for real leads. Free consultation: +92 305 4782677.",
   "social-media": "Social media marketing in Pakistan — content, management and growth across Facebook, Instagram & TikTok. Build a trusted brand. Free consultation.",
   "youtube-automation": "YouTube automation services — we build and run faceless channels the right way, with quality content built to grow. Free consultation with HaadinGlobal.",
-  "web-development": "Fast, mobile-first website development in Pakistan. Conversion-focused business websites built to bring enquiries. Free consultation: +92 305 4782677.",
+  "web-development": "Custom Next.js websites built to load fast & convert visitors into leads. 4-8 week delivery, mobile-first, SEO-ready. Free quote: +92 305 4782677.",
   "shopify": "Shopify store development in Pakistan — premium, conversion-optimized online stores built to sell. Setup, design and growth. Free consultation.",
   "branding": "Branding and logo design in Pakistan. A clean, memorable brand identity that builds trust and stands out. Free consultation with HaadinGlobal.",
   "ai-automation": "AI automation for business — automate repetitive workflows and scale smarter. Custom AI solutions for growing companies. Free consultation.",
