@@ -24,10 +24,10 @@ export const T: Record<Lang, Record<string, string>> = {
     nav_contact: "Contact",
     nav_cta: "Free Consultation",
     // Hero
-    hero_badge: "Results-Driven Digital Marketing Agency",
-    hero_h1a: "Grow Your Business",
-    hero_h1b: "To The Next Level",
-    hero_sub: "Businesses in Pakistan, UAE, UK, USA & KSA achieving real ROI with Meta Ads, Google Ads, SEO, Shopify, YouTube Automation & AI.",
+    hero_badge: "Grow Your Business Online",
+    hero_h1a: "Pakistan's Results-Driven",
+    hero_h1b: "Digital Marketing Agency",
+    hero_sub: "HaadinGlobal is a digital marketing agency in Pakistan helping businesses grow with Meta Ads, Google Ads, SEO, Shopify and web development — with real, measurable ROI, locally and worldwide.",
     hero_cta1: "Book Free Consultation",
     hero_cta2: "WhatsApp Us",
     // Sections
@@ -93,7 +93,7 @@ export const T: Record<Lang, Record<string, string>> = {
     hero_badge: "وكالة تسويق رقمي قائمة على النتائج",
     hero_h1a: "نمّ أعمالك",
     hero_h1b: "إلى المستوى التالي",
-    hero_sub: "أكثر من 150 شركة في باكستان والإمارات والمملكة المتحدة والولايات المتحدة والسعودية تحقق عائداً حقيقياً.",
+    hero_sub: "شركات في باكستان والإمارات والمملكة المتحدة والولايات المتحدة والسعودية تحقق عائداً حقيقياً مع ميتا وجوجل والسيو.",
     hero_cta1: "استشارة مجانية",
     hero_cta2: "واتساب",
     // Sections
