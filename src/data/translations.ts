@@ -100,7 +100,7 @@ export const T: Record<Lang, Record<string, string>> = {
     services_title: "خدماتنا",
     services_sub: "حزمة نمو رقمية كاملة — من الإعلانات المدفوعة إلى أتمتة الذكاء الاصطناعي",
     portfolio_title: "نتائج حقيقية، عملاء حقيقيون",
-    portfolio_sub: "أكثر من 150 شركة تحقق نمواً قابلاً للقياس",
+    portfolio_sub: "شركات تحقق نمواً قابلاً للقياس",
     testimonials_title: "ماذا يقول عملاؤنا",
     courses_title: "أتقن المهارات الرقمية",
     pricing_title: "أسعار بسيطة وشفافة",
