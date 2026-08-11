@@ -56,7 +56,7 @@ export const SERVICES: Service[] = [
     titleAr: "خدمات تحسين محركات البحث",
     shortDesc: "Dominate search rankings and drive organic traffic that converts.",
     shortDescAr: "تصدّر نتائج البحث واجذب زيارات عضوية تتحول إلى عملاء.",
-    fullDesc: "Comprehensive SEO combining technical excellence, authoritative content, and precision link-building for long-term organic growth.",
+    fullDesc: "HaadinGlobal provides expert SEO services in Pakistan — combining technical SEO, keyword research, authoritative content and precision link-building to rank your business on Google and drive organic traffic that converts. As dedicated SEO experts, we focus on local and national rankings that bring real, long-term leads.",
     icon: "🔍",
     category: "Marketing",
     features: ["Keyword Research","On-Page SEO","Technical Audit","Link Building","Local SEO","Schema Markup","Core Web Vitals","Monthly Reports"],
