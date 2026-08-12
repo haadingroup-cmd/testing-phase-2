@@ -213,6 +213,17 @@ export const SERVICES: Service[] = [
 ];
 
 /**
+ * A short, direct "quick answer" paragraph for AEO -- structured so AI
+ * Overviews, ChatGPT and featured snippets can lift a clean, quotable
+ * summary of the service straight from the page. Auto-generated from
+ * existing service data (no separate content to keep in sync).
+ */
+export function serviceQuickAnswer(svc: Service): string {
+  const priceLine = `Plans start from PKR ${svc.pricePkr.toLocaleString()}/month in Pakistan (from $${svc.priceUsd}/month internationally).`;
+  return `${svc.title} at HaadinGlobal means ${svc.fullDesc.charAt(0).toLowerCase()}${svc.fullDesc.slice(1)} ${priceLine}`;
+}
+
+/**
  * AEO/GEO — generates snippet-ready FAQs per service.
  * -------------------------------------------------------------
  * 2026 answer-engine best practice: question-format headings + concise,
