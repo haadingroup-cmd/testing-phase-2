@@ -1,26 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-{/* Nearby cities — internal linking for topical/local SEO signal */}
-      <section className="py-14 bg-[#030306] border-t border-white/8">
-        <div className="container max-w-4xl mx-auto text-center">
-          <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-5">
-            Also Serving Nearby Cities
-          </p>
-          <div className="flex flex-wrap justify-center gap-2.5">
-            {LANDINGS.filter((o) => o.slug !== l.slug && o.countryCode === l.countryCode)
-              .slice(0, 6)
-              .map((o) => (
-                <Link
-                  key={o.slug}
-                  href={`/agency/${o.slug}`}
-                  className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-red-500/30 transition-colors"
-                >
-                  {o.city}
-                </Link>
-              ))}
-          </div>
-        </div>
-      </section>
 import Link from "next/link";
 import { CheckCircle, ArrowRight, Star, Shield, Clock, Globe } from "lucide-react";
 import { LANDINGS, getLanding } from "@/data/landings";
@@ -178,6 +157,28 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
                 <p className="text-slate-400 text-sm leading-relaxed mt-3 pt-3 border-t border-white/8">{f.a}</p>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nearby cities — internal linking for topical/local SEO signal */}
+      <section className="py-14 bg-[#030306] border-t border-white/8">
+        <div className="container max-w-4xl mx-auto text-center">
+          <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-5">
+            Also Serving Nearby Cities
+          </p>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {LANDINGS.filter((o) => o.slug !== l.slug && o.countryCode === l.countryCode)
+              .slice(0, 6)
+              .map((o) => (
+                <Link
+                  key={o.slug}
+                  href={`/agency/${o.slug}`}
+                  className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-red-500/30 transition-colors"
+                >
+                  {o.city}
+                </Link>
+              ))}
           </div>
         </div>
       </section>
