@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { LANDINGS } from '@/data/landings'
+import { BLOG_POSTS } from '@/data/blog'
 
 const base = 'https://www.haadinglobal.com'
 
@@ -43,6 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  const blogPages = BLOG_POSTS.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
   const staticPages = pages.map(p => ({
     url: `${base}${p.url}`,
     lastModified: now,
@@ -50,5 +58,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.pri,
   }))
 
-  return [...staticPages, ...cityPages]
+  return [...staticPages, ...cityPages, ...blogPages]
 }
