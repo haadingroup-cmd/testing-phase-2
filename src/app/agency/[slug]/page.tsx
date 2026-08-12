@@ -183,6 +183,33 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Service links — internal linking to service pages for SEO */}
+      <section className="py-14 border-t border-white/8">
+        <div className="container max-w-4xl mx-auto text-center">
+          <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-5">
+            Our Services in {l.city}
+          </p>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {[
+              { slug: "seo", name: "SEO" },
+              { slug: "meta-ads", name: "Meta Ads" },
+              { slug: "google-ads", name: "Google Ads" },
+              { slug: "social-media", name: "Social Media" },
+              { slug: "web-development", name: "Web Development" },
+              { slug: "shopify", name: "Shopify" },
+            ].map((sv) => (
+              <Link
+                key={sv.slug}
+                href={`/services/${sv.slug}`}
+                className="text-sm text-slate-300 hover:text-white px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-red-500/30 transition-colors"
+              >
+                {sv.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0212] to-[#020205]" />
