@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle, ArrowRight, MessageCircle } from "lucide-react";
-import { SERVICES, serviceFaqs } from "@/data/services";
+import { SERVICES, serviceFaqs, serviceQuickAnswer } from "@/data/services";
 import { CTASection } from "@/components/home/SiteSections";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
@@ -132,6 +132,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <div className="label mb-4">{svc.category}</div>
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-3xl mb-5 shadow-xl`}>{svc.icon}</div>
               <ServiceDetailHero title={svc.title} titleAr={svc.titleAr} fullDesc={svc.fullDesc} />
+              <p className="text-slate-200 text-[15px] leading-relaxed bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
+                <strong className="text-white">Quick answer:</strong> {serviceQuickAnswer(svc)}
+              </p>
               {svc.results && (
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 text-green-300 font-bold text-sm mb-6">
                   ✓ {svc.results}
