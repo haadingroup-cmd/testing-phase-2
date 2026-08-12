@@ -204,8 +204,20 @@ export const BLOG_POSTS = [
 <h2>12. Test, don't guess</h2>
 <p>Change one thing at a time — a headline, an image, a button — and measure the impact. Small, data-backed improvements compound into big revenue gains over time.</p>
 
-<p>Want us to audit and optimise your Shopify store? <a href="/consultation">Book a free consultation</a> with HaadinGlobal.</p>
-`,
+<h2>How much can CRO actually improve your revenue?</h2>
+<p>A typical Shopify store converts 1-2% of visitors. Applying even 4-5 of the tactics above consistently pushes stores to 2.5-3.5% — without spending a rupee more on ads. On 10,000 monthly visitors, that difference is worth tens of thousands of rupees in extra revenue every single month, from the same traffic you already have.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What's a good conversion rate for a Shopify store in Pakistan?</h3>
+<p>Most Pakistani Shopify stores convert between 0.5% and 1.5%. Above 2% is strong; above 3% is excellent. The tactics in this guide are exactly how stores move from the low end to the high end.</p>
+<h3>Where should I start if I can only fix one thing this month?</h3>
+<p>Start with checkout and page speed (tactics 1 and 6). These two alone are responsible for the majority of lost sales on slow or complicated Shopify stores.</p>
+<h3>How long does a full CRO audit take?</h3>
+<p>A thorough audit — speed, mobile experience, checkout flow, trust signals and product pages — typically takes our team 3-5 business days, followed by a prioritized action plan.</p>
+<h3>Do I need a full redesign to improve conversions?</h3>
+<p>Usually not. Most of the gains in this guide come from targeted fixes — speed, checkout, trust signals — not a full redesign. We only recommend a rebuild when the underlying theme is fundamentally holding the store back.</p>
+
+<p>Want us to audit and optimise your Shopify store? <a href="/services/shopify">See our Shopify development service</a> or <a href="/consultation">book a free consultation</a> with HaadinGlobal.</p>`,
   },
   {
     slug: "youtube-automation-2025",
