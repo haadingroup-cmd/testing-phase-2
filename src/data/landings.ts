@@ -24,25 +24,6 @@ export interface Landing {
   priceNote: string;
 }
 
-const SHARED_SERVICES = [
-  { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS ad campaigns that turn scrollers into buyers, managed daily by specialists." },
-  { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers the moment they search — optimized for a low cost per lead." },
-  { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the searches your customers actually make." },
-  { name: "Website & Shopify Development", desc: "Fast, conversion-focused websites and online stores built to sell." },
-  { name: "Social Media Management", desc: "Consistent, on-brand content that builds trust and keeps you top of mind." },
-  { name: "Branding & Creative", desc: "Logos, identity and ad creative that make your business look premium." },
-];
-
-function faqsFor(city: string, country: string, currency: string) {
-  return [
-    { q: `Do you work with businesses in ${city}?`, a: `Yes. We work with clients across ${country} and the wider Gulf, managing campaigns remotely with regular reporting and fast communication across your time zone.` },
-    { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2–4 weeks. SEO builds over 3–6 months. We share a clear timeline before we start." },
-    { q: "What does it cost?", a: `Management packages start from around ${currency} 199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote tailored to your goals.` },
-    { q: "Do I need a long contract?", a: "No. We recommend a 3-month minimum for meaningful results, but work month-to-month. Most clients stay because of the results, not a lock-in." },
-    { q: "Can you communicate in Arabic?", a: "Yes — we serve Arabic-speaking clients and can run Arabic-language ad creative and landing pages for your local audience." },
-  ];
-}
-
 export const LANDINGS: Landing[] = [
   {
     slug: "digital-marketing-agency-sahiwal",
@@ -592,24 +573,56 @@ export const LANDINGS: Landing[] = [
     ],
     priceNote: "Affordable local packages + ad budget",
   },
-  {
+    {
     slug: "digital-marketing-agency-dubai",
     city: "Dubai",
     country: "the UAE",
     countryCode: "AE",
     currency: "$",
     headline: "Digital Marketing Agency in Dubai",
-    subhead: "More leads, more sales, more growth — with Meta Ads, Google Ads and SEO managed by specialists who care about your ROI.",
-    metaTitle: "Digital Marketing Agency in Dubai, UAE",
-    metaDescription: "Grow your Dubai business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for the UAE.",
-    heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
-    painPoints: [
-      { problem: "Ad spend disappearing with no return", solution: "We rebuild your funnel and target high-intent buyers, so every dirham works harder." },
-      { problem: "Website that looks good but doesn't sell", solution: "Conversion-focused pages engineered to turn visitors into enquiries." },
-      { problem: "Invisible on Google", solution: "Local SEO that puts you in front of Dubai customers searching right now." },
+    subhead:
+      "HaadinGlobal helps Dubai businesses — from retail and real estate to hospitality, e-commerce and startups — grow with offshore-competitive Meta Ads, Google Ads and SEO, without the high overhead of a local agency.",
+    metaTitle: "Digital Marketing Agency in Dubai, UAE | HaadinGlobal",
+    metaDescription:
+      "Affordable digital marketing agency for Dubai businesses. Meta Ads, Google Ads, SEO and web development at offshore-competitive rates. Free consultation.",
+    heroPoints: [
+      "Offshore-competitive pricing",
+      "Serving Dubai & the UAE",
+      "Free strategy consultation",
+      "24-hour response time",
     ],
-    services: SHARED_SERVICES,
-    faqs: faqsFor("Dubai", "the UAE", "$"),
+    painPoints: [
+      {
+        problem: "Local Dubai agencies charge a premium for the same results",
+        solution:
+          "We deliver the same quality — Meta Ads, Google Ads, SEO — at offshore-competitive rates, so more of your budget goes to media spend, not overhead.",
+      },
+      {
+        problem: "Ad spend disappearing with unclear returns",
+        solution:
+          "Transparent, real-time reporting so you see exactly what every dirham returns, with campaigns optimised weekly.",
+      },
+      {
+        problem: "A generic website that doesn't reflect a premium Dubai brand",
+        solution:
+          "Modern, fast, conversion-focused websites and Shopify stores built to match Dubai's high customer expectations.",
+      },
+    ],
+    services: [
+      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tailored to Dubai's multicultural, high-spending audience." },
+      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers across Dubai the moment they search." },
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the searches your Dubai customers make." },
+      { name: "Website & Shopify Development", desc: "Premium, fast websites and online stores built to convert." },
+      { name: "Social Media Management", desc: "On-brand content that builds trust with a Dubai audience." },
+      { name: "Branding & Creative", desc: "Identity and ad creative that match a premium Dubai market." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Dubai?", a: "Yes. We work with clients across Dubai and the wider UAE, managing campaigns remotely with regular reporting and fast communication across your time zone." },
+      { q: "Why choose an offshore agency over a local Dubai one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often significantly less than local Dubai agency fees — without compromising results." },
+      { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
+      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results but work month-to-month after that." },
+    ],
     priceNote: "Packages from $199/month + ad budget",
   },
   {
@@ -618,18 +631,50 @@ export const LANDINGS: Landing[] = [
     country: "Qatar",
     countryCode: "QA",
     currency: "$",
-    headline: "Digital Marketing Agency in Qatar",
-    subhead: "Win more customers in Doha and across Qatar with paid ads, SEO and websites built to convert — not just to look nice.",
-    metaTitle: "Digital Marketing Agency in Qatar",
-    metaDescription: "Grow your Qatar business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for Doha & Qatar.",
-    heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
-    painPoints: [
-      { problem: "Competitors outranking you online", solution: "SEO and ads strategy that gets you found first by Qatar customers." },
-      { problem: "Leads that never convert", solution: "Sharper targeting and landing pages that qualify and convert buyers." },
-      { problem: "No time to manage marketing", solution: "We run it end-to-end and report results — you focus on your business." },
+    headline: "Digital Marketing Agency in Doha",
+    subhead:
+      "HaadinGlobal helps businesses in Doha and across Qatar — retail, hospitality, real estate and professional services — grow with affordable, ROI-focused Meta Ads, Google Ads and SEO.",
+    metaTitle: "Digital Marketing Agency in Qatar | HaadinGlobal",
+    metaDescription:
+      "Affordable digital marketing agency for Doha and Qatar businesses. Meta Ads, Google Ads, SEO and web development. Arabic & English. Free consultation.",
+    heroPoints: [
+      "Affordable, ROI-focused campaigns",
+      "Serving Doha & all of Qatar",
+      "Free strategy consultation",
+      "Arabic & English campaigns",
     ],
-    services: SHARED_SERVICES,
-    faqs: faqsFor("Doha", "Qatar", "$"),
+    painPoints: [
+      {
+        problem: "Competitors ranking above you in Doha search results",
+        solution:
+          "We build a focused SEO and ads strategy that gets your business found first by Qatar customers.",
+      },
+      {
+        problem: "Leads that never turn into customers",
+        solution:
+          "Sharper audience targeting and dedicated landing pages that qualify and convert real buyers.",
+      },
+      {
+        problem: "No time to manage marketing alongside running your business",
+        solution:
+          "We handle strategy, execution and reporting end-to-end while you focus on your business.",
+      },
+    ],
+    services: [
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Targeted campaigns that reach the right customers across Doha and Qatar." },
+      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers in Qatar the moment they search for your product or service." },
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for what Qatar customers actually search for." },
+      { name: "Website & Shopify Development", desc: "Fast, conversion-focused websites and online stores built to sell." },
+      { name: "Social Media Management", desc: "Arabic and English content that builds trust with your Qatar audience." },
+      { name: "Branding & Creative", desc: "Identity and creative that make your Qatar business stand out." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Qatar?", a: "Yes. We work with clients across Doha and the wider Qatar market, managing campaigns remotely with regular reporting and communication across your time zone." },
+      { q: "Do you run campaigns in Arabic?", a: "Yes. We create and run campaigns in both Arabic and English to reach your full Qatar audience." },
+      { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic." },
+      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "Do I need a long-term contract?", a: "No. We suggest a 3-month minimum for meaningful results, then work month-to-month." },
+    ],
     priceNote: "Packages from $199/month + ad budget",
   },
   {
@@ -638,18 +683,50 @@ export const LANDINGS: Landing[] = [
     country: "Saudi Arabia",
     countryCode: "SA",
     currency: "$",
-    headline: "Digital Marketing Agency in Saudi Arabia",
-    subhead: "Scale your business in Riyadh, Jeddah and across the Kingdom with data-driven Meta Ads, Google Ads and SEO.",
-    metaTitle: "Digital Marketing Agency in Saudi Arabia",
-    metaDescription: "Grow your Saudi business with high-ROI Meta Ads, Google Ads, SEO and web development. Free consultation. Results-driven digital marketing for KSA.",
-    heroPoints: ["ROI-focused paid ads", "Free strategy consultation", "24-hour response time", "Arabic & English campaigns"],
-    painPoints: [
-      { problem: "Marketing that doesn't reach Saudi buyers", solution: "Localized, Arabic-first campaigns tuned to the KSA market." },
-      { problem: "Spending on ads with no clear ROI", solution: "Transparent tracking so you see exactly what every riyal returns." },
-      { problem: "Outdated website losing customers", solution: "Modern, fast, mobile-first sites built to convert Saudi shoppers." },
+    headline: "Digital Marketing Agency in Riyadh",
+    subhead:
+      "HaadinGlobal helps businesses across Riyadh, Jeddah and the wider Kingdom — retail, real estate, e-commerce and professional services — scale with data-driven Meta Ads, Google Ads and SEO.",
+    metaTitle: "Digital Marketing Agency in Saudi Arabia | HaadinGlobal",
+    metaDescription:
+      "Affordable digital marketing agency for Saudi Arabia. Meta Ads, Google Ads, SEO and web development for Riyadh, Jeddah and the Kingdom. Free consultation.",
+    heroPoints: [
+      "Affordable, data-driven campaigns",
+      "Serving Riyadh, Jeddah & the Kingdom",
+      "Free strategy consultation",
+      "Arabic & English campaigns",
     ],
-    services: SHARED_SERVICES,
-    faqs: faqsFor("Riyadh", "Saudi Arabia", "$"),
+    painPoints: [
+      {
+        problem: "Marketing that doesn't speak to Saudi buyers",
+        solution:
+          "Localised, Arabic-first campaigns tuned to how customers in the Kingdom actually search and buy.",
+      },
+      {
+        problem: "Ad budget spent without a clear return",
+        solution:
+          "Transparent tracking so you see exactly what every riyal returns, with weekly optimisation.",
+      },
+      {
+        problem: "An outdated website losing customers to competitors",
+        solution:
+          "Modern, fast, mobile-first websites and Shopify stores built to convert Saudi shoppers.",
+      },
+    ],
+    services: [
+      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tailored to Saudi Arabia's fast-growing digital audience." },
+      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers across the Kingdom the moment they search." },
+      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the searches your Saudi customers make." },
+      { name: "Website & Shopify Development", desc: "Fast, mobile-first websites and online stores built to sell." },
+      { name: "Social Media Management", desc: "Arabic and English content that builds trust with a Saudi audience." },
+      { name: "Branding & Creative", desc: "Identity and ad creative built for the Saudi market." },
+    ],
+    faqs: [
+      { q: "Do you work with businesses in Saudi Arabia?", a: "Yes. We work with clients across Riyadh, Jeddah and the wider Kingdom, managing campaigns remotely with regular reporting and communication across your time zone." },
+      { q: "Do you run campaigns in Arabic?", a: "Yes. We create and run campaigns in both Arabic and English to reach your full Saudi audience." },
+      { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic." },
+      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
+    ],
     priceNote: "Packages from $199/month + ad budget",
   },
 ];
