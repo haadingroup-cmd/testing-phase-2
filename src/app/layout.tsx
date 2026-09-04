@@ -163,6 +163,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Ahrefs Web Analytics — site verification */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="H3/FgiLIdj1PE6krnya/kA"
+          async
+        />
       </head>
       <body>
         <Analytics />
