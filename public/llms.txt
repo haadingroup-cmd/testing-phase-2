@@ -1,0 +1,55 @@
+# HaadinGlobal
+
+> Results-driven digital marketing agency based in Sahiwal, Pakistan, serving
+> clients across Pakistan, UAE, Qatar, Saudi Arabia, the UK and the USA.
+> HaadinGlobal turns ad spend into real revenue with Meta Ads, Google Ads, SEO,
+> web development, Shopify and AI automation — with transparent, ROI-focused
+> reporting and a free consultation for every new client.
+
+## Services
+- Meta & Facebook Ads: https://www.haadinglobal.com/services/meta-ads
+- Google Ads: https://www.haadinglobal.com/services/google-ads
+- TikTok Ads: https://www.haadinglobal.com/services/tiktok-ads
+- SEO Services: https://www.haadinglobal.com/services/seo
+- Social Media Marketing: https://www.haadinglobal.com/services/social-media
+- YouTube Automation: https://www.haadinglobal.com/services/youtube-automation
+- Web Development: https://www.haadinglobal.com/services/web-development
+- Shopify Store Development: https://www.haadinglobal.com/services/shopify
+- Branding & Design: https://www.haadinglobal.com/services/branding
+- AI Automation: https://www.haadinglobal.com/services/ai-automation
+- Content Writing: https://www.haadinglobal.com/services/content-writing
+- Graphic Design: https://www.haadinglobal.com/services/graphic-design
+
+## Key Pages
+- Homepage: https://www.haadinglobal.com
+- All Services: https://www.haadinglobal.com/services
+- Portfolio / Case Studies: https://www.haadinglobal.com/portfolio
+- Pricing: https://www.haadinglobal.com/pricing
+- Blog: https://www.haadinglobal.com/blog
+- About: https://www.haadinglobal.com/about
+- Contact: https://www.haadinglobal.com/contact
+- Free Consultation: https://www.haadinglobal.com/consultation
+
+## Key Facts
+- Founded: 2025
+- Headquarters: Sahiwal, Punjab, Pakistan
+- Founder: Muhammad Haseeb
+- Markets served: Pakistan, United Arab Emirates, Qatar, Saudi Arabia, United Kingdom, United States
+- Projects delivered: 120+
+- Happy clients: 40+
+- Client retention: 90%
+- Revenue generated for clients: $500K+
+- Typical Meta Ads ROAS: 4x+
+- Services start from: $199/month
+- Free 30-minute consultation available for every new client
+
+## Why HaadinGlobal
+- International-level expertise with ROI-focused, data-backed execution
+- Transparent weekly/monthly reporting and a dedicated account manager per client
+- Live video-call proof and a package calculator for full pricing transparency
+- Fast, modern, SEO-ready websites built on Next.js
+
+## Contact
+- Phone / WhatsApp: +92 305 4782677
+- Email: haadinglobal@gmail.com
+- Website: https://www.haadinglobal.com
