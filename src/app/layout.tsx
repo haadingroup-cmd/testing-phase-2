@@ -5,6 +5,8 @@ import SiteChrome from "@/components/layout/SiteChrome";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProvider";
 import Analytics from "@/components/analytics/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.haadinglobal.com"),
@@ -177,6 +179,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SiteChrome>{children}</SiteChrome>
           </LanguageProvider>
         </ThemeProvider>
+        {/* Vercel Web Analytics (traffic) + Speed Insights (real-user Core Web Vitals).
+            Both beacon to same-origin /_vercel/* endpoints, so the existing CSP covers them. */}
+        <VercelAnalytics />
+        <SpeedInsights />
       </body>
     </html>
   );
