@@ -4,6 +4,8 @@ import TrustBadges from "@/components/home/TrustBadges";
 import ServicesSection from "@/components/home/ServicesSection";
 import StatsSection from "@/components/home/StatsSection";
 import AboutSection from "@/components/home/AboutSection";
+import LatestPosts from "@/components/home/LatestPosts";
+import LeadMagnet from "@/components/home/LeadMagnet";
 import { FAQSection, CTASection, ProofCallSection } from "@/components/home/SiteSections";
 import { faqJsonLd } from "@/data/faqs";
 import { PricingCards } from "@/components/pricing/PricingCards";
@@ -30,6 +32,7 @@ export default function HomePage() {
       <StatsSection />
       <AboutSection />
       <ProofCallSection />
+      <LeadMagnet />
 
       {/* Pricing */}
       <section className="section-pad bg-[#020205]" id="pricing">
@@ -44,6 +47,7 @@ export default function HomePage() {
       </section>
 
       <PricingCalculator />
+      <LatestPosts />
       <FAQSection />
 
       {/* Contact */}
