@@ -7,7 +7,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Sep 3, 2026",
     readTime: "9 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-how-to-rank-in-ai-search-2026.png",
     tags: ["AEO","GEO","AI Search","SEO"],
     content: `
 <p>More and more people no longer scroll through ten blue links — they ask ChatGPT, Perplexity or Google's AI Overview and take the answer they're given. If your business isn't mentioned in that answer, you're invisible to a fast-growing slice of your market. This is where <strong>AEO (Answer Engine Optimisation)</strong> and <strong>GEO (Generative Engine Optimisation)</strong> come in. Here's how to win in 2026.</p>
@@ -57,7 +57,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Sep 1, 2026",
     readTime: "7 min",
-    image: "/images/meta-ads.png",
+    image: "/images/blog-seo-vs-paid-ads-which-first-2026.png",
     tags: ["SEO","Paid Ads","Marketing Strategy","Budget"],
     content: `
 <p>If you have a limited budget, "should I do SEO or paid ads first?" is one of the most important decisions you'll make. Both bring customers — but they work on very different timelines. Here's a clear, honest comparison to help you choose.</p>
@@ -111,7 +111,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Aug 28, 2026",
     readTime: "8 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-why-your-website-isnt-getting-leads.png",
     tags: ["Conversion","Website","Lead Generation","CRO"],
     content: `
 <p>You're getting visitors, but the phone isn't ringing and the inbox is quiet. Frustrating — but almost always fixable. A website that gets traffic and no leads has a <strong>conversion</strong> problem, not a traffic problem. Here are the seven most common causes, and how to fix each.</p>
@@ -151,7 +151,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Aug 25, 2026",
     readTime: "8 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-digital-marketing-uk-small-business-2026.png",
     tags: ["UK","Small Business","Digital Marketing","Local SEO"],
     content: `
 <p>For a UK small business, digital marketing can feel overwhelming — too many channels, too much jargon, and plenty of agencies happy to take your money. This starter guide cuts through it: what actually matters in 2026, where to start, and roughly what to budget.</p>
@@ -198,7 +198,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Sep 5, 2026",
     readTime: "9 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-digital-marketing-cost-dubai-uae.png",
     tags: ["Pricing","Dubai","UAE","Digital Marketing"],
     content: `
 <p>If you run a business in Dubai, Abu Dhabi or anywhere in the UAE and you're weighing up digital marketing, the first question is almost always: <strong>how much does it actually cost?</strong> The UAE is one of the most competitive — and most rewarding — markets in the region, so prices vary widely. In this 2026 guide we give you real price ranges in <strong>AED and USD</strong>, explain what pushes the cost up or down, and show you how to budget so you generate leads without wasting money.</p>
@@ -267,7 +267,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Sep 4, 2026",
     readTime: "8 min",
-    image: "/images/meta-ads.png",
+    image: "/images/blog-meta-ads-vs-google-ads-2026.png",
     tags: ["Meta Ads","Google Ads","PPC","Lead Generation"],
     content: `
 <p>"Should I run Meta Ads or Google Ads?" is one of the most common questions business owners ask us — and the honest answer is that they do two different jobs. One creates demand; the other captures it. In this 2026 guide we break down how each platform actually works, what they cost, who they suit best, and how to decide where your first budget should go.</p>
@@ -321,7 +321,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Sep 2, 2026",
     readTime: "8 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-local-seo-google-business-profile-uae-2026.png",
     tags: ["Local SEO","Google Business Profile","UAE","Dubai"],
     content: `
 <p>When someone in Dubai searches "salon near me" or "AC repair Abu Dhabi", Google shows a map with three businesses at the top — the <strong>local pack</strong>. Those three get the majority of the calls and visits. Getting your business into that pack is what local SEO is all about, and it starts with your Google Business Profile. Here's how to do it right in 2026.</p>
@@ -376,7 +376,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Aug 30, 2026",
     readTime: "9 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-shopify-seo-rank-store-google-2026.png",
     tags: ["Shopify","SEO","eCommerce","Conversion"],
     content: `
 <p>Paid ads bring instant sales, but they stop the moment you stop paying. Shopify SEO is the opposite — it builds a stream of free, buyer-ready traffic that compounds over time. The problem is that most Shopify stores are set up to sell, not to rank. Here's how to fix that in 2026.</p>
@@ -428,7 +428,7 @@ export const BLOG_POSTS = [
     author: "HaadinGlobal Team",
     date: "Aug 27, 2026",
     readTime: "9 min",
-    image: "/images/meta-ads.png",
+    image: "/images/blog-how-to-get-more-leads-2026-playbook.png",
     tags: ["Lead Generation","Growth","Marketing Strategy","Funnels"],
     content: `
 <p>Most businesses don't have a traffic problem — they have a <strong>conversion and consistency</strong> problem. Leads come in bursts from referrals, then dry up. This 2026 playbook lays out a simple, repeatable system to generate qualified leads on demand, whether you're a local service business or a B2B company.</p>
@@ -475,7 +475,7 @@ export const BLOG_POSTS = [
     author: "Muhammad Haseeb",
     date: "Aug 6, 2026",
     readTime: "8 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-digital-marketing-cost-pakistan.png",
     tags: ["Pricing","Digital Marketing","Pakistan"],
     content: `
 <p>If you run a business in Pakistan and you're considering digital marketing, the first question is almost always the same: <strong>how much does it actually cost?</strong> The honest answer is "it depends" — but that isn't helpful on its own. So in this guide we'll give you real, up-to-date price ranges for 2026, explain what drives the cost up or down, and show you how to budget so you get results without overpaying.</p>
@@ -542,7 +542,7 @@ export const BLOG_POSTS = [
     author: "Muhammad Haseeb",
     date: "Jul 28, 2026",
     readTime: "7 min",
-    image: "/images/seo-guide.png",
+    image: "/images/blog-seo-trends-2025.png",
     tags: ["SEO","AEO","GEO","AI"],
     content: `
 <p>Search changed more between 2024 and 2026 than in the entire decade before it. AI Overviews, chatbots and answer engines now sit between your business and your customers. If you still think of SEO as simply "rank #1 on Google," you're optimising for a world that is disappearing. Here are the 10 trends defining SEO in 2026 — and what to do about each.</p>
@@ -591,7 +591,7 @@ export const BLOG_POSTS = [
     author: "Muhammad Haseeb",
     date: "Jul 15, 2026",
     readTime: "8 min",
-    image: "/images/meta-ads.png",
+    image: "/images/blog-meta-ads-roas-case-study.png",
     tags: ["Meta Ads","ROAS","Strategy"],
     content: `
 <p>The Meta Ads playbook that worked in 2023 will quietly drain your budget in 2026. Detailed interest targeting has been scaled back, the algorithm now handles most audience selection, and creative has become the single biggest lever on your return on ad spend (ROAS). Here's the strategy that actually works today.</p>
@@ -631,7 +631,7 @@ export const BLOG_POSTS = [
     author: "Muhammad Haseeb",
     date: "Jun 30, 2026",
     readTime: "9 min",
-    image: "/images/shopify-scale.png",
+    image: "/images/blog-shopify-cro-tactics.png",
     tags: ["Shopify","CRO","eCommerce"],
     content: `
 <p>Getting traffic to your Shopify store is only half the battle — turning visitors into buyers is where the money is made. Conversion Rate Optimization (CRO) means making small, deliberate changes that consistently lift the percentage of visitors who buy. Here are 12 tactics that reliably move the needle.</p>
@@ -695,7 +695,7 @@ export const BLOG_POSTS = [
     author: "Muhammad Haseeb",
     date: "Jun 18, 2026",
     readTime: "8 min",
-    image: "/images/youtube-automation.png",
+    image: "/images/blog-youtube-automation-2025.png",
     tags: ["YouTube","Automation","Passive Income"],
     content: `
 <p>"Faceless" YouTube channels — where you never appear on camera — are one of the most talked-about online business models. But a lot of the advice online is pure hype. Here's an honest look at how YouTube automation actually works in 2026, what it costs, and whether it's still worth starting.</p>
