@@ -69,6 +69,214 @@ export const BLOG_POSTS = [
 `,
   },
   {
+    slug: "meta-ads-vs-google-ads-2026",
+    title: "Meta Ads vs Google Ads: Which Is Better for Your Business in 2026?",
+    excerpt: "A no-hype comparison of Meta Ads and Google Ads in 2026 — how each one works, what they cost, who they're best for, and how to choose (or combine) them to get more leads and sales.",
+    category: "Paid Ads",
+    author: "HaadinGlobal Team",
+    date: "Sep 4, 2026",
+    readTime: "8 min",
+    image: "/images/meta-ads.png",
+    tags: ["Meta Ads","Google Ads","PPC","Lead Generation"],
+    content: `
+<p>"Should I run Meta Ads or Google Ads?" is one of the most common questions business owners ask us — and the honest answer is that they do two different jobs. One creates demand; the other captures it. In this 2026 guide we break down how each platform actually works, what they cost, who they suit best, and how to decide where your first budget should go.</p>
+
+<h2>The core difference: demand capture vs demand creation</h2>
+<p>This one idea explains almost everything else:</p>
+<ul>
+<li><strong>Google Ads = demand capture.</strong> People are actively searching for what you sell ("emergency plumber Dubai", "best CRM for small business"). You show up at the exact moment they want to buy.</li>
+<li><strong>Meta Ads (Facebook &amp; Instagram) = demand creation.</strong> People aren't searching — they're scrolling. You interrupt them with a compelling offer and create interest that wasn't there a second ago.</li>
+</ul>
+<p>Neither is "better". They win in different situations.</p>
+
+<h2>When Google Ads wins</h2>
+<ul>
+<li>You sell something people <strong>search for by name</strong> — services, B2B software, local trades, high-intent products.</li>
+<li>You need leads <strong>fast</strong> and can afford competitive clicks.</li>
+<li>Your customers make decisions quickly ("I need this now").</li>
+</ul>
+<p>Google Ads tends to bring fewer but hotter leads. The cost per click can be high in competitive niches (real estate, legal, medical), so tight keyword and negative-keyword management is what protects your budget.</p>
+
+<h2>When Meta Ads wins</h2>
+<ul>
+<li>You sell <strong>visual or impulse-friendly</strong> products — fashion, beauty, home, e-commerce.</li>
+<li>Your audience isn't actively searching yet, but would want your product once they saw it.</li>
+<li>You want <strong>lower-cost reach</strong> and powerful audience targeting (interests, behaviours, lookalikes).</li>
+</ul>
+<p>Meta usually delivers a lower cost per click and huge reach, which makes it excellent for building awareness, retargeting, and scaling e-commerce sales.</p>
+
+<h2>What about cost?</h2>
+<p>As a rule of thumb, Meta clicks are cheaper but colder; Google clicks are pricier but warmer. What matters isn't cost per click — it's <strong>cost per lead</strong> and <strong>cost per sale</strong>. A more expensive Google click that closes a AED 20,000 contract beats a cheap Meta click that never buys.</p>
+
+<h2>The honest answer: most businesses should use both</h2>
+<p>The highest-performing setups we run combine the two:</p>
+<ul>
+<li><strong>Google Ads</strong> to capture people already searching (bottom of funnel).</li>
+<li><strong>Meta Ads</strong> to create demand and stay in front of people (top and middle of funnel).</li>
+<li><strong>Retargeting on Meta</strong> to bring back visitors who didn't convert the first time — often the cheapest sales you'll ever get.</li>
+</ul>
+
+<h2>Where to start if you only have one budget</h2>
+<p>If people already search for what you offer, <strong>start with Google Ads</strong> — it's the shortest path to leads. If your product is discovery-driven or visual, <strong>start with Meta</strong>. Then, once one channel is profitable, add the other and let retargeting tie them together.</p>
+
+<p>Not sure which fits your business? <a href="/consultation">Book a free consultation</a> and we'll look at your goals, market and budget, and tell you honestly where your first dirham (or dollar) should go.</p>
+`,
+  },
+  {
+    slug: "local-seo-google-business-profile-uae-2026",
+    title: "Local SEO for UAE Businesses: The 2026 Google Business Profile Guide",
+    excerpt: "How UAE businesses show up in Google Maps and 'near me' searches in 2026 — a practical Google Business Profile and local SEO guide to win more calls, direction requests and walk-ins.",
+    category: "SEO",
+    author: "HaadinGlobal Team",
+    date: "Sep 2, 2026",
+    readTime: "8 min",
+    image: "/images/seo-guide.png",
+    tags: ["Local SEO","Google Business Profile","UAE","Dubai"],
+    content: `
+<p>When someone in Dubai searches "salon near me" or "AC repair Abu Dhabi", Google shows a map with three businesses at the top — the <strong>local pack</strong>. Those three get the majority of the calls and visits. Getting your business into that pack is what local SEO is all about, and it starts with your Google Business Profile. Here's how to do it right in 2026.</p>
+
+<h2>Step 1: Claim and fully complete your Google Business Profile</h2>
+<p>An incomplete profile simply won't rank. Fill in <strong>every</strong> field:</p>
+<ul>
+<li>Exact business name, address and phone (must match your website exactly).</li>
+<li>Primary category — the single most important ranking factor. Choose the most specific one that fits.</li>
+<li>Secondary categories for your other services.</li>
+<li>Hours, service areas, website, booking link and attributes.</li>
+</ul>
+
+<h2>Step 2: Nail your primary category and services</h2>
+<p>Google matches searches to categories. A "dental clinic" won't rank for "orthodontist" unless that's set. List your real services with short, keyword-honest descriptions — no stuffing.</p>
+
+<h2>Step 3: Reviews are your local ranking engine</h2>
+<p>Reviews are one of the strongest local ranking and trust signals. In 2026:</p>
+<ul>
+<li>Ask every happy customer for a review — a simple WhatsApp link makes it effortless.</li>
+<li>Reply to <strong>every</strong> review, positive or negative, professionally.</li>
+<li>Aim for a steady flow over time, not a sudden burst (which looks fake to Google).</li>
+</ul>
+
+<h2>Step 4: Post photos and updates regularly</h2>
+<p>Active profiles rank better. Add real photos of your work, team and location, and post updates or offers. It signals to Google — and customers — that you're open and legitimate.</p>
+
+<h2>Step 5: Get your NAP consistent across the web</h2>
+<p>Your Name, Address and Phone (NAP) should be <strong>identical</strong> everywhere — your website, social profiles and UAE directories. Inconsistent details confuse Google and hurt rankings.</p>
+
+<h2>Step 6: Optimise your website for local intent</h2>
+<ul>
+<li>Put your city and service in your page titles ("Villa Painting Services in Dubai").</li>
+<li>Create a dedicated page for each main service and each area you serve.</li>
+<li>Add your address, a Google Map embed and local schema markup.</li>
+</ul>
+
+<h2>Step 7: Build local relevance and links</h2>
+<p>Listings in reputable UAE directories, local partnerships and press mentions all tell Google you're an established part of the local market.</p>
+
+<h2>The bottom line</h2>
+<p>Local SEO is one of the highest-ROI moves a UAE business can make — the customers are ready to buy and physically close. A well-optimised Google Business Profile, real reviews and a locally-focused website will steadily move you toward that top-three local pack.</p>
+
+<p>Want us to audit and optimise your local presence? <a href="/consultation">Book a free consultation</a> and we'll show you exactly where you're losing local customers — and how to win them back.</p>
+`,
+  },
+  {
+    slug: "shopify-seo-rank-store-google-2026",
+    title: "Shopify SEO: How to Rank Your Store on Google in 2026",
+    excerpt: "A practical Shopify SEO guide for 2026 — the store structure, product-page optimisation, technical fixes and content strategy that bring free, buyer-ready traffic to your store.",
+    category: "SEO",
+    author: "HaadinGlobal Team",
+    date: "Aug 30, 2026",
+    readTime: "9 min",
+    image: "/images/seo-guide.png",
+    tags: ["Shopify","SEO","eCommerce","Conversion"],
+    content: `
+<p>Paid ads bring instant sales, but they stop the moment you stop paying. Shopify SEO is the opposite — it builds a stream of free, buyer-ready traffic that compounds over time. The problem is that most Shopify stores are set up to sell, not to rank. Here's how to fix that in 2026.</p>
+
+<h2>1. Get your store structure right</h2>
+<p>Google (and shoppers) should understand your store in seconds. Use a clean, logical structure:</p>
+<ul>
+<li><strong>Home → Collections → Products.</strong> Keep important products within a few clicks of the homepage.</li>
+<li>Give each <strong>collection</strong> its own keyword-focused page ("Men's Running Shoes"), not just an auto-generated list.</li>
+<li>Use short, readable URLs and a clear main menu.</li>
+</ul>
+
+<h2>2. Optimise product pages (this is where sales happen)</h2>
+<ul>
+<li><strong>Titles:</strong> lead with what people actually search — "Waterproof Hiking Boots — Men's" beats a brand-only title.</li>
+<li><strong>Descriptions:</strong> write unique, benefit-led copy. Never paste the manufacturer's text — duplicate content kills rankings.</li>
+<li><strong>Images:</strong> compress them, and add descriptive alt text.</li>
+<li><strong>Reviews:</strong> enable product reviews — they add fresh content and trust, and can earn star ratings in Google.</li>
+</ul>
+
+<h2>3. Fix the technical basics</h2>
+<ul>
+<li><strong>Speed:</strong> Shopify is fast by default, but heavy apps and huge images slow it down. Remove unused apps and compress media.</li>
+<li><strong>Mobile:</strong> most UAE and international shoppers buy on mobile — test every page on a phone.</li>
+<li><strong>Duplicate URLs:</strong> Shopify can create duplicate product URLs via collections; make sure canonical tags are set (they are by default, but verify).</li>
+<li><strong>Sitemap:</strong> submit your Shopify sitemap in Google Search Console.</li>
+</ul>
+
+<h2>4. Add a blog — it's your secret weapon</h2>
+<p>Product pages rank for "buy" searches. Blog content ranks for everything <em>before</em> the sale — "how to choose", "best X for Y", "X vs Z". These bring in shoppers early, build trust, and link to your products. This is what separates stores that rank from stores that don't.</p>
+
+<h2>5. Build authority with backlinks</h2>
+<p>Get mentioned by relevant blogs, suppliers, press and influencers. Quality links tell Google your store is trustworthy — and trustworthy stores rank higher.</p>
+
+<h2>6. Target keywords with buying intent</h2>
+<p>Don't chase generic high-volume terms. "Buy leather laptop bag online UAE" converts far better than "laptop bag". Map specific, intent-rich keywords to specific collection and product pages.</p>
+
+<h2>The bottom line</h2>
+<p>Shopify SEO isn't a one-time task — it's structure, great product pages, technical hygiene and consistent content working together. Do it well and you build an asset that brings sales long after the work is done.</p>
+
+<p>Want a store that's built to <em>rank</em> and <em>convert</em>? <a href="/consultation">Book a free consultation</a> and we'll audit your Shopify store and give you a clear plan.</p>
+`,
+  },
+  {
+    slug: "how-to-get-more-leads-2026-playbook",
+    title: "How to Get More Leads for Your Business: A 2026 Playbook",
+    excerpt: "A step-by-step 2026 playbook for generating more qualified leads — from your offer and website to ads, SEO and follow-up — so you can grow predictably instead of relying on referrals.",
+    category: "Growth",
+    author: "HaadinGlobal Team",
+    date: "Aug 27, 2026",
+    readTime: "9 min",
+    image: "/images/meta-ads.png",
+    tags: ["Lead Generation","Growth","Marketing Strategy","Funnels"],
+    content: `
+<p>Most businesses don't have a traffic problem — they have a <strong>conversion and consistency</strong> problem. Leads come in bursts from referrals, then dry up. This 2026 playbook lays out a simple, repeatable system to generate qualified leads on demand, whether you're a local service business or a B2B company.</p>
+
+<h2>Step 1: Sharpen your offer</h2>
+<p>Before spending a dirham on marketing, get your offer right. A strong offer answers three questions instantly: <strong>what do I get, why should I trust you, and why act now?</strong> A clear, specific offer ("Free 30-minute strategy call — leave with a plan whether you hire us or not") beats a vague "contact us" every time.</p>
+
+<h2>Step 2: Turn your website into a lead machine</h2>
+<p>Traffic is wasted if your site doesn't convert. Make sure you have:</p>
+<ul>
+<li>A clear headline that states who you help and how.</li>
+<li>An obvious call-to-action on every page (call, WhatsApp, book, or form).</li>
+<li>Proof — reviews, results, client logos and case studies.</li>
+<li>Fast load times and a flawless mobile experience.</li>
+</ul>
+
+<h2>Step 3: Capture leads who aren't ready yet</h2>
+<p>Most visitors won't buy on the first visit. Give them a low-commitment reason to leave their details — a free guide, checklist, quote or audit. Now you can follow up instead of losing them forever. (This is exactly why we added a free audit checklist to our own site.)</p>
+
+<h2>Step 4: Drive traffic from two directions</h2>
+<ul>
+<li><strong>Paid ads</strong> for fast, predictable leads — Google Ads for people searching, Meta Ads for people scrolling.</li>
+<li><strong>SEO and content</strong> for compounding, free traffic over time — the leads that cost nothing once they're flowing.</li>
+</ul>
+<p>Paid gets you leads this week; SEO makes sure you're not renting all your traffic forever. The strongest businesses run both.</p>
+
+<h2>Step 5: Follow up fast — and keep following up</h2>
+<p>Speed wins. Leads contacted within 5 minutes convert dramatically better than those contacted an hour later. Set up instant WhatsApp or email replies, and don't stop after one message — most sales happen after several follow-ups.</p>
+
+<h2>Step 6: Track what actually works</h2>
+<p>Measure cost per lead and cost per sale by channel — not likes or clicks. Double down on what converts, cut what doesn't. This is how a marketing budget turns into a growth engine instead of an expense.</p>
+
+<h2>The bottom line</h2>
+<p>More leads come from a <strong>system</strong>, not luck: a sharp offer, a converting website, a way to capture the not-yet-ready, consistent traffic, and fast follow-up. Build that once and lead generation stops being a guessing game.</p>
+
+<p>Want us to build this system for your business? <a href="/consultation">Book a free consultation</a> and we'll map out a lead-generation plan tailored to your market and budget.</p>
+`,
+  },
+  {
     slug: "digital-marketing-cost-pakistan",
     title: "How Much Does Digital Marketing Cost in Pakistan? (2026 Guide)",
     excerpt: "A clear, honest breakdown of what SEO, Meta Ads, Google Ads and web development actually cost in Pakistan in 2026 — plus how to budget so you don't overpay.",
