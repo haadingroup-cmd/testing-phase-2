@@ -1,5 +1,196 @@
 export const BLOG_POSTS = [
   {
+    slug: "how-to-rank-in-ai-search-2026",
+    title: "How to Show Up in AI Search (ChatGPT, Perplexity & Google AI) in 2026",
+    excerpt: "AI answers are the new search results. Learn how AEO and GEO work in 2026 — and the practical steps to get your business recommended by ChatGPT, Perplexity, Gemini and Google's AI Overviews.",
+    category: "AI & AEO",
+    author: "HaadinGlobal Team",
+    date: "Sep 3, 2026",
+    readTime: "9 min",
+    image: "/images/seo-guide.png",
+    tags: ["AEO","GEO","AI Search","SEO"],
+    content: `
+<p>More and more people no longer scroll through ten blue links — they ask ChatGPT, Perplexity or Google's AI Overview and take the answer they're given. If your business isn't mentioned in that answer, you're invisible to a fast-growing slice of your market. This is where <strong>AEO (Answer Engine Optimisation)</strong> and <strong>GEO (Generative Engine Optimisation)</strong> come in. Here's how to win in 2026.</p>
+
+<h2>What are AEO and GEO?</h2>
+<ul>
+<li><strong>AEO (Answer Engine Optimisation)</strong> — optimising your content so answer engines (Google's AI Overviews, featured snippets, voice assistants) pull your content as <em>the</em> answer.</li>
+<li><strong>GEO (Generative Engine Optimisation)</strong> — getting your brand cited and recommended inside AI chat answers from ChatGPT, Perplexity, Gemini and Claude.</li>
+</ul>
+<p>Classic SEO gets you ranked. AEO and GEO get you <em>quoted</em>.</p>
+
+<h2>1. Let AI crawlers read your site</h2>
+<p>AI engines can only recommend what they can access. Make sure your robots file allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others), and consider an <strong>llms.txt</strong> file — a plain-language summary of who you are and what you offer, written for AI systems. (We added exactly this to our own site.)</p>
+
+<h2>2. Write content that answers real questions directly</h2>
+<p>AI loves clear, self-contained answers. For every important question your customers ask:</p>
+<ul>
+<li>Ask the question as a heading.</li>
+<li>Answer it in the first two sentences — plainly, no waffle.</li>
+<li>Then expand with detail, examples and context.</li>
+</ul>
+<p>This "answer-first" structure is what gets pulled into AI Overviews and chat answers.</p>
+
+<h2>3. Add structured data (schema)</h2>
+<p>Schema markup (FAQ, Organization, Service, Breadcrumb) tells machines exactly what your content means. It dramatically increases your chance of being used as a source by both Google and AI engines.</p>
+
+<h2>4. Build real authority and citations</h2>
+<p>AI models recommend brands they "trust". That trust is built the same way as SEO authority: genuine mentions, reviews, backlinks, consistent business information across the web, and being talked about on reputable sites. The more consistently your name appears alongside your expertise, the more likely an AI is to name you.</p>
+
+<h2>5. Keep your facts consistent everywhere</h2>
+<p>Your services, location, contact details and key claims should match across your website, Google Business Profile, directories and social profiles. Contradictory information makes AI engines uncertain — and uncertain engines stay silent about you.</p>
+
+<h2>6. Test it — literally ask the AI</h2>
+<p>Open ChatGPT, Perplexity and Google, and ask the questions your customers would ("best digital marketing agency in Dubai for small business"). See who gets named. That gap between where you are and who's being recommended is your AEO/GEO roadmap.</p>
+
+<h2>The bottom line</h2>
+<p>AI search isn't replacing SEO — it's raising the bar. The businesses that win in 2026 are the ones that are crawlable, answer questions clearly, use structured data, and build real authority. Do that, and you get recommended by the tools your customers now trust most.</p>
+
+<p>Want to be the business AI recommends in your market? <a href="/consultation">Book a free consultation</a> and we'll build you an SEO + AEO + GEO plan.</p>
+`,
+  },
+  {
+    slug: "seo-vs-paid-ads-which-first-2026",
+    title: "SEO vs Paid Ads: Which Should You Invest In First?",
+    excerpt: "SEO or paid ads — where should your first marketing budget go in 2026? A clear breakdown of speed, cost, longevity and risk, so you can choose the right starting point for your business.",
+    category: "Growth",
+    author: "HaadinGlobal Team",
+    date: "Sep 1, 2026",
+    readTime: "7 min",
+    image: "/images/meta-ads.png",
+    tags: ["SEO","Paid Ads","Marketing Strategy","Budget"],
+    content: `
+<p>If you have a limited budget, "should I do SEO or paid ads first?" is one of the most important decisions you'll make. Both bring customers — but they work on very different timelines. Here's a clear, honest comparison to help you choose.</p>
+
+<h2>The one-line difference</h2>
+<p><strong>Paid ads are rented traffic. SEO is owned traffic.</strong> Ads bring leads the day you switch them on and stop the day you switch them off. SEO takes months to build but keeps working long after — traffic you don't pay for per click.</p>
+
+<h2>Paid ads: fast, predictable, but you pay for every click</h2>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Leads from day one — great when you need results now.</li>
+<li>Fully controllable and scalable — turn spend up or down instantly.</li>
+<li>Easy to measure cost per lead and return.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Traffic stops the moment you stop paying.</li>
+<li>Costs can rise as competition increases.</li>
+<li>Needs skilled management or you burn budget fast.</li>
+</ul>
+
+<h2>SEO: slow to start, then compounding and cheap</h2>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Compounding, "free" traffic that grows over time.</li>
+<li>Builds long-term trust and authority.</li>
+<li>Far lower cost per lead once it's working.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Takes 3–6 months to show real results.</li>
+<li>Requires consistent content and technical work.</li>
+<li>Rankings must be maintained.</li>
+</ul>
+
+<h2>So which first?</h2>
+<p><strong>Start with paid ads if:</strong> you need leads quickly, you're launching, or you want to test which offers and messages actually convert before investing in content.</p>
+<p><strong>Start with SEO if:</strong> you can wait a few months, your margins are tight (paid clicks are expensive in your niche), and you want a durable, lower-cost source of traffic.</p>
+
+<h2>The smart move: use ads to fund SEO</h2>
+<p>For most businesses the best sequence is: run paid ads to generate leads and cash flow <em>now</em>, and reinvest some of that into SEO so that in 6 months you're not renting all your traffic. Ads buy you speed; SEO buys you independence. Together they compound.</p>
+
+<p>Not sure which fits your budget and goals? <a href="/consultation">Book a free consultation</a> and we'll recommend the right starting point — and a plan to add the other when you're ready.</p>
+`,
+  },
+  {
+    slug: "why-your-website-isnt-getting-leads",
+    title: "Why Your Website Isn't Getting Leads (and 7 Fixes That Work)",
+    excerpt: "Getting traffic but no enquiries? Here are the 7 most common reasons a website fails to convert visitors into leads in 2026 — and exactly how to fix each one.",
+    category: "Conversion",
+    author: "HaadinGlobal Team",
+    date: "Aug 28, 2026",
+    readTime: "8 min",
+    image: "/images/seo-guide.png",
+    tags: ["Conversion","Website","Lead Generation","CRO"],
+    content: `
+<p>You're getting visitors, but the phone isn't ringing and the inbox is quiet. Frustrating — but almost always fixable. A website that gets traffic and no leads has a <strong>conversion</strong> problem, not a traffic problem. Here are the seven most common causes, and how to fix each.</p>
+
+<h2>1. Your headline doesn't say what you do</h2>
+<p>Visitors decide in seconds whether they're in the right place. If your headline is clever but vague ("We bring ideas to life"), they leave. <strong>Fix:</strong> state plainly who you help and how — "We build lead-generating websites for UAE service businesses."</p>
+
+<h2>2. No clear call-to-action</h2>
+<p>If people don't know the next step, they take none. <strong>Fix:</strong> put one obvious action on every page — Call, WhatsApp, Book a Call, or Get a Quote — above the fold and repeated down the page.</p>
+
+<h2>3. There's no proof</h2>
+<p>Strangers don't trust claims. <strong>Fix:</strong> add reviews, results, client logos, case studies and real photos. Proof turns "maybe" into "let's talk".</p>
+
+<h2>4. The site is slow or broken on mobile</h2>
+<p>Most visitors are on phones, and they won't wait for a slow page. <strong>Fix:</strong> compress images, remove heavy scripts, and test every page on a real phone.</p>
+
+<h2>5. You ask for too much, too soon</h2>
+<p>A long contact form scares off people who aren't ready. <strong>Fix:</strong> keep forms short (name + contact + one field), and offer a low-commitment option — a free guide, quote or audit — to capture the not-yet-ready.</p>
+
+<h2>6. No follow-up system</h2>
+<p>Some "no leads" problems are actually "no follow-up" problems — enquiries come in and go cold. <strong>Fix:</strong> reply within minutes (auto WhatsApp/email replies help) and follow up more than once. Speed dramatically increases conversions.</p>
+
+<h2>7. You're attracting the wrong visitors</h2>
+<p>If your traffic is the wrong audience, even a perfect site won't convert. <strong>Fix:</strong> target buying-intent keywords and specific audiences, not just cheap, broad traffic.</p>
+
+<h2>The bottom line</h2>
+<p>Traffic without leads is almost always a conversion issue — and conversion issues are fixable, often quickly. Sharpen your message, make the next step obvious, add proof, and follow up fast.</p>
+
+<p>Want a free review of why your site isn't converting? <a href="/consultation">Book a free consultation</a> and we'll show you exactly where you're losing leads.</p>
+`,
+  },
+  {
+    slug: "digital-marketing-uk-small-business-2026",
+    title: "Digital Marketing for UK Small Businesses: A 2026 Starter Guide",
+    excerpt: "A practical 2026 starter guide to digital marketing for UK small businesses — which channels to prioritise, realistic budgets, and how to get more local and online customers.",
+    category: "Guides",
+    author: "HaadinGlobal Team",
+    date: "Aug 25, 2026",
+    readTime: "8 min",
+    image: "/images/seo-guide.png",
+    tags: ["UK","Small Business","Digital Marketing","Local SEO"],
+    content: `
+<p>For a UK small business, digital marketing can feel overwhelming — too many channels, too much jargon, and plenty of agencies happy to take your money. This starter guide cuts through it: what actually matters in 2026, where to start, and roughly what to budget.</p>
+
+<h2>Start with the foundations, not the tactics</h2>
+<p>Before ads or social media, get these right:</p>
+<ul>
+<li><strong>A fast, mobile-friendly website</strong> that clearly says what you do and how to contact you.</li>
+<li><strong>A Google Business Profile</strong> — essential for "near me" searches, which drive huge volumes of local UK custom.</li>
+<li><strong>Reviews</strong> — UK customers rely heavily on Google and Trustpilot reviews before buying.</li>
+</ul>
+
+<h2>Which channels for a UK small business?</h2>
+<h3>Local SEO &amp; Google Business Profile</h3>
+<p>If you serve a town or city, this is often the highest-ROI channel — customers are local and ready to buy. Optimise your profile, gather reviews, and create location pages.</p>
+<h3>Google Ads</h3>
+<p>Best for capturing active searchers ("emergency electrician Manchester"). You can start small and scale what works.</p>
+<h3>Meta Ads (Facebook &amp; Instagram)</h3>
+<p>Great for visual products, local awareness and retargeting. Strong for B2C and e-commerce.</p>
+<h3>SEO &amp; content</h3>
+<p>The long game — content that answers customer questions brings compounding, free traffic over 3–6 months.</p>
+
+<h2>Realistic budgets</h2>
+<p>Many UK small businesses start with <strong>£500–£2,000/month</strong> all-in (management + ad spend) on one strong channel, held for at least three months. Keep your management fee and ad budget separate, and judge success by cost per lead — not clicks.</p>
+
+<h2>A simple 90-day plan</h2>
+<ul>
+<li><strong>Month 1:</strong> fix the website, optimise Google Business Profile, start gathering reviews.</li>
+<li><strong>Month 2:</strong> launch one paid channel (Google or Meta) to generate leads quickly.</li>
+<li><strong>Month 3:</strong> begin SEO/content so you're building free traffic for the long term, and refine what's converting.</li>
+</ul>
+
+<h2>The bottom line</h2>
+<p>You don't need to do everything. Get the foundations right, pick one channel that fits your customers, and be consistent. That beats spreading a small budget thinly across five platforms.</p>
+
+<p>Want a tailored plan for your UK business? <a href="/consultation">Book a free consultation</a> and we'll map out the right channels and budget for your goals.</p>
+`,
+  },
+  {
     slug: "digital-marketing-cost-dubai-uae",
     title: "How Much Does Digital Marketing Cost in Dubai & the UAE? (2026 Guide)",
     excerpt: "Real 2026 price ranges for SEO, Meta Ads, Google Ads and web development in Dubai and across the UAE — in AED and USD — plus how to budget so you get leads without overpaying.",
