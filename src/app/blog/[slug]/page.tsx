@@ -18,6 +18,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) notFound();
+  // Related posts: prefer same category, then fill with the newest others — max 3.
+  const others = BLOG_POSTS.filter(p => p.slug !== post.slug);
+  const related = [
+    ...others.filter(p => p.category === post.category),
+    ...others.filter(p => p.category !== post.category),
+  ].slice(0, 3);
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -72,6 +78,34 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* RELATED ARTICLES — internal linking + keeps readers on site */}
+      {related.length > 0 && (
+        <section className="section-pad bg-[#020205] border-t border-white/5">
+          <div className="container max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="label mb-3">Keep Reading</div>
+              <h2 className="font-display font-black text-white">Related <span className="gradient-text">Articles</span></h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {related.map(r => (
+                <Link key={r.slug} href={`/blog/${r.slug}`} className="card overflow-hidden flex flex-col group">
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <Image src={r.image} alt={r.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="text-[11px] text-red-400 font-semibold mb-2">{r.category}</div>
+                    <h3 className="text-white font-bold text-[15px] leading-snug mb-2 group-hover:text-red-300 transition-colors">{r.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-2 mb-3">{r.excerpt}</p>
+                    <span className="mt-auto text-slate-500 text-xs">{r.readTime} read</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <CTASection />
     </>
   );
