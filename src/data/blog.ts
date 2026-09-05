@@ -1,5 +1,74 @@
 export const BLOG_POSTS = [
   {
+    slug: "digital-marketing-cost-dubai-uae",
+    title: "How Much Does Digital Marketing Cost in Dubai & the UAE? (2026 Guide)",
+    excerpt: "Real 2026 price ranges for SEO, Meta Ads, Google Ads and web development in Dubai and across the UAE — in AED and USD — plus how to budget so you get leads without overpaying.",
+    category: "Guides",
+    author: "HaadinGlobal Team",
+    date: "Sep 5, 2026",
+    readTime: "9 min",
+    image: "/images/seo-guide.png",
+    tags: ["Pricing","Dubai","UAE","Digital Marketing"],
+    content: `
+<p>If you run a business in Dubai, Abu Dhabi or anywhere in the UAE and you're weighing up digital marketing, the first question is almost always: <strong>how much does it actually cost?</strong> The UAE is one of the most competitive — and most rewarding — markets in the region, so prices vary widely. In this 2026 guide we give you real price ranges in <strong>AED and USD</strong>, explain what pushes the cost up or down, and show you how to budget so you generate leads without wasting money.</p>
+
+<h2>First, separate two very different numbers</h2>
+<p>The most common mistake UAE business owners make is confusing these two:</p>
+<ul>
+<li><strong>Management fee</strong> — what you pay an agency or specialist to plan, run and optimise your marketing.</li>
+<li><strong>Ad budget</strong> — the money that goes directly to Google or Meta (Facebook/Instagram) to actually show your ads.</li>
+</ul>
+<p>Example: if you spend AED 8,000/month on Meta ads and pay an agency AED 4,000 to manage them, your total is AED 12,000 — but only AED 8,000 reaches customers. Always ask which number a quote refers to before you compare offers.</p>
+
+<h2>Typical digital marketing cost in the UAE (2026)</h2>
+<p>Realistic monthly management-fee ranges for the UAE market. Prices depend on scope, industry and how competitive your niche is:</p>
+<ul>
+<li><strong>Freelancer:</strong> AED 1,500 – 5,000/month (≈ $400 – $1,360). Affordable, but quality and reliability vary a lot.</li>
+<li><strong>Boutique / small agency:</strong> AED 4,000 – 15,000/month (≈ $1,090 – $4,080). A team covering strategy, ads, content and reporting.</li>
+<li><strong>Established full-service agency:</strong> AED 15,000+/month (≈ $4,080+). Senior specialists, larger campaigns, full funnel.</li>
+<li><strong>In-house hire:</strong> AED 8,000 – 20,000+/month for one marketer — who rarely covers every skill alone.</li>
+</ul>
+
+<h2>Cost by service</h2>
+<h3>SEO (Search Engine Optimisation)</h3>
+<p>Typically AED 3,000 – 15,000/month (≈ $800 – $4,080). SEO is a long-term investment that builds free organic traffic over 3–6 months — vital in Dubai where "near me" and city-specific searches drive high-value leads. Be very wary of cheap "guaranteed #1 on Google" offers; that's usually a red flag.</p>
+<h3>Meta Ads (Facebook &amp; Instagram)</h3>
+<p>Management from AED 2,500 – 10,000/month plus your ad budget (many UAE SMBs start with AED 5,000–15,000/month in spend). Excellent for fast leads and e-commerce sales in a mobile-first, social-heavy market.</p>
+<h3>Google Ads</h3>
+<p>Management from AED 3,000 – 12,000/month plus ad budget. Best for capturing customers who are actively searching — think "villa maintenance Dubai" or "orthodontist Abu Dhabi". Clicks in premium UAE niches (real estate, legal, medical) can be expensive, so tight management matters.</p>
+<h3>Website / Shopify development</h3>
+<p>A one-time cost: AED 4,000 – 18,000 for a professional business website; AED 9,000 – 40,000+ for a full Shopify or custom e-commerce store built to convert.</p>
+<h3>Social media management</h3>
+<p>AED 2,500 – 9,000/month for content, posting and community management — often bilingual (English + Arabic) for the UAE audience.</p>
+
+<h2>What makes the price go up or down?</h2>
+<ul>
+<li><strong>Competition</strong> — real estate, legal, medical and e-commerce need bigger budgets than local services.</li>
+<li><strong>Scope</strong> — one channel vs a full package.</li>
+<li><strong>Language</strong> — bilingual English/Arabic campaigns and content add work but reach far more of the market.</li>
+<li><strong>Goals</strong> — brand awareness is cheaper than aggressive lead generation.</li>
+<li><strong>Experience</strong> — proven specialists cost more but usually waste far less of your ad budget.</li>
+</ul>
+
+<h2>How much should a UAE small business budget?</h2>
+<p>A practical starting point for most Dubai/UAE SMBs is <strong>AED 10,000 – 25,000/month all-in</strong> (management + ad spend) on a single strong channel, held consistently for at least 3 months. That's usually enough to generate a steady flow of qualified leads while you learn what converts — then you scale what works.</p>
+
+<h2>How to budget the smart way</h2>
+<ul>
+<li>Start with one channel you can fund consistently for at least 3 months.</li>
+<li>Keep your management fee and ad budget clearly separate.</li>
+<li>Insist on transparent reporting so you can see cost-per-lead and return.</li>
+<li>Judge success by leads and sales — not likes or impressions.</li>
+</ul>
+<p>Cheap marketing that brings no customers is the most expensive kind. The goal isn't the lowest price — it's the best return on every dirham.</p>
+
+<h2>The bottom line</h2>
+<p>In 2026, expect to invest from a few thousand dirhams a month as a small business up to AED 15,000+ for full-service growth in the UAE. What matters most isn't the number — it's whether that spend is turning into real leads and sales you can measure.</p>
+
+<p>Want a clear, no-pressure breakdown for your specific business and market? <a href="/consultation">Book a free consultation</a> with HaadinGlobal and we'll map out exactly what you'd need — and what it would cost — to start generating leads in Dubai and across the UAE.</p>
+`,
+  },
+  {
     slug: "digital-marketing-cost-pakistan",
     title: "How Much Does Digital Marketing Cost in Pakistan? (2026 Guide)",
     excerpt: "A clear, honest breakdown of what SEO, Meta Ads, Google Ads and web development actually cost in Pakistan in 2026 — plus how to budget so you don't overpay.",
