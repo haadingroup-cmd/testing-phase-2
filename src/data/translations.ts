@@ -43,7 +43,7 @@ export const T: Record<Lang, Record<string, string>> = {
     stats_projects: "Projects Delivered",
     stats_clients: "Happy Clients",
     stats_retention: "Client Retention",
-    stats_years: "Years Experience",
+    stats_roas: "Avg Ad ROAS",
     stats_countries: "Countries Served",
     stats_revenue: "Revenue Generated",
     // CTA
@@ -109,7 +109,7 @@ export const T: Record<Lang, Record<string, string>> = {
     stats_projects: "مشروع منجز",
     stats_clients: "عميل سعيد",
     stats_retention: "معدل الاحتفاظ",
-    stats_years: "سنوات خبرة",
+    stats_roas: "متوسط العائد على الإعلانات",
     stats_countries: "دولة نخدمها",
     stats_revenue: "عائد محقق",
     // CTA
