@@ -34,7 +34,7 @@ const STATS = [
   { to:120, suffix:"+",  icon:"🏆", key:"stats_projects" },
   { to:40,  suffix:"+",  icon:"😊", key:"stats_clients" },
   { to:90,  suffix:"%",  icon:"❤️", key:"stats_retention" },
-  { to:1,   suffix:"+",  icon:"⚡", key:"stats_years" },
+  { to:4,   suffix:"x",  icon:"📈", key:"stats_roas" },
   { to:6,   suffix:"",   icon:"🌍", key:"stats_countries" },
   { to:500, suffix:"K+", icon:"💰", key:"stats_revenue" },
 ];
