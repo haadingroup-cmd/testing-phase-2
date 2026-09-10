@@ -5,13 +5,14 @@ import { SITE, FOOTER_COMPANY, FOOTER_SERVICES } from "@/data/siteConfig";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const socials = [
+    const socials = [
     { t:"fb", label:"Facebook",  href:SITE.social.facebook },
     { t:"ig", label:"Instagram", href:SITE.social.instagram },
     { t:"tt", label:"TikTok",    href:SITE.social.tiktok },
     { t:"yt", label:"YouTube",   href:SITE.social.youtube },
     { t:"in", label:"LinkedIn",  href:SITE.social.linkedin },
     { t:"wa", label:"WhatsApp",  href:SITE.social.whatsapp },
+    { t:"cl", label:"Clutch",    href:SITE.social.clutch },
   ];
   return (
     <footer className="bg-[#030306] border-t border-white/8 mt-10">
