@@ -8,7 +8,7 @@ export const SITE = {
   email: "haadinglobal@gmail.com",
   emailInfo: "haadinglobal@gmail.com",
   formspree: "mbdwvpyp",
-     social: {
+    social: {
     facebook:  "https://web.facebook.com/haadinglobal",
     tiktok:    "https://www.tiktok.com/@haadinglobal",
     whatsapp:  "https://wa.me/923054782677",
