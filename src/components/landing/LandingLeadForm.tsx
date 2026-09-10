@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Send, Loader2 } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { trackLead } from "@/lib/trackLead";
 
 /**
  * Compact lead-capture form. Saves straight into the CRM (Manage Leads) and
@@ -48,7 +49,11 @@ export default function LandingLeadForm({ source, city, priceNote, leadSource = 
       if (r.ok) saved = true;
     } catch { /* ignore */ }
 
-    if (saved) { router.push("/thank-you"); return; }
+    if (saved) {
+      trackLead(leadSource);
+      router.push("/thank-you");
+      return;
+    }
     setStatus("err");
   }
 
