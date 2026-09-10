@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Download, Loader2, CheckCircle, FileText } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { trackLead } from "@/lib/trackLead";
 
 /**
  * Top-of-funnel lead magnet: a free "2026 Digital Marketing Audit Checklist"
@@ -54,6 +55,7 @@ export default function LeadMagnet() {
     } catch { /* ignore */ }
 
     if (saved) {
+      trackLead("lead-magnet");
       setStatus("done");
       // Give the visitor the file straight away.
       const a = document.createElement("a");
