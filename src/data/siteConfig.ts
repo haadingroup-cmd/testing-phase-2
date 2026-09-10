@@ -8,13 +8,14 @@ export const SITE = {
   email: "haadinglobal@gmail.com",
   emailInfo: "haadinglobal@gmail.com",
   formspree: "mbdwvpyp",
-  social: {
+     social: {
     facebook:  "https://web.facebook.com/haadinglobal",
     tiktok:    "https://www.tiktok.com/@haadinglobal",
     whatsapp:  "https://wa.me/923054782677",
     linkedin:  "https://www.linkedin.com/in/haadinglobal/",
     instagram: "https://www.instagram.com/haadinglobal/",
     youtube:   "https://www.youtube.com/@haadinglobal",
+    clutch:    "https://clutch.co/profile/haadinglobal",
   },
   address: "Sahiwal, Punjab, Pakistan",
   markets: ["Pakistan 🇵🇰","UAE 🇦🇪","Qatar 🇶🇦","Saudi Arabia 🇸🇦","United Kingdom 🇬🇧","United States 🇺🇸"],
