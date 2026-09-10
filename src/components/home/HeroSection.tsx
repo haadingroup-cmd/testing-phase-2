@@ -278,15 +278,11 @@ export default function HeroSection() {
               initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ delay:0.7 }}
               className="flex items-center gap-4 pt-6 border-t border-white/10"
             >
-              <div className="flex -space-x-2">
-                {["UT","AS","HR","JH","SM"].map((s,i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#020205] flex items-center justify-center text-[10px] font-black text-white ${["bg-red-700","bg-rose-700","bg-orange-800","bg-amber-900","bg-red-800"][i]}`}>{s}</div>
-                ))}
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-red-600/15 border border-red-500/25">
+                <Star size={16} className="text-amber-400" fill="currentColor" />
               </div>
               <div>
-                <div className="flex text-amber-400">
-                  {[...Array(5)].map((_,i) => <Star key={i} size={13} fill="currentColor" />)}
-                </div>
+                <p className="text-white font-bold text-sm">40+ Happy Clients</p>
                 <p className="text-slate-400 text-xs">Trusted by businesses across Pakistan &amp; the Gulf</p>
               </div>
             </motion.div>
