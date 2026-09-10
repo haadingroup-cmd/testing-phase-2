@@ -7,6 +7,7 @@ import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
+import { trackLead } from "@/lib/trackLead";
 
 const SERVICES_LIST = [
   "Meta Ads","Google Ads","TikTok Ads","SEO Services","Social Media Management",
@@ -47,6 +48,7 @@ export default function ContactForm() {
         method: "POST", body: fd, headers: { Accept: "application/json" },
       });
       if (r.ok) {
+        trackLead("contact-form");
         router.push(`/thank-you?name=${encodeURIComponent(name)}`);
       } else {
         setStatus("err");
