@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | HaadinGlobal",
   },
   description:
-    "HaadinGlobal is a results-driven digital marketing agency in Pakistan. We grow businesses with Meta Ads, Google Ads, SEO, Shopify and web development. Free consultation.",
+    "HaadinGlobal is a results-driven digital marketing agency in Pakistan. We grow businesses with Meta Ads, Google Ads, SEO, Shopify and web development.",
   keywords: [
     "digital marketing agency Pakistan","digital marketing agency Sahiwal",
     "Meta Ads agency Pakistan","Google Ads Pakistan","SEO services Pakistan",

@@ -36,7 +36,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal is a Sahiwal-based digital marketing agency helping local shops, academies, clinics, property dealers and online stores get more customers with Meta Ads, Google Ads and SEO — managed by specialists who care about your ROI.",
     metaTitle: "Digital Marketing Agency in Sahiwal",
     metaDescription:
-      "Grow your Sahiwal business with HaadinGlobal — expert SEO, Meta & Google Ads, social media and web development. Local team, real ROI. Free consultation: +92 305 4782677.",
+      "Grow your Sahiwal business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Based in Sahiwal — local team",
       "ROI-focused Meta & Google Ads",
@@ -88,7 +88,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Multan businesses — retailers, real estate, clinics, agriculture and online sellers — grow with Meta Ads, Google Ads and SEO focused on real leads and sales across South Punjab.",
     metaTitle: "Digital Marketing Agency in Multan",
     metaDescription:
-      "Grow your Multan business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Multan business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "ROI-focused Meta & Google Ads",
       "Serving Multan & South Punjab",
@@ -128,7 +128,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Jhang businesses — local shops, agriculture, real estate and services — get discovered online and win more customers with affordable, results-focused Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Jhang",
     metaDescription:
-      "Grow your Jhang business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Jhang business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Affordable, results-focused",
       "Serving Jhang & nearby areas",
@@ -180,7 +180,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Okara businesses — from agriculture and dairy to retail shops, real estate and services — grow with affordable, ROI-focused Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Okara",
     metaDescription:
-      "Grow your Okara business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Okara business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Affordable & ROI-focused",
       "Serving Okara & nearby areas",
@@ -232,7 +232,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Lahore businesses cut through a crowded market — from retail and real estate to restaurants, fashion, education and startups — with Meta Ads, Google Ads and SEO engineered for real ROI, not vanity metrics.",
     metaTitle: "Digital Marketing Agency in Lahore",
     metaDescription:
-      "Grow your Lahore business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Lahore business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Built for Lahore's competitive market",
       "ROI-focused Meta & Google Ads",
@@ -284,7 +284,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Faisalabad businesses — from textile and industrial units to retailers, wholesalers and online stores — win more customers with Meta Ads, Google Ads and SEO built around real ROI, not vanity metrics.",
     metaTitle: "Digital Marketing Agency in Faisalabad",
     metaDescription:
-      "Grow your Faisalabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Faisalabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "ROI-focused Meta & Google Ads",
       "Built for Faisalabad's business market",
@@ -324,7 +324,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Sargodha businesses — retail, citrus and agriculture exporters, real estate, education and services — reach more customers with ROI-focused Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Sargodha",
     metaDescription:
-      "Grow your Sargodha business with HaadinGlobal — SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Sargodha business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "ROI-focused campaigns",
       "Serving Sargodha & nearby areas",
@@ -376,7 +376,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Pakpattan businesses — local shops, agriculture, real estate and services — get online and bring in more customers with affordable, results-driven Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Pakpattan",
     metaDescription:
-      "Grow your Pakpattan business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Pakpattan business with HaadinGlobal — affordable SEO, Meta & Google Ads, social media and websites. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Affordable & results-driven",
       "Serving Pakpattan & nearby areas",
@@ -428,7 +428,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Karachi businesses win in Pakistan's most competitive market — from retail and e-commerce to real estate, restaurants, import/export and startups — with Meta Ads, Google Ads and SEO built for real ROI.",
     metaTitle: "Digital Marketing Agency in Karachi",
     metaDescription:
-      "Grow your Karachi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Karachi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Built for Karachi's huge, fast market",
       "ROI-focused Meta & Google Ads",
@@ -480,7 +480,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Islamabad businesses — from corporate and tech to real estate, education, clinics and upscale retail — grow with professional, ROI-focused Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Islamabad",
     metaDescription:
-      "Grow your Islamabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Islamabad business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Professional, ROI-focused campaigns",
       "Serving Islamabad & the twin cities",
@@ -532,7 +532,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps Rawalpindi businesses — retail, wholesale and trade, real estate, restaurants and services — reach more customers with affordable, results-driven Meta Ads, Google Ads and SEO across Pindi and the twin cities.",
     metaTitle: "Digital Marketing Agency in Rawalpindi",
     metaDescription:
-      "Grow your Rawalpindi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation: +92 305 4782677.",
+      "Grow your Rawalpindi business with HaadinGlobal — SEO, Meta & Google Ads, social media and web development. ROI-focused, English & Urdu. Free consultation.",
     heroPoints: [
       "Affordable & results-driven",
       "Serving Rawalpindi & the twin cities",
@@ -740,7 +740,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps UK businesses — from local trades and clinics to e-commerce brands and B2B firms — win more customers with Meta Ads, Google Ads and SEO, at offshore-competitive rates without cutting corners on quality.",
     metaTitle: "Digital Marketing Agency for UK Businesses",
     metaDescription:
-      "Affordable digital marketing agency for UK businesses. Google Ads, Meta Ads, SEO and web development at competitive rates. Real ROI, transparent reporting. Free consultation.",
+      "Affordable digital marketing agency for UK businesses. Google Ads, Meta Ads, SEO and web development at competitive rates, with real ROI. Free consultation.",
     heroPoints: [
       "Serving businesses across the UK",
       "Offshore-competitive pricing",
@@ -792,7 +792,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps London businesses stand out in one of the world's most competitive markets — with Google Ads, Meta Ads and SEO that turn a crowded city of searchers into real leads and sales, at offshore-competitive rates.",
     metaTitle: "Digital Marketing Agency in London",
     metaDescription:
-      "Digital marketing agency for London businesses. Google Ads, Meta Ads, SEO and web development that convert — at offshore-competitive rates. Free consultation.",
+      "Digital marketing agency for London businesses. Google Ads, Meta Ads, SEO and web development that convert, at competitive rates. Free consultation.",
     heroPoints: [
       "Serving London & Greater London",
       "Competitive rates vs local agencies",
@@ -844,7 +844,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps US businesses — from local service providers to e-commerce and B2B companies — grow with Google Ads, Meta Ads and SEO, delivering agency-quality work at offshore-competitive rates.",
     metaTitle: "Digital Marketing Agency for US Businesses",
     metaDescription:
-      "Affordable digital marketing agency for US businesses. Google Ads, Meta Ads, SEO and web development with real ROI and transparent reporting. Free consultation.",
+      "Affordable digital marketing agency for US businesses. Google Ads, Meta Ads, SEO and web development with real ROI and clear reporting. Free consultation.",
     heroPoints: [
       "Serving businesses across the US",
       "Offshore-competitive pricing",
@@ -896,7 +896,7 @@ export const LANDINGS: Landing[] = [
       "HaadinGlobal helps New York businesses compete and win in one of the toughest markets on earth — with Google Ads, Meta Ads and SEO that turn NYC searchers into customers, at offshore-competitive rates.",
     metaTitle: "Digital Marketing Agency in New York",
     metaDescription:
-      "Digital marketing agency for New York businesses. Google Ads, Meta Ads, SEO and web development that convert — at offshore-competitive rates. Free consultation.",
+      "Digital marketing agency for New York businesses. Google Ads, Meta Ads, SEO and web development that convert, at competitive rates. Free consultation.",
     heroPoints: [
       "Serving New York & the tri-state area",
       "Competitive rates vs local agencies",

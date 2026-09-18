@@ -8,7 +8,7 @@ import { TrendingUp, Search, ShoppingBag, Megaphone, ExternalLink, ArrowRight } 
 export const metadata: Metadata = {
   title: "Our Work & Client Results",
   description:
-    "Real projects HaadinGlobal has delivered — Shopify stores, custom web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our work and results.",
+    "Real projects HaadinGlobal has delivered — Shopify stores, web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our results.",
   alternates: { canonical: "/portfolio" },
 };
 
