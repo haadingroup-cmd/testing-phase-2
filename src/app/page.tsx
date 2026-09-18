@@ -11,6 +11,7 @@ import { faqJsonLd } from "@/data/faqs";
 import { PricingCards } from "@/components/pricing/PricingCards";
 import PricingCalculator from "@/components/pricing/PricingCalculator";
 import ContactForm from "@/components/contact/ContactForm";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export const metadata: Metadata = {
   title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
@@ -64,21 +65,29 @@ export default function HomePage() {
               </p>
               <div className="space-y-3">
                 {[
-                  { icon:"📞", t:"Phone & WhatsApp", v:"+92 305 4782677", href:"https://wa.me/923054782677" },
-                  { icon:"📧", t:"Email", v:"haadinglobal@gmail.com", href:"mailto:haadinglobal@gmail.com" },
-                  { icon:"📍", t:"Office", v:"Sahiwal, Punjab, Pakistan", href:"#" },
-                  { icon:"🕐", t:"Response Time", v:"Within 2–4 hours", href:"#" },
-                ].map(c => (
-                  <a key={c.t} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-                    className="flex items-center gap-4 card px-5 py-4 border border-transparent hover:border-red-500/25 transition-all"
-                  >
-                    <span className="text-2xl">{c.icon}</span>
-                    <div>
-                      <p className="text-[11px] text-slate-500 font-medium">{c.t}</p>
-                      <p className="text-white font-semibold text-sm">{c.v}</p>
-                    </div>
-                  </a>
-                ))}
+                  { icon:"📞", t:"Phone & WhatsApp", v:"+92 305 4782677", href:"https://wa.me/923054782677", whatsapp: true },
+                  { icon:"📧", t:"Email", v:"haadinglobal@gmail.com", href:"mailto:haadinglobal@gmail.com", whatsapp: false },
+                  { icon:"📍", t:"Office", v:"Sahiwal, Punjab, Pakistan", href:"#", whatsapp: false },
+                  { icon:"🕐", t:"Response Time", v:"Within 2–4 hours", href:"#", whatsapp: false },
+                ].map(c => {
+                  const cardClass = "flex items-center gap-4 card px-5 py-4 border border-transparent hover:border-red-500/25 transition-all";
+                  const inner = (
+                    <>
+                      <span className="text-2xl">{c.icon}</span>
+                      <div>
+                        <p className="text-[11px] text-slate-500 font-medium">{c.t}</p>
+                        <p className="text-white font-semibold text-sm">{c.v}</p>
+                      </div>
+                    </>
+                  );
+                  return c.whatsapp ? (
+                    <WhatsAppCTA key={c.t} source="home-contact-card" className={cardClass}>{inner}</WhatsAppCTA>
+                  ) : (
+                    <a key={c.t} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={cardClass}>
+                      {inner}
+                    </a>
+                  );
+                })}
               </div>
             </div>
             <ContactForm />

@@ -7,6 +7,7 @@ import { CTASection } from "@/components/home/SiteSections";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 // Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
 const SEO_TITLES: Record<string, string> = {
@@ -160,9 +161,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               )}
               <div className="flex flex-wrap gap-3">
                 <Link href="/consultation" className="btn-primary">Get Started <ArrowRight size={16}/></Link>
-                <a href="https://wa.me/923054782677" target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                <WhatsAppCTA source={`service-${svc.id}`} className="btn-ghost">
                   <MessageCircle size={16}/> WhatsApp Us
-                </a>
+                </WhatsAppCTA>
               </div>
             </div>
 

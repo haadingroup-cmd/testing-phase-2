@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 import { SITE } from "@/data/siteConfig";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -25,18 +26,24 @@ export default function ContactPage() {
               <h2 className="font-display font-black text-white mb-8 text-3xl">Reach <span className="gradient-text">Us Directly</span></h2>
               <div className="space-y-4">
                 {[
-                  {icon:"📞",t:"Phone & WhatsApp",v:SITE.phone,h:SITE.social.whatsapp,cta:"Chat Now"},
-                  {icon:"📧",t:"Primary Email",v:SITE.email,h:`mailto:${SITE.email}`,cta:"Send Email"},
-                  {icon:"📍",t:"Office",v:SITE.address,h:"#",cta:""},
-                  {icon:"🕐",t:"Business Hours",v:"Mon–Sat: 9AM–8PM PKT",h:"#",cta:""},
-                  {icon:"⚡",t:"Avg Response",v:"Within 2–4 hours",h:"#",cta:""},
+                  {icon:"📞",t:"Phone & WhatsApp",v:SITE.phone,h:SITE.social.whatsapp,cta:"Chat Now",whatsapp:true},
+                  {icon:"📧",t:"Primary Email",v:SITE.email,h:`mailto:${SITE.email}`,cta:"Send Email",whatsapp:false},
+                  {icon:"📍",t:"Office",v:SITE.address,h:"#",cta:"",whatsapp:false},
+                  {icon:"🕐",t:"Business Hours",v:"Mon–Sat: 9AM–8PM PKT",h:"#",cta:"",whatsapp:false},
+                  {icon:"⚡",t:"Avg Response",v:"Within 2–4 hours",h:"#",cta:"",whatsapp:false},
                 ].map(c => (
                   <div key={c.t} className="card p-5 flex items-start gap-4">
                     <span className="text-2xl">{c.icon}</span>
                     <div className="flex-1">
                       <p className="text-xs text-slate-500 mb-0.5">{c.t}</p>
                       <p className="text-white font-semibold text-sm">{c.v}</p>
-                      {c.cta && c.h !== "#" && <a href={c.h} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-red-400 hover:underline mt-1 inline-block">{c.cta} →</a>}
+                      {c.cta && c.h !== "#" && (
+                        c.whatsapp ? (
+                          <WhatsAppCTA source="contact-page-card" className="text-xs font-bold text-red-400 hover:underline mt-1 inline-block">{c.cta} →</WhatsAppCTA>
+                        ) : (
+                          <a href={c.h} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-red-400 hover:underline mt-1 inline-block">{c.cta} →</a>
+                        )
+                      )}
                     </div>
                   </div>
                 ))}

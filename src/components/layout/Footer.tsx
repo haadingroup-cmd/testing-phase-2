@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { SITE, FOOTER_COMPANY, FOOTER_SERVICES } from "@/data/siteConfig";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -92,10 +93,9 @@ export default function Footer() {
       <div className="border-t border-white/8">
         <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">© {year} HaadinGlobal. {/* t("footer_rights") */} All rights reserved. Built with ❤️ in Pakistan.</p>
-          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer"
-            className="text-xs font-semibold text-red-400 hover:text-red-300 transition-colors">
+          <WhatsAppCTA source="footer" className="text-xs font-semibold text-red-400 hover:text-red-300 transition-colors">
             💬 WhatsApp Now
-          </a>
+          </WhatsAppCTA>
         </div>
       </div>
     </footer>

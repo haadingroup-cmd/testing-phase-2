@@ -5,6 +5,7 @@ import { CheckCircle, ArrowRight, Star, Shield, Clock, Globe } from "lucide-reac
 import { LANDINGS, getLanding } from "@/data/landings";
 import { SITE } from "@/data/siteConfig";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export function generateStaticParams() {
   return LANDINGS.map((l) => ({ slug: l.slug }));
@@ -255,9 +256,9 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
           </h2>
           <p className="text-slate-300 text-lg mb-8">{l.priceNote}. Free consultation, no obligation.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-base py-4 px-10 inline-flex justify-center">
+            <WhatsAppCTA source={`agency-${l.slug}`} className="btn-primary text-base py-4 px-10 inline-flex justify-center">
               Chat on WhatsApp <ArrowRight size={17} />
-            </a>
+            </WhatsAppCTA>
             <a href={`tel:${SITE.phoneClean}`} aria-label="Call HaadinGlobal" className="btn-ghost text-base py-4 px-8 inline-flex justify-center">
               Call {SITE.phone}
             </a>

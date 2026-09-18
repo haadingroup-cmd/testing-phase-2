@@ -2,6 +2,7 @@
 
 import { MessageCircle, Send } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { trackLead } from "@/lib/trackLead";
 
 /**
  * Sticky mobile action bar (mobile only).
@@ -22,6 +23,7 @@ export default function MobileCTABar() {
         href={SITE.social.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackLead("whatsapp-mobile-bar")}
         className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl bg-[#25D366] text-white font-bold text-sm active:scale-95 transition-transform"
       >
         <MessageCircle size={15} /> WhatsApp
