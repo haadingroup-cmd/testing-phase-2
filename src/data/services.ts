@@ -257,5 +257,13 @@ export function serviceFaqs(svc: Service): { q: string; a: string }[] {
       q: `Why choose HaadinGlobal for ${title}?`,
       a: `We combine international-level expertise with ROI-focused execution — every ${title} campaign is data-backed and optimised for real business growth, not vanity metrics. We've served businesses and report on the KPIs that actually matter to you.`,
     },
+    {
+      q: `Do I need a long-term contract for ${title}?`,
+      a: `No. We recommend a 3-month minimum for ${title} so there's enough time to see meaningful results, but after that it's month-to-month — no long lock-in contracts. Most clients stay long-term because of results, not because they're locked in.`,
+    },
+    {
+      q: `How do you measure success for ${title}?`,
+      a: `We track the metrics that actually matter for ${title} — leads, sales, ROAS or rankings, depending on the service — not vanity numbers like impressions or likes. You get a dedicated dashboard and regular reports so you always know exactly how it's performing.`,
+    },
   ];
 }

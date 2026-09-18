@@ -149,6 +149,34 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Process — new, unique per-page content: how we work with this city's businesses */}
+      <section className="section-pad">
+        <div className="container">
+          <div className="text-center mb-12">
+            <div className="label mb-4">How It Works</div>
+            <h2 className="font-display font-black text-white text-3xl">
+              Getting Started in <span className="gradient-text">{l.city}</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { step: "1", title: "Free Consultation", desc: `We learn about your ${l.city} business, your goals and your budget — no pressure, no obligation.` },
+              { step: "2", title: "Custom Strategy", desc: `We build a plan around what actually works for your industry and market in ${l.country}.` },
+              { step: "3", title: "Launch & Optimise", desc: "Campaigns, content or your website go live, then we test and refine based on real performance." },
+              { step: "4", title: "Report & Scale", desc: "You get clear, regular reporting — then we scale what's working and cut what isn't." },
+            ].map((s) => (
+              <div key={s.step} className="card p-6">
+                <div className="w-9 h-9 rounded-lg bg-red-600/15 border border-red-500/25 flex items-center justify-center text-red-300 font-black text-sm mb-4">
+                  {s.step}
+                </div>
+                <h3 className="font-bold text-white mb-2">{s.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section-pad bg-[#030306]">
         <div className="container max-w-3xl">
