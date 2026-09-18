@@ -6,7 +6,7 @@ import StatsSection from "@/components/home/StatsSection";
 import { CTASection } from "@/components/home/SiteSections";
 
 export const metadata: Metadata = {
-  title: "About Us — HaadinGlobal Digital Agency",
+  title: "About Us — Digital Marketing Agency",
   description: "Learn about HaadinGlobal — our story, mission, values, and the team behind results-driven digital marketing agency.",
 };
 

@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/portfolio";
 import { TrendingUp, Search, ShoppingBag, Megaphone, ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Work & Client Results | HaadinGlobal",
+  title: "Our Work & Client Results",
   description:
     "Real projects HaadinGlobal has delivered — Shopify stores, custom web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our work and results.",
   alternates: { canonical: "/portfolio" },

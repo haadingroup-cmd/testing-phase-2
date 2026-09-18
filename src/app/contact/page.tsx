@@ -3,7 +3,7 @@ import ContactForm from "@/components/contact/ContactForm";
 import { SITE } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Contact Us — HaadinGlobal",
+  title: "Contact Us",
   description: "Get in touch with HaadinGlobal. Book a free consultation or reach us via WhatsApp, email, or phone.",
 };
 

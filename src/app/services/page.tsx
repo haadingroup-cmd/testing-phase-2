@@ -7,7 +7,7 @@ import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceCardText from "@/components/services/ServiceCardText";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Services — HaadinGlobal",
+  title: "Digital Marketing Services",
   description: "12 premium digital marketing services: Meta Ads, Google Ads, SEO, YouTube Automation, Shopify, Web Development, Branding & AI Automation.",
 };
 

@@ -5,7 +5,7 @@ import { CTASection } from "@/components/home/SiteSections";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
 
 export const metadata: Metadata = {
-  title: "Pricing — Transparent Plans | HaadinGlobal",
+  title: "Pricing — Transparent Plans",
   description: "Clear, transparent pricing for Meta Ads, Google Ads, SEO, web development, and more. No hidden fees.",
 };
 
