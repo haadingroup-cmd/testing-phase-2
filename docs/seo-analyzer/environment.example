@@ -1,0 +1,24 @@
+# Public deployment URL for canonical metadata. Keep keys server-only.
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+# Required in production: generate using node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+AUDIT_SIGNING_SECRET=
+# Optional: both are required to enable AI. Select a Responses-compatible model.
+OPENAI_API_KEY=
+OPENAI_MODEL=
+# Optional: enables genuine Google PageSpeed Insights mobile results.
+PAGESPEED_API_KEY=
+# Production distributed rate limiting (Upstash Redis REST compatible).
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+# memory is allowed for development or a single Node server only. Use redis on Vercel.
+RATE_LIMIT_MODE=memory
+# Set only to a header your trusted reverse proxy overwrites, e.g. x-vercel-forwarded-for on Vercel.
+# If unset, all requests share a conservative global quota.
+TRUSTED_CLIENT_IP_HEADER=
+MAX_CRAWL_PAGES=11
+MAX_CRAWL_DEPTH=2
+CRAWL_DELAY_MS=300
+CRAWL_TIMEOUT_MS=8000
+CRAWL_TOTAL_BUDGET_MS=75000
+# Technical, on-page, content, performance, local, social weights.
+SCORE_WEIGHTS=30,25,20,10,10,5

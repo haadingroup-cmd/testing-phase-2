@@ -26,6 +26,10 @@ const securityHeaders = [
   },
 ];
 const nextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ["pdf-lib", "@pdf-lib/fontkit"],
+    outputFileTracingIncludes: { "/api/seo/export": ["./public/seo-fonts/*.ttf"] },
+  },
   typescript: { ignoreBuildErrors: false },
   eslint: { ignoreDuringBuilds: false },
   images: {
