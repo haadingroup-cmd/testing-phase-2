@@ -24,25 +24,37 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     ...others.filter(p => p.category === post.category),
     ...others.filter(p => p.category !== post.category),
   ].slice(0, 3);
-  const articleLd = {
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: `https://www.haadinglobal.com${post.image}`,
-    datePublished: post.date,
-    author: { "@type": "Person", name: post.author },
-    publisher: {
-      "@type": "Organization",
-      name: "HaadinGlobal",
-      logo: { "@type": "ImageObject", url: "https://www.haadinglobal.com/logo.png" },
-    },
-    mainEntityOfPage: `https://www.haadinglobal.com/blog/${post.slug}`,
-    keywords: post.tags.join(", "),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        image: `https://www.haadinglobal.com${post.image}`,
+        datePublished: post.date,
+        author: { "@type": "Person", name: post.author },
+        publisher: {
+          "@type": "Organization",
+          name: "HaadinGlobal",
+          logo: { "@type": "ImageObject", url: "https://www.haadinglobal.com/logo.png" },
+        },
+        mainEntityOfPage: `https://www.haadinglobal.com/blog/${post.slug}`,
+        keywords: post.tags.join(", "),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+          { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.haadinglobal.com/blog" },
+          { "@type": "ListItem", position: 3, name: post.title, item: `https://www.haadinglobal.com/blog/${post.slug}` },
+        ],
+      },
+    ],
   };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="pt-36 pb-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
         <div className="container relative z-10 max-w-3xl mx-auto">

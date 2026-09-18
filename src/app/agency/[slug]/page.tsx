@@ -10,6 +10,13 @@ export function generateStaticParams() {
   return LANDINGS.map((l) => ({ slug: l.slug }));
 }
 
+// Open Graph locale per market — without this every landing page (Dubai,
+// London, New York...) inherits the root layout's "en_PK" default, which
+// misrepresents the target market to Google/Facebook for international pages.
+const OG_LOCALE: Record<string, string> = {
+  PK: "en_PK", AE: "en_AE", QA: "en_QA", SA: "en_SA", GB: "en_GB", US: "en_US",
+};
+
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const l = getLanding(params.slug);
   if (!l) return { title: "Not Found" };
@@ -21,6 +28,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       title: l.metaTitle,
       description: l.metaDescription,
       url: `https://www.haadinglobal.com/agency/${l.slug}`,
+      locale: OG_LOCALE[l.countryCode] ?? "en_PK",
       images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal" }],
     },
   };

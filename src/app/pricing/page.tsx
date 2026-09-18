@@ -7,11 +7,22 @@ import LandingLeadForm from "@/components/landing/LandingLeadForm";
 export const metadata: Metadata = {
   title: "Pricing — Transparent Plans",
   description: "Clear, transparent pricing for Meta Ads, Google Ads, SEO, web development, and more. No hidden fees.",
+  alternates: { canonical: "/pricing" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: "https://www.haadinglobal.com/pricing" },
+  ],
 };
 
 export default function PricingPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="pt-36 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
         <div className="container relative z-10 text-center">
