@@ -20,9 +20,9 @@ import { categories } from "@/lib/seo/types";
 import "./seo-analyzer.css";
 export const dynamic = "force-dynamic";
 const canonical = `${brand.website}/free-seo-audit`;
-const title = "Free AI SEO Analyzer | Website SEO Audit Tool | HaadiGlobal";
+const title = "Free SEO Analyzer | Website SEO Audit Tool | HaadinGlobal";
 const description =
-  "Analyze your website SEO for free with HaadiGlobal's AI SEO Analyzer. Find technical, on-page, content, local and social SEO issues and get actionable recommendations.";
+  "Analyze your website SEO for free with HaadinGlobal's SEO Analyzer. Find technical, on-page, content, local and social SEO issues and get actionable recommendations.";
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
@@ -42,7 +42,7 @@ const faqs = [
   ],
   [
     "Does this tool guarantee Google rankings?",
-    "No. The score is HaadiGlobal’s diagnostic indicator for the checks this tool can perform. It is not an official Google score, a ranking forecast or a guarantee of traffic.",
+    "No. The score is HaadinGlobal’s diagnostic indicator for the checks this tool can perform. It is not an official Google score, a ranking forecast or a guarantee of traffic.",
   ],
   [
     "Can I analyze any website?",
@@ -79,7 +79,7 @@ export default function SEOAuditPage() {
   const structured = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "HaadiGlobal AI SEO Analyzer",
+    name: "HaadinGlobal SEO Analyzer",
     url: canonical,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web browser",
@@ -134,7 +134,7 @@ export default function SEOAuditPage() {
                 Target,
                 "02",
                 "Understand the findings",
-                "See a clear health score, actual evidence and plain-language explanations of what needs attention.",
+                "See a clearly scoped check score, actual evidence and plain-language explanations of what needs attention.",
               ],
               [
                 CheckCircle2,
@@ -245,12 +245,12 @@ export default function SEOAuditPage() {
               </div>
             ))}
             <p>
-              90–100 Excellent · 75–89 Good
+              90–100 Most checked signals pass · 75–89 Some checks need attention
               <br />
-              50–74 Needs improvement · 0–49 Critical
+              50–74 Several checks need attention · 0–49 Many checks need attention
             </p>
             <p className="hg-note">
-              Labels describe audit health only. Content, performance, local and
+              Labels describe the checked HTML signals only. Content, performance, local and
               social categories cover the limited signals explained in each
               report.
             </p>
@@ -318,7 +318,7 @@ export default function SEOAuditPage() {
                 H<span>G</span>
               </span>
               <span>
-                Haadi<span className="hg-brand-gold">Global</span>
+                Haadin<span className="hg-brand-gold">Global</span>
                 <small>ANALYZE. UNDERSTAND. IMPROVE.</small>
               </span>
             </a>

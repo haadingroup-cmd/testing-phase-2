@@ -13,7 +13,7 @@ export default function ErrorPage({ reset }: { reset: () => void }) {
       <h1>The analyzer couldn’t load.</h1>
       <p>Please try again. Your existing website pages remain available.</p>
       <button onClick={reset}>Try again</button>{" "}
-      <a href="/">Return to HaadiGlobal</a>
+      <a href="/">Return to HaadinGlobal</a>
     </div>
   );
 }

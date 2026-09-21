@@ -10,7 +10,7 @@ export default function Loading() {
       }}
       role="status"
     >
-      Opening HaadiGlobal AI SEO Analyzer…
+      Opening HaadinGlobal SEO Analyzer…
     </div>
   );
 }
