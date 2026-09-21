@@ -163,7 +163,7 @@ export async function generatePDF(
   newPage("Website intelligence / evidence-based audit");
   y = 692;
   label("Analyze. Understand. Improve.");
-  paragraph("AI SEO Analyzer", 34, navy, bold);
+  paragraph("SEO Analyzer", 34, navy, bold);
   paragraph("Your website. A clearer next step.", 16, muted);
   y -= 26;
   paragraph(
@@ -188,14 +188,14 @@ export async function generatePDF(
     font: bold,
     color: navy,
   });
-  page.drawText("SEO HEALTH / 100", {
+  page.drawText("CHECK SCORE / 100", {
     x: 222,
     y: y - 34,
     size: 10,
     font: bold,
     color: gold,
   });
-  page.drawText(scoreLabel(report.overall), {
+  page.drawText("Weighted check pass rate", {
     x: 222,
     y: y - 62,
     size: 19,
@@ -254,7 +254,7 @@ export async function generatePDF(
     y -= 100;
   }
   paragraph(
-    "Method: each category uses weighted passed checks divided by weighted evaluated checks. Warnings and critical findings receive no pass credit. Unavailable checks are excluded. Available categories are reweighted for the overall score. These are HaadiGlobal diagnostic rules, not Google’s ranking formula.",
+    "Method: each category uses weighted passed checks divided by weighted evaluated checks. Warnings and critical findings receive no pass credit. Unavailable checks are excluded. Available categories are reweighted for the overall score. These are HaadinGlobal diagnostic rules, not Google’s ranking formula.",
     9,
     muted,
   );
@@ -390,7 +390,7 @@ export async function generatePDF(
       "AI recommendations were not generated for this report. The action plan is based on observed checks and transparent rules. No AI assessment or proprietary metrics have been invented.",
     );
   heading("Want us to fix these issues?");
-  paragraph("Get Professional SEO Services from HaadiGlobal", 15, navy, bold);
+  paragraph("Get Professional SEO Services from HaadinGlobal", 15, navy, bold);
   paragraph(brand.website, 12, gold);
   paragraph(`Contact: ${brand.email}\nWhatsApp: ${brand.whatsapp}`, 10, muted);
   paragraph(pdfDisclaimer, 8.5, muted);
@@ -408,7 +408,7 @@ export async function generatePDF(
       color: line,
       thickness: 1,
     });
-    all[i].drawText("Powered by HaadiGlobal AI SEO Analyzer", {
+    all[i].drawText("Powered by HaadinGlobal SEO Analyzer", {
       x: 48,
       y: 32,
       size: 7,

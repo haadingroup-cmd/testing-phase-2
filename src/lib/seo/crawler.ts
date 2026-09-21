@@ -107,7 +107,7 @@ export async function crawlWebsite(
         deny: !found && !missing,
         delay: Math.max(
           baseDelay,
-          (parser?.getCrawlDelay("HaadiGlobalAudit") ??
+          (parser?.getCrawlDelay("HaadinGlobalAudit") ??
             parser?.getCrawlDelay("*") ??
             0) * 1000,
         ),
@@ -147,7 +147,7 @@ export async function crawlWebsite(
         const rule = await robots(hop.origin);
         if (
           rule.deny ||
-          rule.parser?.isAllowed(hop.href, "HaadiGlobalAudit") === false
+          rule.parser?.isAllowed(hop.href, "HaadinGlobalAudit") === false
         )
           throw new PublicError(
             "Access is restricted by robots.txt or robots access could not be confirmed.",

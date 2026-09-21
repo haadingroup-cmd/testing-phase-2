@@ -101,7 +101,7 @@ export type Fetcher = (
   options?: FetchOptions,
 ) => Promise<FetchResult>;
 export const crawlerAgent =
-  "HaadiGlobalAudit/1.0 (+https://www.haadinglobal.com/free-seo-audit)";
+  "HaadinGlobalAudit/1.0 (+https://www.haadinglobal.com/free-seo-audit)";
 
 async function requestOnce(
   url: URL,
