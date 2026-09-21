@@ -132,23 +132,35 @@ export default async function MemberPage({ params }: { params: { slug: string } 
   const objPos = m.photo_position || "center";
   const media = m.media || [];
 
-  const personLd = {
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: m.full_name,
-    jobTitle: m.title,
-    ...(m.tagline ? { description: m.tagline } : {}),
-    worksFor: { "@type": "Organization", name: "HaadinGlobal", url: "https://www.haadinglobal.com" },
-    ...(m.location ? { homeLocation: { "@type": "Place", name: m.location } } : {}),
-    ...(m.skills?.length ? { knowsAbout: m.skills } : {}),
-    image: m.photo_url.startsWith("http") ? m.photo_url : `https://www.haadinglobal.com${m.photo_url}`,
-    sameAs: [m.linkedin, m.website].filter(Boolean),
-    ...(m.email ? { email: m.email } : {}),
+    "@graph": [
+      {
+        "@type": "Person",
+        name: m.full_name,
+        jobTitle: m.title,
+        ...(m.tagline ? { description: m.tagline } : {}),
+        worksFor: { "@type": "Organization", name: "HaadinGlobal", url: "https://www.haadinglobal.com" },
+        ...(m.location ? { homeLocation: { "@type": "Place", name: m.location } } : {}),
+        ...(m.skills?.length ? { knowsAbout: m.skills } : {}),
+        image: m.photo_url.startsWith("http") ? m.photo_url : `https://www.haadinglobal.com${m.photo_url}`,
+        sameAs: [m.linkedin, m.website].filter(Boolean),
+        ...(m.email ? { email: m.email } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+          { "@type": "ListItem", position: 2, name: "Team", item: "https://www.haadinglobal.com/team" },
+          { "@type": "ListItem", position: 3, name: m.full_name, item: `https://www.haadinglobal.com/team/${params.slug}` },
+        ],
+      },
+    ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="pt-32 pb-14 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]" />

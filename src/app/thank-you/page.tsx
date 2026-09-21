@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CheckCircle2, MessageCircle, Clock, Phone, Sparkles, ArrowRight, Home } from "lucide-react";
+import { trackLead } from "@/lib/trackLead";
 
 function ThankYouInner() {
   const params = useSearchParams();
@@ -82,6 +83,7 @@ function ThankYouInner() {
             <a
               href={`https://wa.me/923054782677?text=${encodeURIComponent("Hi HaadinGlobal, I just submitted a form on your website.")}`}
               target="_blank" rel="noopener noreferrer"
+              onClick={() => trackLead("whatsapp-thank-you")}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#25D366] text-white font-bold text-sm hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-lg"
             >
               <MessageCircle size={16} /> WhatsApp: +92 305 4782677

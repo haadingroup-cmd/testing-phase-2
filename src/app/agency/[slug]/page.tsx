@@ -5,10 +5,18 @@ import { CheckCircle, ArrowRight, Star, Shield, Clock, Globe } from "lucide-reac
 import { LANDINGS, getLanding } from "@/data/landings";
 import { SITE } from "@/data/siteConfig";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export function generateStaticParams() {
   return LANDINGS.map((l) => ({ slug: l.slug }));
 }
+
+// Open Graph locale per market — without this every landing page (Dubai,
+// London, New York...) inherits the root layout's "en_PK" default, which
+// misrepresents the target market to Google/Facebook for international pages.
+const OG_LOCALE: Record<string, string> = {
+  PK: "en_PK", AE: "en_AE", QA: "en_QA", SA: "en_SA", GB: "en_GB", US: "en_US",
+};
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const l = getLanding(params.slug);
@@ -21,6 +29,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       title: l.metaTitle,
       description: l.metaDescription,
       url: `https://www.haadinglobal.com/agency/${l.slug}`,
+      locale: OG_LOCALE[l.countryCode] ?? "en_PK",
       images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal" }],
     },
   };
@@ -141,6 +150,34 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Process — new, unique per-page content: how we work with this city's businesses */}
+      <section className="section-pad">
+        <div className="container">
+          <div className="text-center mb-12">
+            <div className="label mb-4">How It Works</div>
+            <h2 className="font-display font-black text-white text-3xl">
+              Getting Started in <span className="gradient-text">{l.city}</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { step: "1", title: "Free Consultation", desc: `We learn about your ${l.city} business, your goals and your budget — no pressure, no obligation.` },
+              { step: "2", title: "Custom Strategy", desc: `We build a plan around what actually works for your industry and market in ${l.country}.` },
+              { step: "3", title: "Launch & Optimise", desc: "Campaigns, content or your website go live, then we test and refine based on real performance." },
+              { step: "4", title: "Report & Scale", desc: "You get clear, regular reporting — then we scale what's working and cut what isn't." },
+            ].map((s) => (
+              <div key={s.step} className="card p-6">
+                <div className="w-9 h-9 rounded-lg bg-red-600/15 border border-red-500/25 flex items-center justify-center text-red-300 font-black text-sm mb-4">
+                  {s.step}
+                </div>
+                <h3 className="font-bold text-white mb-2">{s.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section-pad bg-[#030306]">
         <div className="container max-w-3xl">
@@ -219,9 +256,9 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
           </h2>
           <p className="text-slate-300 text-lg mb-8">{l.priceNote}. Free consultation, no obligation.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary text-base py-4 px-10 inline-flex justify-center">
+            <WhatsAppCTA source={`agency-${l.slug}`} className="btn-primary text-base py-4 px-10 inline-flex justify-center">
               Chat on WhatsApp <ArrowRight size={17} />
-            </a>
+            </WhatsAppCTA>
             <a href={`tel:${SITE.phoneClean}`} aria-label="Call HaadinGlobal" className="btn-ghost text-base py-4 px-8 inline-flex justify-center">
               Call {SITE.phone}
             </a>

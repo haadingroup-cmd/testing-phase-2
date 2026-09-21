@@ -4,24 +4,37 @@ import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import StatsSection from "@/components/home/StatsSection";
 import { CTASection } from "@/components/home/SiteSections";
+import { TEAM as ROSTER } from "@/data/team";
 
 export const metadata: Metadata = {
-  title: "About Us — HaadinGlobal Digital Agency",
+  title: "About Us — Digital Marketing Agency",
   description: "Learn about HaadinGlobal — our story, mission, values, and the team behind results-driven digital marketing agency.",
+  alternates: { canonical: "/about" },
 };
 
-const TEAM = [
-  { name:"Muhammad Haseeb", role:"Founder & CEO", spec:"Digital Strategy, SEO, PPC", img:"/muhammad-haseeb.webp" },
-  { name:"Hadi Nasser", role:"Head of Technology", spec:"Web Dev, AI Automation", emoji:"👨‍💻" },
-  { name:"Sara Ahmed", role:"Creative Director", spec:"Branding, Design, UX", emoji:"👩‍🎨" },
-  { name:"Ali Raza", role:"PPC Specialist", spec:"Google & Meta Ads", emoji:"🎯" },
-  { name:"Fatima Khan", role:"Content Strategist", spec:"SEO Writing, Copywriting", emoji:"✍️" },
-  { name:"Umar Farooq", role:"Social Media Lead", spec:"SMM, Influencer Marketing", emoji:"📱" },
-];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://www.haadinglobal.com/about" },
+  ],
+};
+
+// The real, named team — same source of truth as /team, so this page never
+// drifts out of sync and shows people who don't actually exist.
+const TEAM = ROSTER.filter((m) => m.is_public && m.photo_url !== "/logo-small.png").map((m) => ({
+  slug: m.slug,
+  name: m.full_name,
+  role: m.title,
+  spec: m.skills.slice(0, 2).join(", "),
+  img: m.photo_url,
+}));
 
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="pt-36 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
         <div className="container relative z-10 text-center">
@@ -37,7 +50,7 @@ export default function AboutPage() {
             <div>
               <h2 className="font-display font-black text-white mb-5">From Sahiwal to the <span className="gradient-text">World Stage</span></h2>
               <div className="space-y-4 text-slate-400 leading-relaxed">
-                <p>Founded in 2020, HaadinGlobal started with a mission: bring international-quality digital marketing to businesses of all sizes across Pakistan and beyond.</p>
+                <p>Founded in 2025, HaadinGlobal started with a mission: bring international-quality digital marketing to businesses of all sizes across Pakistan and beyond.</p>
                 <p>What began as a small passionate team has grown into a full-service digital agency serving clients in Pakistan, UAE, the UK, the USA, and Saudi Arabia — managing meaningful ad spend and delivering successful projects for our clients.</p>
                 <p>Today, HaadinGlobal is recognized as one of the most trusted and results-driven digital agencies in the region, with a strong client retention rate and a focus on measurable, verifiable results.</p>
               </div>
@@ -88,18 +101,14 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {TEAM.map(m => (
-              <div key={m.name} className="card p-7 text-center hover:-translate-y-2 transition-all">
-                {m.img ? (
-                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4">
-                    <Image src={m.img} alt={m.name} fill className="object-cover object-top"/>
-                  </div>
-                ) : (
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-rose-800 flex items-center justify-center text-3xl mx-auto mb-4">{m.emoji}</div>
-                )}
+              <Link key={m.slug} href={`/team/${m.slug}`} className="card p-7 text-center hover:-translate-y-2 transition-all block">
+                <div className="relative w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4">
+                  <Image src={m.img} alt={m.name} fill className="object-cover object-top"/>
+                </div>
                 <h3 className="font-black text-white text-lg">{m.name}</h3>
                 <p className="text-red-400 text-sm font-semibold mb-1">{m.role}</p>
                 <p className="text-slate-500 text-xs">{m.spec}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

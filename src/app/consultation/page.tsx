@@ -7,6 +7,7 @@ import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
 import { SERVICES } from "@/data/services";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
+import { trackLead } from "@/lib/trackLead";
 
 export default function ConsultationPage() {
   const router = useRouter();
@@ -154,7 +155,7 @@ export default function ConsultationPage() {
                       </div>
                       {status === "err" && (
                         <p className="text-red-400 text-sm bg-red-500/10 px-3 py-2 rounded-lg">
-                          Failed to send. <button type="button" onClick={() => window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer")} className="underline font-semibold text-red-300">WhatsApp us directly</button>
+                          Failed to send. <button type="button" onClick={() => { trackLead("whatsapp-consultation-error"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="underline font-semibold text-red-300">WhatsApp us directly</button>
                         </p>
                       )}
                       <button type="submit" disabled={status==="sending"}
@@ -166,7 +167,7 @@ export default function ConsultationPage() {
                         }
                       </button>
                       <p className="text-center text-slate-500 text-xs">
-                        Or WhatsApp: <button type="button" onClick={() => window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer")} className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</button>
+                        Or WhatsApp: <button type="button" onClick={() => { trackLead("whatsapp-consultation-page"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</button>
                       </p>
                     </form>
                   </>

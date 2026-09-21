@@ -6,9 +6,9 @@ import { PROJECTS } from "@/data/portfolio";
 import { TrendingUp, Search, ShoppingBag, Megaphone, ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Work & Client Results | HaadinGlobal",
+  title: "Our Work & Client Results",
   description:
-    "Real projects HaadinGlobal has delivered — Shopify stores, custom web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our work and results.",
+    "Real projects HaadinGlobal has delivered — Shopify stores, web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our results.",
   alternates: { canonical: "/portfolio" },
 };
 
@@ -19,17 +19,28 @@ const focus = [
   { icon: <TrendingUp size={20} />, title: "Growth Systems", detail: "Full-funnel strategies that scale what works and cut what doesn't." },
 ];
 
-// ItemList structured data — helps search engines understand the portfolio.
+// ItemList + BreadcrumbList structured data — helps search engines understand the portfolio.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "HaadinGlobal Client Projects",
-  itemListElement: PROJECTS.map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: `${p.name} — ${p.category}`,
-    ...(p.liveUrl ? { url: p.liveUrl } : {}),
-  })),
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "HaadinGlobal Client Projects",
+      itemListElement: PROJECTS.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${p.name} — ${p.category}`,
+        ...(p.liveUrl ? { url: p.liveUrl } : {}),
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://www.haadinglobal.com/portfolio" },
+      ],
+    },
+  ],
 };
 
 export default function PortfolioPage() {

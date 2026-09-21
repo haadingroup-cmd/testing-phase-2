@@ -7,13 +7,38 @@ import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceCardText from "@/components/services/ServiceCardText";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Services — HaadinGlobal",
+  title: "Digital Marketing Services",
   description: "12 premium digital marketing services: Meta Ads, Google Ads, SEO, YouTube Automation, Shopify, Web Development, Branding & AI Automation.",
+  alternates: { canonical: "/services" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "HaadinGlobal Digital Marketing Services",
+      itemListElement: SERVICES.map((svc, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: svc.title,
+        url: `https://www.haadinglobal.com/services/${svc.id}`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.haadinglobal.com/services" },
+      ],
+    },
+  ],
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="pt-36 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
         <div className="container relative z-10 text-center">

@@ -101,7 +101,7 @@ export default function ContactForm() {
         {status === "err" && (
           <motion.p initial={{ opacity:0, y:-5 }} animate={{ opacity:1, y:0 }}
             className="text-red-400 text-sm bg-red-500/10 px-4 py-2 rounded-lg">
-            ❌ Failed to send. Please WhatsApp: <a href={SITE.social.whatsapp} className="underline">+92 305 4782677</a>
+            ❌ Failed to send. Please WhatsApp: <a href={SITE.social.whatsapp} onClick={() => trackLead("whatsapp-contact-form-error")} className="underline">+92 305 4782677</a>
           </motion.p>
         )}
         <button type="submit" disabled={status === "sending"} className="btn-primary w-full justify-center py-4 disabled:opacity-50">
@@ -112,7 +112,7 @@ export default function ContactForm() {
         </button>
         <p className="text-center text-slate-500 text-xs">
           💬 Or WhatsApp:{" "}
-          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-red-400 font-semibold hover:underline">
+          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("whatsapp-contact-page")} className="text-red-400 font-semibold hover:underline">
             +92 305 4782677
           </a>
         </p>

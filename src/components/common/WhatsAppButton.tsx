@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
+import { trackLead } from "@/lib/trackLead";
 
 export default function WhatsAppButton() {
   return (
@@ -10,6 +11,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={() => trackLead("whatsapp-floating-button")}
 className="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-2xl shadow-lg font-semibold text-sm"      initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 2.5, type: "spring", stiffness: 260, damping: 20 }}

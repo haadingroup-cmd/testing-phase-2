@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — HaadinGlobal",
+  title: "Terms & Conditions",
   description: "HaadinGlobal terms and conditions for digital marketing services.",
 };
 

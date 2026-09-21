@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { LANDINGS } from '@/data/landings'
 import { BLOG_POSTS } from '@/data/blog'
+import { TEAM } from '@/data/team'
 
 const base = 'https://www.haadinglobal.com'
 
@@ -52,6 +53,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // Public team member profiles — each is its own indexable Person page.
+  const teamPages = TEAM.filter((m) => m.is_public).map((m) => ({
+    url: `${base}/team/${m.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }))
+
   const staticPages = pages.map(p => ({
     url: `${base}${p.url}`,
     lastModified: now,
@@ -59,5 +68,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.pri,
   }))
 
-  return [...staticPages, ...cityPages, ...blogPages]
+  return [...staticPages, ...cityPages, ...blogPages, ...teamPages]
 }

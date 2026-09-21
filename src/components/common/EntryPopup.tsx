@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { X, MessageCircle, Send, Sparkles } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { trackLead } from "@/lib/trackLead";
 
 /**
  * Entry popup — appears once per browser session, a few seconds after load
@@ -42,6 +43,7 @@ export default function EntryPopup() {
         message: "Started via entry popup to WhatsApp",
       }).then(() => {}, () => {});
     }
+    trackLead("whatsapp-popup");
     window.open(`${SITE.social.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     close();
   }
