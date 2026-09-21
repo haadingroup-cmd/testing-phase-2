@@ -391,8 +391,11 @@ export function AnalyzerHeader() {
         <nav aria-label="Analyzer navigation">
           <a href="#how-it-works">How it works</a>
           <a href="#methodology">Our methodology</a>
-          <a href={brand.seo} className="hg-nav-help">
+          <a href={brand.seo}>
             Get SEO help <ArrowUpRight size={15} />
+          </a>
+          <a href="/dashboard/seo" className="hg-nav-help">
+            Dashboard
           </a>
         </nav>
       </div>
