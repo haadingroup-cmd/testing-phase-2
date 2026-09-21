@@ -22,3 +22,13 @@ CRAWL_TIMEOUT_MS=8000
 CRAWL_TOTAL_BUDGET_MS=75000
 # Technical, on-page, content, performance, local, social weights.
 SCORE_WEIGHTS=30,25,20,10,10,5
+
+# Agency background jobs: Redis above + Vercel Workflow; enable only after live verification.
+SEO_BACKGROUND_ENABLED=false
+# Generate a separate >=32-character secret for authenticated Vercel Cron requests.
+CRON_SECRET=
+# Optional read-only Google reporting. Keep the entire service account JSON server-only.
+GOOGLE_SERVICE_ACCOUNT_JSON=
+# Exact host-to-property and account authorization mapping (no credentials in this value).
+# {"www.example.com":{"gsc":"sc-domain:example.com","ga4":"123456789","allowedProfileIds":["SUPABASE_PROFILE_UUID"]}}
+SEO_GOOGLE_PROPERTIES_JSON={}
