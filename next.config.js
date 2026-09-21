@@ -1,10 +1,14 @@
+const { withWorkflow } = require("workflow/next");
 /** @type {import('next').NextConfig} */
 const securityHeaders = [
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=()",
+  },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   {
     key: "Strict-Transport-Security",
@@ -28,7 +32,10 @@ const securityHeaders = [
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["pdf-lib", "@pdf-lib/fontkit"],
-    outputFileTracingIncludes: { "/api/seo/export": ["./public/seo-fonts/*.ttf"] },
+    outputFileTracingIncludes: {
+      "/api/seo/export": ["./public/seo-fonts/*.ttf"],
+      "/api/seo/jobs/[id]/export": ["./public/seo-fonts/*.ttf"],
+    },
   },
   typescript: { ignoreBuildErrors: false },
   eslint: { ignoreDuringBuilds: false },
@@ -47,4 +54,10 @@ const nextConfig = {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
-module.exports = nextConfig;
+const workflowConfig = withWorkflow(nextConfig);
+module.exports = async (phase, context) => {
+  const config = await workflowConfig(phase, context);
+  // Next 14 uses Webpack; the SDK also supplies a Next 15+ Turbopack option.
+  delete config.turbopack;
+  return config;
+};
