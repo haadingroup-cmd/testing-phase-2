@@ -43,7 +43,7 @@ export async function POST(request: Request) {
             : format === "csv"
               ? "text/csv; charset=utf-8"
               : "application/json; charset=utf-8",
-        "Content-Disposition": `attachment; filename="HaadiGlobal-SEO-Audit-${report.id.slice(0, 8)}.${format}"`,
+        "Content-Disposition": `attachment; filename="HaadinGlobal-SEO-Audit-${report.id.slice(0, 8)}.${format}"`,
         "Cache-Control": "no-store",
         "X-Content-Type-Options": "nosniff",
       },
