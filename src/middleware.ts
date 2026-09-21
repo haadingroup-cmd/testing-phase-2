@@ -69,5 +69,5 @@ export async function middleware(req: NextRequest) {
 
 // Run on every route except static assets and API routes.
 export const config = {
-  matcher: ["/((?!api/|_next/|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)"],
+  matcher: ["/((?!api/|.well-known/workflow/|_next/|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)"],
 };
