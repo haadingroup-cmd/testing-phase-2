@@ -148,13 +148,14 @@ export default function Analyzer({ features }: { features: Features }) {
             <span className="hg-dot" /> YOUR NEXT STEP STARTS WITH CLARITY
           </div>
           <h1 id="analyzer-heading">
-            Free <span>AI SEO</span>
+            Free <span>SEO</span>
             <br />
             Analyzer<span className="hg-gold-dot">.</span>
           </h1>
           <p className="hg-hero-description">
-            Find SEO issues, understand what is hurting your website, and get
-            practical recommendations to improve it.
+            Review observable website signals and get evidence-based
+            recommendations. AI content review is a separate option when
+            connected.
           </p>
           <div className="hg-promise">
             <span>
@@ -297,8 +298,9 @@ export default function Analyzer({ features }: { features: Features }) {
               card required
             </div>
             <p className="hg-data-note">
-              Public pages only. Up to 11 pages per audit. Reports stay in this
-              browser session; download yours before leaving.
+              Quick sample: up to 11 public pages. For site-wide crawling, use
+              the agency SEO Projects dashboard. Reports stay in this browser
+              session; download yours before leaving.
             </p>
           </form>
           {error && (
@@ -376,13 +378,13 @@ export function AnalyzerHeader() {
         <a
           href={brand.website}
           className="hg-brand"
-          aria-label="HaadiGlobal home"
+          aria-label="HaadinGlobal home"
         >
           <span className="hg-brand-symbol">
             H<span>G</span>
           </span>
           <span>
-            Haadi<span className="hg-brand-gold">Global</span>
+            Haadin<span className="hg-brand-gold">Global</span>
             <small>MARKETING AGENCY</small>
           </span>
         </a>

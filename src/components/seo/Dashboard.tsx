@@ -36,7 +36,7 @@ function ScoreRing({ score }: { score: number | null }) {
     <div
       className="hg-score-ring"
       role="img"
-      aria-label={`SEO health ${score === null ? "unavailable" : `${score} out of 100`}`}
+      aria-label={`Checked signal score ${score === null ? "unavailable" : `${score} out of 100`}`}
     >
       <svg viewBox="0 0 180 180" aria-hidden="true">
         <circle
@@ -216,7 +216,7 @@ export default function Dashboard({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `HaadiGlobal-SEO-Audit-${new URL(home.url).hostname}.${format}`;
+      a.download = `HaadinGlobal-SEO-Audit-${new URL(home.url).hostname}.${format}`;
       a.click();
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (err) {
@@ -295,7 +295,7 @@ export default function Dashboard({
             <span className="hg-dot" /> AUDIT COMPLETE
             {report.partial ? " · PARTIAL CRAWL" : ""}
           </div>
-          <h2 id="report-heading">Your website, understood.</h2>
+          <h2 id="report-heading">Your audit findings.</h2>
           <p className="hg-report-url">
             <GlobeMini />
             {new URL(home.url).hostname}
@@ -367,7 +367,7 @@ export default function Dashboard({
             <div className="hg-overview-grid">
               <section className="hg-panel hg-health-panel">
                 <div>
-                  <span className="hg-eyebrow">SEO HEALTH</span>
+                  <span className="hg-eyebrow">CHECKED SIGNALS</span>
                   <h3>{scoreLabel(report.overall)}</h3>
                   <p>
                     Measured signals.
@@ -376,8 +376,9 @@ export default function Dashboard({
                 </div>
                 <ScoreRing score={report.overall} />
                 <p className="hg-score-disclaimer">
-                  This score represents the available technical and on-page
-                  checks. It is not a Google ranking prediction.
+                  This is the weighted pass rate for the checks performed.
+                  Unchecked pages, content quality, rankings and real loading
+                  speed are not represented by this number.
                 </p>
               </section>
               <div className="hg-overview-right">
@@ -535,7 +536,7 @@ export default function Dashboard({
             )}
             <div className="hg-two-column">
               <section className="hg-panel">
-                <h3>Content quality overview</h3>
+                <h3>Content structure observations</h3>
                 <p>
                   This audit measures structure and text availability. An
                   AI-assisted content assessment is available separately; it is
@@ -952,7 +953,7 @@ export default function Dashboard({
                     <div key={m.key}>
                       <strong>
                         {m.value ?? "—"}
-                        <small>/100</small>
+                        <small>{m.unit || ""}</small>
                       </strong>
                       <span>{m.label}</span>
                       <p>{m.source}</p>
@@ -975,9 +976,7 @@ export default function Dashboard({
                   ))}
               </div>
               <p className="hg-note">
-                The provider interface supports future authorized integrations.
-                GSC, GA4, backlink and keyword providers are not currently
-                connected.
+                Authorized Search Console and GA4 totals are available through the staff dashboard when configured. Backlink and keyword datasets are not connected.
               </p>
             </section>
             <div className="hg-spaced">
@@ -991,7 +990,7 @@ export default function Dashboard({
               <h3>Agency report & exports</h3>
               <p>
                 Personalize the PDF cover. Every report retains “Powered by
-                HaadiGlobal AI SEO Analyzer.”
+                HaadinGlobal AI SEO Analyzer.”
               </p>
               <div className="hg-form-grid">
                 <label>
@@ -1068,7 +1067,8 @@ export default function Dashboard({
           <span className="hg-eyebrow">FOUND SEO ISSUES?</span>
           <h2>Let’s turn findings into progress.</h2>
           <p>
-            Let HaadiGlobal help you fix them, one useful improvement at a time.
+            Let HaadinGlobal help you fix them, one useful improvement at a
+            time.
           </p>
         </div>
         <div>
