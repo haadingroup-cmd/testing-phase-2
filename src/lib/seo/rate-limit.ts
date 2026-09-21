@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { PublicError } from "./security";
+import { redisCredentials } from "./redis-config";
 const globalState = globalThis as typeof globalThis & {
   seoLimits?: Map<string, { count: number; expires: number }>;
 };
@@ -14,8 +15,7 @@ async function increment(key: string, seconds: number): Promise<number> {
       503,
     );
   if (process.env.RATE_LIMIT_MODE === "redis") {
-    const url = process.env.UPSTASH_REDIS_REST_URL,
-      token = process.env.UPSTASH_REDIS_REST_TOKEN;
+    const { url, token } = redisCredentials();
     if (!url || !token || !url.startsWith("https://"))
       throw new PublicError(
         "The service is being configured. Please try again later.",

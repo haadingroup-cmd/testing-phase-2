@@ -2,19 +2,20 @@ import { gzipSync, gunzipSync } from "node:zlib";
 import { randomUUID } from "node:crypto";
 import { PublicError } from "./security";
 import type { FullCrawl } from "./full-crawl";
+import { redisCredentials } from "./redis-config";
 const ttl = 30 * 86400;
 export function jobsConfigured() {
+  const { url, token } = redisCredentials();
   return Boolean(
-    process.env.UPSTASH_REDIS_REST_URL &&
-      process.env.UPSTASH_REDIS_REST_TOKEN &&
+    url?.startsWith("https://") &&
+      token &&
       process.env.SEO_BACKGROUND_ENABLED === "true",
   );
 }
 export async function redis<T = unknown>(
   ...command: (string | number)[]
 ): Promise<T> {
-  const url = process.env.UPSTASH_REDIS_REST_URL,
-    token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const { url, token } = redisCredentials();
   if (!url?.startsWith("https://") || !token)
     throw new PublicError("Persistent audit storage is not connected.", 503);
   const response = await fetch(url, {
