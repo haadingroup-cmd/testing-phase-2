@@ -7,6 +7,7 @@ const base = 'https://www.haadinglobal.com'
 
 const pages = [
   { url: '/', pri: 1.0, chg: 'weekly' as const },
+  { url: '/free-seo-audit', pri: 0.8, chg: 'monthly' as const },
   { url: '/services', pri: 0.9, chg: 'weekly' as const },
   { url: '/services/meta-ads', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/google-ads', pri: 0.9, chg: 'monthly' as const },

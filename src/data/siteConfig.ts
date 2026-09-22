@@ -37,6 +37,7 @@ export const NAV_SERVICES = [
 ];
 
 export const FOOTER_COMPANY = [
+  { label: "Free SEO Audit", href: "/free-seo-audit" },
   { label: "About Us",     href: "/about" },
   { label: "Careers",      href: "/careers" },
   { label: "Case Studies", href: "/portfolio" },
