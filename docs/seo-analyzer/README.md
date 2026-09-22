@@ -120,7 +120,7 @@ The September 21 local production build completed successfully with 101 generate
 
 The GitHub feature branch is `feat/free-seo-audit`, and the existing Vercel project is `haadingroup-4472s-projects/testing-phase-2`. Use the pull request and its deployment checks for the current release status.
 
-The local verification environment could not expose a reachable browser preview or perform live crawler DNS requests. Remote preview checks, actual provider requests when enabled, and production environment configuration remain required release gates. The development checks above do not establish that these gates have passed.
+On September 22, the Vercel preview completed a real 11-page hajjumrahtaxis.com quick audit with Redis configured, and its branded 11-page PDF downloaded successfully. GitHub Actions run 35647336583 passed for e223e5f4ca86d7e5e5223a0c4d603d84e5b82847. This verifies the public quick-audit path, not the authenticated background workflow or optional providers. See WORK_CHECKPOINT.md for the deployment boundary.
 
 
 ## Agency background release (September 2026)
@@ -134,15 +134,21 @@ The local verification environment could not expose a reachable browser preview 
 - Vercel Cron calls `/api/seo/cron` daily at 03:00 UTC. `CRON_SECRET` is mandatory and checked before work. Daily/weekly schedules are opt-in per website and reuse its crawl/AI budget. Staff role is rechecked before scheduled runs. Disable using “Stop repeats”. Up to 50 schedules; up to 20 due schedules started per invocation. Failed starts remain visible in history.
 - `SEO_BACKGROUND_ENABLED=true` is a release gate, not a substitute for connecting Redis and verifying a real workflow.
 
-### Required operational verification before production
+### Public release and gated agency features
 
-1. Keep PR in draft until latest `main` is integrated and all checks pass. Current agency updates are in local `release/seo-analyzer-verified`; do not overwrite newer unrelated work.
-2. Provision Redis only after the account owner approves provider terms and plan. Separate Preview/Production databases; do not share private production snapshots with preview builds.
-3. Add signing secret, Redis REST URL/token, `RATE_LIMIT_MODE=redis`, `SEO_BACKGROUND_ENABLED=true`, and a separate `CRON_SECRET` in the correct environment. Never use memory rate limits for public production.
-4. Verify staff login, cross-user access denial, workflow continuation with browser closed, cancellation, resume, schedule creation/disable and a real triggered scheduled audit.
-5. Configure `OPENAI_API_KEY`/`OPENAI_MODEL`, choose an account budget, and verify real per-page AI results. Verify PageSpeed independently with `PAGESPEED_API_KEY`.
-6. For Google reporting: enable Search Console API and Google Analytics Data API in a Google Cloud project. Add a service account to the relevant properties with read access. Set `GOOGLE_SERVICE_ACCOUNT_JSON` and `SEO_GOOGLE_PROPERTIES_JSON` (exact host, IDs and allowed staff profile IDs). Test authorized and unauthorized property requests. Search Console access does not imply GA4 access.
-7. Redis compressed snapshots have an 8 MB encoded size ceiling and 50 MB decompression ceiling. Large audits must surface storage/provider failures, not claim complete coverage. Monitor workflow and storage limits before increasing page capacity.
+The public quick audit can be released independently after CI, a live preview audit/PDF, production signing and distributed rate limiting pass. SEO Analyzer is linked from the main desktop/mobile navigation. Missing optional credentials are shown honestly.
+
+The owner requires free services only. Upstash haadinglobal-seo-free was created on the Free plan after owner acceptance and connected to Production and Preview. Vercel Marketplace KV_REST_API_URL/TOKEN are supported as alternatives to UPSTASH_REDIS_REST_URL/TOKEN; never combine partial credential pairs. Both environments use RATE_LIMIT_MODE=redis. No paid AI provider is configured.
+
+Before enabling production background jobs:
+
+1. Preserve unrelated main changes and require passing CI for the release candidate.
+2. Isolate private production snapshots from preview builds. The current shared free database is sufficient for public counters and preview checks, but production background storage remains disabled until that isolation is in place.
+3. Configure production SEO_BACKGROUND_ENABLED only after authenticated live verification. CRON_SECRET is separately required for scheduling. Never use memory rate limits for public production.
+4. Verify staff login, cross-user access denial, workflow continuation with browser closed, cancellation, resume, stored exports, schedule creation/disable and a real scheduled run. Preview background processing is enabled for this verification after redeployment.
+5. Keep paid AI disabled under the current free-only instruction. Optional providers require separate real smoke tests before advertising availability. PageSpeed is independently configured with PAGESPEED_API_KEY.
+6. For Google reporting: enable Search Console API and Google Analytics Data API; grant a service account read access to the relevant properties. Configure GOOGLE_SERVICE_ACCOUNT_JSON and SEO_GOOGLE_PROPERTIES_JSON with exact hosts, IDs and authorized staff profile IDs. Test allowed and denied requests. Search Console access does not imply GA4 access.
+7. Redis compressed snapshots have an 8 MB encoded size ceiling and 50 MB decompression ceiling. Surface storage/provider failures and incomplete coverage honestly. Free plans have quotas; inspect usage before increasing capacity and never upgrade without authorization.
 
 ### Verification boundary
 
