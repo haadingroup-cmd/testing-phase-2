@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Send, Loader2 } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { trackLead } from "@/lib/trackLead";
 
 /**
@@ -33,7 +33,7 @@ export default function LandingLeadForm({ source, city, priceNote, leadSource = 
 
     if (SUPABASE_READY) {
       try {
-        const { error } = await supabaseBrowser().from("leads").insert({
+        const { error } = await insertLead({
           name, email, phone, service, message, source: leadSource, status: "new",
         });
         if (!error) saved = true;

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckCircle, Clock, TrendingUp, Users, Send, MessageCircle, Zap, Shield, Star } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { SERVICES } from "@/data/services";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
 import { trackLead } from "@/lib/trackLead";
@@ -27,7 +27,7 @@ export default function ConsultationPage() {
           form.website_social && `Website/Social: ${form.website_social}`,
           form.budget && `Budget: ${form.budget}`,
         ].filter(Boolean).join(" · ");
-        await supabaseBrowser().from("leads").insert({
+        await insertLead({
           name: form.name, email: form.email, phone: form.phone,
           service: form.service, message: notes, source: "website", status: "new",
         });

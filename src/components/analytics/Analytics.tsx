@@ -28,7 +28,11 @@ export default function Analytics() {
       ) : null}
 
       {PIXEL_ID ? (
-        <Script id="meta-pixel" strategy="afterInteractive">
+        // Pixel and Clarity load after the page has finished loading
+        // (lazyOnload) so their ~180 KB of JS doesn't compete with first render;
+        // PageSpeed measured ~380 ms of main-thread time from these two.
+        // GA4 stays afterInteractive so lead events are never missed.
+        <Script id="meta-pixel" strategy="lazyOnload">
           {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -40,7 +44,7 @@ export default function Analytics() {
         </Script>
       ) : null}
 
-      <Script id="ms-clarity" strategy="afterInteractive">
+      <Script id="ms-clarity" strategy="lazyOnload">
         {`(function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
