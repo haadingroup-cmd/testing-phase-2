@@ -55,7 +55,7 @@ export default function AboutPage() {
                 <p>Today, HaadinGlobal is recognized as one of the most trusted and results-driven digital agencies in the region, with a strong client retention rate and a focus on measurable, verifiable results.</p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[{v:"$150K+",l:"Ad Spend Managed"},{v:"60+",l:"Projects"},{v:"20+",l:"Happy Clients"},{v:"6",l:"Markets"}].map(s => (
+                {[{v:"60+",l:"Projects"},{v:"90%",l:"Client Retention"},{v:"20+",l:"Happy Clients"},{v:"6",l:"Markets"}].map(s => (
                   <div key={s.l} className="card px-5 py-4">
                     <p className="text-2xl font-black gradient-text">{s.v}</p>
                     <p className="text-sm text-slate-500">{s.l}</p>

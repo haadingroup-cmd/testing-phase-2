@@ -36,7 +36,6 @@ const STATS = [
   { to:90,  suffix:"%",  icon:"❤️", key:"stats_retention" },
   { to:4,   suffix:"x",  icon:"📈", key:"stats_roas" },
   { to:6,   suffix:"",   icon:"🌍", key:"stats_countries" },
-  { to:150, suffix:"K+", icon:"💰", key:"stats_revenue" },
 ];
 
 export default function StatsSection() {
@@ -45,7 +44,7 @@ export default function StatsSection() {
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(239,68,68,0.07) 0%, transparent 70%)" }} />
       <div className="container relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
           {STATS.map((s, i) => (
             <motion.div
               key={s.key}

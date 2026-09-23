@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, CheckCircle, TrendingUp, Users, Zap, ShoppingBag, Star } from "lucide-react";
+import { ArrowRight, MessageCircle, CheckCircle, TrendingUp, Users, Zap, Star } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
 import { trackLead } from "@/lib/trackLead";
@@ -303,8 +303,8 @@ export default function HeroSection() {
                 <p className="text-[11px] text-slate-400">Avg ROAS (Meta Ads)</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black text-white">$150K+</p>
-                <p className="text-[11px] text-slate-400">Revenue Generated</p>
+                <p className="text-2xl font-black text-white">60+</p>
+                <p className="text-[11px] text-slate-400">Projects Delivered</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
                 <p className="text-2xl font-black text-white">20+</p>
@@ -340,14 +340,6 @@ export default function HeroSection() {
             <FloatCard className="-top-4 -right-2 md:-right-6 w-36" delay={1.05}>
               <p className="text-white font-black text-xl">24h</p>
               <p className="text-[10px] text-slate-400">Avg Response Time</p>
-            </FloatCard>
-
-            {/* Card: Revenue */}
-            <FloatCard className="-bottom-4 -right-2 md:-right-6 w-44" delay={1.15}>
-              <ShoppingBag size={15} className="text-red-400 mb-1"/>
-              <p className="text-[11px] text-slate-400">Revenue Generated</p>
-              <p className="text-2xl font-black text-white">$150K+</p>
-              <p className="text-[11px] text-green-300 font-bold">For our clients</p>
             </FloatCard>
           </motion.div>
         </div>
