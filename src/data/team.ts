@@ -13,7 +13,6 @@
  * 4. Malaika Farooq
  * 5. Arooba Shafique
  * 6. Nafia Aziz
- * 7–12. Placeholders
  */
 export type TeamLevel = "Junior" | "Mid" | "Senior" | "Lead";
 
@@ -224,28 +223,7 @@ export const TEAM: TeamMember[] = [
     stars: 5,
     is_public: true,
   },
-  // ── Placeholder members (edit/remove from the admin dashboard) ───────────
-  ph("ahmed-raza", "Ahmed Raza", "SEO Specialist", "Mid", ["SEO", "Technical SEO", "Content"]),
-  ph("hina-malik", "Hina Malik", "Social Media Manager", "Mid", ["Social Media", "Community", "Content Calendar"]),
-  ph("bilal-khan", "Bilal Khan", "Google Ads Specialist", "Senior", ["Google Ads", "PPC", "Analytics"]),
-  ph("sana-tariq", "Sana Tariq", "Graphic Designer", "Junior", ["Graphic Design", "Branding", "Social Creatives"]),
-  ph("usman-ali", "Usman Ali", "Meta Ads Specialist", "Mid", ["Meta Ads", "Creative Testing", "Retargeting"]),
-  ph("ayesha-noor", "Ayesha Noor", "Content Writer", "Junior", ["Copywriting", "SEO Writing", "Email"]),
 ];
-
-function ph(slug: string, name: string, title: string, level: TeamLevel, skills: string[]): TeamMember {
-  return {
-    slug,
-    full_name: name,
-    title,
-    level,
-    bio: `${name} is part of the HaadinGlobal team, contributing to client work across ${title.toLowerCase()} projects. This is placeholder content — update it from the admin dashboard.`,
-    photo_url: "/logo-small.png",
-    skills,
-    stars: 4,
-    is_public: true,
-  };
-}
 
 export function getMember(slug: string) {
   return TEAM.find((m) => m.slug === slug);
