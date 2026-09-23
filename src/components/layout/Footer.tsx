@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { SITE, FOOTER_COMPANY, FOOTER_SERVICES } from "@/data/siteConfig";
+import { SITE, FOOTER_COMPANY, FOOTER_SERVICES, FOOTER_AREAS } from "@/data/siteConfig";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export default function Footer() {
@@ -87,6 +87,15 @@ export default function Footer() {
               <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors text-sm">Terms & Conditions</Link></li>
             </ul>
           </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-white/8">
+          <h3 className="font-semibold text-white text-xs uppercase tracking-wider mb-4">Digital Marketing Agency In</h3>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+            {FOOTER_AREAS.map(a => (
+              <li key={a.href}><Link href={a.href} className="text-slate-400 hover:text-white transition-colors text-sm">{a.label}</Link></li>
+            ))}
+          </ul>
         </div>
       </div>
 

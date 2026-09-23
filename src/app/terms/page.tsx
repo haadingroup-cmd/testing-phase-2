@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "HaadinGlobal terms and conditions for digital marketing services.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

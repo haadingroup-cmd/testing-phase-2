@@ -6,6 +6,7 @@ import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with HaadinGlobal. Book a free consultation or reach us via WhatsApp, email, or phone.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

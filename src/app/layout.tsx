@@ -42,7 +42,9 @@ export const metadata: Metadata = {
   verification: {
     google: "TsWZj-bZ3ii9Q_Rfk9AoI1eFzagPGWpyqPoFjMJ_M7A",
   },
-  alternates: { canonical: "https://www.haadinglobal.com" },
+  // No site-wide canonical here: child pages inherit it, so a root canonical
+  // would point every page without its own at the homepage. Each page sets
+  // its own `alternates.canonical` instead.
 };
 
 const jsonLd = {

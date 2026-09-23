@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Download, Loader2, CheckCircle, FileText } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { trackLead } from "@/lib/trackLead";
 
 /**
@@ -37,7 +37,7 @@ export default function LeadMagnet() {
 
     if (SUPABASE_READY) {
       try {
-        const { error } = await supabaseBrowser().from("leads").insert({
+        const { error } = await insertLead({
           name, email, phone: "", service: "Audit Checklist",
           message: "Downloaded the free 2026 Digital Marketing Audit Checklist",
           source: "lead-magnet", status: "new",

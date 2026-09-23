@@ -283,7 +283,7 @@ export default function HeroSection() {
                 <Star size={16} className="text-amber-400" fill="currentColor" />
               </div>
               <div>
-                <p className="text-white font-bold text-sm">40+ Happy Clients</p>
+                <p className="text-white font-bold text-sm">20+ Happy Clients</p>
                 <p className="text-slate-400 text-xs">Trusted by businesses across Pakistan &amp; the Gulf</p>
               </div>
             </motion.div>
@@ -299,15 +299,15 @@ export default function HeroSection() {
             {/* Mobile-only clean stats grid (replaces the overlapping float cards) */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-sm mt-6 md:hidden">
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black gradient-text">4x+</p>
+                <p className="text-2xl font-black gradient-text">4x</p>
                 <p className="text-[11px] text-slate-400">Avg ROAS (Meta Ads)</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black text-white">$500K+</p>
+                <p className="text-2xl font-black text-white">$150K+</p>
                 <p className="text-[11px] text-slate-400">Revenue Generated</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
-                <p className="text-2xl font-black text-white">40+</p>
+                <p className="text-2xl font-black text-white">20+</p>
                 <p className="text-[11px] text-slate-400">Happy Clients</p>
               </div>
               <div className="card rounded-2xl p-3 text-center">
@@ -332,7 +332,7 @@ export default function HeroSection() {
             {/* Card: ROAS */}
             <FloatCard className="-bottom-4 -left-2 md:-left-6 w-40" delay={1.0}>
               <p className="text-[11px] text-slate-400 mb-1">Avg ROAS</p>
-              <p className="text-3xl font-black gradient-text">4x+</p>
+              <p className="text-3xl font-black gradient-text">4x</p>
               <p className="text-[10px] text-slate-500">Meta Ads</p>
             </FloatCard>
 
@@ -346,7 +346,7 @@ export default function HeroSection() {
             <FloatCard className="-bottom-4 -right-2 md:-right-6 w-44" delay={1.15}>
               <ShoppingBag size={15} className="text-red-400 mb-1"/>
               <p className="text-[11px] text-slate-400">Revenue Generated</p>
-              <p className="text-2xl font-black text-white">$500K+</p>
+              <p className="text-2xl font-black text-white">$150K+</p>
               <p className="text-[11px] text-green-300 font-bold">For our clients</p>
             </FloatCard>
           </motion.div>
