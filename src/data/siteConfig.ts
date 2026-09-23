@@ -54,3 +54,29 @@ export const FOOTER_SERVICES = [
   { label: "Shopify Store",      href: "/services/shopify" },
   { label: "AI Automation",      href: "/services/ai-automation" },
 ];
+
+// City/country landing pages linked site-wide from the footer. Without these
+// links the /agency pages are orphans (sitemap-only) and Google leaves them
+// "Discovered – currently not indexed". Kept as a small label+href list rather
+// than importing LANDINGS, because the footer ships in the client bundle.
+// Add a row here whenever a new landing is added to src/data/landings.ts.
+export const FOOTER_AREAS = [
+  { label: "Sahiwal", href: "/agency/digital-marketing-agency-sahiwal" },
+  { label: "Multan", href: "/agency/digital-marketing-agency-multan" },
+  { label: "Jhang", href: "/agency/digital-marketing-agency-jhang" },
+  { label: "Okara", href: "/agency/digital-marketing-agency-okara" },
+  { label: "Lahore", href: "/agency/digital-marketing-agency-lahore" },
+  { label: "Faisalabad", href: "/agency/digital-marketing-agency-faisalabad" },
+  { label: "Sargodha", href: "/agency/digital-marketing-agency-sargodha" },
+  { label: "Pakpattan", href: "/agency/digital-marketing-agency-pakpattan" },
+  { label: "Karachi", href: "/agency/digital-marketing-agency-karachi" },
+  { label: "Islamabad", href: "/agency/digital-marketing-agency-islamabad" },
+  { label: "Rawalpindi", href: "/agency/digital-marketing-agency-rawalpindi" },
+  { label: "Dubai", href: "/agency/digital-marketing-agency-dubai" },
+  { label: "Qatar", href: "/agency/digital-marketing-agency-qatar" },
+  { label: "Saudi Arabia", href: "/agency/digital-marketing-agency-saudi-arabia" },
+  { label: "UK", href: "/agency/digital-marketing-agency-uk" },
+  { label: "London", href: "/agency/digital-marketing-agency-london" },
+  { label: "USA", href: "/agency/digital-marketing-agency-usa" },
+  { label: "New York", href: "/agency/digital-marketing-agency-new-york" },
+];

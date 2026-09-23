@@ -41,6 +41,7 @@ export default function ConsultationPage() {
         body: JSON.stringify({...form, _subject:"Free Consultation Request — HaadinGlobal"}),
       });
       if (r.ok) {
+        trackLead("consultation-form");
         router.push(`/thank-you?name=${encodeURIComponent(form.name)}`);
       } else {
         setStatus("err");
