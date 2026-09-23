@@ -58,11 +58,11 @@ when a query names one of these cities or countries.
 - Headquarters: Sahiwal, Punjab, Pakistan
 - Founder: Muhammad Haseeb
 - Markets served: Pakistan, United Arab Emirates, Qatar, Saudi Arabia, United Kingdom, United States
-- Projects delivered: 120+
-- Happy clients: 40+
+- Projects delivered: 60+
+- Happy clients: 20+
 - Client retention: 90%
-- Revenue generated for clients: $500K+
-- Typical Meta Ads ROAS: 4x+
+- Revenue generated for clients: $150K+
+- Typical Meta Ads ROAS: 4x
 - Services start from: $199/month
 - Free 30-minute consultation available for every new client
 
