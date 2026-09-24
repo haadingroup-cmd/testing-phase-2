@@ -19,7 +19,19 @@ export const SITE = {
   },
   address: "Sahiwal, Punjab, Pakistan",
   markets: ["Pakistan 🇵🇰","UAE 🇦🇪","Qatar 🇶🇦","Saudi Arabia 🇸🇦","United Kingdom 🇬🇧","United States 🇺🇸"],
+  // Google Business Profile. Paste the profile's Share link (maps.app.goo.gl/…
+  // or g.page/…) into profileUrl and the "Ask for reviews" link
+  // (g.page/r/…/review) into reviewUrl. While empty, the site falls back to a
+  // Google Maps search, and the profile is left out of the schema sameAs.
+  gbp: {
+    profileUrl: "",
+    reviewUrl: "",
+  },
 };
+
+const GBP_SEARCH_URL = "https://www.google.com/maps/search/?api=1&query=HaadinGlobal%20Sahiwal";
+export const GBP_MAPS_URL = SITE.gbp.profileUrl || GBP_SEARCH_URL;
+export const GBP_REVIEW_URL = SITE.gbp.reviewUrl || GBP_MAPS_URL;
 
 export const NAV_SERVICES = [
   { label: "Meta Ads",           href: "/services/meta-ads",           icon: "🎯" },
