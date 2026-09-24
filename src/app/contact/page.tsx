@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
-import { SITE } from "@/data/siteConfig";
+import { SITE, GBP_MAPS_URL, GBP_REVIEW_URL } from "@/data/siteConfig";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export const metadata: Metadata = {
@@ -29,8 +29,9 @@ export default function ContactPage() {
                 {[
                   {icon:"📞",t:"Phone & WhatsApp",v:SITE.phone,h:SITE.social.whatsapp,cta:"Chat Now",whatsapp:true},
                   {icon:"📧",t:"Primary Email",v:SITE.email,h:`mailto:${SITE.email}`,cta:"Send Email",whatsapp:false},
-                  {icon:"📍",t:"Office",v:SITE.address,h:"#",cta:"",whatsapp:false},
-                  {icon:"🕐",t:"Business Hours",v:"Mon–Sat: 9AM–8PM PKT",h:"#",cta:"",whatsapp:false},
+                  {icon:"📍",t:"Office",v:SITE.address,h:GBP_MAPS_URL,cta:"View on Google Maps",whatsapp:false},
+                  {icon:"⭐",t:"Google Reviews",v:"Worked with us? We'd love your feedback.",h:GBP_REVIEW_URL,cta:"Leave a Review",whatsapp:false},
+                  {icon:"🕐",t:"Business Hours",v:"Mon–Sat: 9AM–5PM PKT",h:"#",cta:"",whatsapp:false},
                   {icon:"⚡",t:"Avg Response",v:"Within 2–4 hours",h:"#",cta:"",whatsapp:false},
                 ].map(c => (
                   <div key={c.t} className="card p-5 flex items-start gap-4">

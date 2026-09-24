@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { SITE, FOOTER_COMPANY, FOOTER_SERVICES, FOOTER_AREAS } from "@/data/siteConfig";
+import { Phone, Mail, MapPin, Star } from "lucide-react";
+import { SITE, FOOTER_COMPANY, FOOTER_SERVICES, FOOTER_AREAS, GBP_MAPS_URL, GBP_REVIEW_URL } from "@/data/siteConfig";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export default function Footer() {
@@ -42,9 +42,12 @@ export default function Footer() {
               <a href={`mailto:${SITE.email}`} className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
                 <Mail size={14} className="text-red-400 flex-shrink-0" />{SITE.email}
               </a>
-              <div className="flex items-center gap-2.5 text-slate-400 text-sm">
+              <a href={GBP_MAPS_URL} target="_blank" rel="noopener noreferrer" aria-label="HaadinGlobal on Google Maps" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
                 <MapPin size={14} className="text-red-400 flex-shrink-0" />{SITE.address}
-              </div>
+              </a>
+              <a href={GBP_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
+                <Star size={14} className="text-red-400 flex-shrink-0" />Review us on Google
+              </a>
             </div>
             <div className="flex flex-wrap gap-2">
               {socials.map(s => (

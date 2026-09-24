@@ -7,6 +7,7 @@ import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProv
 import Analytics from "@/components/analytics/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE, GBP_MAPS_URL } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.haadinglobal.com"),
@@ -126,7 +127,7 @@ const jsonLd = {
         { "@type": "Country", name: "United States" },
       ],
       geo: { "@type": "GeoCoordinates", latitude: 30.6641, longitude: 73.1114 },
-      hasMap: "https://www.google.com/maps?q=HaadinGlobal+Sahiwal",
+      hasMap: GBP_MAPS_URL,
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -141,6 +142,8 @@ const jsonLd = {
         "https://www.tiktok.com/@haadinglobal",
         "https://www.linkedin.com/in/haadinglobal",
         "https://www.youtube.com/@haadinglobal",
+        // Only the real profile link identifies the listing; a Maps search does not.
+        ...(SITE.gbp.profileUrl ? [SITE.gbp.profileUrl] : []),
       ],
     },
   ],
