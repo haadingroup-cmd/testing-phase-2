@@ -24,8 +24,8 @@ export const SITE = {
   // (g.page/r/…/review) into reviewUrl. While empty, the site falls back to a
   // Google Maps search, and the profile is left out of the schema sameAs.
   gbp: {
-    profileUrl: "",
-    reviewUrl: "",
+    profileUrl: "https://share.google/xeY8hoAQEDetiuZVy",
+    reviewUrl: "https://g.page/r/CWDkGFJr1tQ0EBM/review",
   },
 };
 
