@@ -1,7 +1,8 @@
-import type { NextRequest } from "next/server";
+import { after, type NextRequest } from "next/server";
 import { subscribeSchema } from "@/lib/validation";
 import { guardPost, json, tooFast } from "@/lib/security";
-import { insertRow } from "@/lib/db";
+import { insertRow, updateRows } from "@/lib/db";
+import { sendWelcomeEmail } from "@/lib/email";
 import { fakeOk, firstIssue, handleWriteError } from "@/lib/api";
 
 export const runtime = "nodejs";
@@ -15,12 +16,20 @@ export async function POST(req: NextRequest) {
   if (!parsed.success) return json({ ok: false, error: firstIssue(parsed.error) }, 422);
   if (parsed.data.website || tooFast(parsed.data.startedAt)) return fakeOk();
 
+  const { email, source } = parsed.data;
   try {
-    await insertRow(
+    let isNew = await insertRow(
       "subscribers",
-      { email: parsed.data.email, source: parsed.data.source, consent_text: "Weekly SmarterBiz briefing — unsubscribe anytime." },
+      { email, source, consent_text: "Weekly SmarterBiz briefing — unsubscribe anytime." },
       { ignoreDuplicatesOn: "email" },
     );
+    if (!isNew) {
+      // Existing address: re-activate only if it had unsubscribed. Active subscribers get no second email,
+      // so the form can't be used to bombard someone's inbox.
+      isNew = (await updateRows("subscribers", { email: `eq.${email}`, unsubscribed_at: "not.is.null" }, { unsubscribed_at: null, source })) > 0;
+    }
+    // Same response either way, so the endpoint doesn't reveal who is subscribed.
+    if (isNew) after(() => sendWelcomeEmail(email));
     return json({ ok: true });
   } catch (err) {
     return handleWriteError(err);

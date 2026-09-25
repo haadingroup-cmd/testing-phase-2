@@ -24,13 +24,12 @@ export function TrendingTools({ tools }: { tools: Tool[] }) {
 
   return (
     <div>
-      <div role="tablist" aria-label="Filter tools by category" className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:flex-wrap md:px-0">
+      <div role="group" aria-label="Filter tools by category" className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:flex-wrap md:px-0">
         {FILTERS.map((f) => (
           <button
             key={f.key}
-            role="tab"
             type="button"
-            aria-selected={active === f.key}
+            aria-pressed={active === f.key}
             onClick={() => setActive(f.key)}
             className={`shrink-0 rounded-full px-3.5 py-1.5 text-label transition-colors ${
               active === f.key ? "bg-ink text-white shadow-sm" : "bg-surface-base text-on-surface hover:bg-surface-high"

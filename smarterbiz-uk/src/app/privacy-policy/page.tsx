@@ -25,13 +25,13 @@ export default function PrivacyPage() {
       <p>This website does not use advertising or analytics cookies. If that changes, we will ask for your consent first.</p>
       <h2>Why we use it (lawful basis)</h2>
       <ul>
-        <li>Newsletter — <strong>consent</strong>, which you can withdraw at any time using the unsubscribe link.</li>
+        <li>Newsletter — <strong>consent</strong>, which you can withdraw at any time using the unsubscribe link in every email (one-click unsubscribe is supported).</li>
         <li>Contact and submissions — <strong>legitimate interests</strong> in responding to your enquiry.</li>
         <li>Security logs — <strong>legitimate interests</strong> in keeping the site secure.</li>
       </ul>
       <h2>Who we share it with</h2>
       <p>
-        We use trusted processors to run this site, including our hosting provider and database provider. They process data only on our
+        We use trusted processors to run this site, including our hosting provider, database provider and email delivery provider. They process data only on our
         instructions under data processing agreements. Where data is transferred outside the UK, appropriate safeguards are used.
       </p>
       <h2>How long we keep it</h2>

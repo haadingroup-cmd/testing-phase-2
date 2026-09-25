@@ -283,6 +283,181 @@ export const COMPARISONS: Comparison[] = [
       },
     ],
   },
+  {
+    slug: "chatgpt-vs-copilot",
+    a: "chatgpt",
+    b: "microsoft-365-copilot",
+    title: "ChatGPT vs Microsoft Copilot: Which Should a UK Business Use?",
+    metaTitle: "ChatGPT vs Copilot (2026): Which Is Best for UK Business?",
+    description:
+      "ChatGPT vs Microsoft 365 Copilot for small businesses: standalone versatility vs working inside Outlook, Word, Excel and Teams — features, data protection and cost in £.",
+    keywords: ["chatgpt vs copilot", "copilot vs chatgpt", "microsoft copilot or chatgpt for business"],
+    published: "2026-09-25",
+    updated: "2026-09-25",
+    verdict:
+      "Microsoft 365 Copilot is the better choice for businesses that live in Outlook, Teams and SharePoint, because it works on your own emails, meetings and files. ChatGPT is the better standalone assistant — more versatile, cheaper for individuals and not tied to one office suite.",
+    winner: "tie",
+    criteria: [
+      { name: "Works inside Office apps", a: "Via connectors", b: "Native in Outlook, Word, Excel, Teams", winner: "b" },
+      { name: "Standalone versatility", a: "Broadest feature set", b: "Good", winner: "a" },
+      { name: "Grounded in your work data", a: "Via connected files", b: "Emails, meetings, chats and files", winner: "b" },
+      { name: "Compliance & data residency", a: "Strong on Business/Enterprise", b: "Inherits Microsoft 365 controls", winner: "b" },
+      { name: "Cost for a small team", a: "Plus or per-seat Business plan", b: "Copilot Chat free; full Copilot paid add-on", winner: "tie" },
+      { name: "Image generation & voice", a: "Built in", b: "Available, less central", winner: "a" },
+    ],
+    pickA: ["You use Google Workspace or a mix of tools", "You want images, voice and custom GPTs", "Budget per person matters most"],
+    pickB: ["Your business runs on Microsoft 365 and Teams", "Meetings and email dominate your week", "You need enterprise compliance controls"],
+    sections: [
+      {
+        id: "analysis",
+        heading: "The editorial analysis",
+        blocks: [
+          {
+            type: "p",
+            text: "The key difference is context. Copilot can read the email thread you're replying to, the Teams meeting you missed and the proposal in SharePoint, within your existing permissions. ChatGPT is more capable as a general tool but needs you to bring the context. Many Microsoft 365 businesses start with the free Copilot Chat and buy full Copilot licences only for the heaviest email and meeting users.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Copilot better than ChatGPT?",
+        a: "Copilot is better inside Microsoft 365 apps because it uses your emails, meetings and files. ChatGPT is better as a standalone, general-purpose assistant.",
+      },
+      {
+        q: "Is Microsoft Copilot free for business?",
+        a: "Copilot Chat is available to Microsoft 365 business users at no extra cost. The full Microsoft 365 Copilot, which works inside Outlook, Word, Excel and Teams with your work data, is a paid add-on.",
+      },
+    ],
+  },
+  {
+    slug: "claude-vs-gemini",
+    a: "claude",
+    b: "gemini",
+    title: "Claude vs Gemini: Which AI Assistant Is Better for Business?",
+    metaTitle: "Claude vs Gemini (2026): Best AI Assistant for UK Business?",
+    description:
+      "Claude vs Google Gemini for UK small businesses: writing quality, long documents, research, Google Workspace integration, data protection and price in £.",
+    keywords: ["claude vs gemini", "gemini vs claude", "claude or gemini for business"],
+    published: "2026-09-25",
+    updated: "2026-09-25",
+    verdict:
+      "Claude is the better assistant for writing, contracts and long-document work. Gemini is better value for Google Workspace businesses, where it's built into Gmail, Docs and Sheets and often included in the plan, and it excels at research.",
+    winner: "b",
+    criteria: [
+      { name: "Writing quality & British English", a: "Excellent", b: "Good", winner: "a" },
+      { name: "Long documents & contracts", a: "Best in class", b: "Strong", winner: "a" },
+      { name: "Google Workspace integration", a: "Via connectors", b: "Native", winner: "b" },
+      { name: "Research", a: "Good, with web search", b: "Excellent (Deep Research, NotebookLM)", winner: "b" },
+      { name: "Value", a: "Separate subscription", b: "Often included in Workspace", winner: "b" },
+    ],
+    pickA: ["Client-facing writing matters most", "You review contracts and long reports", "You use Microsoft 365 or mixed tools"],
+    pickB: ["You run on Google Workspace", "You want AI included in your plan", "You do lots of research"],
+    sections: [
+      {
+        id: "analysis",
+        heading: "The editorial analysis",
+        blocks: [
+          {
+            type: "p",
+            text: "For a Google Workspace business, Gemini is the pragmatic default — it's already where your email and documents are. Claude earns its place when writing quality and accuracy on long documents make a visible difference to clients. Plenty of businesses use Gemini inside Workspace and Claude for their most important writing.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Claude better than Gemini?",
+        a: "Claude is better for writing and long-document analysis; Gemini is better for Google Workspace integration and research, and is often better value because it may be included in your Workspace plan.",
+      },
+    ],
+  },
+  {
+    slug: "canva-vs-gamma",
+    a: "canva",
+    b: "gamma",
+    title: "Canva vs Gamma: Which Is the Better AI Presentation Maker?",
+    metaTitle: "Canva vs Gamma (2026): Best AI Presentation Maker?",
+    description:
+      "Canva vs Gamma for AI presentations: first-draft quality, editing, brand control, PowerPoint export and price in £ — plus which to choose for pitches, proposals and training decks.",
+    keywords: ["canva vs gamma", "gamma vs canva", "best ai presentation maker"],
+    published: "2026-09-25",
+    updated: "2026-09-25",
+    verdict:
+      "Gamma produces better presentations faster from an outline or document. Canva is the better all-round design platform — choose it if you also need social posts, print and video, or your brand kit already lives there.",
+    winner: "b",
+    criteria: [
+      { name: "First-draft deck quality", a: "Good, template-led", b: "Excellent", winner: "b" },
+      { name: "Editing & restructuring", a: "Slide-by-slide", b: "Fast card-based editing", winner: "b" },
+      { name: "Beyond presentations", a: "Social, print, video, docs", b: "Docs and simple web pages", winner: "a" },
+      { name: "Brand control", a: "Brand Kit", b: "Themes", winner: "a" },
+      { name: "PowerPoint export", a: "Yes", b: "Yes", winner: "tie" },
+      { name: "Price", a: "Pro ~£11/month", b: "Plus ~£8–£10/month", winner: "tie" },
+    ],
+    pickA: ["You need one design tool for everything", "Your Brand Kit is already in Canva", "You create lots of social content"],
+    pickB: ["Presentations are the main job", "You start from documents or outlines", "You want share links with analytics"],
+    sections: [
+      {
+        id: "analysis",
+        heading: "The editorial analysis",
+        blocks: [
+          {
+            type: "p",
+            text: "In our tests Gamma's decks needed the least rework before they could go to a client. Canva's strength is breadth. If you only pay for one, most small businesses should pick Canva for its all-round value; teams that pitch weekly will find Gamma pays for itself. See our [AI presentation makers guide](/guides/best-ai-presentation-makers).",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Gamma better than Canva for presentations?",
+        a: "Yes — Gamma generates better first drafts and is faster to restructure. Canva is better as an all-round design platform for social media, print and video.",
+      },
+    ],
+  },
+  {
+    slug: "hubspot-vs-pipedrive",
+    a: "hubspot",
+    b: "pipedrive",
+    title: "HubSpot vs Pipedrive: Which CRM Is Best for a UK Small Business?",
+    metaTitle: "HubSpot vs Pipedrive (2026): Best CRM for UK Small Business?",
+    description:
+      "HubSpot vs Pipedrive for UK small businesses: free plans, AI features, ease of use, marketing tools, GDPR features and per-seat pricing in £.",
+    keywords: ["hubspot vs pipedrive", "pipedrive vs hubspot", "best crm for small business uk"],
+    published: "2026-09-25",
+    updated: "2026-09-25",
+    verdict:
+      "HubSpot is the better choice for most small businesses because its free CRM is excellent and marketing, sales and service live in one place. Pipedrive is better for small sales teams who want the simplest possible pipeline without paying for extras they won't use.",
+    winner: "a",
+    criteria: [
+      { name: "Free plan", a: "Free CRM, no user limit", b: "Trial only", winner: "a" },
+      { name: "Ease of use for sales", a: "Good", b: "Excellent", winner: "b" },
+      { name: "Marketing & service tools", a: "Built in", b: "Add-ons", winner: "a" },
+      { name: "AI features", a: "Breeze assistant & agents", b: "AI sales assistant", winner: "a" },
+      { name: "Price as you grow", a: "Professional tiers get expensive", b: "Predictable per seat", winner: "b" },
+      { name: "GDPR tools", a: "Consent & subscription management", b: "GDPR features included", winner: "tie" },
+    ],
+    pickA: ["You want to start free", "You need marketing and service too", "You want AI agents"],
+    pickB: ["You run a small B2B sales team", "You want the simplest pipeline", "You prefer predictable per-seat pricing"],
+    sections: [
+      {
+        id: "analysis",
+        heading: "The editorial analysis",
+        blocks: [
+          {
+            type: "p",
+            text: "Start with HubSpot's free CRM unless you already know you only need a sales pipeline. Watch the jump to Professional tiers — that's where HubSpot's cost rises sharply, and where Pipedrive can be better value for pure sales teams. See our [AI CRM guide](/guides/best-ai-crm-for-small-business).",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is HubSpot better than Pipedrive?",
+        a: "HubSpot is better for most small businesses thanks to its free CRM and all-in-one platform. Pipedrive is better for small sales teams that want a simple, visual pipeline.",
+      },
+    ],
+  },
 ];
 
 export const comparisonBySlug = (slug: string) => COMPARISONS.find((c) => c.slug === slug);

@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:content": "tsx --tsconfig tsconfig.json scripts/check-content.ts",
+    "postbuild": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.48.0",
@@ -29,6 +31,7 @@
     "eslint-config-next": "15.5.26",
     "postcss": "^8.5.23",
     "tailwindcss": "3.4.19",
+    "tsx": "^4.23.15",
     "typescript": "^5.6.3"
   },
   "overrides": {

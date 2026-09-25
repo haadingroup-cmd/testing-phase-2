@@ -1,0 +1,32 @@
+name: SmarterBiz CI
+
+on:
+  push:
+    paths: ["smarterbiz-uk/**", ".github/workflows/smarterbiz-ci.yml"]
+  pull_request:
+    paths: ["smarterbiz-uk/**", ".github/workflows/smarterbiz-ci.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: smarterbiz-uk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: smarterbiz-uk/package-lock.json
+      - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run check:content
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"

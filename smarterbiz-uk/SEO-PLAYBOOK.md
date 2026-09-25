@@ -73,24 +73,24 @@ Publishing on high-authority platforms (LinkedIn Articles, Medium, Substack, You
 
 Suggested cadence: turn every new guide into one LinkedIn article, one short YouTube or Shorts video (Synthesia or Descript work well) and one Medium post with a canonical link.
 
-## 7. Content roadmap (next 12 articles)
+## 7. Content roadmap
 
-Priority is ordered by commercial value and ease of ranking:
+**Published:** sole-trader MTD software, ChatGPT vs Copilot, AI CRM, Canva vs Gamma, free AI tools, AI for estate agents, AI for accountants, AI for tradespeople, "Is ChatGPT GDPR compliant?", Claude vs Gemini, HubSpot vs Pipedrive.
 
-1. Best AI accounting software for sole traders UK (MTD ITSA)
-2. ChatGPT vs Copilot for business
-3. Best AI chatbot for small business websites UK
-4. Best AI CRM for small business UK
-5. Canva vs Gamma: best AI presentation maker
-6. Best free AI tools for small business UK
-7. AI tools for estate agents UK (niche vertical)
-8. AI tools for accountants and bookkeepers UK
-9. AI tools for tradespeople (quotes, invoicing, scheduling)
-10. Is ChatGPT GDPR compliant? UK guide
-11. AI for recruitment: UK GDPR and bias rules
-12. Claude vs Gemini for business
+**Next up** (ordered by commercial value and ease of ranking):
 
-Each article should follow the existing template: quick answer, takeaways, comparison table, tool cards, FAQs, internal links to 2+ tools and 1+ category, and an external link to an authoritative UK source.
+1. Best AI chatbot for small business websites UK (a deeper Tidio/Fin/HubSpot test)
+2. AI for recruitment: UK GDPR and bias rules
+3. Best AI tools for UK solicitors and law firms
+4. Best AI tools for UK restaurants and hospitality
+5. Best AI tools for UK eCommerce (Shopify stores)
+6. Gemini vs Copilot for Excel and Sheets
+7. Perplexity vs ChatGPT deep research
+8. Best AI video tools for business (Synthesia vs Descript vs Canva)
+9. AI tools for charities and non-profits UK
+10. AI bookkeeping: Dext vs built-in receipt capture
+
+Each article should follow the existing template: quick answer, takeaways, comparison table, tool cards, FAQs, internal links to 2+ tools and 1+ category, and an external link to an authoritative UK source. Run `npm run check:content` after adding content.
 
 ## 8. Measurement
 
