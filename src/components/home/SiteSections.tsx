@@ -133,7 +133,7 @@ export function CTASection() {
             Grow Your Business<br /><span className="gradient-text">Starting Today</span>
           </h2>
           <p className="text-slate-300 text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
-            Businesses across five countries have started their digital journey with HaadinGlobal. When will you start?
+            Businesses across six countries have started their digital journey with HaadinGlobal. When will you start?
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {["Free consultation, no payment", "24hr response guaranteed", "ROI-focused strategy", "Global market expertise"].map(g => (
