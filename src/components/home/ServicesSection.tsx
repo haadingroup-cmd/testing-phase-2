@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SERVICES } from "@/data/services";
+import { SERVICES, billingSuffix } from "@/data/services";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useCurrency } from "@/utils/useCurrency";
 
@@ -44,8 +44,9 @@ export default function ServicesSection() {
                   <p className="text-slate-400 text-sm leading-relaxed mb-4">{isAr && svc.shortDescAr ? svc.shortDescAr : svc.shortDesc}</p>
                   <div className="flex items-center justify-between pt-3 border-t border-white/8 gap-2">
                     <span className="text-base font-black text-white">
+                      <span className="text-[10px] font-medium text-slate-500 mr-1">From</span>
                       {priceOf(svc)}
-                      <span className="text-[10px] font-medium text-slate-500 ml-0.5">/mo</span>
+                      <span className="text-[10px] font-medium text-slate-500 ml-0.5">{billingSuffix(svc)}</span>
                     </span>
                     {svc.results && (
                       <span className="text-[10px] text-green-300 font-bold bg-green-500/8 px-2 py-1 rounded-md whitespace-nowrap">✓ {svc.results}</span>

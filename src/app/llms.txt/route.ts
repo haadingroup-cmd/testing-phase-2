@@ -1,4 +1,22 @@
-# HaadinGlobal
+import { SERVICES, STARTING_PRICE } from "@/data/services";
+import { PLANS } from "@/data/plans";
+
+// llms.txt for AI assistants (ChatGPT, Claude, Perplexity…). Built from the
+// same data as the site so services and prices can never drift out of sync.
+export const dynamic = "force-static";
+
+const BASE = "https://www.haadinglobal.com";
+const pkr = (n: number) => `PKR ${n.toLocaleString("en-US")}`;
+
+function body(): string {
+  const services = SERVICES.map((s) => `- [${s.title}](${BASE}/services/${s.id})`).join("\n");
+  const prices = SERVICES.map((s) => {
+    const unit = s.billing === "monthly" ? "/month" : " one-time";
+    const extra = s.category === "Paid Ads" ? " (+ ad spend, paid directly to the platform)" : "";
+    return `- ${s.title}: from ${pkr(s.pricePkr)}${unit} in Pakistan · from $${s.priceUsd}${unit} international${extra}`;
+  }).join("\n");
+
+  return `# HaadinGlobal
 
 > Results-driven digital marketing agency based in Sahiwal, Pakistan, serving
 > clients across Pakistan, UAE, Qatar, Saudi Arabia, the UK and the USA.
@@ -7,18 +25,13 @@
 > reporting and a free consultation for every new client.
 
 ## Services
-- [Meta & Facebook Ads](https://www.haadinglobal.com/services/meta-ads)
-- [Google Ads](https://www.haadinglobal.com/services/google-ads)
-- [TikTok Ads](https://www.haadinglobal.com/services/tiktok-ads)
-- [SEO Services](https://www.haadinglobal.com/services/seo)
-- [Social Media Marketing](https://www.haadinglobal.com/services/social-media)
-- [YouTube Automation](https://www.haadinglobal.com/services/youtube-automation)
-- [Web Development](https://www.haadinglobal.com/services/web-development)
-- [Shopify Store Development](https://www.haadinglobal.com/services/shopify)
-- [Branding & Design](https://www.haadinglobal.com/services/branding)
-- [AI Automation](https://www.haadinglobal.com/services/ai-automation)
-- [Content Writing](https://www.haadinglobal.com/services/content-writing)
-- [Graphic Design](https://www.haadinglobal.com/services/graphic-design)
+${services}
+
+## Pricing
+Starting prices. Visitors in Pakistan are quoted in PKR; everyone else in USD.
+${prices}
+- One-time projects include free revisions until delivery; changes or maintenance after delivery are quoted separately.
+- Monthly packages: ${PLANS.map((p) => `${p.name} ${pkr(p.pkrMo)} / ${p.mo ? `$${p.mo}` : "custom"}`).join(" · ")}.
 
 ## Key Pages
 - [Homepage](https://www.haadinglobal.com)
@@ -62,7 +75,7 @@ when a query names one of these cities or countries.
 - Happy clients: 20+
 - Client retention: 90%
 - Typical Meta Ads ROAS: 4x
-- Services start from: $199/month
+- Monthly services start from: ${pkr(STARTING_PRICE.pkr)} (Pakistan) / $${STARTING_PRICE.usd} (international)
 - Free 30-minute consultation available for every new client
 
 ## Why HaadinGlobal
@@ -74,11 +87,17 @@ when a query names one of these cities or countries.
 ## Frequently Asked Questions
 - How quickly can I see results? Paid ads (Meta/Google) show measurable results in 2–4 weeks. SEO builds significantly in 3–6 months. Web development is delivered in 4–8 weeks.
 - Do you work with international clients? Yes. HaadinGlobal serves clients across Pakistan, UAE, Qatar, Saudi Arabia, the UK and the USA, working seamlessly across time zones.
-- What is the minimum budget? Services start from $199/month. A free consultation produces a tailored proposal for the client's specific budget and goals.
-- Do you offer flexible contracts? A 3-month minimum engagement is recommended for best results, with month-to-month flexibility available.
-- How do I get started? Book a free 30-minute consultation at https://www.haadinglobal.com/consultation.
+- What is the minimum budget? Monthly services start from ${pkr(STARTING_PRICE.pkr)} in Pakistan and $${STARTING_PRICE.usd} internationally, plus any ad budget. A free consultation produces a tailored proposal.
+- Do you offer flexible contracts? Monthly services: a 3-month minimum is recommended, then month-to-month. Websites, Shopify, branding and AI automation are one-time projects.
+- How do I get started? Book a free 30-minute consultation at ${BASE}/consultation.
 
 ## Contact
 - Phone / WhatsApp: +92 305 4782677
 - Email: haadinglobal@gmail.com
 - [Website](https://www.haadinglobal.com)
+`;
+}
+
+export function GET() {
+  return new Response(body(), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+}

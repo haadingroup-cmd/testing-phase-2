@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle, ArrowRight, MessageCircle } from "lucide-react";
-import { SERVICES, serviceFaqs, serviceQuickAnswer } from "@/data/services";
+import { SERVICES, serviceFaqs, serviceQuickAnswer, priceTerms } from "@/data/services";
 import { CTASection } from "@/components/home/SiteSections";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import RegionalText from "@/components/common/RegionalText";
 
 // Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
 const SEO_TITLES: Record<string, string> = {
@@ -15,7 +16,7 @@ const SEO_TITLES: Record<string, string> = {
   "google-ads": "Google Ads Management in Pakistan",
   "seo": "SEO Services in Pakistan",
   "social-media": "Social Media Marketing in Pakistan",
-  "youtube-automation": "YouTube Automation Services",
+  "youtube-channel-management": "YouTube Channel Management for Businesses",
   "web-development": "Website Development in Pakistan | From PKR 80,000",
   "shopify": "Shopify Store Development in Pakistan",
   "branding": "Branding & Logo Design in Pakistan",
@@ -29,7 +30,7 @@ const SEO_DESCS: Record<string, string> = {
   "google-ads": "Professional Google Ads management in Pakistan. Capture high-intent buyers the moment they search. ROI-focused, transparent reporting. Free consultation.",
   "seo": "Affordable SEO services in Pakistan to rank on Google and grow organic traffic. Local & national SEO for real leads. Free consultation: +92 305 4782677.",
   "social-media": "Social media marketing in Pakistan — content, management and growth across Facebook, Instagram & TikTok. Build a trusted brand. Free consultation.",
-  "youtube-automation": "YouTube automation services — we build and run faceless channels the right way, with quality content built to grow. Free consultation with HaadinGlobal.",
+  "youtube-channel-management": "YouTube channel management for businesses: content strategy, scripting, editing, thumbnails and YouTube SEO that grow your audience. Free consultation.",
   "web-development": "Custom Next.js websites built to load fast & convert visitors into leads. 4-8 week delivery, mobile-first, SEO-ready. Free quote: +92 305 4782677.",
   "shopify": "Shopify store development in Pakistan — premium, conversion-optimized online stores built to sell. Setup, design and growth. Free consultation.",
   "branding": "Branding and logo design in Pakistan. A clean, memorable brand identity that builds trust and stands out. Free consultation with HaadinGlobal.",
@@ -47,7 +48,7 @@ const SERVICE_BODY: Record<string, string> = {
   "google-ads": `<p>When someone searches "plumber near me" or "best CRM for small business", they're ready to act. Google Ads puts you in front of these high-intent buyers at the exact moment they're looking — and done right, it's one of the fastest ways to generate qualified leads and sales.</p><p>We manage the full picture: Search, Shopping, Display, YouTube and Performance Max. That means precise keyword and audience targeting, tightly-written ads, negative-keyword lists that stop budget leaking on the wrong clicks, and conversion tracking so every rupee or dollar is accountable. Smart bidding and continuous optimisation keep your cost per conversion falling.</p><p>Because we operate at offshore-competitive rates, more of your budget goes to media spend and results — not agency overhead. You get clear, regular reporting on the metrics that matter: cost per lead, conversions and return on ad spend.</p><p><strong>Who this is for:</strong> businesses with clear, definable buyer intent — searches people make right before they buy or enquire. It works especially well for service businesses, e-commerce and anything with a specific, searchable problem to solve.</p>`,
   "seo": `<p>SEO is the compounding engine of online growth — traffic you don't pay for per click, built to bring customers month after month. Our SEO service is designed to get your business ranking on Google for the searches your customers actually make, across both national and local results.</p><p>We work across all three pillars: technical SEO (fast, crawlable, mobile-first pages), on-page SEO (keyword-optimised titles, content and structure), and off-page authority (quality backlinks and consistent citations). For local businesses we optimise your Google Business Profile and target "near me" and city-specific searches that drive high-value leads.</p><p>SEO is a long-term investment — meaningful results typically build over 3–6 months — but it's the traffic source with the lowest cost per lead once it's working. We focus on rankings that turn into real enquiries and sales, not vanity keywords, with transparent reporting throughout.</p><p><strong>Who this is for:</strong> businesses planning to be around for the long run, who want a traffic source that doesn't disappear the day the ad budget stops. It pairs well with paid ads — ads for immediate leads while SEO builds in the background.</p>`,
   "social-media": `<p>A strong social presence builds the trust that turns strangers into customers. Our social media management keeps your brand active, consistent and on-message across Facebook, Instagram, TikTok and more — so when a potential customer checks you out, they see a business worth buying from.</p><p>We handle strategy, content creation, scheduling and community management: on-brand posts and reels, captions written to engage, and timely replies that build relationships. Everything is planned around your goals — awareness, engagement or driving traffic to your offers.</p><p>Consistency is what compounds on social, and that's exactly what we deliver — a steady, professional presence that grows your audience and supports every other channel you run.</p><p><strong>Who this is for:</strong> businesses whose potential customers check their social profiles before buying — which today is nearly every business. It's also the foundation that makes paid ads and influencer work perform better, since ads point to a profile that already looks credible.</p>`,
-  "youtube-automation": `<p>YouTube is the world's second-largest search engine and a powerful, semi-passive asset when built the right way. Our YouTube automation service helps you launch and grow faceless channels with quality content — not the low-effort, mass-produced videos that get buried or demonetised.</p><p>We handle the full pipeline: niche and keyword research, scripting, voiceover, editing and thumbnails designed to earn clicks. Every video is built around what people actually search for, so the channel grows through discovery, not luck.</p><p>This is a real business, not a get-rich-quick scheme — success comes from the right niche, consistent quality and enough runway for the algorithm to trust your channel. We set honest expectations and build for durable, long-term growth.</p><p><strong>Who this is for:</strong> business owners or investors who want a content asset that can eventually run with minimal daily involvement, and who can commit to several months of consistent uploads before expecting meaningful monetisation.</p>`,
+  "youtube-channel-management": `<p>YouTube is the world's second-largest search engine, and for many businesses it is the most trusted place to show how they work. Our YouTube channel management service runs your channel end to end so it grows steadily instead of stalling after a few uploads.</p><p>We handle the full pipeline: content strategy built around what your customers search for, scripting, editing, thumbnails designed to earn clicks, and YouTube SEO for titles, descriptions and tags. Every video has a clear job, whether that is answering buyer questions, showing your work or driving enquiries to your website.</p><p>Growth on YouTube comes from consistency and relevance, not shortcuts. We agree a realistic upload schedule, report on views, watch time and enquiries every month, and adjust the plan based on what your audience responds to.</p><p><strong>Who this is for:</strong> businesses, brands and professionals who want a YouTube channel that builds trust and brings in customers, without spending their own time on production.</p>`,
   "web-development": `<p>Your website is your hardest-working salesperson — but only if it's fast, clear and built to convert. We build modern, high-performance websites (on Next.js) that load quickly, look premium on every device, and turn visitors into leads instead of just looking good.</p><p>Every site is designed around conversion: a clear message, obvious calls-to-action, trust signals like reviews and results, and forms that capture leads straight into your system. It's also built SEO-ready from day one — clean structure, fast load times and proper metadata — so it can rank as well as it sells.</p><p>From a lead-generating landing page to a full multi-page business site, we deliver in weeks, not months, with a mobile-first build that matches the expectations of customers in Pakistan and international markets alike.</p><p><strong>Who this is for:</strong> businesses whose current site is slow, outdated, or simply isn't generating enquiries — and anyone launching who wants a site built for lead generation from day one rather than a template that just "looks fine".</p>`,
   "shopify": `<p>A great Shopify store does more than list products — it guides visitors smoothly from browsing to buying. We design and build conversion-focused Shopify stores that look premium, load fast and are structured to sell, whether you're launching your first store or upgrading an existing one.</p><p>Our setup covers everything: theme design and customisation, product and collection structure, conversion-optimised product pages, checkout and payment setup, apps and a mobile-first experience your customers will trust. We build the store to be SEO-ready too, so it can earn free organic traffic over time.</p><p>The result is an online store built to convert browsers into buyers — clean, professional and ready to scale as your brand grows.</p><p><strong>Who this is for:</strong> new e-commerce brands launching their first store, and existing Shopify stores with traffic but a low conversion rate that a stronger design and structure can fix.</p>`,
   "branding": `<p>Your brand is the first impression that decides whether a customer trusts you. Our branding and logo design service builds a clean, memorable identity that sets you apart and makes your business look established and credible from the first glance.</p><p>We create a cohesive identity system — logo, colours, typography and usage guidelines — designed to work everywhere your brand appears, from your website and ads to social media and print. Every choice is intentional, built to communicate who you are and appeal to the customers you want.</p><p>A strong, consistent brand doesn't just look good — it builds the trust that makes every other marketing effort work harder.</p><p><strong>Who this is for:</strong> new businesses that haven't defined a visual identity yet, and existing businesses whose branding feels inconsistent or dated across their website, social media and print materials.</p>`,
@@ -108,16 +109,29 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         provider: { "@type": "Organization", name: "HaadinGlobal", url: "https://www.haadinglobal.com" },
         areaServed: ["PK", "AE", "GB", "US", "SA", "QA"],
         category: svc.category,
-        offers: {
+        // One offer per market: PKR for Pakistan, USD everywhere else. Both are
+        // "starting from" prices; monthly services carry a per-month unit.
+        offers: [
+          { currency: "PKR", price: svc.pricePkr, region: ["PK"] },
+          { currency: "USD", price: svc.priceUsd, region: ["AE", "GB", "US", "SA", "QA"] },
+        ].map((o) => ({
           "@type": "Offer",
-          price: svc.pricePkr,
-          priceCurrency: "PKR",
           url,
-        },
+          priceCurrency: o.currency,
+          eligibleRegion: o.region.map((c) => ({ "@type": "Country", name: c })),
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            minPrice: o.price,
+            priceCurrency: o.currency,
+            ...(svc.billing === "monthly" ? { unitCode: "MON", unitText: "month" } : {}),
+          },
+        })),
       },
       {
         "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
+        // Price answers vary by visitor country, so they stay out of JSON-LD
+        // (the Offer above carries both markets' prices).
+        mainEntity: faqs.filter((f) => !f.aUsd).map((f) => ({
           "@type": "Question",
           name: f.q,
           acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -152,7 +166,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-3xl mb-5 shadow-xl`}>{svc.icon}</div>
               <ServiceDetailHero title={svc.title} titleAr={svc.titleAr} fullDesc={svc.fullDesc} />
               <p className="text-slate-200 text-[15px] leading-relaxed bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
-                <strong className="text-white">Quick answer:</strong> {serviceQuickAnswer(svc)}
+                <strong className="text-white">Quick answer:</strong>{" "}
+                <RegionalText pkr={serviceQuickAnswer(svc, "PKR")} usd={serviceQuickAnswer(svc, "USD")} />
               </p>
               {svc.results && (
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 text-green-300 font-bold text-sm mb-6">
@@ -171,10 +186,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <div className="lg:col-span-2">
               <div className="card p-6 md:p-7 lg:sticky lg:top-24">
                 <h3 className="font-bold text-white text-lg mb-2">Pricing Starts From</h3>
-                <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} size="lg" />
+                <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="lg" terms={priceTerms(svc)} />
                 <p className="text-slate-400 text-sm mb-5">Custom plans available</p>
                 <ul className="space-y-2 mb-6">
-                  {["Free initial consultation","Dedicated account manager","Weekly/monthly reports","Cancel anytime"].map(p => (
+                  {(svc.billing === "one-time"
+                    ? ["Free initial consultation","Dedicated project manager","Free revisions until delivery","Post-launch changes quoted separately"]
+                    : ["Free initial consultation","Dedicated account manager","Weekly/monthly reports","Cancel anytime"]).map(p => (
                     <li key={p} className="flex items-center gap-2 text-sm text-slate-300">
                       <CheckCircle size={14} className="text-green-300 flex-shrink-0"/>{p}
                     </li>
@@ -242,7 +259,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                   <h3 className="text-white font-bold text-[15px] pr-4">{f.q}</h3>
                   <ArrowRight size={16} className="text-red-400 flex-shrink-0 transition-transform group-open:rotate-90" />
                 </summary>
-                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.a}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.aUsd ? <RegionalText pkr={f.a} usd={f.aUsd} /> : f.a}</p>
               </details>
             ))}
           </div>

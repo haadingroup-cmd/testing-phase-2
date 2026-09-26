@@ -9,10 +9,11 @@ export interface Service {
   category: string;
   features: string[];
   color: string;
-  basePrice: number;
-  /** Pakistan price in PKR per month. */
+  /** "monthly" retainer, or a "one-time" project fee. */
+  billing: "monthly" | "one-time";
+  /** Pakistan starting price in PKR (per month, or per project if one-time). */
   pricePkr: number;
-  /** International price in USD per month. */
+  /** International starting price in USD (per month, or per project if one-time). */
   priceUsd: number;
   results?: string;
 }
@@ -29,9 +30,9 @@ export const SERVICES: Service[] = [
     category: "Paid Ads",
     features: ["Audience Research","Ad Creative Design","Campaign Setup","A/B Testing","Retargeting","Pixel Setup","Catalog Ads","Weekly Reports"],
     color: "from-red-500 to-rose-700",
-    basePrice: 399,
+    billing: "monthly",
     pricePkr: 15000,
-    priceUsd: 54,
+    priceUsd: 200,
     results: "ROI-focused campaigns",
   },
   {
@@ -45,9 +46,9 @@ export const SERVICES: Service[] = [
     category: "Paid Ads",
     features: ["Search Campaigns","Display Ads","Shopping Ads","YouTube Ads","Smart Bidding","Conversion Tracking","Remarketing","Performance Max"],
     color: "from-orange-400 to-red-500",
-    basePrice: 399,
+    billing: "monthly",
     pricePkr: 25000,
-    priceUsd: 91,
+    priceUsd: 250,
     results: "High-intent conversions",
   },
   {
@@ -61,9 +62,9 @@ export const SERVICES: Service[] = [
     category: "Marketing",
     features: ["Keyword Research","On-Page SEO","Technical Audit","Link Building","Local SEO","Schema Markup","Core Web Vitals","Monthly Reports"],
     color: "from-red-400 to-red-700",
-    basePrice: 299,
+    billing: "monthly",
     pricePkr: 35000,
-    priceUsd: 127,
+    priceUsd: 500,
     results: "Sustainable organic growth",
   },
   {
@@ -77,25 +78,25 @@ export const SERVICES: Service[] = [
     category: "Marketing",
     features: ["Content Calendar","Custom Graphics","Reels & Stories","Community Management","Growth Strategy","Analytics","Hashtag Research","Competitor Analysis"],
     color: "from-pink-400 to-rose-600",
-    basePrice: 299,
+    billing: "monthly",
     pricePkr: 30000,
-    priceUsd: 109,
+    priceUsd: 500,
     results: "Higher engagement & reach",
   },
   {
-    id: "youtube-automation",
-    title: "YouTube Automation",
-    titleAr: "أتمتة قناة يوتيوب",
-    shortDesc: "Build a passive income YouTube channel on complete autopilot.",
-    shortDescAr: "أنشئ قناة منتجة تحقق دخلاً سلبيًا وتنمو تلقائيًا.",
-    fullDesc: "Full channel management — niche research, scriptwriting, video production, SEO optimization, thumbnails, and monetization strategy.",
+    id: "youtube-channel-management",
+    title: "YouTube Channel Management",
+    titleAr: "إدارة قناة يوتيوب",
+    shortDesc: "Grow your business's YouTube channel with consistent, search-optimised videos.",
+    shortDescAr: "نمِّ قناة يوتيوب لعملك بمقاطع فيديو منتظمة ومحسّنة للبحث.",
+    fullDesc: "Complete YouTube channel management for businesses — content strategy, scripting, video editing, thumbnails, YouTube SEO and monthly analytics.",
     icon: "▶️",
-    category: "Technology",
-    features: ["Channel Setup","Niche Research","Script Writing","Video Editing","Thumbnail Design","SEO Optimization","Monetization","Analytics"],
+    category: "Marketing",
+    features: ["Channel Setup & Branding","Content Strategy","Script Writing","Video Editing","Thumbnail Design","YouTube SEO","Upload Scheduling","Monthly Analytics"],
     color: "from-red-500 to-rose-600",
-    basePrice: 499,
+    billing: "monthly",
     pricePkr: 40000,
-    priceUsd: 145,
+    priceUsd: 300,
     results: "Built to grow your channel",
   },
   {
@@ -109,9 +110,9 @@ export const SERVICES: Service[] = [
     category: "Technology",
     features: ["Custom Design","Next.js / React","Mobile-First","SEO Optimized","CMS Integration","Performance Optimization","Contact Forms","Analytics Setup"],
     color: "from-cyan-400 to-blue-600",
-    basePrice: 999,
+    billing: "one-time",
     pricePkr: 80000,
-    priceUsd: 291,
+    priceUsd: 500,
     results: "100% mobile-optimized",
   },
   {
@@ -125,9 +126,9 @@ export const SERVICES: Service[] = [
     category: "Technology",
     features: ["Custom Theme","Product Setup","Payment Gateway","Inventory System","App Integration","Funnel Optimization","Mobile Optimization","Analytics"],
     color: "from-green-400 to-emerald-700",
-    basePrice: 799,
+    billing: "one-time",
     pricePkr: 25000,
-    priceUsd: 91,
+    priceUsd: 400,
     results: "Built to grow online sales",
   },
   {
@@ -141,9 +142,9 @@ export const SERVICES: Service[] = [
     category: "Design",
     features: ["Logo Design","Brand Strategy","Color System","Typography","Brand Guidelines","Stationery Design","Social Kit","Brand Assets"],
     color: "from-amber-400 to-orange-500",
-    basePrice: 499,
+    billing: "one-time",
     pricePkr: 50000,
-    priceUsd: 182,
+    priceUsd: 500,
     results: "Professional brand identity",
   },
   {
@@ -157,9 +158,9 @@ export const SERVICES: Service[] = [
     category: "Technology",
     features: ["Chatbot Development","Workflow Automation","CRM Integration","Lead Nurturing","Email Sequences","WhatsApp Bot","Data Pipelines","AI Tools"],
     color: "from-violet-500 to-purple-700",
-    basePrice: 1499,
+    billing: "one-time",
     pricePkr: 80000,
-    priceUsd: 291,
+    priceUsd: 500,
     results: "Less repetitive manual work",
   },
   {
@@ -173,9 +174,9 @@ export const SERVICES: Service[] = [
     category: "Content",
     features: ["SEO Blog Writing","Website Copy","Email Sequences","Ad Copywriting","Social Media Copy","Content Strategy","Product Descriptions","Press Releases"],
     color: "from-teal-400 to-cyan-600",
-    basePrice: 199,
+    billing: "monthly",
     pricePkr: 30000,
-    priceUsd: 109,
+    priceUsd: 500,
     results: "Content built to rank",
   },
   {
@@ -189,9 +190,9 @@ export const SERVICES: Service[] = [
     category: "Paid Ads",
     features: ["Video Ad Creation","In-Feed Ads","Brand Takeover","TikTok Pixel","Audience Targeting","Creator Marketplace","Hashtag Challenges","Analytics"],
     color: "from-pink-500 to-fuchsia-700",
-    basePrice: 349,
+    billing: "monthly",
     pricePkr: 15000,
-    priceUsd: 54,
+    priceUsd: 250,
     results: "Built for viral reach",
   },
   {
@@ -205,12 +206,44 @@ export const SERVICES: Service[] = [
     category: "Design",
     features: ["Social Media Graphics","Marketing Materials","Infographics","Presentation Design","Print Design","Ad Creatives","Digital Assets","Packaging"],
     color: "from-amber-400 to-orange-500",
-    basePrice: 199,
+    billing: "monthly",
     pricePkr: 10000,
-    priceUsd: 36,
+    priceUsd: 300,
     results: "Premium quality designs",
   },
 ];
+
+/**
+ * Single source for how a service price is phrased, so every page, the
+ * structured data and llms.txt say exactly the same thing.
+ */
+export function billingSuffix(svc: Service): string {
+  return svc.billing === "monthly" ? "/mo" : " one-time";
+}
+
+/** Short terms shown under a price. Null when nothing extra applies. */
+export function priceTerms(svc: Service): string | null {
+  if (svc.category === "Paid Ads") return "Ad spend is separate and paid directly to the platform.";
+  if (svc.billing === "one-time") return "Free revisions until delivery. Later changes and maintenance are quoted separately.";
+  return null;
+}
+
+const MONTHLY = SERVICES.filter((s) => s.billing === "monthly");
+/** Lowest monthly price in each market — the honest "starts from" figure. */
+export const STARTING_PRICE = {
+  pkr: Math.min(...MONTHLY.map((s) => s.pricePkr)),
+  usd: Math.min(...MONTHLY.map((s) => s.priceUsd)),
+};
+
+type PriceCurrency = "PKR" | "USD";
+
+/** Visitor-facing price wording in ONE currency — never both markets at once. */
+function pricePhrase(svc: Service, currency: PriceCurrency): string {
+  const price = currency === "PKR" ? `PKR ${svc.pricePkr.toLocaleString("en-US")}` : `$${svc.priceUsd}`;
+  return svc.billing === "monthly"
+    ? `starts from ${price}/month`
+    : `is a one-time project starting from ${price}`;
+}
 
 /**
  * A short, direct "quick answer" paragraph for AEO -- structured so AI
@@ -218,8 +251,8 @@ export const SERVICES: Service[] = [
  * summary of the service straight from the page. Auto-generated from
  * existing service data (no separate content to keep in sync).
  */
-export function serviceQuickAnswer(svc: Service): string {
-  const priceLine = `Plans start from PKR ${svc.pricePkr.toLocaleString()}/month in Pakistan (from $${svc.priceUsd}/month internationally).`;
+export function serviceQuickAnswer(svc: Service, currency: PriceCurrency = "PKR"): string {
+  const priceLine = `${svc.title} ${pricePhrase(svc, currency)}.`;
   return `${svc.title} at HaadinGlobal means ${svc.fullDesc.charAt(0).toLowerCase()}${svc.fullDesc.slice(1)} ${priceLine}`;
 }
 
@@ -231,13 +264,23 @@ export function serviceQuickAnswer(svc: Service): string {
  * extract directly. Built from each service's real data so every one of the
  * 12 service pages ships unique, factual Q&A (and FAQPage structured data).
  */
-export function serviceFaqs(svc: Service): { q: string; a: string }[] {
+/**
+ * `aUsd` is set only on answers that quote a price: `a` is then the PKR
+ * wording and `aUsd` the USD one. Pages show one based on the visitor's
+ * country and leave these out of FAQPage JSON-LD (the Offer schema and
+ * llms.txt carry prices for both markets).
+ */
+export function serviceFaqs(svc: Service): { q: string; a: string; aUsd?: string }[] {
   const title = svc.title.replace(/ Services?$/i, "");
   const resultLine = svc.results ? ` Clients typically see results like ${svc.results.toLowerCase()}.` : "";
   return [
     {
-      q: `How much does ${title} cost in Pakistan?`,
-      a: `${title} at HaadinGlobal starts from PKR ${svc.pricePkr.toLocaleString()}/month for Pakistani businesses (around $${svc.priceUsd}/month for international clients), plus any ad budget. The exact price depends on your goals and scope — book a free consultation for a tailored quote.`,
+      q: `How much does ${title} cost?`,
+      ...(() => {
+        const answer = (c: PriceCurrency) =>
+          `${title} at HaadinGlobal ${pricePhrase(svc, c)}.${svc.category === "Paid Ads" ? " Ad spend is separate and paid directly to the platform." : ""} The exact price depends on your goals and scope — book a free consultation for a tailored quote.`;
+        return { a: answer("PKR"), aUsd: answer("USD") };
+      })(),
     },
     {
       q: `What does your ${title} service include?`,
@@ -257,10 +300,15 @@ export function serviceFaqs(svc: Service): { q: string; a: string }[] {
       q: `Why choose HaadinGlobal for ${title}?`,
       a: `We combine international-level expertise with ROI-focused execution — every ${title} campaign is data-backed and optimised for real business growth, not vanity metrics. We've served businesses and report on the KPIs that actually matter to you.`,
     },
-    {
-      q: `Do I need a long-term contract for ${title}?`,
-      a: `No. We recommend a 3-month minimum for ${title} so there's enough time to see meaningful results, but after that it's month-to-month — no long lock-in contracts. Most clients stay long-term because of results, not because they're locked in.`,
-    },
+    svc.billing === "one-time"
+      ? {
+          q: `Is ${title} a one-time cost?`,
+          a: `Yes. ${title} is a one-time project fee, not a monthly contract. Revisions are free until the project is delivered; any changes or maintenance after delivery are quoted separately based on the work needed.`,
+        }
+      : {
+          q: `Do I need a long-term contract for ${title}?`,
+          a: `No. We recommend a 3-month minimum for ${title} so there's enough time to see meaningful results, but after that it's month-to-month — no long lock-in contracts. Most clients stay long-term because of results, not because they're locked in.`,
+        },
     {
       q: `How do you measure success for ${title}?`,
       a: `We track the metrics that actually matter for ${title} — leads, sales, ROAS or rankings, depending on the service — not vanity numbers like impressions or likes. You get a dedicated dashboard and regular reports so you always know exactly how it's performing.`,

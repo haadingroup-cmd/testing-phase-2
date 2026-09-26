@@ -12,7 +12,7 @@ const pages = [
   { url: '/services/google-ads', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/seo', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/social-media', pri: 0.8, chg: 'monthly' as const },
-  { url: '/services/youtube-automation', pri: 0.9, chg: 'monthly' as const },
+  { url: '/services/youtube-channel-management', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/web-development', pri: 0.8, chg: 'monthly' as const },
   { url: '/services/shopify', pri: 0.8, chg: 'monthly' as const },
   { url: '/services/branding', pri: 0.7, chg: 'monthly' as const },

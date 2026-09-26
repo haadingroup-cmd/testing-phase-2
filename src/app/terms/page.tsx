@@ -21,7 +21,7 @@ export default function TermsPage() {
           <div className="space-y-8">
             {[
               { h:"1. Acceptance of Terms", t:"By using HaadinGlobal's services, you agree to these terms. If you do not agree, please do not use our services." },
-              { h:"2. Services", t:"HaadinGlobal provides digital marketing services including Meta Ads, Google Ads, SEO, social media management, web development, Shopify development, branding, AI automation, YouTube automation, content writing, and graphic design." },
+              { h:"2. Services", t:"HaadinGlobal provides digital marketing services including Meta Ads, Google Ads, SEO, social media management, web development, Shopify development, branding, AI automation, YouTube channel management, content writing, and graphic design." },
               { h:"3. Payment Terms", t:"Services are billed monthly in advance. Project-based work requires a 50% deposit. Payments are due within 5 business days of invoicing. Late payments may result in service suspension." },
               { h:"4. Service Delivery", t:"We will use commercially reasonable efforts to meet agreed timelines. However, results in digital marketing (SEO rankings, ROAS, follower growth) depend on multiple factors and cannot be guaranteed." },
               { h:"5. Intellectual Property", t:"All creative work produced by HaadinGlobal for clients becomes the client's property upon full payment. HaadinGlobal retains the right to showcase work in our portfolio unless otherwise agreed." },
