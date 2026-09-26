@@ -16,15 +16,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) return { title: "Post Not Found" };
   const url = `/blog/${post.slug}`;
+  const description = post.metaDescription ?? post.excerpt;
   return {
     title: post.title,
-    description: post.excerpt,
+    description,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
       url,
       title: post.title,
-      description: post.excerpt,
+      description,
       publishedTime: isoDate(post.date),
       authors: [post.author],
       images: [{ url: post.image, alt: post.title }],

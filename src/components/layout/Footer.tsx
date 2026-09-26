@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-              results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI — proven results for businesses across Pakistan & the Gulf.
+              HaadinGlobal is a results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI — proven results for businesses across Pakistan & the Gulf.
             </p>
             <div className="space-y-2.5 mb-6">
               <a href={`tel:${SITE.phoneClean}`} aria-label="Call HaadinGlobal" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
