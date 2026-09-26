@@ -12,7 +12,12 @@ export const FAQS = [
   { q: "How quickly can I see results?", a: "Paid ads (Meta/Google) show measurable results in 2–4 weeks. SEO builds significantly in 3–6 months. Web development is delivered in 4–8 weeks." },
   { q: "Do you work with international clients?", a: "Yes. We serve clients across Pakistan, UAE, Qatar, Saudi Arabia, the UK and the USA, working seamlessly across time zones." },
   { q: "What makes HaadinGlobal different?", a: "International-level expertise with ROI-focused execution. Every strategy is data-backed and every campaign is optimized for real business growth." },
-  { q: "What is the minimum budget?", a: `Monthly services start from PKR ${STARTING_PRICE.pkr.toLocaleString()} in Pakistan and $${STARTING_PRICE.usd} for international clients, plus any ad budget. Website, Shopify, branding and AI automation are one-time projects. Book a free consultation for a tailored quote.` },
+  // Price answer: `a` is shown in Pakistan, `aUsd` everywhere else.
+  {
+    q: "What is the minimum budget?",
+    a: `Monthly services start from PKR ${STARTING_PRICE.pkr.toLocaleString("en-US")}, plus any ad budget. Website, Shopify, branding and AI automation are one-time projects. Book a free consultation for a tailored quote.`,
+    aUsd: `Monthly services start from $${STARTING_PRICE.usd}, plus any ad budget. Website, Shopify, branding and AI automation are one-time projects. Book a free consultation for a tailored quote.`,
+  },
   { q: "Do you offer flexible contracts?", a: "We recommend a 3-month minimum engagement for best results but offer month-to-month flexibility. Most clients stay long-term by choice." },
   { q: "How do I get started?", a: "Book a free 30-minute consultation. We analyze your digital presence and present a custom strategy — no pressure, no obligation." },
   { q: "What reports do you provide?", a: "All clients receive a dedicated analytics dashboard and regular reports (weekly or monthly) tracking the KPIs that matter to your business." },
@@ -21,7 +26,9 @@ export const FAQS = [
 export const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({
+  // Region-dependent (price) answers are left out: the visible text differs
+  // by country, and structured data must match what the page shows.
+  mainEntity: FAQS.filter((f) => !("aUsd" in f)).map((f) => ({
     "@type": "Question",
     name: f.q,
     acceptedAnswer: { "@type": "Answer", text: f.a },

@@ -8,6 +8,7 @@ import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import RegionalText from "@/components/common/RegionalText";
 
 // Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
 const SEO_TITLES: Record<string, string> = {
@@ -128,7 +129,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       },
       {
         "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
+        // Price answers vary by visitor country, so they stay out of JSON-LD
+        // (the Offer above carries both markets' prices).
+        mainEntity: faqs.filter((f) => !f.aUsd).map((f) => ({
           "@type": "Question",
           name: f.q,
           acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -163,7 +166,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-3xl mb-5 shadow-xl`}>{svc.icon}</div>
               <ServiceDetailHero title={svc.title} titleAr={svc.titleAr} fullDesc={svc.fullDesc} />
               <p className="text-slate-200 text-[15px] leading-relaxed bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
-                <strong className="text-white">Quick answer:</strong> {serviceQuickAnswer(svc)}
+                <strong className="text-white">Quick answer:</strong>{" "}
+                <RegionalText pkr={serviceQuickAnswer(svc, "PKR")} usd={serviceQuickAnswer(svc, "USD")} />
               </p>
               {svc.results && (
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 text-green-300 font-bold text-sm mb-6">
@@ -255,7 +259,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                   <h3 className="text-white font-bold text-[15px] pr-4">{f.q}</h3>
                   <ArrowRight size={16} className="text-red-400 flex-shrink-0 transition-transform group-open:rotate-90" />
                 </summary>
-                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.a}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.aUsd ? <RegionalText pkr={f.a} usd={f.aUsd} /> : f.a}</p>
               </details>
             ))}
           </div>

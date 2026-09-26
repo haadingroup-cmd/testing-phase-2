@@ -6,6 +6,7 @@ import { ArrowRight, Plus, Minus, CheckCircle, MessageCircle, Phone, Zap, Video,
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
 import { FAQS } from "@/data/faqs";
+import RegionalText from "@/components/common/RegionalText";
 import { trackLead } from "@/lib/trackLead";
 
 /**
@@ -53,7 +54,7 @@ export function FAQSection() {
                 <AnimatePresence>
                   {open === i && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }}>
-                      <div className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/8 pt-4">{faq.a}</div>
+                      <div className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/8 pt-4">{"aUsd" in faq && faq.aUsd ? <RegionalText pkr={faq.a} usd={faq.aUsd} /> : faq.a}</div>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -235,11 +235,14 @@ export const STARTING_PRICE = {
   usd: Math.min(...MONTHLY.map((s) => s.priceUsd)),
 };
 
-function pricePhrase(svc: Service): string {
-  const pkr = svc.pricePkr.toLocaleString();
+type PriceCurrency = "PKR" | "USD";
+
+/** Visitor-facing price wording in ONE currency — never both markets at once. */
+function pricePhrase(svc: Service, currency: PriceCurrency): string {
+  const price = currency === "PKR" ? `PKR ${svc.pricePkr.toLocaleString("en-US")}` : `$${svc.priceUsd}`;
   return svc.billing === "monthly"
-    ? `starts from PKR ${pkr}/month in Pakistan and $${svc.priceUsd}/month for international clients`
-    : `is a one-time project starting from PKR ${pkr} in Pakistan and $${svc.priceUsd} for international clients`;
+    ? `starts from ${price}/month`
+    : `is a one-time project starting from ${price}`;
 }
 
 /**
@@ -248,8 +251,8 @@ function pricePhrase(svc: Service): string {
  * summary of the service straight from the page. Auto-generated from
  * existing service data (no separate content to keep in sync).
  */
-export function serviceQuickAnswer(svc: Service): string {
-  const priceLine = `${svc.title} ${pricePhrase(svc)}.`;
+export function serviceQuickAnswer(svc: Service, currency: PriceCurrency = "PKR"): string {
+  const priceLine = `${svc.title} ${pricePhrase(svc, currency)}.`;
   return `${svc.title} at HaadinGlobal means ${svc.fullDesc.charAt(0).toLowerCase()}${svc.fullDesc.slice(1)} ${priceLine}`;
 }
 
@@ -261,13 +264,23 @@ export function serviceQuickAnswer(svc: Service): string {
  * extract directly. Built from each service's real data so every one of the
  * 12 service pages ships unique, factual Q&A (and FAQPage structured data).
  */
-export function serviceFaqs(svc: Service): { q: string; a: string }[] {
+/**
+ * `aUsd` is set only on answers that quote a price: `a` is then the PKR
+ * wording and `aUsd` the USD one. Pages show one based on the visitor's
+ * country and leave these out of FAQPage JSON-LD (the Offer schema and
+ * llms.txt carry prices for both markets).
+ */
+export function serviceFaqs(svc: Service): { q: string; a: string; aUsd?: string }[] {
   const title = svc.title.replace(/ Services?$/i, "");
   const resultLine = svc.results ? ` Clients typically see results like ${svc.results.toLowerCase()}.` : "";
   return [
     {
-      q: `How much does ${title} cost in Pakistan?`,
-      a: `${title} at HaadinGlobal ${pricePhrase(svc)}.${svc.category === "Paid Ads" ? " Ad spend is separate and paid directly to the platform." : ""} The exact price depends on your goals and scope — book a free consultation for a tailored quote.`,
+      q: `How much does ${title} cost?`,
+      ...(() => {
+        const answer = (c: PriceCurrency) =>
+          `${title} at HaadinGlobal ${pricePhrase(svc, c)}.${svc.category === "Paid Ads" ? " Ad spend is separate and paid directly to the platform." : ""} The exact price depends on your goals and scope — book a free consultation for a tailored quote.`;
+        return { a: answer("PKR"), aUsd: answer("USD") };
+      })(),
     },
     {
       q: `What does your ${title} service include?`,
