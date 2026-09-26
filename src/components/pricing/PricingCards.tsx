@@ -78,21 +78,19 @@ export function PricingCards() {
 
                     {/* Price block */}
                     <div className="mb-6 pb-6 border-b border-[var(--border)] min-h-[78px] flex flex-col justify-center">
-                      {plan.custom ? (
-                        <div>
-                          <p className="text-3xl font-black text-[var(--text)]">{isPkr ? priceDisplay : "Custom"}</p>
-                          <p className="text-slate-500 text-[11px] mt-0.5">{isPkr ? "per month" : "Tailored to your goals"}</p>
-                        </div>
-                      ) : (
-                        <div>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-2xl md:text-[1.7rem] font-black text-[var(--text)]">{priceDisplay}</span>
-                            <span className="text-slate-500 text-sm font-semibold">/mo</span>
-                          </div>
-                          {yearly && savingYear && (
-                            <p className="text-green-300 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
-                          )}
-                        </div>
+                      {/* Same layout for every plan so prices line up across cards. */}
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 mb-1.5">
+                        {plan.custom && !isPkr ? "Pricing" : yearly ? "Per month, billed yearly" : "Per month"}
+                      </p>
+                      <div className="flex items-baseline gap-1 whitespace-nowrap">
+                        <span className="text-3xl font-black tracking-tight tabular-nums text-[var(--text)]">
+                          {plan.custom && !isPkr ? "Custom" : priceDisplay}
+                        </span>
+                        {!(plan.custom && !isPkr) && <span className="text-slate-500 text-sm font-semibold">/mo</span>}
+                      </div>
+                      {plan.custom && !isPkr && <p className="text-slate-500 text-[11px] mt-1">Tailored to your goals</p>}
+                      {yearly && savingYear && !(plan.custom && !isPkr) && (
+                        <p className="text-green-300 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
                       )}
                     </div>
 

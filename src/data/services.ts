@@ -31,7 +31,7 @@ export const SERVICES: Service[] = [
     features: ["Audience Research","Ad Creative Design","Campaign Setup","A/B Testing","Retargeting","Pixel Setup","Catalog Ads","Weekly Reports"],
     color: "from-red-500 to-rose-700",
     billing: "monthly",
-    pricePkr: 15000,
+    pricePkr: 16500,
     priceUsd: 200,
     results: "ROI-focused campaigns",
   },
@@ -47,7 +47,7 @@ export const SERVICES: Service[] = [
     features: ["Search Campaigns","Display Ads","Shopping Ads","YouTube Ads","Smart Bidding","Conversion Tracking","Remarketing","Performance Max"],
     color: "from-orange-400 to-red-500",
     billing: "monthly",
-    pricePkr: 25000,
+    pricePkr: 27500,
     priceUsd: 250,
     results: "High-intent conversions",
   },
@@ -191,7 +191,7 @@ export const SERVICES: Service[] = [
     features: ["Video Ad Creation","In-Feed Ads","Brand Takeover","TikTok Pixel","Audience Targeting","Creator Marketplace","Hashtag Challenges","Analytics"],
     color: "from-pink-500 to-fuchsia-700",
     billing: "monthly",
-    pricePkr: 15000,
+    pricePkr: 16500,
     priceUsd: 250,
     results: "Built for viral reach",
   },
@@ -217,10 +217,6 @@ export const SERVICES: Service[] = [
  * Single source for how a service price is phrased, so every page, the
  * structured data and llms.txt say exactly the same thing.
  */
-export function billingSuffix(svc: Service): string {
-  return svc.billing === "monthly" ? "/mo" : " one-time";
-}
-
 /** Short terms shown under a price. Null when nothing extra applies. */
 export function priceTerms(svc: Service): string | null {
   if (svc.category === "Paid Ads") return "Ad spend is separate and paid directly to the platform.";

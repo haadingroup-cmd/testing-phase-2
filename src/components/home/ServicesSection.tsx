@@ -2,16 +2,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SERVICES, billingSuffix } from "@/data/services";
+import { SERVICES } from "@/data/services";
+import ServicePriceTag from "@/components/services/ServicePriceTag";
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { useCurrency } from "@/utils/useCurrency";
 
 export default function ServicesSection() {
   const { t, lang } = useLanguage();
-  const { currency } = useCurrency();
   const isAr = lang === "ar";
-  const priceOf = (s: typeof SERVICES[number]) =>
-    currency === "PKR" ? `PKR ${s.pricePkr.toLocaleString()}` : `$${s.priceUsd.toLocaleString()}`;
   return (
     <section className="section-pad" id="services">
       <div className="container">
@@ -31,9 +28,9 @@ export default function ServicesSection() {
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.04 }}
             >
-              <Link href={`/services/${svc.id}`} className="block h-full card-plain rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300">
+              <Link href={`/services/${svc.id}`} className="flex flex-col h-full card-plain rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300">
                 <div className={`h-1.5 bg-gradient-to-r ${svc.color}`} />
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-4">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-2xl shadow-lg`}>
                       {svc.icon}
@@ -42,16 +39,12 @@ export default function ServicesSection() {
                   </div>
                   <h3 className="text-white font-bold text-lg mb-2 group-hover:text-red-300 transition-colors">{isAr && svc.titleAr ? svc.titleAr : svc.title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-4">{isAr && svc.shortDescAr ? svc.shortDescAr : svc.shortDesc}</p>
-                  <div className="flex items-center justify-between pt-3 border-t border-white/8 gap-2">
-                    <span className="text-base font-black text-white">
-                      <span className="text-[10px] font-medium text-slate-500 mr-1">From</span>
-                      {priceOf(svc)}
-                      <span className="text-[10px] font-medium text-slate-500 ml-0.5">{billingSuffix(svc)}</span>
-                    </span>
-                    {svc.results && (
-                      <span className="text-[10px] text-green-300 font-bold bg-green-500/8 px-2 py-1 rounded-md whitespace-nowrap">✓ {svc.results}</span>
-                    )}
-                    <ArrowRight size={15} className="text-red-400 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                  {svc.results && (
+                    <span className="self-start inline-block text-[11px] text-green-300 font-semibold bg-green-500/10 px-2 py-1 rounded-md mb-4">✓ {svc.results}</span>
+                  )}
+                  <div className="mt-auto flex items-end justify-between gap-3 pt-4 border-t border-white/8">
+                    <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="card" />
+                    <ArrowRight size={16} className="text-red-400 group-hover:translate-x-1 transition-transform flex-shrink-0 mb-1" />
                   </div>
                 </div>
               </Link>
