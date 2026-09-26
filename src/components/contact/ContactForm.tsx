@@ -11,7 +11,7 @@ import { trackLead } from "@/lib/trackLead";
 
 const SERVICES_LIST = [
   "Meta Ads","Google Ads","TikTok Ads","SEO Services","Social Media Management",
-  "YouTube Automation","Web Development","Shopify Store","Branding & Design",
+  "YouTube Channel Management","Web Development","Shopify Store","Branding & Design",
   "AI Automation","Content Writing","Graphic Design","Other / Multiple",
 ];
 

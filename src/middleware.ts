@@ -6,7 +6,8 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
  * Middleware does two jobs on every page request:
  *
  * 1) Geo cookie — sets `hg-country` from Vercel's edge geo header so pricing
- *    and language can default correctly (PK → PKR/English, Gulf → USD/Arabic).
+ *    picks the right currency (PK → PKR, everywhere else → USD). Language is
+ *    not set by country: English by default, Arabic only via the switcher.
  *
  * 2) Auth — refreshes the Supabase session cookie and PROTECTS /dashboard.
  *    If a signed-out visitor hits /dashboard they are bounced to /login.

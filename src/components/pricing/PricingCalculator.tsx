@@ -5,23 +5,23 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, Calculator, Zap, DollarSign, Calendar } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useCurrency } from "@/utils/useCurrency";
+import { SERVICES } from "@/data/services";
 
-// Data Structure updated with fixed PKR and USD pricing according to your guidelines
+// Prices come straight from src/data/services.ts so the calculator always
+// matches the service pages. "Meta Ads + Graphics" is a bundle of the two.
+const svcById = (id: string) => SERVICES.find((x) => x.id === id)!;
 const SVC_OPTS = [
-  { id: "meta-ads",           label: "Meta Ads",           icon: "🎯", pkr: 15000,  usd: 54 },
-  { id: "meta-graphics",      label: "Meta Ads + Graphics",icon: "🎨", pkr: 25000,  usd: 91 },
-  { id: "google-ads",         label: "Google Ads",         icon: "📊", pkr: 25000,  usd: 91 },
-  { id: "seo",                label: "SEO Services",       icon: "🔍", pkr: 35000,  usd: 127 },
-  { id: "social-media",       label: "Social Media",       icon: "📱", pkr: 30000,  usd: 109 },
-  { id: "youtube-automation", label: "YouTube Automation", icon: "▶️", pkr: 40000,  usd: 145 },
-  { id: "web-development",    label: "Web Development",    icon: "💻", pkr: 80000,  usd: 291 },
-  { id: "shopify",            label: "Shopify Store",      icon: "🛍️", pkr: 25000,  usd: 91 },
-  { id: "branding",           label: "Branding",           icon: "✨", pkr: 50000,  usd: 182 },
-  { id: "ai-automation",      label: "AI Automation",      icon: "🤖", pkr: 80000,  usd: 291 },
-  { id: "content-writing",    label: "Content Writing",    icon: "✍️", pkr: 30000,  usd: 109 },
-  { id: "tiktok-ads",         label: "TikTok Ads",         icon: "🎬", pkr: 15000,  usd: 54 },
-  { id: "graphic-design",     label: "Graphic Design",     icon: "🎨", pkr: 10000,  usd: 36 },
-];
+  ...SERVICES.slice(0, 1),
+  {
+    ...svcById("meta-ads"),
+    id: "meta-graphics",
+    title: "Meta Ads + Graphics",
+    icon: "🎨",
+    pricePkr: svcById("meta-ads").pricePkr + svcById("graphic-design").pricePkr,
+    priceUsd: svcById("meta-ads").priceUsd + svcById("graphic-design").priceUsd,
+  },
+  ...SERVICES.slice(1),
+].map((x) => ({ id: x.id, label: x.title, icon: x.icon, pkr: x.pricePkr, usd: x.priceUsd, billing: x.billing }));
 
 const BUDGETS = [
   { key: "low",    label: "Flexible / Startup",  mult: 0.9 },
@@ -42,7 +42,7 @@ const ROADMAP: Record<string, string[]> = {
   "seo":                ["Technical audit & quick wins (Wk 1–2)","On-page optimization (Wk 3–4)","Content & link building (Month 2–3)","Ranking growth (Month 4–6)"],
   "web-development":    ["Design mockups & approval (Wk 1–2)","Development sprint (Wk 3–5)","Testing & revisions (Wk 6–7)","Launch & SEO setup (Wk 8)"],
   "shopify":            ["Store setup & theme customization (Wk 1–2)","Product upload & payment setup (Wk 3)","App integration (Wk 4)","Launch & marketing (Wk 5)"],
-  "youtube-automation": ["Niche research & channel setup (Wk 1)","First 4 videos produced (Wk 2–3)","SEO optimization & thumbnails (Wk 4)","Monetization strategy (Month 2+)"],
+  "youtube-channel-management": ["Channel audit & content strategy (Wk 1)","First videos scripted & edited (Wk 2–3)","YouTube SEO & thumbnails (Wk 4)","Monthly analytics & growth plan (Month 2+)"],
   "ai-automation":      ["Process mapping & CRM setup (Wk 1–2)","Chatbot & workflow build (Wk 3–4)","Integration & testing (Wk 5–6)","Training & handover (Wk 7–8)"],
   "branding":           ["Brand discovery & strategy (Wk 1)","Logo concepts & revisions (Wk 2–3)","Full brand identity system (Wk 4)","Asset delivery & guidelines (Wk 5)"],
   "social-media":       ["Content strategy & calendar (Wk 1)","First month content creation (Wk 2)","Publishing & community mgmt (Ongoing)","Monthly performance review (Monthly)"],
@@ -63,12 +63,13 @@ export default function PricingCalculator() {
   };
 
   const est = useMemo(() => {
-    if (!selected.length) return { min: 0, max: 0 };
+    if (!selected.length) return { min: 0, max: 0, oneMin: 0, oneMax: 0 };
 
-    // Sum prices; international (USD) figures get the +35% uplift.
-    const base = selected.reduce((s, id) => {
+    // Monthly retainers and one-time projects are summed separately so a
+    // website build is never shown as a monthly cost.
+    const sum = (billing: "monthly" | "one-time") => selected.reduce((s, id) => {
       const option = SVC_OPTS.find(o => o.id === id);
-      if (!option) return s;
+      if (!option || option.billing !== billing) return s;
       return s + (currency === "PKR" ? option.pkr : option.usd);
     }, 0);
 
@@ -76,8 +77,9 @@ export default function PricingCalculator() {
     const tm = TIMELINES.find(t => t.key === timeline)?.urg || 1;
     const disc = selected.length >= 3 ? 0.85 : selected.length >= 2 ? 0.9 : 1;
 
-    const mo = Math.round(base * bm * tm * disc);
-    return { min: mo, max: Math.round(mo * 1.2) };
+    const mo = Math.round(sum("monthly") * bm * tm * disc);
+    const one = Math.round(sum("one-time") * bm * disc);
+    return { min: mo, max: Math.round(mo * 1.2), oneMin: one, oneMax: Math.round(one * 1.2) };
   }, [selected, budget, timeline, currency]);
 
   const roadmapItems = selected.slice(0, 3).flatMap(id => (ROADMAP[id] || []).slice(0, 2));
@@ -118,7 +120,7 @@ export default function PricingCalculator() {
                       <span className="text-xl block mb-1">{s.icon}</span>
                       <span className="text-white text-xs font-semibold leading-tight block">{s.label}</span>
                       <span className="text-slate-500 text-[10px]">
-                        {geoLoading ? "Loading..." : currency === "PKR" ? `from PKR ${s.pkr.toLocaleString()}/mo` : `from $${s.usd.toLocaleString()}/mo`}
+                        {geoLoading ? "Loading..." : `from ${currency === "PKR" ? `PKR ${s.pkr.toLocaleString()}` : `$${s.usd.toLocaleString()}`}${s.billing === "monthly" ? "/mo" : " one-time"}`}
                       </span>
                     </button>
                   ))}
@@ -172,20 +174,35 @@ export default function PricingCalculator() {
           {/* Dynamic Generated Results Column */}
           <div>
             <AnimatePresence mode="wait">
-              {shown && est.min > 0 ? (
+              {shown && (est.min > 0 || est.oneMin > 0) ? (
                 <motion.div key="result"
                   initial={{ opacity: 0, x: 28, scale: 0.95 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0 }}
                   className="p-6 sticky top-24 rounded-3xl border border-[var(--border-2)] bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-elev)] shadow-[0_20px_55px_rgba(0,0,0,0.35)]"
                 >
                   <div className="label mb-4"><Zap size={11}/> {t("calc_result_title")}</div>
                   <div className="mb-6 p-5 rounded-2xl bg-gradient-to-br from-red-500/10 to-red-900/10 border border-red-500/20">
-                    <p className="text-slate-400 text-xs mb-1">{t("calc_monthly_inv")}</p>
-                    <p className="text-4xl font-black gradient-text">
-                      {currency === "PKR" ? `PKR ${est.min.toLocaleString()}` : `$${est.min}`}
-                    </p>
-                    <p className="text-slate-500 text-xs mt-1">
-                      – {currency === "PKR" ? `PKR ${est.max.toLocaleString()}` : `$${est.max.toLocaleString()}`}/month
-                    </p>
+                    {est.min > 0 && (
+                      <>
+                        <p className="text-slate-400 text-xs mb-1">{t("calc_monthly_inv")}</p>
+                        <p className="text-4xl font-black gradient-text">
+                          {currency === "PKR" ? `PKR ${est.min.toLocaleString()}` : `$${est.min.toLocaleString()}`}
+                        </p>
+                        <p className="text-slate-500 text-xs mt-1">
+                          – {currency === "PKR" ? `PKR ${est.max.toLocaleString()}` : `$${est.max.toLocaleString()}`}/month
+                        </p>
+                      </>
+                    )}
+                    {est.oneMin > 0 && (
+                      <div className={est.min > 0 ? "mt-4 pt-4 border-t border-red-500/20" : ""}>
+                        <p className="text-slate-400 text-xs mb-1">One-time project</p>
+                        <p className={est.min > 0 ? "text-2xl font-black text-white" : "text-4xl font-black gradient-text"}>
+                          {currency === "PKR" ? `PKR ${est.oneMin.toLocaleString()}` : `$${est.oneMin.toLocaleString()}`}
+                        </p>
+                        <p className="text-slate-500 text-xs mt-1">
+                          – {currency === "PKR" ? `PKR ${est.oneMax.toLocaleString()}` : `$${est.oneMax.toLocaleString()}`} one-time
+                        </p>
+                      </div>
+                    )}
                     {selected.length >= 2 && <p className="text-green-300 text-xs mt-2 font-bold">🎉 Bundle discount applied!</p>}
                   </div>
                   <div className="mb-5">

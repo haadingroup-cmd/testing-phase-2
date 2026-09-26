@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { Lang, LANGS, T, detectLangFromCountry } from "@/data/translations";
+import { Lang, LANGS, T } from "@/data/translations";
 
 interface LangCtx {
   lang: Lang;
@@ -15,21 +15,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
-    // 1. Saved preference wins.
+    // A language the visitor picked themselves (via the switcher) wins.
     try {
       const saved = localStorage.getItem("hg_lang") as Lang | null;
       if (saved && LANGS[saved]) { applyLang(saved); return; }
     } catch {}
-    // 2. Country cookie set by middleware (Vercel edge geo — reliable, instant).
-    try {
-      const m = document.cookie.match(/(?:^|;\s*)hg-country=([^;]+)/);
-      if (m) { applyLang(detectLangFromCountry(decodeURIComponent(m[1]))); return; }
-    } catch {}
-    // 3. Fallback: browser language.
-    try {
-      const nav = (navigator.language || "en").toLowerCase();
-      if (nav.startsWith("ar")) { applyLang("ar"); return; }
-    } catch {}
+    // Otherwise English for everyone. Arabic is opt-in via the language
+    // switcher only — no switching by country or browser language, so every
+    // visitor (and crawler) gets the same complete English page by default.
   }, []);
 
   function applyLang(l: Lang) {

@@ -8,7 +8,7 @@ import ServiceCardText from "@/components/services/ServiceCardText";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Services",
-  description: "12 premium digital marketing services: Meta Ads, Google Ads, SEO, YouTube Automation, Shopify, Web Development, Branding & AI Automation.",
+  description: "12 premium digital marketing services: Meta Ads, Google Ads, SEO, YouTube Channel Management, Shopify, Web Development, Branding & AI Automation.",
   alternates: { canonical: "/services" },
 };
 
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-2xl mb-4`}>{svc.icon}</div>
                   <ServiceCardText title={svc.title} titleAr={svc.titleAr} desc={svc.shortDesc} descAr={svc.shortDescAr} />
                   <div className="flex items-center justify-between">
-                    <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} size="sm" prefix="from " />
+                    <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="sm" prefix="from " />
                     <ArrowRight size={15} className="text-red-400 group-hover:translate-x-1 transition-transform"/>
                   </div>
                 </div>

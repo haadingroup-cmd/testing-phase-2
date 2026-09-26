@@ -39,6 +39,12 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      // Service renamed from "YouTube Automation"; keep old links and rankings.
+      { source: "/services/youtube-automation", destination: "/services/youtube-channel-management", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

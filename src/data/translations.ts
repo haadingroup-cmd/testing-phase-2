@@ -5,12 +5,6 @@ export const LANGS: Record<Lang, { name: string; native: string; flag: string; d
   ar: { name: "Arabic",  native: "العربية",  flag: "🇸🇦", dir: "rtl" },
 };
 
-export const ARABIC_COUNTRIES = ["AE","SA","QA","KW","BH","OM","EG","JO","IQ","LB","SY","YE","LY","TN","DZ","MA","SD"];
-
-export function detectLangFromCountry(cc: string): Lang {
-  return ARABIC_COUNTRIES.includes(cc.toUpperCase()) ? "ar" : "en";
-}
-
 export const T: Record<Lang, Record<string, string>> = {
   en: {
     // Nav
