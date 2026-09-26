@@ -119,7 +119,7 @@ export default function PricingCalculator() {
                       )}
                       <span className="text-xl block mb-1">{s.icon}</span>
                       <span className="text-white text-xs font-semibold leading-tight block">{s.label}</span>
-                      <span className="text-slate-500 text-[10px]">
+                      <span className="block mt-1 text-slate-400 text-[11px] font-semibold tabular-nums">
                         {geoLoading ? "Loading..." : `from ${currency === "PKR" ? `PKR ${s.pkr.toLocaleString()}` : `$${s.usd.toLocaleString()}`}${s.billing === "monthly" ? "/mo" : " one-time"}`}
                       </span>
                     </button>

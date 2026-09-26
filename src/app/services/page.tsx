@@ -52,15 +52,15 @@ export default function ServicesPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {SERVICES.map(svc => (
               <Link key={svc.id} href={`/services/${svc.id}`}
-                className="card-plain rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all"
+                className="flex flex-col card-plain rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all"
               >
                 <div className={`h-1.5 bg-gradient-to-r ${svc.color}`}/>
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-2xl mb-4`}>{svc.icon}</div>
                   <ServiceCardText title={svc.title} titleAr={svc.titleAr} desc={svc.shortDesc} descAr={svc.shortDescAr} />
-                  <div className="flex items-center justify-between">
-                    <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="sm" prefix="from " />
-                    <ArrowRight size={15} className="text-red-400 group-hover:translate-x-1 transition-transform"/>
+                  <div className="mt-auto flex items-end justify-between gap-3 pt-4 border-t border-white/8">
+                    <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="card" />
+                    <ArrowRight size={16} className="text-red-400 group-hover:translate-x-1 transition-transform flex-shrink-0 mb-1"/>
                   </div>
                 </div>
               </Link>
