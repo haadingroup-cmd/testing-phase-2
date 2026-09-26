@@ -248,7 +248,7 @@ export default function HeroSection() {
                 { icon:<CheckCircle size={13}/>, text:"ROI Guaranteed" },
                 { icon:<CheckCircle size={13}/>, text:"24hr Support" },
                 { icon:<Users size={13}/>,        text:"Real Results" },
-                { icon:<TrendingUp size={13}/>,    text:"5 Markets" },
+                { icon:<TrendingUp size={13}/>,    text:"6 Markets" },
               ].map((b,i) => (
                 <motion.div
                   key={i}
