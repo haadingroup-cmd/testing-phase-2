@@ -1,0 +1,252 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+ * "Sovereign Blue & Precision Tech" — design tokens exported from the Stitch
+ * design system (DESIGN.md). Names mirror the Stitch Tailwind config so the
+ * original class names (bg-surface-container-low, text-label-eyebrow, …)
+ * work unchanged.
+ */
+@theme {
+  /* Colors */
+  --color-surface: #f8f9ff;
+  --color-surface-dim: #ccdbf2;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef4ff;
+  --color-surface-container: #e5efff;
+  --color-surface-container-high: #dbe9ff;
+  --color-surface-container-highest: #d4e4fa;
+  --color-on-surface: #0d1c2d;
+  --color-on-surface-variant: #44474d;
+  --color-inverse-surface: #233143;
+  --color-inverse-on-surface: #e9f1ff;
+  --color-outline: #75777e;
+  --color-outline-variant: #c5c6ce;
+  --color-surface-tint: #4e5f7d;
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #091b36;
+  --color-on-primary-container: #7484a5;
+  --color-inverse-primary: #b6c7ea;
+  --color-secondary: #0851d5;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #376bef;
+  --color-on-secondary-container: #fefcff;
+  --color-tertiary: #000000;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #271900;
+  --color-on-tertiary-container: #ab7b19;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #d6e3ff;
+  --color-primary-fixed-dim: #b6c7ea;
+  --color-on-primary-fixed: #091b36;
+  --color-on-primary-fixed-variant: #374764;
+  --color-secondary-fixed: #dbe1ff;
+  --color-secondary-fixed-dim: #b4c5ff;
+  --color-on-secondary-fixed: #00174c;
+  --color-on-secondary-fixed-variant: #003da9;
+  --color-tertiary-fixed: #ffdeaa;
+  --color-tertiary-fixed-dim: #f5bd58;
+  --color-on-tertiary-fixed: #271900;
+  --color-on-tertiary-fixed-variant: #5f4100;
+  --color-background: #f8f9ff;
+  --color-on-background: #0d1c2d;
+  --color-surface-variant: #d4e4fa;
+  --color-electric-blue: #2f80ff;
+  --color-accent-gold-light: #f4c96b;
+  --color-canvas-slate: #f7f9fc;
+  --color-obsidian: #020205;
+  --color-system-alert: #dc2626;
+  --color-whatsapp: #25d366;
+
+  /* Fonts (next/font variables are defined on <html>) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display-hero: var(--font-display);
+  --font-display-hero-mobile: var(--font-display);
+  --font-headline-lg: var(--font-display);
+  --font-headline-lg-mobile: var(--font-display);
+  --font-headline-md: var(--font-display);
+  --font-headline-sm: var(--font-display);
+  --font-label-eyebrow: var(--font-display);
+  --font-body-lg: var(--font-sans);
+  --font-body-md: var(--font-sans);
+  --font-body-sm: var(--font-sans);
+  --font-label-lg: var(--font-sans);
+  --font-label-md: var(--font-sans);
+
+  /* Type scale */
+  --text-display-hero: 56px;
+  --text-display-hero--line-height: 64px;
+  --text-display-hero--letter-spacing: -0.03em;
+  --text-display-hero--font-weight: 800;
+  --text-display-hero-mobile: 36px;
+  --text-display-hero-mobile--line-height: 44px;
+  --text-display-hero-mobile--letter-spacing: -0.025em;
+  --text-display-hero-mobile--font-weight: 800;
+  --text-headline-lg: 40px;
+  --text-headline-lg--line-height: 48px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+  --text-headline-lg-mobile: 28px;
+  --text-headline-lg-mobile--line-height: 36px;
+  --text-headline-lg-mobile--letter-spacing: -0.015em;
+  --text-headline-lg-mobile--font-weight: 700;
+  --text-headline-md: 28px;
+  --text-headline-md--line-height: 36px;
+  --text-headline-md--letter-spacing: -0.015em;
+  --text-headline-md--font-weight: 600;
+  --text-headline-sm: 20px;
+  --text-headline-sm--line-height: 28px;
+  --text-headline-sm--letter-spacing: -0.01em;
+  --text-headline-sm--font-weight: 600;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--letter-spacing: -0.005em;
+  --text-body-md: 15px;
+  --text-body-md--line-height: 24px;
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 20px;
+  --text-label-lg: 14px;
+  --text-label-lg--line-height: 20px;
+  --text-label-lg--letter-spacing: 0.01em;
+  --text-label-lg--font-weight: 600;
+  --text-label-md: 12px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--letter-spacing: 0.02em;
+  --text-label-md--font-weight: 600;
+  --text-label-eyebrow: 11px;
+  --text-label-eyebrow--line-height: 16px;
+  --text-label-eyebrow--letter-spacing: 0.12em;
+  --text-label-eyebrow--font-weight: 700;
+
+  /* Spacing */
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-margin: 3rem;
+  --spacing-margin-mobile: 1.25rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+
+  /* Elevation (DESIGN.md levels) */
+  --shadow-level-1: 0 2px 8px -2px rgba(7, 26, 53, 0.04), 0 1px 3px 0 rgba(7, 26, 53, 0.02);
+  --shadow-level-2: 0 12px 24px -6px rgba(7, 26, 53, 0.08), 0 4px 8px -2px rgba(7, 26, 53, 0.03);
+  --shadow-level-3: 0 24px 48px -12px rgba(7, 26, 53, 0.16), 0 8px 16px -4px rgba(7, 26, 53, 0.06);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  html,
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-electric-blue);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Material Symbols (Stitch icon set) — loaded as a subset font in the root layout. */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+  overflow: hidden;
+}
+
+.material-symbols-outlined.icon-fill {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* Scroll reveal (progressively enhanced; content is visible without JS). */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Article typography tuned to the design system. */
+.prose-hg {
+  --tw-prose-body: var(--color-on-surface-variant);
+  --tw-prose-headings: var(--color-on-surface);
+  --tw-prose-links: var(--color-secondary);
+  --tw-prose-bold: var(--color-on-surface);
+  --tw-prose-bullets: var(--color-secondary);
+  --tw-prose-quotes: var(--color-on-surface);
+  --tw-prose-quote-borders: var(--color-secondary);
+  --tw-prose-th-borders: var(--color-outline-variant);
+  --tw-prose-td-borders: var(--color-surface-container-high);
+}
+
+.prose-hg :where(h2, h3, h4) {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
