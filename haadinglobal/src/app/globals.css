@@ -184,7 +184,19 @@
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* Material Symbols (Stitch icon set) — loaded as a subset font in the root layout. */
+/*
+ * Material Symbols (Stitch icon set), self-hosted as a ~17 KB subset that
+ * contains only the glyphs listed in src/lib/icons.ts.
+ * Regenerate with `npm run icons:update` after adding icon names.
+ */
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/fonts/material-symbols-subset.woff2") format("woff2");
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
@@ -198,27 +210,37 @@
   direction: ltr;
   font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 0;
   user-select: none;
   overflow: hidden;
 }
 
 .material-symbols-outlined.icon-fill {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 1;
 }
 
-/* Scroll reveal (progressively enhanced; content is visible without JS). */
-@media (prefers-reduced-motion: no-preference) {
-  .js [data-reveal] {
+/*
+ * Scroll reveal — pure CSS scroll-driven animation (no JavaScript, no layout
+ * cost). Browsers without animation-timeline support simply show content.
+ */
+@keyframes hg-reveal {
+  from {
     opacity: 0;
-    transform: translateY(14px);
-    transition:
-      opacity 0.6s ease-out,
-      transform 0.6s ease-out;
+    transform: translateY(16px);
   }
-  .js [data-reveal].is-visible {
+  to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation: hg-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
   }
 }
 

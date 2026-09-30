@@ -55,21 +55,8 @@ export const consultationSchema = z
   })
   .extend(antiSpamSchema.shape);
 
-/** Pricing tier enquiries. */
-export const pricingEnquirySchema = z
-  .object({
-    source: z.literal("PRICING"),
-    name: text(2, 120, "Name"),
-    phone: phoneSchema,
-    email: optionalEmailSchema,
-    service: text(1, 120, "Plan"),
-    message: optionalText(2000, "Message"),
-  })
-  .extend(antiSpamSchema.shape);
-
-export const leadSchema = z.discriminatedUnion("source", [contactSchema, consultationSchema, pricingEnquirySchema]);
+export const leadSchema = z.discriminatedUnion("source", [contactSchema, consultationSchema]);
 
 export type ContactInput = z.input<typeof contactSchema>;
 export type ConsultationInput = z.input<typeof consultationSchema>;
-export type PricingEnquiryInput = z.input<typeof pricingEnquirySchema>;
 export type LeadInput = z.output<typeof leadSchema>;

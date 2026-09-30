@@ -22,7 +22,6 @@ const SOURCE_LABEL: Record<LeadSource, string> = {
   CONTACT: "Contact form",
   CONSULTATION: "Free strategy audit (homepage)",
   PACKAGE_BUILDER: "Custom package builder",
-  PRICING: "Pricing plan enquiry",
   AUDIT: "Website audit tool",
 };
 

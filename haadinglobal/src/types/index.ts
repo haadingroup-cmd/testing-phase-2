@@ -9,7 +9,7 @@ export type ServiceCategory = "PERFORMANCE" | "TECH" | "CREATIVE";
 export type PriceUnit = "MONTH" | "PROJECT";
 export type PlanVariant = "STANDARD" | "POPULAR" | "PREMIUM";
 export type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "CONVERTED" | "LOST";
-export type LeadSource = "CONTACT" | "CONSULTATION" | "PACKAGE_BUILDER" | "PRICING" | "AUDIT";
+export type LeadSource = "CONTACT" | "CONSULTATION" | "PACKAGE_BUILDER" | "AUDIT";
 
 export type ProcessStep = { title: string; description: string };
 export type QA = { question: string; answer: string };

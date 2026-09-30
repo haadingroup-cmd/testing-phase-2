@@ -70,7 +70,6 @@ enum LeadSource {
   CONTACT
   CONSULTATION
   PACKAGE_BUILDER
-  PRICING
   AUDIT
 }
 
