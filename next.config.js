@@ -54,6 +54,14 @@ const nextConfig = {
     return [
       // Service renamed from "YouTube Automation"; keep old links and rankings.
       { source: "/services/youtube-automation", destination: "/services/youtube-channel-management", permanent: true },
+      // URLs the short-lived replacement site (Oct 2026) listed in its sitemap; send them to the closest real page.
+      { source: "/audit", destination: "/free-seo-audit", permanent: true },
+      { source: "/audit/:path*", destination: "/free-seo-audit", permanent: true },
+      { source: "/results", destination: "/portfolio", permanent: true },
+      { source: "/results/:path*", destination: "/portfolio", permanent: true },
+      { source: "/faq", destination: "/#faq", permanent: true },
+      { source: "/refund-policy", destination: "/terms", permanent: true },
+      { source: "/security", destination: "/privacy-policy", permanent: true },
     ];
   },
   async headers() {
