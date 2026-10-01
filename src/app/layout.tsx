@@ -1,45 +1,194 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { SITE_URL } from "@/lib/site";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-jakarta", display: "swap" });
+import type { Metadata } from "next";
+import { inter, playfair, notoArabic } from "./fonts";
+import "../styles/globals.css";
+import SiteChrome from "@/components/layout/SiteChrome";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProvider";
+import Analytics from "@/components/analytics/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE, GBP_MAPS_URL } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://www.haadinglobal.com"),
   title: {
-    default: "HaadinGlobal — Digital Marketing & Technology Agency",
+    default: "Digital Marketing Agency in Pakistan | HaadinGlobal",
     template: "%s | HaadinGlobal",
   },
   description:
-    "Results-driven digital marketing and technology agency: Meta & Google Ads, SEO, web development, Shopify and AI automation for businesses in Pakistan, the Gulf, the UK and the USA.",
-  applicationName: "HaadinGlobal",
-  authors: [{ name: "Muhammad Haseeb" }],
+    "HaadinGlobal is a results-driven digital marketing agency in Pakistan. We grow businesses with Meta Ads, Google Ads, SEO, Shopify and web development.",
+  keywords: [
+    "digital marketing agency Pakistan","digital marketing agency Sahiwal",
+    "Meta Ads agency Pakistan","Google Ads Pakistan","SEO services Pakistan",
+    "social media marketing Pakistan","Shopify development Pakistan",
+    "YouTube channel management","lead generation agency Pakistan","HaadinGlobal",
+  ],
+  authors: [{ name: "HaadinGlobal", url: "https://www.haadinglobal.com" }],
   creator: "HaadinGlobal",
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/icon.svg", type: "image/svg+xml" }],
-    apple: "/apple-touch-icon.png",
+  openGraph: {
+    type: "website", locale: "en_PK",
+    url: "https://www.haadinglobal.com",
+    siteName: "HaadinGlobal",
+    title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
+    description: "Meta Ads, Google Ads, SEO, Shopify, web development & AI automation. Serving businesses in Pakistan, UAE, UK & USA.",
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal Digital Agency" }],
   },
-  manifest: "/manifest.webmanifest",
-  formatDetection: { telephone: false },
-  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+  twitter: {
+    card: "summary_large_image",
+    title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
+    description: "Meta Ads, Google Ads, SEO, Shopify & more. Proven results.",
+    creator: "@haadinglobal",
+  },
+  robots: { index: true, follow: true },
+  verification: {
+    google: "TsWZj-bZ3ii9Q_Rfk9AoI1eFzagPGWpyqPoFjMJ_M7A",
+  },
+  // No site-wide canonical here: child pages inherit it, so a root canonical
+  // would point every page without its own at the homepage. Each page sets
+  // its own `alternates.canonical` instead.
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-  themeColor: "#091b36",
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.haadinglobal.com/#org",
+      name: "HaadinGlobal",
+      alternateName: "HaadinGlobal Digital Marketing Agency",
+      url: "https://www.haadinglobal.com",
+      logo: "https://www.haadinglobal.com/logo.png",
+      image: "https://www.haadinglobal.com/logo.png",
+      foundingDate: "2025",
+      slogan: "Results-driven digital marketing that turns ad spend into real revenue.",
+      description: "Results-driven digital marketing agency offering Meta Ads, Google Ads, SEO, social media marketing, Shopify & web development, YouTube channel management and AI automation for businesses in Pakistan and worldwide.",
+      knowsAbout: [
+        "Meta Ads", "Facebook Advertising", "Google Ads", "Search Engine Optimization",
+        "Local SEO", "Social Media Marketing", "Shopify Development", "Web Development",
+        "YouTube Channel Management", "Lead Generation", "Branding", "AI Automation", "eCommerce Marketing",
+      ],
+      foundingLocation: { "@type": "Place", name: "Sahiwal, Pakistan" },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "M439+5P4, Pakpattan Chowk Flyover, near New Bulbul Hotel, Canal View Town",
+        addressLocality: "Sahiwal",
+        addressRegion: "Punjab",
+        postalCode: "57000",
+        addressCountry: "PK",
+      },
+      contactPoint: { "@type": "ContactPoint", telephone: "+92-305-4782677", contactType: "customer service", email: "haadinglobal@gmail.com" },
+      areaServed: [
+        { "@type": "Country", name: "Pakistan" },
+        { "@type": "Country", name: "United Arab Emirates" },
+        { "@type": "Country", name: "Qatar" },
+        { "@type": "Country", name: "Saudi Arabia" },
+        { "@type": "Country", name: "United Kingdom" },
+        { "@type": "Country", name: "United States" },
+      ],
+      sameAs: [
+        "https://web.facebook.com/haadinglobal",
+        "https://www.instagram.com/haadinglobal",
+        "https://www.tiktok.com/@haadinglobal",
+        "https://www.linkedin.com/in/haadinglobal",
+        "https://www.youtube.com/@haadinglobal",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.haadinglobal.com/#website",
+      url: "https://www.haadinglobal.com",
+      name: "HaadinGlobal",
+      publisher: { "@id": "https://www.haadinglobal.com/#org" },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.haadinglobal.com/#localbusiness",
+      name: "HaadinGlobal — Digital Marketing Agency",
+      image: "https://www.haadinglobal.com/logo.png",
+      url: "https://www.haadinglobal.com",
+      telephone: "+92-305-4782677",
+      email: "haadinglobal@gmail.com",
+      priceRange: "$$",
+      parentOrganization: { "@id": "https://www.haadinglobal.com/#org" },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "M439+5P4, Pakpattan Chowk Flyover, near New Bulbul Hotel, Canal View Town",
+        addressLocality: "Sahiwal",
+        addressRegion: "Punjab",
+        postalCode: "57000",
+        addressCountry: "PK",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Pakistan" },
+        { "@type": "Country", name: "United Arab Emirates" },
+        { "@type": "Country", name: "Qatar" },
+        { "@type": "Country", name: "Saudi Arabia" },
+        { "@type": "Country", name: "United Kingdom" },
+        { "@type": "Country", name: "United States" },
+      ],
+      geo: { "@type": "GeoCoordinates", latitude: 30.6641, longitude: 73.1114 },
+      hasMap: GBP_MAPS_URL,
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: "09:00",
+          closes: "17:00",
+        },
+      ],
+      sameAs: [
+        "https://web.facebook.com/haadinglobal",
+        "https://www.instagram.com/haadinglobal",
+        "https://www.tiktok.com/@haadinglobal",
+        "https://www.linkedin.com/in/haadinglobal",
+        "https://www.youtube.com/@haadinglobal",
+        // Only the real profile link identifies the listing; a Maps search does not.
+        ...(SITE.gbp.profileUrl ? [SITE.gbp.profileUrl] : []),
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${inter.variable} ${playfair.variable} ${notoArabic.variable}`}
+    >
       <head>
-        <link rel="preload" href="/fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#dc2626" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {/* Ahrefs Web Analytics — site verification */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="H3/FgiLIdj1PE6krnya/kA"
+          async
+        />
       </head>
-      <body className="min-h-dvh bg-surface font-body-md text-body-md text-on-surface antialiased">{children}</body>
+      <body>
+        <Analytics />
+        <ThemeProvider>
+          <LanguageProvider>
+            <SiteChrome>{children}</SiteChrome>
+          </LanguageProvider>
+        </ThemeProvider>
+        {/* Vercel Web Analytics (traffic) + Speed Insights (real-user Core Web Vitals).
+            Both beacon to same-origin /_vercel/* endpoints, so the existing CSP covers them. */}
+        <VercelAnalytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

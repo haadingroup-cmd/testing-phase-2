@@ -1,0 +1,288 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { CheckCircle, ArrowRight, MessageCircle } from "lucide-react";
+import { SERVICES, serviceFaqs, serviceQuickAnswer, priceTerms } from "@/data/services";
+import { CTASection } from "@/components/home/SiteSections";
+import LandingLeadForm from "@/components/landing/LandingLeadForm";
+import ServicePriceTag from "@/components/services/ServicePriceTag";
+import ServiceDetailHero from "@/components/services/ServiceDetailHero";
+import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import RegionalText from "@/components/common/RegionalText";
+
+// Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
+const SEO_TITLES: Record<string, string> = {
+  "meta-ads": "Meta & Facebook Ads Services in Pakistan",
+  "google-ads": "Google Ads Management in Pakistan",
+  "seo": "SEO Services in Pakistan",
+  "social-media": "Social Media Marketing in Pakistan",
+  "youtube-channel-management": "YouTube Channel Management for Businesses",
+  "web-development": "Website Development in Pakistan | From PKR 80,000",
+  "shopify": "Shopify Store Development in Pakistan",
+  "branding": "Branding & Logo Design in Pakistan",
+  "ai-automation": "AI Automation for Business",
+  "content-writing": "SEO Content Writing Services",
+  "tiktok-ads": "TikTok Ads Management in Pakistan",
+  "graphic-design": "Graphic Design Services in Pakistan",
+};
+const SEO_DESCS: Record<string, string> = {
+  "meta-ads": "Expert Meta & Facebook ads management in Pakistan. Targeted campaigns that turn ad spend into real leads and sales. Free consultation: +92 305 4782677.",
+  "google-ads": "Professional Google Ads management in Pakistan. Capture high-intent buyers the moment they search. ROI-focused, transparent reporting. Free consultation.",
+  "seo": "Affordable SEO services in Pakistan to rank on Google and grow organic traffic. Local & national SEO for real leads. Free consultation: +92 305 4782677.",
+  "social-media": "Social media marketing in Pakistan — content, management and growth across Facebook, Instagram & TikTok. Build a trusted brand. Free consultation.",
+  "youtube-channel-management": "YouTube channel management for businesses: content strategy, scripting, editing, thumbnails and YouTube SEO that grow your audience. Free consultation.",
+  "web-development": "Custom Next.js websites built to load fast & convert visitors into leads. 4-8 week delivery, mobile-first, SEO-ready. Free quote: +92 305 4782677.",
+  "shopify": "Shopify store development in Pakistan — premium, conversion-optimized online stores built to sell. Setup, design and growth. Free consultation.",
+  "branding": "Branding and logo design in Pakistan. A clean, memorable brand identity that builds trust and stands out. Free consultation with HaadinGlobal.",
+  "ai-automation": "AI automation for business — automate repetitive workflows and scale smarter. Custom AI solutions for growing companies. Free consultation.",
+  "content-writing": "SEO content writing services that rank and convert. Blog posts, web copy and articles built around buyer intent. Free consultation with HaadinGlobal.",
+  "tiktok-ads": "TikTok ads management in Pakistan — scroll-stopping campaigns that build awareness and drive sales. ROI-focused. Free consultation.",
+  "graphic-design": "Professional graphic design services in Pakistan — visuals and creative that communicate and convert. Free consultation with HaadinGlobal.",
+};
+
+// Unique long-form body per service — real ranking content (Google rewards
+// substantial, unique on-page copy) that also helps the buyer understand the
+// offer. Rendered as an "Overview" section below the hero.
+const SERVICE_BODY: Record<string, string> = {
+  "meta-ads": `<p>Facebook and Instagram are where your customers spend hours every day — but throwing money at boosted posts rarely turns that attention into sales. Our Meta Ads management is built to do exactly that: reach the right people, with the right offer, at the right moment, and turn ad spend into measurable leads and revenue.</p><p>We start by researching your audience and building tightly-targeted campaigns — cold prospecting, warm retargeting and lookalike audiences — each with its own creative and message. Then we test relentlessly: different hooks, visuals and offers, keeping what works and cutting what doesn't, so your cost per result drops over time instead of climbing.</p><p>You get transparent weekly reporting tied to real business outcomes — leads, purchases, ROAS — not vanity likes. Whether you run a local service business, a growing e-commerce store or a B2B brand across Pakistan, the UAE, the UK or the US, we build campaigns that scale with your goals.</p><p><strong>Who this is for:</strong> businesses that already have an offer worth promoting and want predictable, trackable leads or sales — not just brand awareness. If you're starting from zero with no landing page or way to capture leads, we can build that first so your ad spend isn't wasted.</p>`,
+  "google-ads": `<p>When someone searches "plumber near me" or "best CRM for small business", they're ready to act. Google Ads puts you in front of these high-intent buyers at the exact moment they're looking — and done right, it's one of the fastest ways to generate qualified leads and sales.</p><p>We manage the full picture: Search, Shopping, Display, YouTube and Performance Max. That means precise keyword and audience targeting, tightly-written ads, negative-keyword lists that stop budget leaking on the wrong clicks, and conversion tracking so every rupee or dollar is accountable. Smart bidding and continuous optimisation keep your cost per conversion falling.</p><p>Because we operate at offshore-competitive rates, more of your budget goes to media spend and results — not agency overhead. You get clear, regular reporting on the metrics that matter: cost per lead, conversions and return on ad spend.</p><p><strong>Who this is for:</strong> businesses with clear, definable buyer intent — searches people make right before they buy or enquire. It works especially well for service businesses, e-commerce and anything with a specific, searchable problem to solve.</p>`,
+  "seo": `<p>SEO is the compounding engine of online growth — traffic you don't pay for per click, built to bring customers month after month. Our SEO service is designed to get your business ranking on Google for the searches your customers actually make, across both national and local results.</p><p>We work across all three pillars: technical SEO (fast, crawlable, mobile-first pages), on-page SEO (keyword-optimised titles, content and structure), and off-page authority (quality backlinks and consistent citations). For local businesses we optimise your Google Business Profile and target "near me" and city-specific searches that drive high-value leads.</p><p>SEO is a long-term investment — meaningful results typically build over 3–6 months — but it's the traffic source with the lowest cost per lead once it's working. We focus on rankings that turn into real enquiries and sales, not vanity keywords, with transparent reporting throughout.</p><p><strong>Who this is for:</strong> businesses planning to be around for the long run, who want a traffic source that doesn't disappear the day the ad budget stops. It pairs well with paid ads — ads for immediate leads while SEO builds in the background.</p>`,
+  "social-media": `<p>A strong social presence builds the trust that turns strangers into customers. Our social media management keeps your brand active, consistent and on-message across Facebook, Instagram, TikTok and more — so when a potential customer checks you out, they see a business worth buying from.</p><p>We handle strategy, content creation, scheduling and community management: on-brand posts and reels, captions written to engage, and timely replies that build relationships. Everything is planned around your goals — awareness, engagement or driving traffic to your offers.</p><p>Consistency is what compounds on social, and that's exactly what we deliver — a steady, professional presence that grows your audience and supports every other channel you run.</p><p><strong>Who this is for:</strong> businesses whose potential customers check their social profiles before buying — which today is nearly every business. It's also the foundation that makes paid ads and influencer work perform better, since ads point to a profile that already looks credible.</p>`,
+  "youtube-channel-management": `<p>YouTube is the world's second-largest search engine, and for many businesses it is the most trusted place to show how they work. Our YouTube channel management service runs your channel end to end so it grows steadily instead of stalling after a few uploads.</p><p>We handle the full pipeline: content strategy built around what your customers search for, scripting, editing, thumbnails designed to earn clicks, and YouTube SEO for titles, descriptions and tags. Every video has a clear job, whether that is answering buyer questions, showing your work or driving enquiries to your website.</p><p>Growth on YouTube comes from consistency and relevance, not shortcuts. We agree a realistic upload schedule, report on views, watch time and enquiries every month, and adjust the plan based on what your audience responds to.</p><p><strong>Who this is for:</strong> businesses, brands and professionals who want a YouTube channel that builds trust and brings in customers, without spending their own time on production.</p>`,
+  "web-development": `<p>Your website is your hardest-working salesperson — but only if it's fast, clear and built to convert. We build modern, high-performance websites (on Next.js) that load quickly, look premium on every device, and turn visitors into leads instead of just looking good.</p><p>Every site is designed around conversion: a clear message, obvious calls-to-action, trust signals like reviews and results, and forms that capture leads straight into your system. It's also built SEO-ready from day one — clean structure, fast load times and proper metadata — so it can rank as well as it sells.</p><p>From a lead-generating landing page to a full multi-page business site, we deliver in weeks, not months, with a mobile-first build that matches the expectations of customers in Pakistan and international markets alike.</p><p><strong>Who this is for:</strong> businesses whose current site is slow, outdated, or simply isn't generating enquiries — and anyone launching who wants a site built for lead generation from day one rather than a template that just "looks fine".</p>`,
+  "shopify": `<p>A great Shopify store does more than list products — it guides visitors smoothly from browsing to buying. We design and build conversion-focused Shopify stores that look premium, load fast and are structured to sell, whether you're launching your first store or upgrading an existing one.</p><p>Our setup covers everything: theme design and customisation, product and collection structure, conversion-optimised product pages, checkout and payment setup, apps and a mobile-first experience your customers will trust. We build the store to be SEO-ready too, so it can earn free organic traffic over time.</p><p>The result is an online store built to convert browsers into buyers — clean, professional and ready to scale as your brand grows.</p><p><strong>Who this is for:</strong> new e-commerce brands launching their first store, and existing Shopify stores with traffic but a low conversion rate that a stronger design and structure can fix.</p>`,
+  "branding": `<p>Your brand is the first impression that decides whether a customer trusts you. Our branding and logo design service builds a clean, memorable identity that sets you apart and makes your business look established and credible from the first glance.</p><p>We create a cohesive identity system — logo, colours, typography and usage guidelines — designed to work everywhere your brand appears, from your website and ads to social media and print. Every choice is intentional, built to communicate who you are and appeal to the customers you want.</p><p>A strong, consistent brand doesn't just look good — it builds the trust that makes every other marketing effort work harder.</p><p><strong>Who this is for:</strong> new businesses that haven't defined a visual identity yet, and existing businesses whose branding feels inconsistent or dated across their website, social media and print materials.</p>`,
+  "ai-automation": `<p>The businesses pulling ahead in 2026 are the ones automating the repetitive work that eats their time. Our AI automation service helps you streamline workflows — lead follow-up, customer replies, data entry, reporting and more — so your team can focus on growth instead of busywork.</p><p>We identify the manual processes slowing you down, then build custom automations and AI-powered tools tailored to how your business actually works. From instant lead responses to automated reporting and smart integrations between your tools, we turn hours of manual effort into systems that run themselves.</p><p>The result is a leaner, faster operation that scales without adding headcount — and responds to customers quicker than competitors still doing everything by hand.</p><p><strong>Who this is for:</strong> businesses with a repetitive task currently costing real staff hours every week — customer questions, lead follow-up, reporting — and enough volume to make automating it worthwhile.</p>`,
+  "content-writing": `<p>Great content is what earns rankings, builds trust and turns readers into customers. Our SEO content writing service produces blog posts, web copy and articles built around real buyer intent — content that both ranks on Google and moves people to act.</p><p>Every piece is researched around the keywords and questions your customers search for, structured for readability and answer engines (so it can appear in AI Overviews and featured snippets), and written to lead naturally toward your offer. No fluff, no keyword stuffing — just clear, useful content that works.</p><p>Consistent, quality content is the engine behind long-term SEO and authority. We help you publish the kind of content that compounds — bringing free, buyer-ready traffic month after month.</p><p><strong>Who this is for:</strong> businesses that want to rank for the questions their customers actually search, but don't have the time or in-house writer to publish consistently.</p>`,
+  "tiktok-ads": `<p>TikTok has become one of the most powerful — and cost-effective — places to reach new customers, with reach and engagement that few other platforms can match. Our TikTok Ads management creates scroll-stopping campaigns that build awareness and drive real sales, not just views.</p><p>We handle audience targeting, ad creative built for the platform's native, fast-paced feel, campaign setup and continuous optimisation. TikTok rewards authentic, engaging content, so we focus on creative that fits the platform and actually converts — then scale what works.</p><p>Whether you're a product brand chasing sales or a service business building awareness, we help you tap into TikTok's massive, highly-engaged audience at an efficient cost per result.</p><p><strong>Who this is for:</strong> product brands and businesses targeting a younger audience who respond better to native, entertaining video than polished traditional ads.</p>`,
+  "graphic-design": `<p>Strong visuals make your brand impossible to ignore. Our graphic design service delivers eye-catching, on-brand designs across everything your business needs — social media graphics, ad creatives, marketing materials, infographics, presentations and print.</p><p>Every design is built to communicate clearly and convert, not just to look pretty. We keep your visuals consistent with your brand identity so that everything — from an Instagram post to a printed flyer — feels like it belongs to the same professional business.</p><p>Great design builds trust and makes your marketing work harder. We give your brand the polished, cohesive look that stands out in a crowded feed and a competitive market.</p><p><strong>Who this is for:</strong> businesses that need a steady stream of on-brand visuals — social posts, ad creative, print — without hiring a full-time in-house designer.</p>`,
+};
+
+export async function generateStaticParams() {
+  return SERVICES.map(s => ({ slug: s.id }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const svc = SERVICES.find(s => s.id === params.slug);
+  if (!svc) return { title: "Service Not Found" };
+  const url = `https://www.haadinglobal.com/services/${svc.id}`;
+  return {
+    // Keyword-rich title; the root layout template adds "| HaadinGlobal" once,
+    // so we don't repeat the brand here (was producing "… — HaadinGlobal | HaadinGlobal").
+    title: SEO_TITLES[svc.id] ?? `${svc.title} in Pakistan`,
+    description: SEO_DESCS[svc.id] ?? svc.shortDesc,
+    keywords: [svc.title, `${svc.title} Pakistan`, svc.category, "HaadinGlobal", "digital marketing agency"],
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      url,
+      title: `${svc.title} Services | HaadinGlobal`,
+      description: svc.shortDesc,
+      siteName: "HaadinGlobal",
+      images: [{ url: "/logo.png", width: 1200, height: 630, alt: `HaadinGlobal — ${svc.title}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${svc.title} Services | HaadinGlobal`,
+      description: svc.shortDesc,
+    },
+  };
+}
+
+export default function ServicePage({ params }: { params: { slug: string } }) {
+  const svc = SERVICES.find(s => s.id === params.slug);
+  if (!svc) notFound();
+
+  const faqs = serviceFaqs(svc);
+  const url = `https://www.haadinglobal.com/services/${svc.id}`;
+
+  // Combined structured data (@graph): Service + FAQPage + Breadcrumb.
+  // FAQPage feeds People Also Ask / AI Overviews; Breadcrumb gives search
+  // engines clear site hierarchy; Service describes the offering + price.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: svc.title,
+        description: svc.shortDesc,
+        provider: { "@type": "Organization", name: "HaadinGlobal", url: "https://www.haadinglobal.com" },
+        areaServed: ["PK", "AE", "GB", "US", "SA", "QA"],
+        category: svc.category,
+        // One offer per market: PKR for Pakistan, USD everywhere else. Both are
+        // "starting from" prices; monthly services carry a per-month unit.
+        offers: [
+          { currency: "PKR", price: svc.pricePkr, region: ["PK"] },
+          { currency: "USD", price: svc.priceUsd, region: ["AE", "GB", "US", "SA", "QA"] },
+        ].map((o) => ({
+          "@type": "Offer",
+          url,
+          priceCurrency: o.currency,
+          eligibleRegion: o.region.map((c) => ({ "@type": "Country", name: c })),
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            minPrice: o.price,
+            priceCurrency: o.currency,
+            ...(svc.billing === "monthly" ? { unitCode: "MON", unitText: "month" } : {}),
+          },
+        })),
+      },
+      {
+        "@type": "FAQPage",
+        // Price answers vary by visitor country, so they stay out of JSON-LD
+        // (the Offer above carries both markets' prices).
+        mainEntity: faqs.filter((f) => !f.aUsd).map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.haadinglobal.com" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://www.haadinglobal.com/services" },
+          { "@type": "ListItem", position: 3, name: svc.title, item: url },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      {/* Service + FAQ + Breadcrumb structured data for rich results & AI answers */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* HERO — 2-column on desktop: title + description on left, pricing card on right (instantly visible) */}
+      <section className="pt-32 pb-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#020205] via-[#0a0215] to-[#020205]"/>
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            {/* Left: hero text */}
+            <div className="lg:col-span-3">
+              <div className="label mb-4">{svc.category}</div>
+              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${svc.color} flex items-center justify-center text-3xl mb-5 shadow-xl`}>{svc.icon}</div>
+              <ServiceDetailHero title={svc.title} titleAr={svc.titleAr} fullDesc={svc.fullDesc} />
+              <p className="text-slate-200 text-[15px] leading-relaxed bg-white/5 border border-white/10 rounded-xl p-4 mb-6">
+                <strong className="text-white">Quick answer:</strong>{" "}
+                <RegionalText pkr={serviceQuickAnswer(svc, "PKR")} usd={serviceQuickAnswer(svc, "USD")} />
+              </p>
+              {svc.results && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 text-green-300 font-bold text-sm mb-6">
+                  ✓ {svc.results}
+                </div>
+              )}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/consultation" className="btn-primary">Get Started <ArrowRight size={16}/></Link>
+                <WhatsAppCTA source={`service-${svc.id}`} className="btn-ghost">
+                  <MessageCircle size={16}/> WhatsApp Us
+                </WhatsAppCTA>
+              </div>
+            </div>
+
+            {/* Right: pricing card — visible immediately, no scroll needed */}
+            <div className="lg:col-span-2">
+              <div className="card p-6 md:p-7 lg:sticky lg:top-24">
+                <h3 className="font-bold text-white text-lg mb-2">Pricing Starts From</h3>
+                <ServicePriceTag pricePkr={svc.pricePkr} priceUsd={svc.priceUsd} billing={svc.billing} size="lg" terms={priceTerms(svc)} />
+                <p className="text-slate-400 text-sm mb-5">Custom plans available</p>
+                <ul className="space-y-2 mb-6">
+                  {(svc.billing === "one-time"
+                    ? ["Free initial consultation","Dedicated project manager","Free revisions until delivery","Post-launch changes quoted separately"]
+                    : ["Free initial consultation","Dedicated account manager","Weekly/monthly reports","Cancel anytime"]).map(p => (
+                    <li key={p} className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle size={14} className="text-green-300 flex-shrink-0"/>{p}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/consultation" className="btn-primary w-full justify-center py-3 text-sm">
+                  Book Free Consultation <ArrowRight size={15}/>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OVERVIEW — unique long-form body (SEO ranking content + buyer education) */}
+      {SERVICE_BODY[svc.id] && (
+        <section className="py-16 bg-[#020205]">
+          <div className="container max-w-3xl mx-auto">
+            <div className="mb-8">
+              <div className="label mb-3">Overview</div>
+              <h2 className="font-display font-black text-white">
+                {svc.title} that <span className="gradient-text">drives growth</span>
+              </h2>
+            </div>
+            <div
+              className="prose prose-invert max-w-none text-slate-300 leading-relaxed blog-body [&_p]:mb-4"
+              dangerouslySetInnerHTML={{ __html: SERVICE_BODY[svc.id] }}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* WHAT'S INCLUDED — full-width section below */}
+      <section className="py-16 bg-[#030306]">
+        <div className="container">
+          <div className="text-center mb-10">
+            <h2 className="font-display font-black text-white mb-3">What&apos;s <span className="gradient-text">Included</span></h2>
+            <p className="text-slate-400">Everything you need for results — nothing missing.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
+            {svc.features.map(f => (
+              <div key={f} className="flex items-start gap-2 p-3 rounded-xl bg-white/4 border border-white/8">
+                <CheckCircle size={15} className="text-red-400 flex-shrink-0 mt-0.5"/>
+                <span className="text-slate-300 text-sm">{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* FAQ — question headings + concise answers, optimised for AI Overviews
+          & People Also Ask (matches the FAQPage schema above). */}
+      <section className="py-16 bg-[#020205]" id="faq">
+        <div className="container max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="label mb-3">FAQ</div>
+            <h2 className="font-display font-black text-white mb-3">
+              {svc.title} — <span className="gradient-text">Common Questions</span>
+            </h2>
+            <p className="text-slate-400">Everything you need to know before getting started.</p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((f) => (
+              <details key={f.q} className="card rounded-2xl p-5 group">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-white font-bold text-[15px] pr-4">{f.q}</h3>
+                  <ArrowRight size={16} className="text-red-400 flex-shrink-0 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-slate-400 text-sm leading-relaxed mt-3">{f.aUsd ? <RegionalText pkr={f.a} usd={f.aUsd} /> : f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* FREE QUOTE / LEAD FORM — captures straight into the CRM */}
+      <section className="py-16 bg-[#030306]">
+        <div className="container max-w-xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="label mb-3">Free Quote</div>
+            <h2 className="font-display font-black text-white text-3xl mb-3">
+              Get a Free {svc.title} Plan
+            </h2>
+            <p className="text-slate-400">
+              Tell us about your business and we&apos;ll send a tailored plan within 24 hours — no cost, no obligation.
+            </p>
+          </div>
+          <div className="card p-6 md:p-8">
+            <LandingLeadForm source={`service-${svc.id}`} city="" priceNote="Free consultation" leadSource="website" />
+          </div>
+        </div>
+      </section>
+      <CTASection />
+    </>
+  );
+}
