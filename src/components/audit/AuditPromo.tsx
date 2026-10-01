@@ -1,10 +1,11 @@
+import { hasDatabase } from "@/lib/db";
 import { AuditForm } from "@/components/audit/AuditForm";
 import { Icon } from "@/components/ui/Icon";
 import { AUDIT_CATEGORIES } from "@/lib/audit/types";
 
 export const CHECKLIST_PDF = "/downloads/haadinglobal-2026-digital-marketing-audit-checklist.pdf";
 
-/** Stitch "How Strong Is Your Digital Presence?" lead magnet, wired to the real audit engine. */
+/** Stitch "Free SEO Analyzer" lead magnet, wired to the real audit engine. */
 export function AuditPromo({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }) {
   const Heading = headingLevel;
   return (
@@ -16,12 +17,12 @@ export function AuditPromo({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2"
             <div className="inline-flex items-center gap-1.5 rounded-full bg-secondary/30 px-3 py-1 font-label-eyebrow text-label-eyebrow uppercase text-secondary-fixed">
               <Icon name="troubleshoot" size={14} /> No Obligation Diagnostic
             </div>
-            <Heading className="font-headline-md text-headline-md font-bold tracking-tight text-on-primary lg:text-headline-lg">How Strong Is Your Digital Presence?</Heading>
+            <Heading className="font-headline-md text-headline-md font-bold tracking-tight text-on-primary lg:text-headline-lg">Free SEO Analyzer</Heading>
             <p className="font-body-sm text-body-sm lg:text-body-md">
-              Get an objective, automated assessment of your website&apos;s technical SEO, content, speed signals, social previews, accessibility and conversion setup — with fixes for every issue.
+              Enter a page URL for a free SEO check and downloadable PDF. Checks cover technical SEO, content, speed signals, social previews, accessibility and conversion setup.
             </p>
           </div>
-          <AuditForm />
+          <AuditForm collectContact={hasDatabase} />
         </div>
         <div className="space-y-3">
           <span className="block font-label-eyebrow text-label-eyebrow uppercase tracking-wider text-on-primary">What the audit checks</span>
@@ -37,7 +38,7 @@ export function AuditPromo({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2"
               <span className="block font-label-md text-label-md font-semibold text-on-primary">PDF report</span>
             </div>
           </div>
-          <p className="font-body-sm text-body-sm">Scores are calculated only from checks we can actually run on your page — no invented numbers.</p>
+          <p className="font-body-sm text-body-sm">Checks one submitted page, not your whole website. AI answer visibility, backlinks and keyword rankings are not measured. Reports stay available for 7 days; download your PDF to keep it.</p>
           <div className="flex items-center justify-between gap-3 rounded-xl bg-surface-container-lowest p-4 text-primary shadow-md">
             <div className="flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-container-high">
