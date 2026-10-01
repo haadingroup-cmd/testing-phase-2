@@ -301,12 +301,9 @@ export function FounderSpotlight({ settings, ctaHref = "#consultation" }: { sett
     <Container as="section" className="py-space-lg lg:py-16" id="founder">
       <div className="relative space-y-space-md overflow-hidden rounded-3xl bg-primary-container p-space-lg text-on-primary shadow-xl lg:grid lg:grid-cols-12 lg:items-center lg:gap-space-xl lg:space-y-0 lg:p-12">
         <div className="absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-secondary/30 blur-2xl lg:h-80 lg:w-80" aria-hidden="true" />
-        <div className="relative hidden lg:col-span-4 lg:block">
-          <Image src={settings.founderImage} alt={`${settings.founderName}, ${settings.founderTitle}`} width={480} height={600} className="aspect-[4/5] w-full rounded-2xl object-cover shadow-level-3" />
-        </div>
-        <div className="relative space-y-space-md lg:col-span-8">
+        <div className="relative space-y-space-md lg:col-span-12">
           <div className="flex items-center gap-space-sm">
-            <Image src={settings.founderImage} alt="" width={64} height={64} className="h-16 w-16 rounded-2xl object-cover shadow-md lg:hidden" />
+            <Image src={settings.founderImage} alt={`${settings.founderName}, ${settings.founderTitle}`} width={64} height={64} className="h-16 w-16 rounded-2xl object-cover shadow-md" />
             <div>
               <h2 className="font-headline-sm text-headline-sm font-bold text-on-primary lg:text-headline-md">{settings.founderName}</h2>
               <span className="block font-label-eyebrow text-label-eyebrow uppercase tracking-wider text-accent-gold-light">{settings.founderTitle}</span>
