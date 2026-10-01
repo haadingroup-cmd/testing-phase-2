@@ -18,7 +18,7 @@ type FormOut = z.output<typeof auditRequestSchema>;
 const PHASES = ["Fetching your page", "Checking technical SEO", "Reviewing content & on-page SEO", "Measuring performance signals", "Scoring social, accessibility & conversion"];
 
 /** Real website audit: submits to /api/audit, then opens the saved report. */
-export function AuditForm({ defaultUrl = "", tone = "dark" }: { defaultUrl?: string; tone?: "light" | "dark" }) {
+export function AuditForm({ defaultUrl = "", tone = "dark", collectContact = false }: { defaultUrl?: string; tone?: "light" | "dark"; collectContact?: boolean }) {
   const router = useRouter();
   const startedAt = useStartedAt();
   const [phase, setPhase] = useState(0);
@@ -57,6 +57,7 @@ export function AuditForm({ defaultUrl = "", tone = "dark" }: { defaultUrl?: str
       <Field id="a-url" label="Website URL" tone={tone} icon="link" error={errors.url?.message} required>
         <Input id="a-url" tone={tone} hasIcon type="url" inputMode="url" placeholder="https://yourbrand.com" invalid={Boolean(errors.url)} {...register("url")} />
       </Field>
+      {collectContact ? <>
       <div className="grid gap-3 sm:grid-cols-2">
         <Field id="a-phone" label="WhatsApp or Direct Phone" tone={tone} icon="phone_iphone" error={errors.phone?.message} hint="Optional — so we can walk you through the fixes">
           <Input id="a-phone" tone={tone} hasIcon type="tel" inputMode="tel" autoComplete="tel" placeholder="+92 300 1234567 / +971..." invalid={Boolean(errors.phone)} {...register("phone")} />
@@ -75,6 +76,7 @@ export function AuditForm({ defaultUrl = "", tone = "dark" }: { defaultUrl?: str
       <Field id="a-email" label="Email (optional)" tone={tone} icon="mail" error={errors.email?.message}>
         <Input id="a-email" tone={tone} hasIcon type="email" autoComplete="email" placeholder="you@company.com" invalid={Boolean(errors.email)} {...register("email")} />
       </Field>
+      </> : null}
       <FormError tone={tone} message={status === "error" ? message : null} />
       <SubmitButton submitting={running} submittingLabel="Running Diagnostics...">
         <Icon name="speed" size={18} />
