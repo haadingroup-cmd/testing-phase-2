@@ -68,20 +68,13 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="card p-6">
-              <div className="rounded-2xl overflow-hidden mb-5 bg-gradient-to-b from-[var(--bg-elev)] to-[var(--bg-card)] border border-[var(--border)]">
-                <div className="relative w-full aspect-square sm:aspect-[4/5] max-h-[440px] mx-auto">
-                  <Image
-                    src="/muhammad-haseeb.webp"
-                    alt="Muhammad Haseeb — Founder & CEO"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                    style={{ objectPosition: "center 30%" }}
-                    priority
-                  />
+              {/* Founder — compact avatar + name (the large portrait was removed at the owner's request). */}
+              <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-gradient-to-b from-[var(--bg-elev)] to-[var(--bg-card)] border border-[var(--border)]">
+                <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image src="/muhammad-haseeb.webp" alt="Muhammad Haseeb — Founder & CEO" fill sizes="56px" className="object-cover" style={{ objectPosition: "center 30%" }} />
                 </div>
-                <div className="px-4 py-3 border-t border-[var(--border)]">
-                  <p className="text-white font-black text-xl">Muhammad Haseeb</p>
+                <div>
+                  <p className="text-white font-black text-xl leading-tight">Muhammad Haseeb</p>
                   <p className="text-red-400 text-sm font-semibold">Founder &amp; CEO, HaadinGlobal</p>
                 </div>
               </div>

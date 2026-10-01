@@ -42,22 +42,12 @@ export default function AboutSection() {
                 <span className="ml-auto text-xs font-semibold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400">Est. 2025</span>
               </Link>
 
-              {/* CEO Photo — square frame with object-cover crops out excess
-                  curtains/background and centers the person properly. Object-position
-                  bias toward the upper portion keeps the face well-framed. */}
-              <div className="rounded-2xl overflow-hidden mb-5 bg-gradient-to-b from-[var(--bg-elev)] to-[var(--bg-card)] border border-[var(--border)]">
-                <div className="relative w-full aspect-square sm:aspect-[4/5] md:aspect-square lg:aspect-[4/5] max-h-[460px] mx-auto">
-                  <Image
-                    src="/muhammad-haseeb.webp"
-                    alt="Muhammad Haseeb — Founder & CEO, HaadinGlobal"
-                    fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 420px"
-                    className="object-cover"
-                    style={{ objectPosition: "center 30%" }}
-                    priority
-                  />
+              {/* Founder — compact avatar + name (the large portrait was removed at the owner's request). */}
+              <div className="flex items-center gap-3 mb-5 p-3 rounded-2xl bg-gradient-to-b from-[var(--bg-elev)] to-[var(--bg-card)] border border-[var(--border)]">
+                <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image src="/muhammad-haseeb.webp" alt="Muhammad Haseeb — Founder & CEO, HaadinGlobal" fill sizes="56px" className="object-cover" style={{ objectPosition: "center 30%" }} />
                 </div>
-                <div className="px-4 py-3 border-t border-[var(--border)]">
+                <div>
                   <p className="text-white font-black text-lg leading-tight">Muhammad Haseeb</p>
                   <p className="text-red-400 text-sm font-semibold">Founder &amp; CEO</p>
                   <p className="text-slate-400 text-xs mt-0.5">Digital Strategy · SEO · Paid Media · AI Automation</p>
