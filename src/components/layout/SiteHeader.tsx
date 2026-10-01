@@ -86,7 +86,7 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
         )}
       >
         {/* Mobile / tablet bar (Stitch mobile shell) */}
-        <div className="flex h-16 items-center justify-between gap-space-sm px-gutter-mobile md:px-8 lg:hidden">
+        <div className="flex h-16 items-center justify-between gap-space-sm px-gutter-mobile md:px-8 xl:hidden">
           <div className="flex min-w-0 items-center gap-space-sm">
             <button
               ref={openerRef}
@@ -100,7 +100,7 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
               <Icon name="menu" size={24} />
             </button>
             <Link href="/" className="flex min-w-0 items-center gap-space-xs" aria-label="HaadinGlobal home">
-              <LogoMark className="h-8 w-8" />
+              <LogoMark className="hidden h-8 w-8 min-[380px]:block" />
               <span className="flex min-w-0 flex-col">
                 <span className="truncate font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">{sectionTitle(pathname)}</span>
                 <span className="truncate font-label-eyebrow text-label-eyebrow uppercase text-secondary">HaadinGlobal</span>
@@ -110,19 +110,20 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
           <div className="flex shrink-0 items-center gap-space-xs">
             <Link
               href="/audit"
-              className="hidden items-center gap-1 rounded-lg bg-secondary px-3 py-1.5 font-label-md text-label-md text-on-secondary transition-colors hover:bg-primary-container sm:flex"
+              aria-current={isActive(pathname, "/audit") ? "page" : undefined}
+              className="flex items-center gap-1 whitespace-nowrap rounded-lg bg-secondary px-2 py-2 font-label-md text-label-md text-on-secondary transition-colors hover:bg-primary-container"
             >
               <Icon name="bolt" size={16} />
-              Audit
+              SEO Analyzer
             </Link>
-            <Link href="/about" className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-surface-container" aria-label={`About ${founderName}`}>
+            <Link href="/about" className="hidden h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-surface-container sm:flex" aria-label={`About ${founderName}`}>
               <Image src={founderImage} alt="" width={32} height={32} className="h-8 w-8 rounded-full object-cover" />
             </Link>
           </div>
         </div>
 
         {/* Desktop bar */}
-        <div className="mx-auto hidden h-[72px] max-w-7xl items-center justify-between gap-6 px-margin lg:flex">
+        <div className="mx-auto hidden h-[72px] max-w-7xl items-center justify-between gap-3 px-margin xl:flex">
           <Link href="/" aria-label="HaadinGlobal home">
             <Logo eyebrow="Digital Growth & AI" />
           </Link>
@@ -136,7 +137,7 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
                     aria-controls="services-menu"
                     onClick={() => setServicesOpen((v) => !v)}
                     className={cn(
-                      "flex items-center gap-1 rounded-lg px-3 py-2 font-label-lg text-label-lg transition-colors hover:bg-surface-container",
+                      "flex items-center gap-1 rounded-lg px-2 py-2 font-label-md text-label-md transition-colors hover:bg-surface-container",
                       isActive(pathname, "/services") ? "text-secondary" : "text-on-surface",
                     )}
                   >
@@ -180,8 +181,8 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
                   href={item.href}
                   aria-current={isActive(pathname, item.href) ? "page" : undefined}
                   className={cn(
-                    "rounded-lg px-3 py-2 font-label-lg text-label-lg transition-colors hover:bg-surface-container",
-                    isActive(pathname, item.href) ? "text-secondary" : "text-on-surface",
+                    "rounded-lg px-2 py-2 font-label-md text-label-md transition-colors hover:bg-surface-container",
+                    item.href === "/audit" ? "bg-secondary text-on-secondary hover:bg-primary-container" : isActive(pathname, item.href) ? "text-secondary" : "text-on-surface",
                   )}
                 >
                   {item.label}
@@ -190,13 +191,6 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
             )}
           </nav>
           <div className="flex items-center gap-2">
-            <Link
-              href="/audit"
-              className="flex items-center gap-1.5 rounded-lg border border-[rgba(148,163,184,0.3)] bg-surface-container-lowest px-4 py-2.5 font-label-lg text-label-lg text-primary-container transition-colors hover:border-secondary"
-            >
-              <Icon name="bolt" size={18} className="text-secondary" />
-              Free Audit
-            </Link>
             <Link
               href="/contact"
               className="flex items-center gap-1.5 rounded-lg bg-secondary px-4 py-2.5 font-label-lg text-label-lg text-on-secondary transition-all hover:bg-primary-container hover:shadow-[0_4px_14px_rgba(20,85,217,0.35)] active:scale-[0.98]"
@@ -211,7 +205,7 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-primary-container/60 backdrop-blur-md transition-opacity duration-300 lg:hidden",
+          "fixed inset-0 z-50 bg-primary-container/60 backdrop-blur-md transition-opacity duration-300 xl:hidden",
           drawerOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={closeDrawer}
@@ -225,7 +219,7 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
         aria-label="Site menu"
         inert={!drawerOpen}
         className={cn(
-          "pt-safe pb-safe fixed bottom-0 left-0 top-0 z-50 flex w-5/6 max-w-sm flex-col overflow-hidden bg-surface-container-lowest shadow-level-3 transition-transform duration-300 ease-out lg:hidden",
+          "pt-safe pb-safe fixed bottom-0 left-0 top-0 z-50 flex w-5/6 max-w-sm flex-col overflow-hidden bg-surface-container-lowest shadow-level-3 transition-transform duration-300 ease-out xl:hidden",
           drawerOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
