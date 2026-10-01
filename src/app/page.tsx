@@ -16,7 +16,7 @@ import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 export const metadata: Metadata = {
   title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
   description:
-    "results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. Serving businesses in Pakistan, UAE, UK & USA. Book free consultation.",
+    "HaadinGlobal is a digital marketing agency in Sahiwal, Pakistan: Meta Ads, Google Ads, SEO, web and Shopify for businesses in Pakistan and the Gulf.",
   alternates: { canonical: "https://www.haadinglobal.com" },
 };
 

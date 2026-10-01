@@ -6,6 +6,7 @@ import { ArrowRight, Plus, Minus, CheckCircle, MessageCircle, Phone, Zap, Video,
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
 import { FAQS } from "@/data/faqs";
+import RegionalText from "@/components/common/RegionalText";
 import { trackLead } from "@/lib/trackLead";
 
 /**
@@ -53,7 +54,7 @@ export function FAQSection() {
                 <AnimatePresence>
                   {open === i && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }}>
-                      <div className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/8 pt-4">{faq.a}</div>
+                      <div className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/8 pt-4">{"aUsd" in faq && faq.aUsd ? <RegionalText pkr={faq.a} usd={faq.aUsd} /> : faq.a}</div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -133,7 +134,7 @@ export function CTASection() {
             Grow Your Business<br /><span className="gradient-text">Starting Today</span>
           </h2>
           <p className="text-slate-300 text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
-            Businesses across five countries have started their digital journey with HaadinGlobal. When will you start?
+            Businesses across six countries have started their digital journey with HaadinGlobal. When will you start?
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             {["Free consultation, no payment", "24hr response guaranteed", "ROI-focused strategy", "Global market expertise"].map(g => (

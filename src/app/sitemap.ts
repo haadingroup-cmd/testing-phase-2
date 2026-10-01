@@ -13,7 +13,7 @@ const pages = [
   { url: '/services/google-ads', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/seo', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/social-media', pri: 0.8, chg: 'monthly' as const },
-  { url: '/services/youtube-automation', pri: 0.9, chg: 'monthly' as const },
+  { url: '/services/youtube-channel-management', pri: 0.9, chg: 'monthly' as const },
   { url: '/services/web-development', pri: 0.8, chg: 'monthly' as const },
   { url: '/services/shopify', pri: 0.8, chg: 'monthly' as const },
   { url: '/services/branding', pri: 0.7, chg: 'monthly' as const },
@@ -34,21 +34,21 @@ const pages = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Use build-time date so search engines see fresh content on each deploy.
-  const now = new Date()
+  // No lastModified on pages without a real edit date: stamping every URL with
+  // the build time on every deploy makes Google distrust (and ignore) lastmod.
+  // Blog posts carry their true publish date instead.
 
   // All city landing pages (Pakistan + Gulf) generated straight from data,
   // so every city we add is automatically in the sitemap — no manual editing.
   const cityPages = LANDINGS.map((l) => ({
     url: `${base}/agency/${l.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }))
 
   const blogPages = BLOG_POSTS.map((post) => ({
     url: `${base}/blog/${post.slug}`,
-    lastModified: now,
+    lastModified: new Date(`${post.date} UTC`),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
@@ -56,14 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Public team member profiles — each is its own indexable Person page.
   const teamPages = TEAM.filter((m) => m.is_public).map((m) => ({
     url: `${base}/team/${m.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }))
 
   const staticPages = pages.map(p => ({
     url: `${base}${p.url}`,
-    lastModified: now,
     changeFrequency: p.chg,
     priority: p.pri,
   }))

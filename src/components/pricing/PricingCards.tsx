@@ -4,50 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CheckCircle, Star, Sparkles } from "lucide-react";
 import { useCurrency } from "@/utils/useCurrency";
+import { PLANS } from "@/data/plans";
 
-/**
- * Pricing plans. PKR prices are shown to Pakistan visitors; USD prices are
- * shown to everyone else. Both values are stored explicitly — no auto-uplift.
- * English only — no Urdu.
- */
-const PLANS = [
-  {
-    name: "Basic Plan",
-    tagline: "Startups & small businesses",
-    badge: null as string | null,
-    mo: 54, yr: 43,
-    pkrMo: 15000, pkrYr: 12000,
-    features: ["Facebook Page Management", "12 Social Media Posts", "Basic Graphic Design", "Monthly Report", "Google Ads", "SEO", "Video Content"],
-    cta: "Get Started", href: "/consultation",
-  },
-  {
-    name: "Standard Plan",
-    tagline: "Growing brands",
-    badge: "Most Popular",
-    mo: 127, yr: 109,
-    pkrMo: 35000, pkrYr: 30000,
-    features: ["Facebook + Instagram", "20 Posts + Stories", "Professional Design", "Basic SEO (On-Page)", "Facebook Ads (Budget Separate)", "Email Marketing", "Google Ads"],
-    cta: "Start Growing", href: "/consultation",
-  },
-  {
-    name: "Pro Plan",
-    tagline: "Scaling businesses",
-    badge: "Professional",
-    mo: 254, yr: 211,
-    pkrMo: 70000, pkrYr: 58000,
-    features: ["Complete Social Media", "30 Posts + Reels", "Full SEO (On + Off Page)", "Google + Facebook Ads", "Video Editing (4/month)", "WhatsApp Marketing", "Weekly Reports"],
-    cta: "Go Premium", href: "/consultation",
-  },
-  {
-    name: "Premium Plan",
-    tagline: "Custom solutions",
-    badge: "Elite",
-    mo: null as number | null, yr: null as number | null, custom: true,
-    pkrMo: 120000, pkrYr: 100000,
-    features: ["Complete Digital Strategy", "Unlimited Posts", "Advanced SEO + Backlinks", "All Paid Ads", "Influencer Marketing", "E-commerce Management", "Dedicated Manager"],
-    cta: "Contact Sales", href: "/contact",
-  },
-];
 
 export function PricingCards() {
   const [yearly, setYearly] = useState(false);
@@ -120,21 +78,19 @@ export function PricingCards() {
 
                     {/* Price block */}
                     <div className="mb-6 pb-6 border-b border-[var(--border)] min-h-[78px] flex flex-col justify-center">
-                      {plan.custom ? (
-                        <div>
-                          <p className="text-3xl font-black text-[var(--text)]">{isPkr ? priceDisplay : "Custom"}</p>
-                          <p className="text-slate-500 text-[11px] mt-0.5">{isPkr ? "per month" : "Tailored to your goals"}</p>
-                        </div>
-                      ) : (
-                        <div>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-2xl md:text-[1.7rem] font-black text-[var(--text)]">{priceDisplay}</span>
-                            <span className="text-slate-500 text-sm font-semibold">/mo</span>
-                          </div>
-                          {yearly && savingYear && (
-                            <p className="text-green-300 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
-                          )}
-                        </div>
+                      {/* Same layout for every plan so prices line up across cards. */}
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 mb-1.5">
+                        {plan.custom && !isPkr ? "Pricing" : yearly ? "Per month, billed yearly" : "Per month"}
+                      </p>
+                      <div className="flex items-baseline gap-1 whitespace-nowrap">
+                        <span className="text-3xl font-black tracking-tight tabular-nums text-[var(--text)]">
+                          {plan.custom && !isPkr ? "Custom" : priceDisplay}
+                        </span>
+                        {!(plan.custom && !isPkr) && <span className="text-slate-500 text-sm font-semibold">/mo</span>}
+                      </div>
+                      {plan.custom && !isPkr && <p className="text-slate-500 text-[11px] mt-1">Tailored to your goals</p>}
+                      {yearly && savingYear && !(plan.custom && !isPkr) && (
+                        <p className="text-green-300 text-[11px] font-bold mt-1">Save {savingYear}/year</p>
                       )}
                     </div>
 

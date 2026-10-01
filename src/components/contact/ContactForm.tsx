@@ -4,14 +4,14 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
 import { trackLead } from "@/lib/trackLead";
 
 const SERVICES_LIST = [
   "Meta Ads","Google Ads","TikTok Ads","SEO Services","Social Media Management",
-  "YouTube Automation","Web Development","Shopify Store","Branding & Design",
+  "YouTube Channel Management","Web Development","Shopify Store","Branding & Design",
   "AI Automation","Content Writing","Graphic Design","Other / Multiple",
 ];
 
@@ -31,7 +31,7 @@ export default function ContactForm() {
     // pipeline automatically. Best-effort: if it fails, the email still sends.
     if (SUPABASE_READY) {
       try {
-        await supabaseBrowser().from("leads").insert({
+        await insertLead({
           name,
           phone: (fd.get("phone") as string) || (fd.get("whatsapp") as string) || "",
           email: (fd.get("email") as string) || "",

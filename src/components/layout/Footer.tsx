@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { SITE, FOOTER_COMPANY, FOOTER_SERVICES } from "@/data/siteConfig";
+import { Phone, Mail, MapPin, Star } from "lucide-react";
+import { SITE, FOOTER_COMPANY, FOOTER_SERVICES, FOOTER_AREAS, GBP_MAPS_URL, GBP_REVIEW_URL } from "@/data/siteConfig";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 
 export default function Footer() {
@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-              results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI — proven results for businesses across Pakistan & the Gulf.
+              HaadinGlobal is a results-driven digital marketing agency. Meta Ads, Google Ads, SEO, YouTube, Shopify & AI — proven results for businesses across Pakistan & the Gulf.
             </p>
             <div className="space-y-2.5 mb-6">
               <a href={`tel:${SITE.phoneClean}`} aria-label="Call HaadinGlobal" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
@@ -42,9 +42,12 @@ export default function Footer() {
               <a href={`mailto:${SITE.email}`} className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
                 <Mail size={14} className="text-red-400 flex-shrink-0" />{SITE.email}
               </a>
-              <div className="flex items-center gap-2.5 text-slate-400 text-sm">
+              <a href={GBP_MAPS_URL} target="_blank" rel="noopener noreferrer" aria-label="HaadinGlobal on Google Maps" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
                 <MapPin size={14} className="text-red-400 flex-shrink-0" />{SITE.address}
-              </div>
+              </a>
+              <a href={GBP_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors text-sm">
+                <Star size={14} className="text-red-400 flex-shrink-0" />Review us on Google
+              </a>
             </div>
             <div className="flex flex-wrap gap-2">
               {socials.map(s => (
@@ -87,6 +90,15 @@ export default function Footer() {
               <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors text-sm">Terms & Conditions</Link></li>
             </ul>
           </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-white/8">
+          <h3 className="font-semibold text-white text-xs uppercase tracking-wider mb-4">Digital Marketing Agency In</h3>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2.5">
+            {FOOTER_AREAS.map(a => (
+              <li key={a.href}><Link href={a.href} className="text-slate-400 hover:text-white transition-colors text-sm">{a.label}</Link></li>
+            ))}
+          </ul>
         </div>
       </div>
 

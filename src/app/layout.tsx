@@ -7,6 +7,7 @@ import { ThemeProvider, themeInitScript } from "@/components/providers/ThemeProv
 import Analytics from "@/components/analytics/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE, GBP_MAPS_URL } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.haadinglobal.com"),
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     "digital marketing agency Pakistan","digital marketing agency Sahiwal",
     "Meta Ads agency Pakistan","Google Ads Pakistan","SEO services Pakistan",
     "social media marketing Pakistan","Shopify development Pakistan",
-    "YouTube automation","lead generation agency Pakistan","HaadinGlobal",
+    "YouTube channel management","lead generation agency Pakistan","HaadinGlobal",
   ],
   authors: [{ name: "HaadinGlobal", url: "https://www.haadinglobal.com" }],
   creator: "HaadinGlobal",
@@ -29,20 +30,22 @@ export const metadata: Metadata = {
     url: "https://www.haadinglobal.com",
     siteName: "HaadinGlobal",
     title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
-    description: "Meta Ads, Google Ads, SEO, YouTube Automation, Shopify & AI. Serving businesses in Pakistan, UAE, UK & USA.",
+    description: "Meta Ads, Google Ads, SEO, Shopify, web development & AI automation. Serving businesses in Pakistan, UAE, UK & USA.",
     images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal Digital Agency" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
-    description: "Meta Ads, Google Ads, SEO, YouTube Automation & more. Proven results.",
+    description: "Meta Ads, Google Ads, SEO, Shopify & more. Proven results.",
     creator: "@haadinglobal",
   },
   robots: { index: true, follow: true },
   verification: {
     google: "TsWZj-bZ3ii9Q_Rfk9AoI1eFzagPGWpyqPoFjMJ_M7A",
   },
-  alternates: { canonical: "https://www.haadinglobal.com" },
+  // No site-wide canonical here: child pages inherit it, so a root canonical
+  // would point every page without its own at the homepage. Each page sets
+  // its own `alternates.canonical` instead.
 };
 
 const jsonLd = {
@@ -58,11 +61,11 @@ const jsonLd = {
       image: "https://www.haadinglobal.com/logo.png",
       foundingDate: "2025",
       slogan: "Results-driven digital marketing that turns ad spend into real revenue.",
-      description: "Results-driven digital marketing agency offering Meta Ads, Google Ads, SEO, social media marketing, Shopify & web development, YouTube automation and AI automation for businesses in Pakistan and worldwide.",
+      description: "Results-driven digital marketing agency offering Meta Ads, Google Ads, SEO, social media marketing, Shopify & web development, YouTube channel management and AI automation for businesses in Pakistan and worldwide.",
       knowsAbout: [
         "Meta Ads", "Facebook Advertising", "Google Ads", "Search Engine Optimization",
         "Local SEO", "Social Media Marketing", "Shopify Development", "Web Development",
-        "YouTube Automation", "Lead Generation", "Branding", "AI Automation", "eCommerce Marketing",
+        "YouTube Channel Management", "Lead Generation", "Branding", "AI Automation", "eCommerce Marketing",
       ],
       foundingLocation: { "@type": "Place", name: "Sahiwal, Pakistan" },
       address: {
@@ -124,7 +127,7 @@ const jsonLd = {
         { "@type": "Country", name: "United States" },
       ],
       geo: { "@type": "GeoCoordinates", latitude: 30.6641, longitude: 73.1114 },
-      hasMap: "https://www.google.com/maps?q=HaadinGlobal+Sahiwal",
+      hasMap: GBP_MAPS_URL,
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -139,6 +142,8 @@ const jsonLd = {
         "https://www.tiktok.com/@haadinglobal",
         "https://www.linkedin.com/in/haadinglobal",
         "https://www.youtube.com/@haadinglobal",
+        // Only the real profile link identifies the listing; a Maps search does not.
+        ...(SITE.gbp.profileUrl ? [SITE.gbp.profileUrl] : []),
       ],
     },
   ],

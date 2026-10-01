@@ -4,11 +4,15 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 function Counter({ to, suffix, duration = 1800 }: { to: number; suffix: string; duration?: number }) {
-  const [count, setCount] = useState(0);
+  // Start at the real value so the server-rendered HTML says "60+", not "0+":
+  // search and AI crawlers read that HTML without running the animation.
+  const [count, setCount] = useState(to);
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // After hydration, reset to 0 so the count-up still plays when scrolled into view.
+    setCount(0);
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) setStarted(true); }, { threshold: 0.3 });
     if (ref.current) io.observe(ref.current);
     return () => io.disconnect();
@@ -31,12 +35,11 @@ function Counter({ to, suffix, duration = 1800 }: { to: number; suffix: string; 
 }
 
 const STATS = [
-  { to:120, suffix:"+",  icon:"🏆", key:"stats_projects" },
-  { to:40,  suffix:"+",  icon:"😊", key:"stats_clients" },
+  { to:60,  suffix:"+",  icon:"🏆", key:"stats_projects" },
+  { to:20,  suffix:"+",  icon:"😊", key:"stats_clients" },
   { to:90,  suffix:"%",  icon:"❤️", key:"stats_retention" },
   { to:4,   suffix:"x",  icon:"📈", key:"stats_roas" },
   { to:6,   suffix:"",   icon:"🌍", key:"stats_countries" },
-  { to:500, suffix:"K+", icon:"💰", key:"stats_revenue" },
 ];
 
 export default function StatsSection() {
@@ -45,7 +48,7 @@ export default function StatsSection() {
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(239,68,68,0.07) 0%, transparent 70%)" }} />
       <div className="container relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
           {STATS.map((s, i) => (
             <motion.div
               key={s.key}

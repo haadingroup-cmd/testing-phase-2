@@ -6,6 +6,9 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    // Service colours (e.g. "from-orange-400 to-red-500") live in data files;
+    // without this they are purged and many service cards lose their colour.
+    "./src/data/**/*.{js,ts}",
   ],
   theme: {
     extend: {

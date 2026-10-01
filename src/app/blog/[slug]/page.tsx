@@ -9,10 +9,28 @@ export async function generateStaticParams() {
   return BLOG_POSTS.map(p => ({ slug: p.slug }));
 }
 
+// Post dates are stored like "Sep 3, 2026"; schema.org and Open Graph want ISO 8601.
+const isoDate = (d: string) => new Date(`${d} UTC`).toISOString().slice(0, 10);
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) return { title: "Post Not Found" };
-  return { title: post.title, description: post.excerpt };
+  const url = `/blog/${post.slug}`;
+  const description = post.metaDescription ?? post.excerpt;
+  return {
+    title: post.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title,
+      description,
+      publishedTime: isoDate(post.date),
+      authors: [post.author],
+      images: [{ url: post.image, alt: post.title }],
+    },
+  };
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -32,7 +50,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         headline: post.title,
         description: post.excerpt,
         image: `https://www.haadinglobal.com${post.image}`,
-        datePublished: post.date,
+        datePublished: isoDate(post.date),
         author: { "@type": "Person", name: post.author },
         publisher: {
           "@type": "Organization",

@@ -22,7 +22,7 @@ export default function ServiceCardText({ title, titleAr, desc, descAr, variant 
   const d = isAr && descAr ? descAr : desc;
   return (
     <>
-      <h2 className={`text-white font-bold mb-2 group-hover:text-red-300 transition-colors ${variant === "sm" ? "text-base" : ""}`}>{t}</h2>
+      <h2 className={`text-white font-bold mb-2 group-hover:text-red-300 transition-colors ${variant === "sm" ? "text-base" : "!text-xl leading-snug"}`}>{t}</h2>
       <p className="text-slate-400 text-sm mb-4">{d}</p>
     </>
   );

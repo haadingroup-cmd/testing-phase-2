@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, MessageCircle, Send, Sparkles } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { trackLead } from "@/lib/trackLead";
 
 /**
@@ -38,7 +38,7 @@ export default function EntryPopup() {
     const msg = `Hi HaadinGlobal! I'm ${name || "interested"} and I'd like help with ${service || "growing my business"}.`;
     // Capture the lead in the CRM too (fire-and-forget so the WhatsApp window opens instantly).
     if (SUPABASE_READY) {
-      supabaseBrowser().from("leads").insert({
+      insertLead({
         name: name || "", service: service || "", source: "popup", status: "new",
         message: "Started via entry popup to WhatsApp",
       }).then(() => {}, () => {});
@@ -93,6 +93,7 @@ export default function EntryPopup() {
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm placeholder:text-slate-400 focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none transition-colors"
             />
             <select
+              aria-label="What do you need help with?"
               value={service}
               onChange={(e) => setService(e.target.value)}
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none transition-colors"

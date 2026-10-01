@@ -7,6 +7,8 @@
  *
  * Route: /agency/[slug]  (e.g. /agency/digital-marketing-agency-dubai)
  */
+import { STARTING_PRICE } from "./services";
+
 export interface Landing {
   slug: string;
   city: string;
@@ -620,10 +622,10 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in Dubai?", a: "Yes. We work with clients across Dubai and the wider UAE, managing campaigns remotely with regular reporting and fast communication across your time zone." },
       { q: "Why choose an offshore agency over a local Dubai one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often significantly less than local Dubai agency fees — without compromising results." },
       { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
-      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results but work month-to-month after that." },
     ],
-    priceNote: "Packages from $199/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-qatar",
@@ -672,10 +674,10 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in Qatar?", a: "Yes. We work with clients across Doha and the wider Qatar market, managing campaigns remotely with regular reporting and communication across your time zone." },
       { q: "Do you run campaigns in Arabic?", a: "Yes. We create and run campaigns in both Arabic and English to reach your full Qatar audience." },
       { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic." },
-      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We suggest a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from $199/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-saudi-arabia",
@@ -724,17 +726,17 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in Saudi Arabia?", a: "Yes. We work with clients across Riyadh, Jeddah and the wider Kingdom, managing campaigns remotely with regular reporting and communication across your time zone." },
       { q: "Do you run campaigns in Arabic?", a: "Yes. We create and run campaigns in both Arabic and English to reach your full Saudi audience." },
       { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic." },
-      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from $199/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-uk",
     city: "the UK",
     country: "the United Kingdom",
     countryCode: "GB",
-    currency: "£",
+    currency: "$",
     headline: "Digital Marketing Agency for UK Businesses",
     subhead:
       "HaadinGlobal helps UK businesses — from local trades and clinics to e-commerce brands and B2B firms — win more customers with Meta Ads, Google Ads and SEO, at offshore-competitive rates without cutting corners on quality.",
@@ -776,17 +778,17 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in the UK?", a: "Yes. We work with clients across England, Scotland, Wales and Northern Ireland, managing everything remotely with regular reporting and fast communication in your time zone." },
       { q: "Why choose an offshore agency over a UK one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often far less than a UK agency retainer — without compromising on results or reporting." },
       { q: "How quickly will I see results?", a: "Paid ads (Google/Meta) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before we start." },
-      { q: "What does it cost?", a: "Management packages start from around £159/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from £159/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-london",
     city: "London",
     country: "the UK",
     countryCode: "GB",
-    currency: "£",
+    currency: "$",
     headline: "Digital Marketing Agency in London",
     subhead:
       "HaadinGlobal helps London businesses stand out in one of the world's most competitive markets — with Google Ads, Meta Ads and SEO that turn a crowded city of searchers into real leads and sales, at offshore-competitive rates.",
@@ -828,10 +830,10 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in London?", a: "Yes. We work with clients across London and Greater London, managing campaigns remotely with regular reporting and fast communication in your time zone." },
       { q: "Why choose you over a London agency?", a: "You get the same strategy and execution quality at offshore-competitive rates — typically far below London agency retainers — without compromising results." },
       { q: "How quickly will I see results?", a: "Paid ads usually show measurable results within 2-4 weeks. SEO in a competitive market like London builds over 3-6 months for lasting traffic." },
-      { q: "What does it cost?", a: "Management packages start from around £159/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from £159/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-usa",
@@ -880,10 +882,10 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in the US?", a: "Yes. We work with clients across all US states, managing everything remotely with regular reporting and communication across US time zones." },
       { q: "Why choose an offshore agency over a US one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often a fraction of US agency fees — without compromising on results or reporting." },
       { q: "How quickly will I see results?", a: "Paid ads (Google/Meta) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
-      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from $199/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
     slug: "digital-marketing-agency-new-york",
@@ -932,10 +934,10 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in New York?", a: "Yes. We work with clients across New York City and the tri-state area, managing campaigns remotely with regular reporting and communication in your time zone." },
       { q: "Why choose you over a New York agency?", a: "You get the same strategy and execution quality at offshore-competitive rates — typically far below NYC agency fees — without compromising results." },
       { q: "How quickly will I see results?", a: "Paid ads usually show measurable results within 2-4 weeks. SEO in a market as competitive as New York builds over 3-6 months for lasting traffic." },
-      { q: "What does it cost?", a: "Management packages start from around $199/month depending on scope, plus your ad budget. Book a free consultation for an exact quote." },
+      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],
-    priceNote: "Packages from $199/month + ad budget",
+    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
 ];
 

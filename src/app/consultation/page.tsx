@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, TrendingUp, Users, Send, MessageCircle, Zap, Shield, Star } from "lucide-react";
+import { CheckCircle, Clock, TrendingUp, Users, Send, MessageCircle, Zap, Shield } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
-import { supabaseBrowser, SUPABASE_READY } from "@/lib/supabase";
+import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { SERVICES } from "@/data/services";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
 import { trackLead } from "@/lib/trackLead";
@@ -27,7 +27,7 @@ export default function ConsultationPage() {
           form.website_social && `Website/Social: ${form.website_social}`,
           form.budget && `Budget: ${form.budget}`,
         ].filter(Boolean).join(" · ");
-        await supabaseBrowser().from("leads").insert({
+        await insertLead({
           name: form.name, email: form.email, phone: form.phone,
           service: form.service, message: notes, source: "website", status: "new",
         });
@@ -41,6 +41,7 @@ export default function ConsultationPage() {
         body: JSON.stringify({...form, _subject:"Free Consultation Request — HaadinGlobal"}),
       });
       if (r.ok) {
+        trackLead("consultation-form");
         router.push(`/thank-you?name=${encodeURIComponent(form.name)}`);
       } else {
         setStatus("err");
@@ -90,18 +91,6 @@ export default function ConsultationPage() {
                 ))}
               </div>
 
-              {/* Testimonial */}
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-red-500/8 to-rose-900/8 border border-red-500/18">
-                <div className="flex text-amber-400 mb-2">{[...Array(5)].map((_,i) => <Star key={i} size={13} fill="currentColor"/>)}</div>
-                <p className="text-slate-300 text-sm italic mb-3">"The free consultation gave us more clarity than 3 months with our previous agency. We had a complete strategy in 30 minutes!"</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-rose-800 flex items-center justify-center text-white text-xs font-black">JH</div>
-                  <div>
-                    <p className="text-white text-xs font-semibold">James Harrison</p>
-                    <p className="text-slate-500 text-xs">CEO, NexaTech UK</p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
 
             {/* RIGHT */}
