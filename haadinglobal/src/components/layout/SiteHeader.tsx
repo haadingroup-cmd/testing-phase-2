@@ -33,11 +33,13 @@ export function SiteHeader({ services, founderImage, founderName }: Props) {
     openerRef.current?.focus();
   }, []);
 
-  // Close menus on route change.
-  useEffect(() => {
+  // Close menus when the route changes (adjusting state during render, per React docs).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) {
+    setLastPath(pathname);
     setDrawerOpen(false);
     setServicesOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);

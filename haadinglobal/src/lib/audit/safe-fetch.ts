@@ -117,7 +117,6 @@ type Options = { timeoutMs?: number; maxBytes?: number; accept?: string };
 function requestOnce(url: URL, opts: Required<Options>): Promise<{ status: number; headers: Record<string, string>; body: Buffer; truncated: boolean; ttfb: number }> {
   return new Promise((resolveOuter, rejectOuter) => {
     const started = Date.now();
-    let timer: NodeJS.Timeout | undefined;
     const resolve: typeof resolveOuter = (value) => {
       clearTimeout(timer);
       resolveOuter(value);
@@ -176,7 +175,8 @@ function requestOnce(url: URL, opts: Required<Options>): Promise<{ status: numbe
         stream.on("error", (error) => (truncated ? undefined : reject(error)));
       },
     );
-    timer = setTimeout(() => req.destroy(new Error("The website took too long to respond.")), opts.timeoutMs);
+    // Overall deadline (the socket `timeout` option only covers idle time).
+    const timer = setTimeout(() => req.destroy(new Error("The website took too long to respond.")), opts.timeoutMs);
     req.on("timeout", () => req.destroy(new Error("The website took too long to respond.")));
     req.on("error", reject);
     req.end();

@@ -5,7 +5,7 @@
  * `npm run icons:update` to regenerate the font.
  */
 export const ICON_NAMES = [
-  "accessibility_new", "account_balance_wallet", "add", "all_inclusive", "analytics", "arrow_back", "arrow_forward",
+  "accessibility_new", "account_balance_wallet", "add", "ads_click", "all_inclusive", "analytics", "arrow_back", "arrow_forward",
   "article", "auto_awesome", "badge", "bolt", "business", "calculate", "calendar_month", "call", "campaign", "cancel",
   "category", "chat", "check_circle", "chevron_left", "chevron_right", "close", "code", "content_copy", "dashboard",
   "delete", "description", "domain", "done", "download", "east", "edit", "edit_note", "error", "expand_more", "fact_check",

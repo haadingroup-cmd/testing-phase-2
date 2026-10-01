@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . && node scripts/check-icons.mjs",
     "typecheck": "tsc --noEmit",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
@@ -18,7 +18,8 @@
     "db:studio": "prisma studio",
     "admin:create": "tsx scripts/create-admin.ts",
     "icons:update": "node scripts/update-icon-font.mjs",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build"
+    "icons:check": "node scripts/check-icons.mjs",
+    "vercel-build": "prisma generate && node scripts/migrate-if-configured.mjs && next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

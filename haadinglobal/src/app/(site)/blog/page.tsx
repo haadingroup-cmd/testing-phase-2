@@ -8,7 +8,7 @@ import { Icon } from "@/components/ui/Icon";
 import { getBlogPosts } from "@/lib/data";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatDate, slugify } from "@/lib/utils";
 
 const PAGE_SIZE = 9;
 
@@ -38,13 +38,15 @@ export default async function BlogPage({ searchParams }: Props) {
   const { q: rawQ, category: rawCategory, page: rawPage } = await searchParams;
   const q = (rawQ ?? "").trim().slice(0, 80);
   const posts = await getBlogPosts();
-  const categories = [...new Set(posts.map((p) => p.category))].sort();
-  const category = categories.includes(rawCategory ?? "") ? rawCategory : undefined;
+  // Categories are addressed by URL-safe slugs (?category=ai-aeo).
+  const categories = [...new Set(posts.map((p) => p.category))].sort().map((name) => ({ name, slug: slugify(name) }));
+  const activeCategory = categories.find((c) => c.slug === rawCategory);
+  const category = activeCategory?.slug;
 
   const needle = q.toLowerCase();
   const filtered = posts.filter(
     (p) =>
-      (!category || p.category === category) &&
+      (!activeCategory || p.category === activeCategory.name) &&
       (!needle || p.title.toLowerCase().includes(needle) || p.excerpt.toLowerCase().includes(needle) || p.tags.some((t) => t.toLowerCase().includes(needle))),
   );
   const isDefaultView = !q && !category;
@@ -92,12 +94,12 @@ export default async function BlogPage({ searchParams }: Props) {
           </Link>
           {categories.map((c) => (
             <Link
-              key={c}
-              href={hrefFor({ q, category: c })}
-              aria-current={category === c ? "page" : undefined}
-              className={cn("shrink-0 rounded-full px-4 py-2 font-label-md text-label-md", category === c ? "bg-secondary text-on-secondary" : "bg-surface-container-high text-on-surface-variant hover:bg-surface-variant")}
+              key={c.slug}
+              href={hrefFor({ q, category: c.slug })}
+              aria-current={category === c.slug ? "page" : undefined}
+              className={cn("shrink-0 rounded-full px-4 py-2 font-label-md text-label-md", category === c.slug ? "bg-secondary text-on-secondary" : "bg-surface-container-high text-on-surface-variant hover:bg-surface-variant")}
             >
-              {c}
+              {c.name}
             </Link>
           ))}
         </nav>
