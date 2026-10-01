@@ -2,25 +2,32 @@ import { analyzeWebsite } from "@/lib/audit/analyze";
 import { FetchBlockedError } from "@/lib/audit/safe-fetch";
 import { getDb, hasDatabase } from "@/lib/db";
 import { createLead } from "@/lib/leads";
-import { rateLimit } from "@/lib/security/rate-limit";
+import { auditRateLimit, hasAuditRedis, hasAuditStorage, saveAuditReport } from "@/lib/audit/store";
+import { hashKey, rateLimit } from "@/lib/security/rate-limit";
 import { PayloadError, clientIp, fail, isSameOrigin, ok, readJson, validationFailure } from "@/lib/security/request";
 import { checkSpam } from "@/lib/security/spam";
 import { AUDIT_SECTORS, auditRequestSchema } from "@/lib/validations/audit";
-import type { Prisma } from "@/generated/prisma/client";
 
 export const runtime = "nodejs";
 // Fetching the site (and optional PageSpeed) can take a while on Vercel.
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 /** POST /api/audit — runs a real single-page audit and stores the report. */
 export async function POST(request: Request) {
   if (!isSameOrigin(request)) return fail("Cross-site requests are not allowed.", 403);
-  if (!hasDatabase) return fail("The audit tool is temporarily unavailable. Please try again later.", 503);
+  if (!hasAuditStorage) return fail("The audit tool is temporarily unavailable. Please try again later.", 503);
 
   const ip = clientIp(request);
-  const limit = await rateLimit("audit", ip, 6, 3600);
-  if (!limit.allowed) {
-    return fail("You've run several audits recently. Please try again in a little while.", 429, undefined, { "Retry-After": String(limit.retryAfterSeconds) });
+  try {
+    const limit = hasAuditRedis
+      ? await auditRateLimit(hashKey(ip), 6, 3600)
+      : await rateLimit("audit", ip, 6, 3600);
+    const daily = hasAuditRedis ? await auditRateLimit("daily-budget", 100, 86400) : null;
+    if (!limit.allowed || (daily && !daily.allowed)) {
+      return fail("The free audit limit has been reached. Please try again later.", 429, undefined, { "Retry-After": String(!limit.allowed ? limit.retryAfterSeconds : daily!.retryAfterSeconds) });
+    }
+  } catch {
+    return fail("Audit storage is temporarily unavailable. Please try again later.", 503);
   }
 
   let body: unknown;
@@ -35,43 +42,33 @@ export async function POST(request: Request) {
   const input = parsed.data;
   if (checkSpam(input).spam) return fail("Please wait a moment and try again.", 429);
 
-  const db = getDb();
-  const audit = await db.auditRequest.create({
-    data: { url: input.url, phone: input.phone ?? null, email: input.email ?? null, sector: input.sector ?? null },
-  });
-
   try {
     const report = await analyzeWebsite(input.url);
-    let leadId: string | null = null;
-    if (input.phone) {
-      const sector = AUDIT_SECTORS.find((s) => s.value === input.sector)?.label;
-      const lead = await createLead(
-        {
-          name: new URL(report.finalUrl).hostname,
-          phone: input.phone,
-          email: input.email,
-          website: report.finalUrl,
-          business: sector,
-          service: "Website audit",
-          message: `Ran the free website audit — overall score ${report.score}/100.`,
-          source: "AUDIT",
-          details: { auditId: audit.id, score: report.score },
-        },
-        [["Audit score", `${report.score}/100`]],
-      );
-      leadId = lead.id;
+    const auditId = await saveAuditReport(report);
+    if (input.phone && hasDatabase) {
+      try {
+        const sector = AUDIT_SECTORS.find((s) => s.value === input.sector)?.label;
+        const lead = await createLead(
+          {
+            name: new URL(report.finalUrl).hostname,
+            phone: input.phone,
+            email: input.email,
+            website: report.finalUrl,
+            business: sector,
+            service: "Website audit",
+            message: `Ran the free website audit — overall score ${report.score}/100.`,
+            source: "AUDIT",
+            details: { auditId, score: report.score },
+          },
+          [["Audit score", `${report.score}/100`]],
+        );
+        await getDb().auditRequest.update({ where: { id: auditId }, data: { leadId: lead.id, phone: input.phone, email: input.email, sector: input.sector } });
+      } catch {
+        // A lead notification failure must not destroy a successfully saved report.
+        console.error("[audit] optional lead capture failed");
+      }
     }
-    await db.auditRequest.update({
-      where: { id: audit.id },
-      data: {
-        status: "COMPLETED",
-        finalUrl: report.finalUrl,
-        score: report.score,
-        report: report as unknown as Prisma.InputJsonValue,
-        leadId,
-      },
-    });
-    return ok({ id: audit.id, score: report.score }, 201);
+    return ok({ id: auditId, score: report.score }, 201);
   } catch (error) {
     const message =
       error instanceof FetchBlockedError
@@ -79,7 +76,6 @@ export async function POST(request: Request) {
         : error instanceof Error && /HTTP \d+|HTML page|redirects|too long|ENOTFOUND|EAI_AGAIN|ECONNREFUSED|certificate|ECONNRESET/i.test(error.message)
           ? friendlyFetchError(error.message)
           : "We couldn't analyse that website. Check the address and try again.";
-    await db.auditRequest.update({ where: { id: audit.id }, data: { status: "FAILED", error: error instanceof Error ? error.message.slice(0, 500) : "Unknown error" } });
     return fail(message, 422, { url: [message] });
   }
 }
