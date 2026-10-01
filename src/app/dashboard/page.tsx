@@ -37,6 +37,7 @@ export default async function DashboardHome() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
+          <Link href="/dashboard/seo" className="card p-6"><h2 className="font-bold text-white mb-1">SEO Projects</h2><p className="text-slate-400 text-sm">Site-wide audits, saved evidence and individual AI page reviews.</p></Link>
           <Link href="/dashboard/leads" className="card p-6 hover:-translate-y-1 transition-all">
             <Target size={22} className="text-red-400 mb-3" />
             <h2 className="font-bold text-white mb-1">Leads / CRM</h2>

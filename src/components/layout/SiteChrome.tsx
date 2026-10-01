@@ -15,6 +15,8 @@ import MobileCTABar from "@/components/common/MobileCTABar";
  */
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || "";
+  // The analyzer owns a scoped light app shell. Marketing and dashboard chrome stay unchanged.
+  if (pathname === "/free-seo-audit") return <>{children}</>;
   const isApp = pathname.startsWith("/dashboard") || pathname.startsWith("/login");
 
   if (isApp) {

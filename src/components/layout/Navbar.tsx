@@ -62,6 +62,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/",           label: t("nav_home") },
     { href: "/services",   label: t("nav_services"), dropdown: true },
+    { href: "/free-seo-audit", label: "SEO Analyzer" },
     { href: "/portfolio",  label: t("nav_portfolio") },
     { href: "/team",       label: "Team" },
     { href: "/pricing",    label: t("nav_pricing") },
@@ -72,11 +73,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#020205]/95 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_24px_rgba(0,0,0,0.5)]" : "bg-transparent"}`}>
+      <nav aria-label="Main navigation" className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#020205]/95 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_24px_rgba(0,0,0,0.5)]" : "bg-transparent"}`}>
         <div className="container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
-            <div className="relative w-9 h-9 lg:w-11 lg:h-11">
+            <div className="relative hidden min-[380px]:block w-9 h-9 lg:w-11 lg:h-11">
               <Image src="/logo-small.png" alt="HaadinGlobal" fill className="rounded-full object-cover drop-shadow-lg group-hover:scale-105 transition-transform" />
             </div>
             <div className="leading-tight">
@@ -86,7 +87,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden xl:flex items-center gap-0.5">
             {navLinks.map(item => (
               <div
                 key={item.href}
@@ -96,7 +97,8 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 px-3 py-2 rounded-lg text-base font-bold tracking-wide transition-colors ${pathname === item.href ? "text-red-400" : "text-slate-300 hover:text-white"}`}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${item.href === "/free-seo-audit" ? "bg-red-500/10 text-red-300 border border-red-500/30 hover:bg-red-500/20" : pathname === item.href ? "text-red-400" : "text-slate-300 hover:text-white"}`}
                 >
                   {item.label}
                   {item.dropdown && (
@@ -130,33 +132,42 @@ export default function Navbar() {
           </div>
 
           {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-2">
             <ThemeToggle />
             <LangSwitcher />
-            <Link href="/consultation" className="btn-primary text-sm py-2.5 px-5">
+            <Link href="/consultation" className="btn-primary text-sm py-2.5 px-3 hidden 2xl:inline-flex">
               {t("nav_cta")}
             </Link>
           </div>
 
           {/* Mobile toggle */}
+          <div className="flex xl:hidden items-center gap-2">
+          <Link href="/free-seo-audit" className="rounded-lg border border-red-500/30 bg-red-500/10 px-2.5 py-2 text-xs font-bold text-red-300 whitespace-nowrap">
+            SEO Analyzer
+          </Link>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white"
+            className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden pt-16 bg-[#020205]/98 backdrop-blur-2xl overflow-y-auto">
+        <div id="mobile-navigation" className="fixed inset-0 z-40 xl:hidden pt-16 lg:pt-20 bg-[#020205]/98 backdrop-blur-2xl overflow-y-auto">
           <div className="container py-6 space-y-1">
             {navLinks.map(item => (
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
+                onClick={() => setMobileOpen(false)}
                 className={`block px-4 py-3 rounded-xl font-semibold text-base transition-colors ${pathname === item.href ? "bg-red-500/10 text-red-300 border border-red-500/20" : "text-slate-200 hover:bg-white/5"}`}
               >
                 {item.label}

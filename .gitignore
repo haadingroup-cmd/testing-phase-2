@@ -32,3 +32,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SEO analyzer outputs and environment secrets
+.env*
+!.env.example
+test-results/
+/.swc
