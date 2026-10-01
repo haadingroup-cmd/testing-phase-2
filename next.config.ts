@@ -51,6 +51,7 @@ const nextConfig: NextConfig = {
   // Keep URLs from the previous version of the site working.
   async redirects() {
     return [
+      { source: "/free-seo-audit", destination: "/audit", permanent: true },
       { source: "/portfolio", destination: "/results", permanent: true },
       { source: "/consultation", destination: "/contact", permanent: true },
       { source: "/thank-you", destination: "/contact", permanent: true },
