@@ -1,5 +1,6 @@
 import { PDFDocument, rgb, type PDFFont, type PDFPage } from "pdf-lib";
 import fontkit from "@pdf-lib/fontkit";
+import { trafficTotals, projectValue, type BusinessSupplement } from "./business-insights";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { brand, categoryLabels, pdfDisclaimer, scoreLabel } from "./config";
@@ -9,8 +10,8 @@ export interface ReportBranding {
   clientName?: string;
   agencyName?: string;
 }
-const navy = rgb(0.055, 0.105, 0.2),
-  gold = rgb(0.69, 0.51, 0.2),
+const navy = rgb(0.043, 0.063, 0.125),
+  gold = rgb(0.86, 0.15, 0.15),
   ink = rgb(0.16, 0.21, 0.29),
   muted = rgb(0.38, 0.43, 0.51),
   pale = rgb(0.96, 0.97, 0.98),
@@ -36,6 +37,7 @@ export function groupFindings(checks: Check[]) {
 export async function generatePDF(
   report: AuditReport,
   branding: ReportBranding = {},
+  supplement?: BusinessSupplement,
 ) {
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
@@ -266,6 +268,38 @@ export async function generatePDF(
   );
   for (const [i, g] of actions.slice(0, 5).entries())
     paragraph(`${i + 1}. ${g.check.title} - ${g.check.fix}`);
+  if (supplement?.traffic || supplement?.projection) {
+    newPage("Business supplement / user-supplied data");
+    heading("Traffic, revenue & business value");
+    paragraph("This supplement is supplied by the report user. It is not independently verified, crawl-measured or covered by the signed audit. Currency is selected by the user; no conversion is performed.", 9, muted);
+    const traffic = supplement.traffic;
+    const fmt = (n: number | null) => n === null ? "Not available" : n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+    if (traffic) {
+      const totals = trafficTotals(traffic);
+      heading(traffic.source === "gsc-csv" ? "Google Search Console CSV" : "Google Analytics 4 CSV");
+      paragraph(`${traffic.points[0].date} to ${traffic.points[traffic.points.length - 1].date} / ${traffic.points.length} reported days`);
+      paragraph(`${traffic.source === "gsc-csv" ? "Search clicks" : "Sessions"}: ${fmt(totals.traffic)} | Impressions: ${fmt(totals.impressions)} | Search CTR: ${totals.ctr === null ? "Not available" : fmt(totals.ctr) + "%"}`);
+      paragraph(`Recorded revenue: ${totals.revenue === null ? "Not available" : traffic.currency + " " + fmt(totals.revenue)}. GA4 revenue is not profit or bank payments.`);
+      ensure(145);
+      const max = Math.max(1, ...traffic.points.map(p => p.traffic));
+      const dx = width / Math.max(traffic.points.length, 1);
+      for (const [i, point] of traffic.points.entries()) {
+        page.drawRectangle({ x: 48 + i * dx, y: y - 110, width: Math.max(0.5, dx * 0.8), height: Math.max(0.5, point.traffic / max * 95), color: gold });
+      }
+      y -= 135;
+      paragraph("Daily traffic, ordered by date. Missing dates are not treated as zero; bars show reported days. Full daily values are included in the JSON supplement.", 8, muted);
+    }
+    const p = supplement.projection;
+    if (p) {
+      const v = projectValue(p);
+      heading("Planning assumptions / not actual earnings");
+      paragraph(`Monthly visits/clicks: ${fmt(p.visits)} | Sale conversion: ${fmt(p.conversion)}% | Revenue per sale: ${p.currency} ${fmt(p.saleValue)}`);
+      paragraph(`Assumed CPC: ${p.currency} ${fmt(p.cpc)} | Proposed monthly SEO fee: ${p.currency} ${fmt(p.fee)}`);
+      paragraph(`Estimated sales: ${fmt(v.orders)} | Estimated gross revenue: ${p.currency} ${fmt(v.revenue)}`);
+      paragraph(`Equivalent advertising value: ${p.currency} ${fmt(v.trafficValue)} (visits/clicks x assumed CPC; not cash earned).`);
+      paragraph("No growth is assumed. This is not profit, ROI, a recommended service price or an earnings guarantee. Costs, refunds, taxes and attribution are not included.", 9, muted);
+    }
+  }
   newPage("02 / Coverage and evidence");
   heading("What this report can verify");
   for (const coverage of report.coverage) paragraph(`• ${coverage}`);
