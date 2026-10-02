@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical },
-  openGraph: { title, description, url: canonical, type: "website" },
+  openGraph: { title, description, url: canonical, type: "website", images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "HaadinGlobal — Digital Marketing Agency" }] },
   twitter: { card: "summary", title, description },
   robots: { index: true, follow: true },
 };

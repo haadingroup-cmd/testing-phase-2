@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "HaadinGlobal",
     title: "HaadinGlobal — Results-Driven Digital Marketing Agency",
     description: "Meta Ads, Google Ads, SEO, Shopify, web development & AI automation. Serving businesses in Pakistan, UAE, UK & USA.",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal Digital Agency" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "HaadinGlobal — Digital Marketing Agency" }],
   },
   twitter: {
     card: "summary_large_image",

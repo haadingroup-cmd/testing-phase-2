@@ -13,11 +13,13 @@ const AI_BOTS = [
   'OAI-SearchBot',     // OpenAI search
   'ChatGPT-User',      // ChatGPT browsing
   'ClaudeBot',         // Anthropic / Claude
-  'Claude-Web',        // Anthropic browsing
+  'Claude-SearchBot',  // Anthropic search
+  'Claude-User',       // Claude fetching a page for a user
+  'Claude-Web',        // Anthropic browsing (legacy)
   'anthropic-ai',      // Anthropic (legacy)
   'PerplexityBot',     // Perplexity
   'Perplexity-User',   // Perplexity browsing
-  'Google-Extended',   // Gemini / Google AI Overviews training
+  'Google-Extended',   // Gemini training/grounding (AI Overviews use Googlebot)
   'Applebot-Extended', // Apple Intelligence
   'CCBot',             // Common Crawl (training source for many LLMs)
   'Bingbot',           // Bing = Copilot's underlying index
