@@ -98,7 +98,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
-                  className={`flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${item.href === "/free-seo-audit" ? "bg-red-500/10 text-red-300 border border-red-500/30 hover:bg-red-500/20" : pathname === item.href ? "text-red-400" : "text-slate-300 hover:text-white"}`}
+                  className={`flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${pathname === item.href ? "text-red-400" : "text-slate-300 hover:text-white"}`}
                 >
                   {item.label}
                   {item.dropdown && (
@@ -142,7 +142,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <div className="flex xl:hidden items-center gap-2">
-          <Link href="/free-seo-audit" className="rounded-lg border border-red-500/30 bg-red-500/10 px-2.5 py-2 text-xs font-bold text-red-300 whitespace-nowrap">
+          <Link href="/free-seo-audit" aria-current={pathname === "/free-seo-audit" ? "page" : undefined} className={`flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${pathname === "/free-seo-audit" ? "text-red-400" : "text-slate-300 hover:text-white"}`}>
             SEO Analyzer
           </Link>
           <button
