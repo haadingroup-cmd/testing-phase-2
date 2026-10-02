@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: `${svc.title} Services | HaadinGlobal`,
       description: svc.shortDesc,
       siteName: "HaadinGlobal",
-      images: [{ url: "/logo.png", width: 1200, height: 630, alt: `HaadinGlobal — ${svc.title}` }],
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `HaadinGlobal — ${svc.title}` }],
     },
     twitter: {
       card: "summary_large_image",

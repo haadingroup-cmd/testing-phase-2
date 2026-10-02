@@ -18,7 +18,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const url = `/blog/${post.slug}`;
   const description = post.metaDescription ?? post.excerpt;
   return {
-    title: post.title,
+    // Long headlines skip the " | HaadinGlobal" suffix so Google doesn't cut them off mid-title.
+    title: post.title.length > 50 ? { absolute: post.title } : post.title,
     description,
     alternates: { canonical: url },
     openGraph: {

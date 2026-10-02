@@ -30,10 +30,19 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       description: l.metaDescription,
       url: `https://www.haadinglobal.com/agency/${l.slug}`,
       locale: OG_LOCALE[l.countryCode] ?? "en_PK",
-      images: [{ url: "/logo.png", width: 1200, height: 630, alt: "HaadinGlobal" }],
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "HaadinGlobal" }],
     },
   };
 }
+
+// Landing copy says "the UAE"/"the UK"; schema needs the plain country name.
+const SCHEMA_COUNTRY: Record<string, string> = {
+  "the UAE": "United Arab Emirates",
+  "the UK": "United Kingdom",
+  "the United Kingdom": "United Kingdom",
+  "the USA": "United States",
+  "the United States": "United States",
+};
 
 export default function LandingPage({ params }: { params: { slug: string } }) {
   const l = getLanding(params.slug);
@@ -47,7 +56,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
         name: `HaadinGlobal — Digital Marketing Agency in ${l.city}`,
         description: l.metaDescription,
         url: `https://www.haadinglobal.com/agency/${l.slug}`,
-        areaServed: { "@type": "Country", name: l.country },
+        areaServed: { "@type": "Country", name: SCHEMA_COUNTRY[l.country] ?? l.country },
         telephone: SITE.phone,
         email: SITE.email,
         priceRange: "$$",
