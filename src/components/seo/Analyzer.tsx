@@ -66,8 +66,8 @@ export default function Analyzer({ features }: { features: Features }) {
       "keyword",
     ] as const)
       input[key] = String(form.get(key) || "").trim();
-    if (input.competitors.length > 3) {
-      setError("Add up to three competitor URLs, one per line.");
+    if (input.competitors.length > 5) {
+      setError("Add up to five competitor URLs, one per line.");
       return;
     }
     setBusy(true);
@@ -153,9 +153,7 @@ export default function Analyzer({ features }: { features: Features }) {
             Analyzer<span className="hg-gold-dot">.</span>
           </h1>
           <p className="hg-hero-description">
-            Review observable website signals and get evidence-based
-            recommendations. AI content review is a separate option when
-            connected.
+            Find what needs fixing, compare up to five competitors and turn your data into a clear growth plan. Free audit, traffic charts and business-value tools.
           </p>
           <div className="hg-promise">
             <span>
@@ -245,7 +243,7 @@ export default function Analyzer({ features }: { features: Features }) {
                 ))}
               </div>
               <label>
-                Competitor websites <span className="hg-optional">Up to 3</span>
+                Competitor websites <span className="hg-optional">Up to 5</span>
                 <textarea
                   name="competitors"
                   rows={3}
@@ -253,9 +251,10 @@ export default function Analyzer({ features }: { features: Features }) {
                     "https://competitor-one.com\nhttps://competitor-two.com"
                   }
                   disabled={busy}
-                  maxLength={6000}
+                  maxLength={10240}
                 />
               </label>
+              <p className="hg-note">Choose businesses offering the same service in your target location. These are your selected competitors, not a verified Google top-five ranking.</p>
               <details>
                 <summary>Official social profiles</summary>
                 <p className="hg-note">
