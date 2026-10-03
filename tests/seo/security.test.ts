@@ -142,9 +142,11 @@ test("input validation caps competitors and rejects private competitor URLs", ()
           "https://b.com",
           "https://c.com",
           "https://d.com",
+          "https://e.com",
+          "https://f.com",
         ],
       }),
-    /three/,
+    /five/,
   );
   assert.throws(
     () =>

@@ -12,7 +12,8 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
-import Analyzer, { AnalyzerHeader } from "@/components/seo/Analyzer";
+import Analyzer from "@/components/seo/Analyzer";
+import Navbar from "@/components/layout/Navbar";
 import { brand, categoryLabels, disclaimer } from "@/lib/seo/config";
 import { aiConfigured } from "@/lib/seo/ai";
 import { methodologyWeights } from "@/lib/seo/scoring";
@@ -92,11 +93,13 @@ export default function SEOAuditPage() {
     },
   };
   return (
+    <>
+    <Navbar />
     <div className="hg-seo" lang="en" dir="ltr">
       <a className="hg-skip-link" href="#main">
         Skip to content
       </a>
-      <AnalyzerHeader />
+      <div className="hg-wrap hg-app-links"><a href="#how-it-works">How it works</a><a href="#methodology">Scoring explained</a><a href="/dashboard/seo">Team dashboard →</a></div>
       <main id="main">
         <Analyzer
           features={{
@@ -346,5 +349,6 @@ export default function SEOAuditPage() {
         }}
       />
     </div>
+    </>
   );
 }

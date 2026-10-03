@@ -228,7 +228,8 @@ export async function crawlWebsite(
     queue.length &&
     pages.length < maxPages &&
     attempts < maxPages + 5 &&
-    !signal.aborted
+    !signal.aborted &&
+    Date.now() - started < budget - Math.min(input.competitors.length * 6000, budget * 0.4)
   ) {
     const item = queue.shift()!;
     if (visited.has(item.url)) continue;

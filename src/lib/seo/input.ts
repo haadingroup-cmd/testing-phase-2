@@ -10,7 +10,7 @@ export const auditInputSchema = z
     city: short,
     language: short,
     keyword: z.string().trim().max(240).optional(),
-    competitors: z.array(z.string().max(2048)).max(3).default([]),
+    competitors: z.array(z.string().max(2048)).max(5).default([]),
     social: z
       .object({
         facebook: short,
@@ -52,7 +52,7 @@ export function parseAuditInput(value: unknown) {
   const parsed = auditInputSchema.safeParse(value);
   if (!parsed.success)
     throw new PublicError(
-      "Check your website URL and optional fields. Add no more than three competitors.",
+      "Check your website URL and optional fields. Add no more than five competitors.",
     );
   return {
     ...parsed.data,

@@ -28,6 +28,8 @@ import {
 } from "@/lib/seo/types";
 import type { Features } from "./Analyzer";
 import Tools, { Guidance, Modal } from "./Tools";
+import BusinessInsights, { ExecutiveSummary, CompetitorMatrix } from "./BusinessInsights";
+import type { BusinessSupplement } from "@/lib/seo/business-insights";
 
 const priorities = { First: 0, High: 1, Medium: 2, Low: 3 };
 function ScoreRing({ score }: { score: number | null }) {
@@ -164,6 +166,7 @@ export default function Dashboard({
 }) {
   const report = signed.report;
   const home = report.pages[0];
+  const [business, setBusiness] = useState<BusinessSupplement>({ traffic: null, projection: null });
   const [pro, setPro] = useState(false);
   const [tab, setTab] = useState("Overview");
   const [status, setStatus] = useState<"all" | Status>("all");
@@ -206,6 +209,7 @@ export default function Dashboard({
           signed,
           format,
           branding: { clientName, agencyName },
+          supplement: business,
         }),
       });
       if (!response.ok) {
@@ -217,8 +221,10 @@ export default function Dashboard({
       const a = document.createElement("a");
       a.href = url;
       a.download = `HaadinGlobal-SEO-Audit-${new URL(home.url).hostname}.${format}`;
+      document.body.appendChild(a);
       a.click();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      a.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 30000);
     } catch (err) {
       setError(
         err instanceof Error
@@ -342,7 +348,7 @@ export default function Dashboard({
         role="tablist"
         aria-label="Report sections"
       >
-        {["Overview", "Findings", "Pages", "Competitors", "Data & tools"].map(
+        {["Overview", "Findings", "Pages", "Competitors", "Traffic & value", "Data & tools"].map(
           (name) => (
             <button
               key={name}
@@ -364,6 +370,7 @@ export default function Dashboard({
       <div id="hg-report-content" role="tabpanel" aria-label={tab}>
         {tab === "Overview" && (
           <>
+            <ExecutiveSummary report={report} />
             <div className="hg-overview-grid">
               <section className="hg-panel hg-health-panel">
                 <div>
@@ -825,6 +832,7 @@ export default function Dashboard({
                 </p>
               </div>
             </div>
+            <CompetitorMatrix report={report} />
             {report.competitors.length ? (
               <div className="hg-competitor-grid">
                 {[{ url: home.url, page: home }, ...report.competitors].map(
@@ -905,7 +913,7 @@ export default function Dashboard({
               <div className="hg-empty">
                 <h3>No competitors supplied.</h3>
                 <p>
-                  Add up to three competitor websites under optional details and
+                  Add up to five competitor websites under optional details and
                   run a new audit.
                 </p>
               </div>
@@ -917,6 +925,7 @@ export default function Dashboard({
             </p>
           </>
         )}
+        <div hidden={tab !== "Traffic & value"}><BusinessInsights key={report.id} host={new URL(home.url).hostname} value={business} onChange={setBusiness} /></div>
         {tab === "Data & tools" && (
           <>
             <div className="hg-section-title">
@@ -962,6 +971,7 @@ export default function Dashboard({
                 </div>
               )}
             </section>
+            <p className="hg-note hg-spaced"><a href={`https://pagespeed.web.dev/analysis?url=${encodeURIComponent(home.url)}`} target="_blank" rel="noopener noreferrer">Open Google’s free PageSpeed test ↗</a></p>
             <section className="hg-panel hg-spaced">
               <h3>Advanced SEO metrics</h3>
               <div className="hg-metrics-grid">

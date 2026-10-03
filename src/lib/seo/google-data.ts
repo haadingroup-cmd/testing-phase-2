@@ -139,6 +139,7 @@ export async function authorizedGoogleMetrics(raw: string, owner: string) {
             { name: "sessions" },
             { name: "totalUsers" },
             { name: "keyEvents" },
+            { name: "totalRevenue" },
           ],
         },
         "https://www.googleapis.com/auth/analytics.readonly",
@@ -148,6 +149,7 @@ export async function authorizedGoogleMetrics(raw: string, owner: string) {
         "GA4 sessions",
         "GA4 total users",
         "GA4 key events",
+        "GA4 recorded revenue",
       ].entries()) {
         const number = values?.[i]?.value;
         metrics.push({
@@ -157,8 +159,9 @@ export async function authorizedGoogleMetrics(raw: string, owner: string) {
             number !== undefined && Number.isFinite(Number(number))
               ? Number(number)
               : null,
+          unit: i === 3 ? (typeof data.metadata?.currencyCode === "string" ? data.metadata.currencyCode : "property currency") : undefined,
           source: "Google Analytics 4 · authorized property totals",
-          status: `${startDate} to ${endDate}. All traffic channels; tracking, consent and reporting settings affect totals.`,
+          status: `${startDate} to ${endDate}. All traffic channels; tracking, consent and reporting settings affect totals. Revenue reflects configured tracking, not profit or bank payments.`,
         });
       }
     } catch (e) {
