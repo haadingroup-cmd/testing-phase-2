@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { supplementSchema } from "@/lib/seo/business-insights";
 import { assertSameOrigin, readJSON } from "@/lib/seo/input";
 import { verifyReport } from "@/lib/seo/seal";
 import { rateLimit } from "@/lib/seo/rate-limit";
@@ -11,6 +12,7 @@ export const maxDuration = 60;
 const schema = z
   .object({
     signed: z.unknown(),
+    supplement: supplementSchema.optional(),
     format: z.enum(["pdf", "csv", "json"]),
     branding: z
       .object({
@@ -31,10 +33,10 @@ export async function POST(request: Request) {
     const format = body.data.format;
     const bytes =
       format === "pdf"
-        ? Buffer.from(await generatePDF(report, body.data.branding))
+        ? Buffer.from(await generatePDF(report, body.data.branding, body.data.supplement))
         : format === "csv"
           ? reportCSV(report)
-          : JSON.stringify(report, null, 2);
+          : JSON.stringify(body.data.supplement ? { ...report, userSuppliedSupplement: body.data.supplement, supplementNotice: "User-supplied CSV and planning assumptions. Not crawl-verified or covered by the audit signature." } : report, null, 2);
     return new Response(bytes, {
       headers: {
         "Content-Type":
