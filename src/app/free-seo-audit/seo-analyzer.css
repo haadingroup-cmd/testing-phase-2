@@ -2226,3 +2226,5 @@
 @media(max-width:900px){.hg-seo .hg-business-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.hg-seo{padding-top:68px}.hg-seo .hg-app-links{gap:14px;justify-content:center;font-size:11px}.hg-seo .hg-summary-stats{gap:12px}.hg-seo .hg-summary-stats strong{font-size:26px}.hg-seo .hg-summary-stats span{font-size:11px}.hg-seo .hg-business-grid{gap:10px}.hg-seo .hg-business-grid>div{padding:14px}.hg-seo .hg-business-grid strong{font-size:20px}.hg-seo .hg-business h2{font-size:22px}}
 .hg-seo table{font-size:13px}.hg-seo .hg-issue p,.hg-seo .hg-action p{font-size:14px}.hg-seo .hg-issue summary,.hg-seo .hg-action-meta{font-size:12px}.hg-seo .hg-category-card>span:first-child{font-size:12px}.hg-seo .hg-report-tabs button{font-size:13px}
+/* Leave the fixed main menu clear when a completed report scrolls into view. */
+.hg-seo .hg-report-anchor{scroll-margin-top:104px}
