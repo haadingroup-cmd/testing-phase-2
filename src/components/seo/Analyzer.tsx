@@ -2,6 +2,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import dynamic from "next/dynamic";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   BarChart3,
@@ -142,6 +143,14 @@ export default function Analyzer({ features }: { features: Features }) {
   }
   return (
     <>
+      <nav className="hg-wrap hg-back-nav" aria-label="Page navigation">
+        <button type="button" className="hg-button hg-button-outline" onClick={() => {
+          if (window.history.length > 1) window.history.back();
+          else window.location.assign("/");
+        }}><ArrowLeft size={20} /> Back to previous page</button>
+        <a href="/" className="hg-text-link">Website home</a>
+        {signed && <a href="#report-heading" className="hg-text-link">Return to audit report</a>}
+      </nav>
       <section className="hg-hero hg-wrap" aria-labelledby="analyzer-heading">
         <div className="hg-hero-copy">
           <div className="hg-eyebrow">

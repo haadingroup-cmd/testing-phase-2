@@ -63,6 +63,33 @@ test("unavailable checks do not become zero scores or proprietary metrics", () =
   assert.ok(scores.overall !== null);
   assert.equal(calculateScores([]).overall, null);
 });
+test("a failed check cannot round a category or overall pass rate to 100", () => {
+  const base = pageChecks(parsePage(result(input.url, fixtureHTML())), input)[0];
+  const scored = calculateScores([
+    { ...base, status: "passed", weight: 1000 },
+    { ...base, id: "failure", status: "warning", weight: 1 },
+  ]);
+  assert.equal(scored.scores.find((c) => c.category === base.category)?.score, 99);
+  assert.equal(scored.overall, 99);
+  const acrossCategories = calculateScores([
+    { ...base, category: "technical", status: "passed", weight: 1 },
+    { ...base, category: "social", status: "passed", weight: 1000 },
+    { ...base, category: "social", status: "critical", weight: 1 },
+  ]);
+  assert.equal(acrossCategories.overall, 99);
+});
+test("weighted pass rate is evidence-based, with unavailable checks excluded", () => {
+  const base = pageChecks(parsePage(result(input.url, fixtureHTML())), input)[0];
+  const checks = [
+    { ...base, status: "passed" as const, weight: 3 },
+    { ...base, status: "warning" as const, weight: 1 },
+    { ...base, status: "unavailable" as const, weight: 100 },
+  ];
+  assert.equal(calculateScores(checks).overall, 75);
+  assert.equal(calculateScores([checks[0], checks[2]]).overall, 100);
+  assert.equal(calculateScores([checks[2]]).overall, null);
+  assert.equal(calculateScores([{ ...base, status: "critical", weight: 1 }]).overall, 0);
+});
 test("small website crawl respects robots, counts pages and reports real sources", async () => {
   const fixture = fixtureFetcher();
   const events: string[] = [];

@@ -33,13 +33,13 @@ export function calculateScores(checks: Check[]): {
     return {
       category,
       score: total
-        ? Math.round(
+        ? Math.min(usable.every((c) => c.status === "passed") ? 100 : 99, Math.round(
             (usable
               .filter((c) => c.status === "passed")
               .reduce((s, c) => s + c.weight, 0) /
               total) *
               100,
-          )
+          ))
         : null,
       weight: weights[i],
       evaluated: usable.length,
@@ -51,9 +51,9 @@ export function calculateScores(checks: Check[]): {
   return {
     scores,
     overall: weightSum
-      ? Math.round(
+      ? Math.min(active.every((c) => c.score === 100) ? 100 : 99, Math.round(
           active.reduce((s, c) => s + (c.score ?? 0) * c.weight, 0) / weightSum,
-        )
+        ))
       : null,
   };
 }

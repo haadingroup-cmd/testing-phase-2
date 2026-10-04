@@ -190,7 +190,7 @@ export async function generatePDF(
     font: bold,
     color: navy,
   });
-  page.drawText("CHECK SCORE / 100", {
+  page.drawText("HTML CHECK PASS RATE (%)", {
     x: 222,
     y: y - 34,
     size: 10,
@@ -236,7 +236,7 @@ export async function generatePDF(
         color: navy,
       });
       page.drawText(
-        score.score === null ? "Unavailable" : `${score.score}/100`,
+        score.score === null ? "Unavailable" : `${score.score}% checks passed`,
         {
           x: x + 14,
           y: y - 49,
@@ -245,7 +245,7 @@ export async function generatePDF(
           color: score.score !== null && score.score >= 75 ? green : navy,
         },
       );
-      page.drawText(`${score.evaluated} evaluated / weight ${score.weight}`, {
+      page.drawText(`${score.evaluated} evaluated / ${score.unavailable} unavailable`, {
         x: x + 14,
         y: y - 69,
         size: 8,
@@ -256,7 +256,7 @@ export async function generatePDF(
     y -= 100;
   }
   paragraph(
-    "Method: each category uses weighted passed checks divided by weighted evaluated checks. Warnings and critical findings receive no pass credit. Unavailable checks are excluded. Available categories are reweighted for the overall score. These are HaadinGlobal diagnostic rules, not Google’s ranking formula.",
+    "Method: each category uses weighted passed checks divided by weighted evaluated checks. Warnings and critical findings receive no pass credit. Unavailable checks are excluded. Available categories are reweighted for the overall score. 100 means all scored checks passed in the sample, not perfect SEO. Results are rounded; a failing scored check prevents a category from rounding to 100. These are HaadinGlobal diagnostic rules, not Google’s ranking formula.",
     9,
     muted,
   );

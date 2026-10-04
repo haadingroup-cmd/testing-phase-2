@@ -226,7 +226,7 @@ export default function SEOAuditPage() {
             <p>
               Each category measures the weighted share of checks that pass.
               Unavailable checks are excluded. The overall score combines the
-              available categories using the weights shown here.
+              available categories using the weights shown here. Results are rounded; 100 is reserved for every scored check passing. A 100% pass rate does not mean perfect SEO or complete coverage.
             </p>
             <p>
               These weights are our audit methodology and are not Google’s
