@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
@@ -38,7 +39,7 @@ function ScoreRing({ score }: { score: number | null }) {
     <div
       className="hg-score-ring"
       role="img"
-      aria-label={`Checked signal score ${score === null ? "unavailable" : `${score} out of 100`}`}
+      aria-label={`Weighted HTML check pass rate ${score === null ? "unavailable" : `${score} percent`}`}
     >
       <svg viewBox="0 0 180 180" aria-hidden="true">
         <circle
@@ -63,7 +64,7 @@ function ScoreRing({ score }: { score: number | null }) {
       </svg>
       <div>
         <strong>{score ?? "—"}</strong>
-        <span>OUT OF 100</span>
+        <span>% CHECK PASS RATE</span>
       </div>
     </div>
   );
@@ -173,6 +174,23 @@ export default function Dashboard({
   const [category, setCategory] = useState<"all" | Category>("all");
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(18);
+  const [viewHistory, setViewHistory] = useState<Array<{ tab: string; status: "all" | Status; category: "all" | Category; query: string; limit: number }>>([]);
+  function openTab(next: string) {
+    setViewHistory((history) => [...history.slice(-19), { tab, status, category, query, limit }]);
+    setTab(next);
+    setLimit(18);
+    // Filters belong to a findings drill-down, not to the next section opened.
+    if (next !== "Findings") { setStatus("all"); setCategory("all"); setQuery(""); }
+    window.requestAnimationFrame(() => document.getElementById("report-navigation")?.scrollIntoView({ block: "start" }));
+  }
+  function backToPreviousView() {
+    const previous = viewHistory[viewHistory.length - 1];
+    if (!previous) return;
+    setTab(previous.tab); setStatus(previous.status); setCategory(previous.category);
+    setQuery(previous.query); setLimit(previous.limit);
+    setViewHistory((history) => history.slice(0, -1));
+    window.requestAnimationFrame(() => document.getElementById("report-navigation")?.scrollIntoView({ block: "start" }));
+  }
   const [exporting, setExporting] = useState("");
   const [error, setError] = useState("");
   const [modal, setModal] = useState<string | null>(null);
@@ -198,6 +216,17 @@ export default function Dashboard({
         .includes(query.toLowerCase()),
   );
   const actions = uniqueActions(report.checks);
+  const scoreEvidence = report.scores.map((score) => {
+    const all = report.checks.filter((check) => check.category === score.category);
+    const evaluated = all.filter((check) => check.status !== "unavailable" && check.weight > 0);
+    return {
+      ...score,
+      kinds: new Set(evaluated.map((check) => check.title)).size,
+      passed: evaluated.filter((check) => check.status === "passed").length,
+      passWeight: evaluated.filter((check) => check.status === "passed").reduce((sum, check) => sum + check.weight, 0),
+      totalWeight: evaluated.reduce((sum, check) => sum + check.weight, 0),
+    };
+  });
   async function download(format: "pdf" | "csv" | "json") {
     setExporting(format);
     setError("");
@@ -343,6 +372,11 @@ export default function Dashboard({
           {error}
         </div>
       )}
+      <nav id="report-navigation" className="hg-back-nav" aria-label="Report navigation">
+        {viewHistory.length > 0 && <button className="hg-button hg-button-outline" onClick={backToPreviousView}><ArrowLeft size={20} /> Back to {viewHistory[viewHistory.length - 1].tab}</button>}
+        {tab !== "Overview" && <button className="hg-button hg-button-outline" onClick={() => openTab("Overview")}>Report overview</button>}
+        <a href="#analyze" className="hg-text-link">Back to website form</a>
+      </nav>
       <div
         className="hg-report-tabs"
         role="tablist"
@@ -355,7 +389,7 @@ export default function Dashboard({
               role="tab"
               aria-selected={tab === name}
               aria-controls="hg-report-content"
-              onClick={() => setTab(name)}
+              onClick={() => { setQuery(""); setStatus("all"); setCategory("all"); openTab(name); }}
               className={tab === name ? "active" : ""}
             >
               {name}
@@ -374,11 +408,11 @@ export default function Dashboard({
             <div className="hg-overview-grid">
               <section className="hg-panel hg-health-panel">
                 <div>
-                  <span className="hg-eyebrow">CHECKED SIGNALS</span>
+                  <span className="hg-eyebrow">SAMPLED HTML CHECKS ONLY</span>
                   <h3>{scoreLabel(report.overall)}</h3>
                   <p>
-                    Measured signals.
-                    <br />A clear starting point.
+                    Rule-based diagnostic pass rate.
+                    <br />Not a complete SEO health score.
                   </p>
                 </div>
                 <ScoreRing score={report.overall} />
@@ -403,7 +437,7 @@ export default function Dashboard({
                       onClick={() => {
                         setStatus(key);
                         setCategory("all");
-                        setTab("Findings");
+                        setQuery(""); openTab("Findings");
                       }}
                     >
                       <span>{label}</span>
@@ -432,30 +466,46 @@ export default function Dashboard({
               </div>
             </div>
             <div className="hg-category-grid">
-              {report.scores.map((s) => (
+              {scoreEvidence.map((s) => (
                 <button
                   className="hg-category-card"
                   key={s.category}
                   onClick={() => {
                     setCategory(s.category);
                     setStatus("all");
-                    setTab("Findings");
+                    setQuery(""); openTab("Findings");
                   }}
                 >
                   <span>{categoryLabels[s.category]}</span>
                   <strong>
                     {s.score ?? "—"}
-                    <small>{s.score !== null ? "/100" : " unavailable"}</small>
+                    <small>{s.score !== null ? "% checks passed" : " unavailable"}</small>
                   </strong>
                   <div className="hg-bar">
                     <i style={{ width: `${s.score ?? 0}%` }} />
                   </div>
                   <span className="hg-source">
-                    {s.evaluated} evaluated checks <ArrowUpRight size={12} />
+                    {s.passed}/{s.evaluated} checks passed · {s.kinds} check types
                   </span>
+                  <span className="hg-source">{s.unavailable} unavailable · View evidence <ArrowUpRight size={16} /></span>
                 </button>
               ))}
             </div>
+            <section className="hg-panel hg-score-explanation" aria-labelledby="score-explanation-heading">
+              <h2 id="score-explanation-heading">Does 100% mean perfect SEO? No.</h2>
+              <p>100% means every scored check in that category passed on the sampled pages. It does not mean every SEO factor was tested. Repeating the same check on 11 pages counts as 11 checks, not 11 different SEO factors.</p>
+              <p>Content checks cover section headings and visible text availability. Social checks cover sharing tags and profile links. These checks cannot establish content quality, Google rankings, backlinks, traffic, AI citations or real visitor loading speed.</p>
+              <p><strong>{report.pages.length} pages checked · {report.discovered} URLs discovered in a bounded sample · {counts.unavailable} unavailable checks.</strong> Undiscovered pages may also exist. Missing data is excluded, never treated as a pass.</p>
+              <details>
+                <summary>Show the exact calculation and evidence</summary>
+                <p>Category pass rate = passed check weight ÷ evaluated check weight × 100. Warnings and critical checks earn no pass credit. Results are rounded to whole percentages; 100 is reserved for all scored checks passing. The overall rate uses the category weights below, reweighted across available categories.</p>
+                <div className="hg-table-wrap"><table>
+                  <caption>Weighted calculation for this audit</caption>
+                  <thead><tr><th>Category</th><th>Passed weight / evaluated weight</th><th>Category weight</th><th>Not evaluated</th><th>Evidence</th></tr></thead>
+                  <tbody>{scoreEvidence.map((s) => <tr key={s.category}><th scope="row">{categoryLabels[s.category]}</th><td>{s.passWeight} / {s.totalWeight}</td><td>{s.weight}</td><td>{s.unavailable}</td><td><button className="hg-button hg-button-outline" onClick={() => { setCategory(s.category); setStatus("all"); setQuery(""); openTab("Findings"); }}>View checks</button></td></tr>)}</tbody>
+                </table></div>
+              </details>
+            </section>
             <div className="hg-section-title">
               <div>
                 <span className="hg-eyebrow">MAKE THE NEXT MOVE</span>
@@ -515,7 +565,7 @@ export default function Dashboard({
                         setQuery(check.title);
                         setStatus("all");
                         setCategory("all");
-                        setTab("Findings");
+                        openTab("Findings");
                       }}
                     >
                       <ArrowUpRight size={18} />
@@ -728,7 +778,7 @@ export default function Dashboard({
                   <tr>
                     <th>Page</th>
                     <th>Status</th>
-                    <th>Health</th>
+                    <th>Check pass rate (%)</th>
                     <th>Title</th>
                     <th>Meta</th>
                     <th>H1</th>
@@ -784,7 +834,7 @@ export default function Dashboard({
                             setQuery(p.url);
                             setStatus("all");
                             setCategory("all");
-                            setTab("Findings");
+                            openTab("Findings");
                           }}
                         >
                           {
