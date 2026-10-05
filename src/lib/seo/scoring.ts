@@ -88,16 +88,10 @@ export function pageChecks(page: Page, input: AuditInput): Check[] {
               ? "Medium"
               : "Low",
       source: "Website crawl",
-      difficulty: [
-        "canonical",
-        "status",
-        "indexable",
-        "mixed",
-        "compression",
-        "cache",
-      ].includes(key)
+      difficulty: ["canonical", "status", "indexable", "mixed", "compression", "cache", "https", "size", "schema", "schema-valid", "viewport", "charset", "lang"].includes(key)
         ? "Developer"
-        : "Easy",
+        : ["title", "title-length", "description", "description-length"].includes(key)
+          ? "Easy" : "Moderate",
     });
   };
   const yes = (v: unknown): Status => (v ? "passed" : "warning");
