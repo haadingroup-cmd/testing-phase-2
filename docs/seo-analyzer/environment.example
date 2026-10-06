@@ -2,7 +2,13 @@
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 # Required in production: generate using node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 AUDIT_SIGNING_SECRET=
-# Optional: both are required to enable AI. Select a Responses-compatible model.
+# Free AI: confirm the Google project has billing disabled and the model has a free tier.
+SEO_AI_PROVIDER=gemini
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.5-flash-lite
+SEO_GEMINI_FREE_TIER_CONFIRMED=false
+# Paid AI is disabled. There is no automatic paid-provider fallback.
+SEO_ALLOW_PAID_AI=false
 OPENAI_API_KEY=
 OPENAI_MODEL=
 # Optional: enables genuine Google PageSpeed Insights mobile results.
