@@ -24,11 +24,11 @@ Open `/free-seo-audit`. In development, an ephemeral signing key is used if none
 - Sample-only duplicate metadata and broken internal destination findings. No claim of a complete site crawl, Google indexing or a rendered-browser audit.
 - On-site local contact/business/location signals when factual optional context is supplied.
 - Social URL and website-reference checks. No social account scraping or invented audience data.
-- Up to three competitor starting-page comparisons.
+- Up to five competitor starting-page comparisons.
 - Transparent configurable category weights, evidence, action plans, beginner/pro modes, filters and page details.
 - Server-generated PDF, spreadsheet-safe CSV and JSON exports. Optional agency/client labels on PDF covers.
 - An editable factual Organization/LocalBusiness JSON-LD builder.
-- Optional OpenAI Responses integration for summaries, topic/intent assessments, issue-specific fixes and metadata drafts. Responses are schema-validated, bounded and labeled as suggestions. No API call is made unless the relevant server variables are present and the visitor requests it.
+- Optional Gemini free-tier integration (with explicit confirmation), or separately opted-in OpenAI Responses integration for summaries, topic/intent assessments, issue-specific fixes and metadata drafts. Responses are schema-validated, bounded and labeled as suggestions. No API call is made unless the relevant server variables are present and the visitor requests it.
 - Optional Google PageSpeed Insights mobile lab test. This is kept separate from the HTML performance score.
 - Source labels, unavailable metrics, error states, streaming progress from actual crawl operations and a production rate-limit gate.
 
@@ -36,7 +36,7 @@ Open `/free-seo-audit`. In development, an ephemeral signing key is used if none
 
 Backlinks, authority metrics, search volume, keyword difficulty, CPC, Bing and consumer AI-answer visibility remain unconnected. An authenticated Google adapter implements Search Console property totals and GA4 totals, using exact host-to-property mapping and explicit allowed profile IDs. It requires real service-account credentials, enabled APIs and property permissions; it has not yet been live-verified. Average Search Console position is not a rank tracker.
 
-Public quick reports live in the visitor's current session and expire for server exports/AI after 24 hours. Staff background jobs are stored in Redis for 30 days and support daily/weekly schedules. Account billing, public report sharing, emailed reports and CMS publishing are not implemented. No lead form pretends to send data: agency CTAs link to the existing contact, services and WhatsApp destinations.
+Public quick reports can be explicitly saved as one signed copy in the visitor's browser and expire for server exports/AI after 24 hours. Staff background jobs are stored in Redis for 30 days and support daily/weekly schedules. Account billing, public report sharing, emailed reports and CMS publishing are not implemented. No lead form pretends to send data: agency CTAs link to the existing contact, services and WhatsApp destinations.
 
 The content score measures structure and server-visible text, not semantic quality. Readability for arbitrary languages, visual mobile usability, complete rich-result eligibility, external-link checking and social profile content are not assessed. The PDF embeds DejaVu fonts and escapes unsupported glyphs to Unicode code points; JSON preserves the original text. Full multilingual/RTL PDF typography needs dedicated validation before promising it as a supported feature.
 
@@ -82,7 +82,7 @@ npm run build
 6. Download a PDF, CSV and JSON from that exact preview. Confirm score/evidence consistency, intact layout and branding. Verify JSON-LD generation and copy controls.
 7. If AI/PageSpeed are enabled, perform real provider smoke tests. Mock/fixture tests do not prove live credentials or quota.
 8. Configure Redis and run rate-limit tests in preview. Confirm failures are safe and server keys never appear in client bundles or logs.
-9. Review the existing privacy policy and inherited analytics for the new processing flow. The analyzer sends public URLs to your server; optional AI transmits bounded page excerpts and user-supplied context to OpenAI. The host's existing analytics are unchanged.
+9. Review the existing privacy policy and inherited analytics for the new processing flow. The analyzer sends public URLs to your server; optional AI transmits bounded page excerpts and user-supplied context to the configured AI provider. The host's existing analytics are unchanged.
 10. Merge/promote only after the preview and production configuration are confirmed. Revert the feature commit to roll back; no database migration is required.
 
 ## Architecture
@@ -153,3 +153,13 @@ Before enabling production background jobs:
 ### Verification boundary
 
 The first live quick audit crawled 11 client pages and exported a real PDF. New background, scheduling and Google reporting code has not yet been verified on connected production services. Automated tests and a successful build are not evidence of working credentials, correct quotas, or semantic SEO accuracy. Do not advertise integrations as live until the relevant real request succeeds.
+
+
+## Complete-flow update (October 2026)
+
+- Visitors can explicitly save one signed report on their device, reopen it after server signature verification, or remove it. Original 24-hour expiry is preserved. CSV data and business scenarios are not persisted. Saved findings are historical, not a fresh crawl.
+- A manual AI review prompt is built from actual page evidence without an API call. It does not claim an AI assessment ran or alter measured scores.
+- Gemini requires SEO_AI_PROVIDER, GEMINI_API_KEY, GEMINI_MODEL and SEO_GEMINI_FREE_TIER_CONFIRMED=true. The owner must verify billing is disabled; the app cannot verify Google billing settings. Quota errors never trigger paid fallback. Free-tier inputs may be used by Google to improve products.
+- Staff see configuration readiness and step-by-step setup instructions, plus schedule status/next due/stop controls. Presence flags do not establish integration health.
+- Repeats preserve the original schedule anchor despite daily cron jitter and respect the two-active-jobs limit per owner. Schedules can be stopped even after their original audit expires.
+- Production background execution requires isolated private Redis storage and a staff-authenticated live smoke test before enablement. CRON_SECRET, Gemini, Google property access and PageSpeed must each be validated with real requests before claiming those integrations work.

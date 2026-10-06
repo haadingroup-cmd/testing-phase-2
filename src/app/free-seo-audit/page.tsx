@@ -15,7 +15,7 @@ import {
 import Analyzer from "@/components/seo/Analyzer";
 import Navbar from "@/components/layout/Navbar";
 import { brand, categoryLabels, disclaimer } from "@/lib/seo/config";
-import { aiConfigured } from "@/lib/seo/ai";
+import { aiConfigured, aiProvider } from "@/lib/seo/ai";
 import { methodologyWeights } from "@/lib/seo/scoring";
 import { categories } from "@/lib/seo/types";
 import "./seo-analyzer.css";
@@ -104,6 +104,7 @@ export default function SEOAuditPage() {
         <Analyzer
           features={{
             ai: aiConfigured(),
+            aiProvider: aiProvider(),
             pagespeed: Boolean(process.env.PAGESPEED_API_KEY),
           }}
         />

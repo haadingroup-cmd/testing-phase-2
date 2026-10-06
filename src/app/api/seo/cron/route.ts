@@ -1,10 +1,11 @@
 import { timingSafeEqual } from "node:crypto";
 import { start } from "workflow/api";
 import { supabaseAdmin } from "@/lib/supabase-server";
-import { schedules, saveSchedule } from "@/lib/seo/schedules";
+import { schedules, saveSchedule, nextScheduledAt } from "@/lib/seo/schedules";
 import { newFullCrawl } from "@/lib/seo/full-crawl";
 import {
   createJob,
+  recentJobs,
   saveJob,
   getJob,
   withJobLock,
@@ -56,6 +57,9 @@ export async function GET(request: Request) {
             if (previous && ["running", "queued"].includes(previous.status))
               return;
           }
+          await withJobLock(`owner:${current.owner}`, async () => {
+          const active = (await recentJobs(current.owner)).filter(j => ["queued", "running"].includes(j.status));
+          if (active.length >= 2) return;
           const job = newFullCrawl(
             current.input,
             current.owner,
@@ -65,21 +69,24 @@ export async function GET(request: Request) {
           job.aiLimit = current.aiLimit;
           await createJob(job);
           current.lastJob = job.id;
-          current.nextAt =
-            Date.now() + (current.cadence === "daily" ? 1 : 7) * 86400000;
+          current.nextAt = nextScheduledAt(current.nextAt, current.cadence);
+          current.lastError = undefined;
           await saveSchedule(current);
           await withJobLock(job.id, async () => {
             try {
               const run = await start(fullSiteAuditWorkflow, [job.id]);
               job.runId = run.runId;
+              started++;
             } catch {
               job.status = "failed";
               job.error =
                 "Scheduled workflow did not start; resume from the dashboard.";
+              current.lastError = job.error;
             }
             await saveJob(job);
           });
-          started++;
+          await saveSchedule(current);
+          });
         });
       } catch {
         failures.push(schedule.id);

@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, type FormEvent } from "react";
 import dynamic from "next/dynamic";
+import ReportRecovery from "./ReportRecovery";
 import {
   ArrowLeft,
   ArrowRight,
@@ -24,6 +25,7 @@ const Dashboard = dynamic(() => import("./Dashboard"), {
 });
 export interface Features {
   ai: boolean;
+  aiProvider?: string;
   pagespeed: boolean;
 }
 export default function Analyzer({ features }: { features: Features }) {
@@ -307,8 +309,8 @@ export default function Analyzer({ features }: { features: Features }) {
             </div>
             <p className="hg-data-note">
               Quick sample: up to 11 public pages. For site-wide crawling, use
-              the agency SEO Projects dashboard. Reports stay in this browser
-              session; download yours before leaving.
+              the agency SEO Projects dashboard. Save a report on this device for
+              up to 24 hours, or download a PDF before leaving.
             </p>
           </form>
           {error && (
@@ -347,9 +349,10 @@ export default function Analyzer({ features }: { features: Features }) {
           </div>
         </section>
       )}
+      {!busy && <ReportRecovery signed={signed} onRestore={value => { setSigned(value); setUrl(value.report.input.url); window.setTimeout(() => reportRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100); }} />}
       <div ref={reportRef} className="hg-report-anchor">
         {signed && (
-          <Dashboard
+          <Dashboard key={signed.report.id}
             signed={signed}
             onReportChange={setSigned}
             features={features}

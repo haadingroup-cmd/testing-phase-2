@@ -11,7 +11,12 @@ export interface AuditSchedule {
   cadence: "daily" | "weekly";
   nextAt: number;
   lastJob?: string;
+  lastError?: string;
   enabled: boolean;
+}
+export function nextScheduledAt(previous: number, cadence: "daily" | "weekly", now = Date.now()) {
+  const interval = (cadence === "daily" ? 1 : 7) * 86400000;
+  return previous + (Math.floor(Math.max(0, now - previous) / interval) + 1) * interval;
 }
 const all = "hgn:schedules";
 export async function schedules(owner?: string) {

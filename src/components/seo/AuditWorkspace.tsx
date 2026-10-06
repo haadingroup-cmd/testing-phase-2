@@ -1,4 +1,6 @@
 "use client";
+import IntegrationSetup, { type Readiness } from "./IntegrationSetup";
+import type { AuditSchedule } from "@/lib/seo/schedules";
 import {
   useCallback,
   useEffect,
@@ -42,6 +44,10 @@ const field =
 const button =
   "rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white disabled:opacity-40";
 export default function AuditWorkspace() {
+  const [readiness, setReadiness] = useState<Readiness | null>(null);
+  const [profileId, setProfileId] = useState("");
+  const [repeats, setRepeats] = useState<AuditSchedule[]>([]);
+  const [scheduleBusy, setScheduleBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [googleData, setGoogleData] = useState<{
     metrics: {
@@ -72,6 +78,14 @@ export default function AuditWorkspace() {
     setJobs(d.jobs);
     setConfigured(d.configured);
     setAI(d.ai);
+    setReadiness(d.readiness);
+    setProfileId(d.currentProfileId);
+    if (d.configured) {
+      const scheduleResponse = await fetch("/api/seo/schedules", { cache: "no-store", signal });
+      const scheduleData = await scheduleResponse.json();
+      if (!scheduleResponse.ok) throw new Error(scheduleData.error || "Schedules unavailable.");
+      if (!signal?.aborted) setRepeats(scheduleData.schedules);
+    }
   }, []);
   const load = useCallback(
     async (signal?: AbortSignal) => {
@@ -108,6 +122,7 @@ export default function AuditWorkspace() {
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
     setDetail(null);
+    setGoogleData(null);
     const update = async () => {
       try {
         await load(controller.signal);
@@ -174,11 +189,18 @@ export default function AuditWorkspace() {
       setBusy(false);
     }
   }
+  async function stopRepeat(id: string) {
+    setScheduleBusy(true); setError("");
+    try { const r = await fetch("/api/seo/schedules", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, enabled: false }) }); const d = await r.json(); if (!r.ok) throw new Error(d.error); setNotice("Repeated audits stopped."); await refresh(); }
+    catch (e) { setError(e instanceof Error ? e.message : "Could not stop repeat."); }
+    finally { setScheduleBusy(false); }
+  }
   async function repeat(
     jobId: string,
     cadence: "daily" | "weekly",
     enabled: boolean,
   ) {
+    setScheduleBusy(true);
     setError("");
     try {
       const r = await fetch("/api/seo/schedules", {
@@ -193,9 +215,10 @@ export default function AuditWorkspace() {
           ? `${cadence} audit saved. Next due: ${new Date(d.nextAt).toLocaleString()}`
           : "Repeated audits disabled for this website.",
       );
+      await refresh();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Schedule could not be saved.");
-    }
+    } finally { setScheduleBusy(false); }
   }
   async function action(id: string, action: string) {
     setBusy(true);
@@ -218,6 +241,7 @@ export default function AuditWorkspace() {
   }
   return (
     <div className="space-y-6 text-slate-200">
+      <a href="/free-seo-audit" className="inline-block underline">← Back to SEO Analyzer</a>
       <h1 className="text-3xl font-bold text-white">
         HaadinGlobal SEO projects
       </h1>
@@ -231,6 +255,8 @@ export default function AuditWorkspace() {
           configuration. The public quick audit remains separate.
         </p>
       )}
+      {readiness && <IntegrationSetup readiness={readiness} profileId={profileId} />}
+      <section className="space-y-3"><h2 className="text-xl font-bold">Repeated audits</h2>{!repeats.length && <p>No saved schedules yet. Complete an audit and choose a repeat below.</p>}{repeats.map(s => <article key={s.id} className="rounded-xl border border-slate-700 p-4"><h3 className="break-words font-semibold">{s.input.url}</h3><p>{s.enabled ? s.cadence : "Stopped"} · Next due: {s.enabled ? new Date(s.nextAt).toLocaleString() : "—"}</p>{s.lastJob && <p>Last audit: {s.lastJob}</p>}{s.lastError && <p role="status">{s.lastError}</p>}{s.enabled && <button type="button" className={button} disabled={scheduleBusy} onClick={() => stopRepeat(s.id)}>Stop repeats</button>}</article>)}</section>
       {notice && <p role="status">{notice}</p>}
       {error && (
         <p role="alert" className="rounded-lg bg-red-950 p-4">
@@ -267,7 +293,7 @@ export default function AuditWorkspace() {
             type="number"
             min={1}
             max={500}
-            defaultValue={250}
+            defaultValue={50}
             required
             className={field}
           />
@@ -290,7 +316,7 @@ export default function AuditWorkspace() {
           />
         </label>
         <p className="text-sm md:col-span-2">
-          AI sends page excerpts and supplied business context to OpenAI. Each
+          AI sends page excerpts and supplied business context to the configured AI provider. Gemini free-tier content may be used to improve Google products. Each
           selected page uses a separate provider request. This does not measure
           Google rankings, backlinks or visibility in AI answers. Restricted
           pages are skipped; URL limits and coverage are always reported.
@@ -313,6 +339,7 @@ export default function AuditWorkspace() {
                   setSelected(j.id);
                   setOffset(0);
                   setDetail(null);
+    setGoogleData(null);
                   setGoogleData(null);
                 }}
               >
@@ -378,18 +405,21 @@ export default function AuditWorkspace() {
           <div className="flex flex-wrap gap-3">
             <button
               className={button}
+              disabled={scheduleBusy || !readiness?.scheduler}
               onClick={() => repeat(detail.id, "weekly", true)}
             >
               Repeat weekly
             </button>
             <button
               className={button}
+              disabled={scheduleBusy || !readiness?.scheduler}
               onClick={() => repeat(detail.id, "daily", true)}
             >
               Repeat daily
             </button>
             <button
               className={button}
+              disabled={scheduleBusy}
               onClick={() => repeat(detail.id, "weekly", false)}
             >
               Stop repeats

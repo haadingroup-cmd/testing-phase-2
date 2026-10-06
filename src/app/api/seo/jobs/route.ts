@@ -1,3 +1,4 @@
+import { integrationReadiness } from "@/lib/seo/readiness";
 import { start } from "workflow/api";
 import { z } from "zod";
 import { auditStaff } from "@/lib/seo/job-auth";
@@ -24,6 +25,8 @@ export async function GET() {
     return Response.json(
       {
         configured: jobsConfigured(),
+        readiness: integrationReadiness(),
+        currentProfileId: profile.id,
         ai: aiConfigured(),
         jobs: jobsConfigured() ? await recentJobs(profile.id) : [],
       },
