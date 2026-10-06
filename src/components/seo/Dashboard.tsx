@@ -1,4 +1,5 @@
 "use client";
+import ManualAI from "./ManualAI";
 import { useState } from "react";
 import {
   ArrowLeft,
@@ -520,6 +521,8 @@ export default function Dashboard({
               </button>
             </div>
             <p className="hg-note hg-ai-status">{report.aiStatus}</p>
+            {!features.ai && <ManualAI report={report} />}
+            {features.aiProvider === "Google Gemini" && <p className="hg-note">AI review sends page excerpts to Google Gemini. Free-tier inputs may be used to improve Google products. Review public content before sending.</p>}
             {report.ai && (
               <section className="hg-panel hg-ai-summary">
                 <Guidance guidance={report.ai} />
@@ -552,7 +555,7 @@ export default function Dashboard({
                               ? "Medium"
                               : "Low"}
                         </span>
-                        <span>Difficulty: {check.difficulty}</span>
+                        <span>Estimated effort: {check.difficulty}</span>
                         <span>
                           {count} check{count === 1 ? "" : "s"}
                         </span>

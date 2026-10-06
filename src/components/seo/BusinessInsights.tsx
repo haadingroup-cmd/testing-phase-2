@@ -13,8 +13,8 @@ export function ExecutiveSummary({report}: {report: AuditReport}) {
   const unavailable = report.checks.filter(c=>c.status==='unavailable').length;
   const total=report.checks.length || 1;
   return <section className="hg-executive hg-panel" aria-label="Report in plain English">
-    <div><span className="hg-eyebrow">YOUR REPORT, SIMPLIFIED</span><h2>{groups.size ? `${groups.size} types of fixes. A clear place to start.`:'No issues found in the checked signals.'}</h2><p>{affected.size} sampled pages have findings. Start with critical issues, then work through the easy fixes. This summary describes the pages checked, not every page on the site.</p></div>
-    <div className="hg-summary-stats"><div><strong>{report.pages.length}</strong><span>Pages checked</span></div><div><strong>{groups.size}</strong><span>Distinct issue types</span></div><div><strong>{easy.size}</strong><span>Easy fix types</span></div></div>
+    <div><span className="hg-eyebrow">YOUR REPORT, SIMPLIFIED</span><h2>{groups.size ? `${groups.size} types of fixes. A clear place to start.`:'No issues found in the checked signals.'}</h2><p>{affected.size} sampled pages have findings. Start with critical issues, then review the remaining fixes. Effort depends on your website platform. This summary describes the pages checked, not every page on the site.</p></div>
+    <div className="hg-summary-stats"><div><strong>{report.pages.length}</strong><span>Pages checked</span></div><div><strong>{groups.size}</strong><span>Distinct issue types</span></div><div><strong>{easy.size}</strong><span>Potential simple edits</span></div></div>
     <div className="hg-check-distribution" role="img" aria-label={`${passed} passed, ${issues.length} need attention, ${unavailable} unavailable`}><i style={{width:`${passed/total*100}%`}}/><i style={{width:`${issues.length/total*100}%`}}/><i style={{width:`${unavailable/total*100}%`}}/></div>
     <p className="hg-note">Check counts: {passed} passed · {issues.length} need attention · {unavailable} unavailable. Repeated page checks are counted separately.</p>
   </section>;

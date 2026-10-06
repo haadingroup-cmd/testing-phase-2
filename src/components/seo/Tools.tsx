@@ -149,7 +149,7 @@ export default function Tools({
           </button>
           <p className="hg-note">
             {features.ai
-              ? "Page excerpts and these fields will be sent to the configured OpenAI provider."
+              ? "Page excerpts and these fields will be sent to the configured AI provider. Gemini free-tier inputs may be used to improve Google products."
               : "AI provider not configured. Metadata generation will be available after it is connected."}
           </p>
         </form>
