@@ -1,5 +1,6 @@
 import { auditStaff } from "@/lib/seo/job-auth";
-import { ownedJob } from "@/lib/seo/job-store";
+import { cronConfigured } from "@/lib/seo/readiness";
+import { ownedJob, jobsConfigured, withJobLock } from "@/lib/seo/job-store";
 import { schedules, saveSchedule, scheduleId } from "@/lib/seo/schedules";
 import { assertSameOrigin, readJSON } from "@/lib/seo/input";
 import { apiError } from "@/lib/seo/http";
@@ -11,8 +12,8 @@ export async function GET() {
     const p = await auditStaff();
     return Response.json(
       {
-        enabled: Boolean(process.env.CRON_SECRET),
-        schedules: await schedules(p.id),
+        enabled: jobsConfigured() && cronConfigured(),
+        schedules: jobsConfigured() ? await schedules(p.id) : [],
       },
       { headers: { "Cache-Control": "no-store" } },
     );
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
       .safeParse(await readJSON(request, 2000));
     if (!parsed.success)
       throw new PublicError("Choose a saved audit and daily or weekly repeat.");
-    if (!process.env.CRON_SECRET)
+    if (parsed.data.enabled && (!jobsConfigured() || !cronConfigured()))
       throw new PublicError(
         "The scheduled-audit worker is not configured yet.",
         503,
@@ -57,7 +58,7 @@ export async function POST(request: Request) {
       aiLimit: job.aiLimit,
       cadence: parsed.data.cadence,
       enabled: parsed.data.enabled,
-      nextAt: Date.now() + (parsed.data.cadence === "daily" ? 1 : 7) * 86400000,
+      nextAt: existing?.enabled && existing.cadence === parsed.data.cadence ? existing.nextAt : Date.now() + (parsed.data.cadence === "daily" ? 1 : 7) * 86400000,
       lastJob: existing?.lastJob,
     };
     await saveSchedule(schedule);
@@ -65,4 +66,22 @@ export async function POST(request: Request) {
   } catch (e) {
     return apiError(e);
   }
+}
+
+export async function PATCH(request: Request) {
+  try {
+    assertSameOrigin(request);
+    const p = await auditStaff();
+    const parsed = z.object({ id: z.string().regex(/^[a-f0-9]{32}$/), enabled: z.literal(false) }).strict().safeParse(await readJSON(request, 2000));
+    if (!parsed.success) throw new PublicError("Choose a valid schedule to stop.");
+    const result = await withJobLock(`schedule-${parsed.data.id}`, async () => {
+      const current = (await schedules(p.id)).find(s => s.id === parsed.data.id);
+      if (!current) throw new PublicError("Schedule not found.", 404);
+      current.enabled = false;
+      await saveSchedule(current);
+      return current;
+    });
+    if (!result) throw new PublicError("The scheduler is busy. Try again shortly.", 409);
+    return Response.json(result, { headers: { "Cache-Control": "no-store" } });
+  } catch (e) { return apiError(e); }
 }
