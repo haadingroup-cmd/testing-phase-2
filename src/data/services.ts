@@ -24,7 +24,7 @@ export const SERVICES: Service[] = [
     title: "Meta Ads",
     titleAr: "إعلانات ميتا",
     shortDesc: "Hyper-targeted Facebook & Instagram campaigns that turn ad spend into real leads and sales.",
-    shortDescAr: "حملات دقيقة الاستهداف بعائد استثمار 6x+ للشركات الباكستانية.",
+    shortDescAr: "حملات دقيقة الاستهداف على فيسبوك وإنستغرام تحوّل إنفاقك الإعلاني إلى عملاء محتملين ومبيعات.",
     fullDesc: "Complete Meta Ads management: audience research, ad creative design, campaign setup, A/B testing, retargeting, and weekly ROAS optimization.",
     icon: "🎯",
     category: "Paid Ads",
@@ -184,7 +184,7 @@ export const SERVICES: Service[] = [
     title: "TikTok Ads",
     titleAr: "إعلانات تيك توك",
     shortDesc: "Viral-ready TikTok campaigns that explode brand awareness.",
-    shortDescAr: "محتوى فيروسي يصل إلى ملايين المشاهدات بميزانية ذكية.",
+    shortDescAr: "حملات تيك توك إبداعية تصل إلى جمهورك المستهدف بميزانية مدروسة.",
     fullDesc: "Creative TikTok video ads, influencer-style content, and precise audience targeting for viral reach and measurable results.",
     icon: "🎬",
     category: "Paid Ads",
@@ -248,8 +248,14 @@ function pricePhrase(svc: Service, currency: PriceCurrency): string {
  * existing service data (no separate content to keep in sync).
  */
 export function serviceQuickAnswer(svc: Service, currency: PriceCurrency = "PKR"): string {
+  // Adds what the hero paragraph doesn't say: price, what's included, and how billing works.
   const priceLine = `${svc.title} ${pricePhrase(svc, currency)}.`;
-  return `${svc.title} at HaadinGlobal means ${svc.fullDesc.charAt(0).toLowerCase()}${svc.fullDesc.slice(1)} ${priceLine}`;
+  const included = `It includes ${svc.features.slice(0, 5).join(", ")}.`;
+  const terms =
+    svc.billing === "monthly"
+      ? `Billed monthly with 30 days’ notice to cancel${svc.category === "Paid Ads" ? "; your ad budget is paid to the platform separately" : ""}.`
+      : "One-time project fee with free revisions until delivery; later changes and maintenance are quoted separately.";
+  return `${priceLine} ${included} ${terms}`;
 }
 
 /**

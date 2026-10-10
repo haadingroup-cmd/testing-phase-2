@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
+import { TEAM } from "@/data/team";
 import { CTASection } from "@/components/home/SiteSections";
 
 export async function generateStaticParams() {
@@ -34,6 +35,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
+// The collective "HaadinGlobal Team" byline is the organization, not a person;
+// named authors link to their team profile.
+function authorSchema(name: string) {
+  const member = TEAM.find((m) => m.full_name === name && m.is_public);
+  if (member) return { "@type": "Person", name, url: `https://www.haadinglobal.com/team/${member.slug}` };
+  return { "@type": "Organization", "@id": "https://www.haadinglobal.com/#org", name };
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) notFound();
@@ -52,9 +61,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         description: post.excerpt,
         image: `https://www.haadinglobal.com${post.image}`,
         datePublished: isoDate(post.date),
-        author: { "@type": "Person", name: post.author },
+        dateModified: isoDate(post.updated ?? post.date),
+        author: authorSchema(post.author),
         publisher: {
           "@type": "Organization",
+          "@id": "https://www.haadinglobal.com/#org",
           name: "HaadinGlobal",
           logo: { "@type": "ImageObject", url: "https://www.haadinglobal.com/logo.png" },
         },
@@ -80,7 +91,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="label mb-5">{post.category}</div>
           <h1 className="font-display font-black text-white text-3xl md:text-4xl mb-5">{post.title}</h1>
           <div className="flex items-center gap-4 text-sm text-slate-400">
-            <span>By {post.author}</span><span>·</span><span>{post.date}</span><span>·</span><span>{post.readTime} read</span>
+            <span>By {post.author}</span><span>·</span><span>{post.date}</span>{post.updated && <><span>·</span><span>Updated {post.updated}</span></>}<span>·</span><span>{post.readTime} read</span>
           </div>
         </div>
       </section>

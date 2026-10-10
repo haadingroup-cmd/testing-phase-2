@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle, CheckCircle, TrendingUp, Users, Zap, Star } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
-import { trackLead } from "@/lib/trackLead";
+import { trackContactClick } from "@/lib/trackLead";
 
 /* ── Particle Canvas ── */
 function Particles() {
@@ -245,7 +245,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-2 mb-8"
             >
               {[
-                { icon:<CheckCircle size={13}/>, text:"ROI Guaranteed" },
+                { icon:<CheckCircle size={13}/>, text:"ROI-Focused Reporting" },
                 { icon:<CheckCircle size={13}/>, text:"24hr Support" },
                 { icon:<Users size={13}/>,        text:"Real Results" },
                 { icon:<TrendingUp size={13}/>,    text:"6 Markets" },
@@ -269,7 +269,7 @@ export default function HeroSection() {
               <Link href="/consultation" className="btn-primary text-sm md:text-base">
                 {t("hero_cta1")} <ArrowRight size={16}/>
               </Link>
-              <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("whatsapp-hero")} className="btn-ghost text-sm md:text-base">
+              <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp-hero")} className="btn-ghost text-sm md:text-base">
                 <MessageCircle size={16}/> {t("hero_cta2")}
               </a>
             </motion.div>

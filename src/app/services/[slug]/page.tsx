@@ -191,7 +191,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 <ul className="space-y-2 mb-6">
                   {(svc.billing === "one-time"
                     ? ["Free initial consultation","Dedicated project manager","Free revisions until delivery","Post-launch changes quoted separately"]
-                    : ["Free initial consultation","Dedicated account manager","Weekly/monthly reports","Cancel anytime"]).map(p => (
+                    : ["Free initial consultation","Dedicated account manager","Weekly/monthly reports","30 days’ notice to cancel"]).map(p => (
                     <li key={p} className="flex items-center gap-2 text-sm text-slate-300">
                       <CheckCircle size={14} className="text-green-300 flex-shrink-0"/>{p}
                     </li>

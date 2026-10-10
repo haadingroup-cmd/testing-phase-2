@@ -115,8 +115,8 @@ export default function LeadMagnet() {
                 <p className="text-slate-500 text-sm mb-3">Enter your details and the PDF is yours right away.</p>
 
                 <input type="text" name="company_website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-                <input name="name" required placeholder="Your name" autoComplete="name" />
-                <input name="email" type="email" required placeholder="Email address" autoComplete="email" />
+                <input name="name" required aria-label="Your name" placeholder="Your name" autoComplete="name" />
+                <input name="email" type="email" required aria-label="Email address" placeholder="Email address" autoComplete="email" />
 
                 {status === "err" && (
                   <p className="text-red-400 text-sm bg-red-500/10 px-3 py-2 rounded-lg">

@@ -7,7 +7,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/data/siteConfig";
 import { FAQS } from "@/data/faqs";
 import RegionalText from "@/components/common/RegionalText";
-import { trackLead } from "@/lib/trackLead";
+import { trackContactClick } from "@/lib/trackLead";
 
 /**
  * Shared marketing sections used across many pages.
@@ -32,7 +32,7 @@ export function FAQSection() {
             <div className="label mb-5">FAQ</div>
             <h2 className="font-display font-black text-white mb-5">Frequently Asked <span className="gradient-text">Questions</span></h2>
             <p className="text-slate-400 leading-relaxed mb-8">Have more questions? Our team responds within 24 hours.</p>
-            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("whatsapp-faq")} className="btn-primary inline-flex">Chat on WhatsApp</a>
+            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp-faq")} className="btn-primary inline-flex">Chat on WhatsApp</a>
           </div>
           <div className="lg:col-span-3 space-y-3">
             {FAQS.map((faq, i) => (
@@ -105,7 +105,7 @@ export function ProofCallSection() {
           <Link href="/consultation" className="btn-primary text-base py-4 px-9 inline-flex justify-center">
             Book a Free Results Call <ArrowRight size={17} />
           </Link>
-          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("whatsapp-proof-call")} className="btn-ghost text-base py-4 px-8 inline-flex justify-center">
+          <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp-proof-call")} className="btn-ghost text-base py-4 px-8 inline-flex justify-center">
             <MessageCircle size={17} className="text-green-300" /> Ask on WhatsApp
           </a>
         </div>
@@ -147,7 +147,7 @@ export function CTASection() {
             <Link href="/consultation" className="btn-primary text-base py-4 px-10 inline-flex justify-center shadow-[0_0_30px_rgba(239,68,68,0.4)]">
               {t("cta_book_free")} <ArrowRight size={17} />
             </Link>
-            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("whatsapp-cta-section")} className="btn-ghost text-base py-4 px-8 justify-center inline-flex">
+            <a href={SITE.social.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp-cta-section")} className="btn-ghost text-base py-4 px-8 justify-center inline-flex">
               <MessageCircle size={17} className="text-green-300" /> WhatsApp Us
             </a>
           </div>
