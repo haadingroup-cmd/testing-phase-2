@@ -28,7 +28,7 @@ export default function PricingPage() {
         <div className="container relative z-10 text-center">
           <div className="label mb-5">Pricing</div>
           <h1 className="font-display font-black text-white mb-5">Simple, <span className="gradient-text">Transparent Pricing</span></h1>
-          <p className="text-slate-400 max-w-xl mx-auto">No hidden fees, no long-term contracts. Cancel anytime.</p>
+          <p className="text-slate-400 max-w-xl mx-auto">No hidden fees, no long-term contracts. Cancel with 30 days&apos; notice.</p>
         </div>
       </section>
       <section className="py-16 bg-[#030306]">

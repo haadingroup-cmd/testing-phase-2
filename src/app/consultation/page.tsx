@@ -7,7 +7,7 @@ import { SITE } from "@/data/siteConfig";
 import { insertLead, SUPABASE_READY } from "@/lib/leads";
 import { SERVICES } from "@/data/services";
 import { useBudgetOptions } from "@/utils/useBudgetOptions";
-import { trackLead } from "@/lib/trackLead";
+import { trackLead, trackContactClick } from "@/lib/trackLead";
 
 export default function ConsultationPage() {
   const router = useRouter();
@@ -105,46 +105,46 @@ export default function ConsultationPage() {
                     <form onSubmit={submit} className="space-y-4">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label>Your Name *</label>
-                          <input type="text" required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your full name"/>
+                          <label htmlFor="consult-name">Your Name *</label>
+                          <input id="consult-name" autoComplete="name" type="text" required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your full name"/>
                         </div>
                         <div>
-                          <label>WhatsApp Number *</label>
-                          <input type="tel" required value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="Your WhatsApp number"/>
+                          <label htmlFor="consult-phone">WhatsApp Number *</label>
+                          <input id="consult-phone" autoComplete="tel" type="tel" required value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="Your WhatsApp number"/>
                         </div>
                       </div>
                       <div>
-                        <label>Email Address *</label>
-                        <input type="email" required value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="you@example.com"/>
+                        <label htmlFor="consult-email">Email Address *</label>
+                        <input id="consult-email" autoComplete="email" type="email" required value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="you@example.com"/>
                       </div>
                       <div>
-                        <label>Service of Interest</label>
-                        <select value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
+                        <label htmlFor="consult-service">Service of Interest</label>
+                        <select id="consult-service" value={form.service} onChange={e=>setForm({...form,service:e.target.value})}>
                           <option value="">Select service...</option>
                           {SERVICES.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
                           <option value="Not sure — guide me">Not sure — guide me</option>
                         </select>
                       </div>
                       <div>
-                        <label>Your Website or Social Media <span className="text-slate-500 text-xs font-normal">(optional)</span></label>
-                        <input type="text" value={form.website_social} onChange={e=>setForm({...form,website_social:e.target.value})} placeholder="https://yoursite.com or @yourhandle"/>
+                        <label htmlFor="consult-website">Your Website or Social Media <span className="text-slate-500 text-xs font-normal">(optional)</span></label>
+                        <input id="consult-website" type="text" value={form.website_social} onChange={e=>setForm({...form,website_social:e.target.value})} placeholder="https://yoursite.com or @yourhandle"/>
                       </div>
                       <div>
-                        <label>Monthly Budget</label>
-                        <select value={form.budget} onChange={e=>setForm({...form,budget:e.target.value})}>
+                        <label htmlFor="consult-budget">Monthly Budget</label>
+                        <select id="consult-budget" value={form.budget} onChange={e=>setForm({...form,budget:e.target.value})}>
                           <option value="">Select budget range...</option>
                           {budgetOptions.map(b => <option key={b}>{b}</option>)}
                           <option>Project-based (one-time)</option>
                         </select>
                       </div>
                       <div>
-                        <label>About Your Business</label>
-                        <textarea rows={3} value={form.business} onChange={e=>setForm({...form,business:e.target.value})}
+                        <label htmlFor="consult-business">About Your Business</label>
+                        <textarea id="consult-business" rows={3} value={form.business} onChange={e=>setForm({...form,business:e.target.value})}
                           placeholder="What do you sell? What challenge are you facing? What results do you want?"/>
                       </div>
                       {status === "err" && (
                         <p className="text-red-400 text-sm bg-red-500/10 px-3 py-2 rounded-lg">
-                          Failed to send. <button type="button" onClick={() => { trackLead("whatsapp-consultation-error"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="underline font-semibold text-red-300">WhatsApp us directly</button>
+                          Failed to send. <button type="button" onClick={() => { trackContactClick("whatsapp-consultation-error"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="underline font-semibold text-red-300">WhatsApp us directly</button>
                         </p>
                       )}
                       <button type="submit" disabled={status==="sending"}
@@ -156,7 +156,7 @@ export default function ConsultationPage() {
                         }
                       </button>
                       <p className="text-center text-slate-500 text-xs">
-                        Or WhatsApp: <button type="button" onClick={() => { trackLead("whatsapp-consultation-page"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</button>
+                        Or WhatsApp: <button type="button" onClick={() => { trackContactClick("whatsapp-consultation-page"); window.open(SITE.social.whatsapp, "_blank", "noopener,noreferrer"); }} className="text-green-300 font-semibold hover:underline">+{SITE.whatsapp}</button>
                       </p>
                     </form>
                   </>

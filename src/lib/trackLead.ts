@@ -18,3 +18,15 @@ export function trackLead(source: string) {
   if (typeof w.gtag !== "function") return;
   w.gtag("event", "generate_lead", { lead_source: source });
 }
+
+/**
+ * Fires a GA4 "contact_click" event for WhatsApp/phone clicks. A click only
+ * opens a chat — it is not a confirmed lead — so it must not inflate the
+ * "generate_lead" key event that counts real form submissions.
+ */
+export function trackContactClick(source: string) {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  if (typeof w.gtag !== "function") return;
+  w.gtag("event", "contact_click", { contact_method: source.startsWith("whatsapp") ? "whatsapp" : "other", contact_source: source });
+}

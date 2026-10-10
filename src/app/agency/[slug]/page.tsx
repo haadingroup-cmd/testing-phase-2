@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle, ArrowRight, Star, Shield, Clock, Globe } from "lucide-react";
+import { CheckCircle, ArrowRight, Shield, Clock, Globe } from "lucide-react";
 import { LANDINGS, getLanding } from "@/data/landings";
 import { SITE } from "@/data/siteConfig";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
@@ -48,18 +48,23 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
   const l = getLanding(params.slug);
   if (!l) notFound();
 
+  // "the UK" reads well in prose ("Grow in the UK") but not as an adjective ("your UK business").
+  const place = l.city.replace(/^the /, "");
+  const headlineCut = l.headline.includes(l.city) ? l.headline.lastIndexOf(l.city) : -1;
+  const nearby = LANDINGS.filter((o) => o.slug !== l.slug && o.countryCode === l.countryCode).slice(0, 6);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
-        name: `HaadinGlobal — Digital Marketing Agency in ${l.city}`,
+        // A service HaadinGlobal provides to this market, not a separate office.
+        "@type": "Service",
+        name: `Digital marketing services in ${place}`,
+        serviceType: "Digital marketing",
         description: l.metaDescription,
         url: `https://www.haadinglobal.com/agency/${l.slug}`,
+        provider: { "@id": "https://www.haadinglobal.com/#org" },
         areaServed: { "@type": "Country", name: SCHEMA_COUNTRY[l.country] ?? l.country },
-        telephone: SITE.phone,
-        email: SITE.email,
-        priceRange: "$$",
       },
       {
         "@type": "FAQPage",
@@ -93,7 +98,11 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
                 <Globe size={12} className="text-red-400" /> Serving {l.country}
               </div>
               <h1 className="font-display font-black text-white text-4xl md:text-5xl leading-tight mb-5">
-                {l.headline.replace(l.city, "")}<span className="gradient-text">{l.city}</span>
+                {headlineCut >= 0 ? (
+                  <>{l.headline.slice(0, headlineCut)}<span className="gradient-text">{l.city}</span>{l.headline.slice(headlineCut + l.city.length)}</>
+                ) : (
+                  l.headline
+                )}
               </h1>
               <p className="text-slate-300 text-lg leading-relaxed mb-7">{l.subhead}</p>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -106,9 +115,6 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
               <div className="flex flex-wrap items-center gap-5 text-slate-400 text-sm">
                 <span className="flex items-center gap-1.5"><Shield size={14} className="text-red-400" /> No lock-in contracts</span>
                 <span className="flex items-center gap-1.5"><Clock size={14} className="text-red-400" /> 24hr response</span>
-                <span className="flex items-center gap-1.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} className="text-amber-400 fill-amber-400 inline" />)}
-                </span>
               </div>
             </div>
 
@@ -170,7 +176,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { step: "1", title: "Free Consultation", desc: `We learn about your ${l.city} business, your goals and your budget — no pressure, no obligation.` },
+              { step: "1", title: "Free Consultation", desc: `We learn about your ${place} business, your goals and your budget — no pressure, no obligation.` },
               { step: "2", title: "Custom Strategy", desc: `We build a plan around what actually works for your industry and market in ${l.country}.` },
               { step: "3", title: "Launch & Optimise", desc: "Campaigns, content or your website go live, then we test and refine based on real performance." },
               { step: "4", title: "Report & Scale", desc: "You get clear, regular reporting — then we scale what's working and cut what isn't." },
@@ -208,15 +214,14 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Nearby cities — internal linking for topical/local SEO signal */}
+      {nearby.length > 0 && (
       <section className="py-14 bg-[#030306] border-t border-white/8">
         <div className="container max-w-4xl mx-auto text-center">
           <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-5">
             Also Serving Nearby Cities
           </p>
           <div className="flex flex-wrap justify-center gap-2.5">
-            {LANDINGS.filter((o) => o.slug !== l.slug && o.countryCode === l.countryCode)
-              .slice(0, 6)
-              .map((o) => (
+            {nearby.map((o) => (
                 <Link
                   key={o.slug}
                   href={`/agency/${o.slug}`}
@@ -228,6 +233,7 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Service links — internal linking to service pages for SEO */}
       <section className="py-14 border-t border-white/8">

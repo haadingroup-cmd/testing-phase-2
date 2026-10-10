@@ -1,0 +1,11 @@
+# Blockers — one precise request each
+
+| ID | Needed from owner | Why | Until then |
+|---|---|---|---|
+| B1 | Keep the **14-day money-back guarantee**? If yes: which services, from which date, what is excluded (ad spend, delivered work), and how to request it. If no: it is removed. | The site promises it, but the Terms have no refund clause. An unconditional promise is a commercial and legal risk. | Wording left as is; "cancel anytime" already aligned to the 30-day notice in the Terms. |
+| B2 | Permission and facts for 3 case studies: Royal Painter Dubai, Kaashan, plus one more. For each: dates, what was done, a baseline number, a result number and its source (GA4/Ads/Shopify screenshot), and whether the client may be named. | Proof pages are the largest ranking and conversion gap. Metrics cannot be invented. | Portfolio cards stay as they are. |
+| B3 | Is there a fluent Arabic speaker who can review translations? | Arabic pages need stable URLs and a human review before publishing. | Arabic stays on the language button only. |
+| B4 | Top 2 services and top 2 markets for the next 90 days; one niche each for the UK and the USA. | Decides which hubs and pages get rewritten first. | Defects fixed across all pages; no new pages. |
+| B5 | GSC export: Performance (last 16 months, last 90 days, 28 days vs prior 28) — Queries, Pages, Countries, Devices; Page indexing report; screenshot of Settings → Search generative AI. | Baseline for every decision; Ahrefs zero ≠ GSC zero. | Changes are logged in CHANGELOG with dates for later comparison. |
+| B6 | Ahrefs: Site Explorer (target and date visible) — 404 and 3xx crawled pages with referring pages; referring domains; organic keywords for PK, SA, AE, GB, US. Keywords Explorer for the K01 seeds (country, volume, KD, parent topic, CPC, date). Keyword Planner: same seeds, one CSV per country, last 12 months. | Needed to classify the 10 reported 404s and to start blog batch 1. | Seed list prepared; candidates marked provisional. |
+| B7 | Public street address (show on the Contact page or not?), hours, and the real LinkedIn **company** page URL (if one exists). | NAP must match the site, schema, GBP and directories. | Current values unchanged. |

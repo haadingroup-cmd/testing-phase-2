@@ -62,9 +62,9 @@ export default function LandingLeadForm({ source, city, priceNote, leadSource = 
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off"
         className="hidden" aria-hidden="true" />
 
-      <input name="name" required placeholder="Your name" autoComplete="name" />
-      <input name="email" type="email" required placeholder="Email address" autoComplete="email" />
-      <input name="phone" required placeholder="Phone / WhatsApp" autoComplete="tel" />
+      <input name="name" required aria-label="Your name" placeholder="Your name" autoComplete="name" />
+      <input name="email" type="email" required aria-label="Email address" placeholder="Email address" autoComplete="email" />
+      <input name="phone" type="tel" required aria-label="Phone or WhatsApp number" placeholder="Phone / WhatsApp" autoComplete="tel" />
       <select name="service" defaultValue="" aria-label="What do you need help with">
         <option value="" disabled>What do you need help with?</option>
         <option>Meta Ads</option>
@@ -75,7 +75,7 @@ export default function LandingLeadForm({ source, city, priceNote, leadSource = 
         <option>Branding</option>
         <option>Not sure — need advice</option>
       </select>
-      <textarea name="message" rows={2} placeholder="Tell us briefly about your business (optional)" />
+      <textarea name="message" rows={2} aria-label="About your business (optional)" placeholder="Tell us briefly about your business (optional)" />
 
       {status === "err" && (
         <p className="text-red-400 text-sm bg-red-500/10 px-3 py-2 rounded-lg">

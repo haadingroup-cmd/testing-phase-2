@@ -124,7 +124,7 @@ export function PricingCards() {
       </div>
 
       <p className="text-center text-slate-400 text-xs mt-8">
-        💡 14-day money-back guarantee · Cancel anytime · No setup fees
+        💡 14-day money-back guarantee · Cancel with 30 days&apos; notice · No setup fees
         {!isPkr && <span className="block mt-1 text-slate-400">Prices shown in USD for international clients.</span>}
       </p>
     </div>

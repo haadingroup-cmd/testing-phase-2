@@ -629,11 +629,11 @@ export const LANDINGS: Landing[] = [
   },
   {
     slug: "digital-marketing-agency-qatar",
-    city: "Doha",
+    city: "Qatar",
     country: "Qatar",
     countryCode: "QA",
     currency: "$",
-    headline: "Digital Marketing Agency in Doha",
+    headline: "Digital Marketing Agency in Qatar",
     subhead:
       "HaadinGlobal helps businesses in Doha and across Qatar — retail, hospitality, real estate and professional services — grow with affordable, ROI-focused Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Qatar",
@@ -681,11 +681,11 @@ export const LANDINGS: Landing[] = [
   },
   {
     slug: "digital-marketing-agency-saudi-arabia",
-    city: "Riyadh",
+    city: "Saudi Arabia",
     country: "Saudi Arabia",
     countryCode: "SA",
     currency: "$",
-    headline: "Digital Marketing Agency in Riyadh",
+    headline: "Digital Marketing Agency in Saudi Arabia",
     subhead:
       "HaadinGlobal helps businesses across Riyadh, Jeddah and the wider Kingdom — retail, real estate, e-commerce and professional services — scale with data-driven Meta Ads, Google Ads and SEO.",
     metaTitle: "Digital Marketing Agency in Saudi Arabia",

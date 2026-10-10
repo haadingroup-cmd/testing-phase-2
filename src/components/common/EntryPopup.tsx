@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { X, MessageCircle, Send, Sparkles } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 import { insertLead, SUPABASE_READY } from "@/lib/leads";
-import { trackLead } from "@/lib/trackLead";
+import { trackContactClick } from "@/lib/trackLead";
 
 /**
- * Entry popup — appears once per browser session, a few seconds after load
- * (top-agency pattern). Offers the two fastest paths to contact: WhatsApp
+ * Entry popup — appears once per browser session on tablet/desktop, after the
+ * visitor has scrolled through half of the page. Offers the two fastest paths to contact: WhatsApp
  * (the primary goal) and a quick route to the consultation page. Closing it
  * sets a sessionStorage flag so it never nags the same visitor again.
  */
@@ -25,8 +25,20 @@ export default function EntryPopup() {
       if (sessionStorage.getItem("hg_popup_seen")) return;
     } catch { /* sessionStorage blocked — just show once in memory */ }
 
-    const timer = setTimeout(() => setOpen(true), 3500);
-    return () => clearTimeout(timer);
+    // Never cover content on first view (Google's intrusive-interstitial guidance).
+    // Phones already have the sticky WhatsApp bar; on larger screens, offer the
+    // popup only once the visitor has read half the page.
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      if (scrollable > 0 && window.scrollY / scrollable >= 0.5) {
+        setOpen(true);
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   function close() {
@@ -43,7 +55,7 @@ export default function EntryPopup() {
         message: "Started via entry popup to WhatsApp",
       }).then(() => {}, () => {});
     }
-    trackLead("whatsapp-popup");
+    trackContactClick("whatsapp-popup");
     window.open(`${SITE.social.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     close();
   }
@@ -89,6 +101,8 @@ export default function EntryPopup() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              aria-label="Your name"
+              autoComplete="name"
               placeholder="Your name"
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm placeholder:text-slate-400 focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:outline-none transition-colors"
             />

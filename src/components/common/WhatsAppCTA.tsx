@@ -1,13 +1,13 @@
 "use client";
 import { SITE } from "@/data/siteConfig";
-import { trackLead } from "@/lib/trackLead";
+import { trackContactClick } from "@/lib/trackLead";
 
 /**
  * Every WhatsApp CTA on the site should go through this component instead of
  * a raw <a href={SITE.social.whatsapp}> — WhatsApp is the primary conversion
  * action (more clicks than the lead forms in most places), but until this
- * existed those clicks fired no GA4 event at all, so they were invisible in
- * Analytics next to the form-based leads that trackLead() already covers.
+ * existed those clicks fired no GA4 event at all. They are tracked as
+ * "contact_click" — separate from the confirmed form leads in "generate_lead".
  */
 export default function WhatsAppCTA({
   source,
@@ -32,7 +32,7 @@ export default function WhatsAppCTA({
       rel="noopener noreferrer"
       className={className}
       aria-label={ariaLabel}
-      onClick={() => trackLead(`whatsapp-${source}`)}
+      onClick={() => trackContactClick(`whatsapp-${source}`)}
     >
       {children}
     </a>

@@ -9,7 +9,7 @@ import { MessageSquare, ShieldCheck, BadgeCheck, Clock, UserCheck, LineChart, Gl
  */
 const PILLARS = [
   { icon: MessageSquare, title: "Free strategy session", desc: "A no-cost consultation and custom plan before you commit to anything." },
-  { icon: ShieldCheck, title: "No long-term lock-in", desc: "Month-to-month. Cancel anytime — we earn your business every month." },
+  { icon: ShieldCheck, title: "No long-term lock-in", desc: "Month-to-month, with 30 days’ notice to cancel — we earn your business every month." },
   { icon: BadgeCheck, title: "Transparent pricing", desc: "Clear plans, no hidden fees. You always know what you're paying for." },
   { icon: Clock, title: "24-hour response", desc: "We reply to every enquiry within one business day." },
   { icon: UserCheck, title: "Dedicated manager", desc: "One point of contact who knows your account inside out." },

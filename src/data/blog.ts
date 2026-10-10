@@ -2,12 +2,13 @@ export const BLOG_POSTS = [
   {
     slug: "how-to-rank-in-ai-search-2026",
     title: "How to Show Up in AI Search (ChatGPT, Perplexity & Google AI) in 2026",
-    excerpt: "AI answers are the new search results. Learn how AEO and GEO work in 2026 — and the practical steps to get your business recommended by ChatGPT, Perplexity, Gemini and Google's AI Overviews.",
+    excerpt: "AI answers now sit alongside search results. Learn how AEO and GEO work in 2026 — and the practical steps that make your business easier for ChatGPT, Perplexity, Gemini and Google's AI Overviews to find and cite.",
     // Shorter than the excerpt: search engines truncate descriptions past ~160 chars.
-    metaDescription: "How AEO and GEO work in 2026, and the practical steps to get your business recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews.",
+    metaDescription: "How AEO and GEO work in 2026, and practical steps that make your business easier for ChatGPT, Perplexity and Google AI Overviews to find and cite.",
     category: "AI & AEO",
     author: "HaadinGlobal Team",
     date: "Sep 5, 2026",
+    updated: "Oct 10, 2026",
     readTime: "9 min",
     image: "/images/blog-how-to-rank-in-ai-search-2026.png",
     tags: ["AEO","GEO","AI Search","SEO"],
@@ -21,8 +22,14 @@ export const BLOG_POSTS = [
 </ul>
 <p>Classic SEO gets you ranked. AEO and GEO get you <em>quoted</em>.</p>
 
-<h2>1. Let AI crawlers read your site</h2>
-<p>AI engines can only recommend what they can access. Make sure your robots file allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others), and consider an <strong>llms.txt</strong> file — a plain-language summary of who you are and what you offer, written for AI systems. (We added exactly this to our own site.)</p>
+<h2>1. Let the right crawlers read your site</h2>
+<p>AI tools can only cite pages they can reach, but not every AI crawler does the same job. Some fetch pages for <strong>search answers</strong>; others collect content for <strong>model training</strong>. They are controlled separately in robots.txt, and you can allow one without the other:</p>
+<ul>
+<li><strong>Google AI Overviews and AI Mode</strong> use normal Googlebot crawling and indexing. If your page can appear in Google Search, it can be considered for these features. <em>Google-Extended</em> controls use of your content for Gemini training and grounding — it is not an AI Overviews ranking switch.</li>
+<li><strong>ChatGPT search</strong> uses <em>OAI-SearchBot</em>. <em>GPTBot</em> is OpenAI's training crawler. OpenAI says the two settings are independent: you can allow OAI-SearchBot to appear in search while blocking GPTBot.</li>
+<li><strong>Claude and Perplexity</strong> also publish separate search, training and user-request agents. Check each provider's current documentation before writing rules.</li>
+</ul>
+<p>Allowing training crawlers is a content-policy decision, not a requirement for appearing in AI search. An <strong>llms.txt</strong> file is optional: Google says it doesn't use it, and it won't help or hurt your Google rankings. We keep one on our site as a plain summary, but it is not where visibility comes from.</p>
 
 <h2>2. Write content that answers real questions directly</h2>
 <p>AI loves clear, self-contained answers. For every important question your customers ask:</p>
@@ -31,10 +38,10 @@ export const BLOG_POSTS = [
 <li>Answer it in the first two sentences — plainly, no waffle.</li>
 <li>Then expand with detail, examples and context.</li>
 </ul>
-<p>This "answer-first" structure is what gets pulled into AI Overviews and chat answers.</p>
+<p>This "answer-first" structure is easier for readers and for AI systems to understand. It improves your chances of being quoted; it does not guarantee it.</p>
 
-<h2>3. Add structured data (schema)</h2>
-<p>Schema markup (FAQ, Organization, Service, Breadcrumb) tells machines exactly what your content means. It dramatically increases your chance of being used as a source by both Google and AI engines.</p>
+<h2>3. Use structured data where it is accurate — but don't expect magic</h2>
+<p>Schema markup (Organization, Service, Article, Breadcrumb) describes your business and pages in a consistent format. Google is explicit that no special schema or AI text file is needed to appear in AI Overviews or AI Mode, and that structured data is not required for its generative AI features. Keep using accurate markup because it supports rich results and a clear business identity. Note that Google stopped showing FAQ rich results in May 2026, so FAQ schema is no longer a visible search-result win — keep FAQs because they help visitors.</p>
 
 <h2>4. Build real authority and citations</h2>
 <p>AI models recommend brands they "trust". That trust is built the same way as SEO authority: genuine mentions, reviews, backlinks, consistent business information across the web, and being talked about on reputable sites. The more consistently your name appears alongside your expertise, the more likely an AI is to name you.</p>
@@ -46,7 +53,14 @@ export const BLOG_POSTS = [
 <p>Open ChatGPT, Perplexity and Google, and ask the questions your customers would ("best digital marketing agency in Dubai for small business"). See who gets named. That gap between where you are and who's being recommended is your AEO/GEO roadmap.</p>
 
 <h2>The bottom line</h2>
-<p>AI search isn't replacing SEO — it's raising the bar. The businesses that win in 2026 are the ones that are crawlable, answer questions clearly, use structured data, and build real authority. Do that, and you get recommended by the tools your customers now trust most.</p>
+<p>AI search isn't replacing SEO — it builds on it. The businesses most likely to be cited in 2026 are crawlable, answer real questions clearly, publish original evidence (case studies, data, real examples), keep their business facts consistent, and earn genuine mentions. Nobody can guarantee an AI recommendation, but these steps make you a stronger candidate. In Google Search Console, the Generative AI performance report shows how your pages appear in Google's AI features.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs/appearance/ai-features" rel="noopener" target="_blank">Google Search Central — AI features and your website</a></li>
+<li><a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" rel="noopener" target="_blank">Google Search Central — Optimizing for generative AI in Search</a></li>
+<li><a href="https://developers.openai.com/api/docs/bots" rel="noopener" target="_blank">OpenAI — Overview of OpenAI crawlers</a></li>
+</ul>
 
 <p>Want to be the business AI recommends in your market? <a href="/consultation">Book a free consultation</a> and we'll build you an SEO + AEO + GEO plan.</p>
 `,
@@ -550,6 +564,7 @@ export const BLOG_POSTS = [
     category: "SEO",
     author: "Muhammad Haseeb",
     date: "Jul 31, 2026",
+    updated: "Oct 10, 2026",
     readTime: "7 min",
     image: "/images/blog-seo-trends-2025.png",
     tags: ["SEO","AEO","GEO","AI"],
@@ -557,7 +572,7 @@ export const BLOG_POSTS = [
 <p>Search changed more between 2024 and 2026 than in the entire decade before it. AI Overviews, chatbots and answer engines now sit between your business and your customers. If you still think of SEO as simply "rank #1 on Google," you're optimising for a world that is disappearing. Here are the 10 trends defining SEO in 2026 — and what to do about each.</p>
 
 <h2>1. AI Overviews and zero-click search</h2>
-<p>Close to 60% of Google searches now end without a click, because AI-generated summaries answer the question right on the results page. The goal is no longer only traffic — it's being the trusted source the AI summarises and cites.</p>
+<p>For many simple questions, people now get an answer on the results page — from an AI Overview, a featured snippet or a knowledge panel — without clicking. Clicks still matter, but the goal also includes being a trustworthy source that these summaries link to. Track both: Search Console shows impressions, clicks and a Generative AI performance report for Google's AI features.</p>
 
 <h2>2. AEO — Answer Engine Optimization</h2>
 <p>AEO means structuring content so engines like Google AI Overviews, ChatGPT and Perplexity can lift a clear, direct answer from it. Lead with the answer, then explain. Use question-based headings and short, quotable summaries near the top of each page.</p>
@@ -568,8 +583,8 @@ export const BLOG_POSTS = [
 <h2>4. E-E-A-T is now a trust filter for AI</h2>
 <p>Experience, Expertise, Authoritativeness and Trust increasingly decide which sources AI systems rely on. Real author names, credentials, accurate claims and genuine reviews matter more than ever — inflated or fake signals get filtered out.</p>
 
-<h2>5. Structured data (schema) is non-negotiable</h2>
-<p>Schema markup helps both Google and AI engines understand who you are and what a page says. Organization, LocalBusiness, FAQ and Article schema make your content machine-readable and citation-ready.</p>
+<h2>5. Structured data: useful, but not an AI shortcut</h2>
+<p>Accurate Organization, LocalBusiness, Product and Article markup still supports rich results and a clear business identity. But Google states there is no special schema needed for AI Overviews or AI Mode, and Google stopped showing FAQ rich results in May 2026. Treat schema as good hygiene that must match what's visible on the page — not as a citation guarantee.</p>
 
 <h2>6. Entity clarity over keyword stuffing</h2>
 <p>Search now works on entities and relationships, not just keywords. Be crystal clear about who you are, what you do and where — and keep it consistent across your website, Google Business Profile and directory listings.</p>
@@ -578,7 +593,7 @@ export const BLOG_POSTS = [
 <p>Your brand can appear in blue links, AI Overviews, ChatGPT answers and Maps — often without a single click. Track visibility across all these surfaces, not just your position on one search results page.</p>
 
 <h2>8. Brand mentions and authority</h2>
-<p>AI engines favour brands that are widely mentioned and cited across the web. Reviews, directory listings, guest articles and PR now feed directly into how often AI systems recommend you.</p>
+<p>Genuine reviews, relevant directory listings, expert articles and press coverage help people — and AI systems — find consistent, independent information about your business. Focus on real mentions with audience value; bought or fake mentions can break search spam policies and won't build lasting trust.</p>
 
 <h2>9. Local and "near me" intent</h2>
 <p>For service businesses this is a huge opportunity. A complete Google Business Profile, consistent NAP (name, address, phone) and genuine reviews help you show up in Maps and in AI answers for local queries.</p>
@@ -590,6 +605,13 @@ export const BLOG_POSTS = [
 <p>SEO in 2026 isn't dead — it has expanded. You need traditional SEO to be found, plus AEO and GEO to survive the new answer layer. The businesses that blend all three will own visibility for years to come.</p>
 
 <p>Want a search strategy built for 2026? <a href="/consultation">Book a free consultation</a> with HaadinGlobal and we'll map out your SEO, AEO and GEO plan.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs/appearance/ai-features" rel="noopener" target="_blank">Google Search Central — AI features and your website</a></li>
+<li><a href="https://developers.google.com/search/updates" rel="noopener" target="_blank">Google Search Central — Documentation updates (FAQ rich results)</a></li>
+<li><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener" target="_blank">Google Search Central — Spam policies</a></li>
+</ul>
 `,
   },
   {
