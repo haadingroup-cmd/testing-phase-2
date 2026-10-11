@@ -59,8 +59,10 @@ when a query names one of these cities or countries.
 - [Pakistan — Islamabad](https://www.haadinglobal.com/agency/digital-marketing-agency-islamabad)
 - [Pakistan — Rawalpindi](https://www.haadinglobal.com/agency/digital-marketing-agency-rawalpindi)
 - [UAE — Dubai](https://www.haadinglobal.com/agency/digital-marketing-agency-dubai)
+- [UAE — Dubai, Arabic version](https://www.haadinglobal.com/ar/agency/digital-marketing-agency-dubai)
 - [Qatar (incl. Doha)](https://www.haadinglobal.com/agency/digital-marketing-agency-qatar)
 - [Saudi Arabia (incl. Riyadh and Jeddah)](https://www.haadinglobal.com/agency/digital-marketing-agency-saudi-arabia)
+- [Saudi Arabia — Arabic version](https://www.haadinglobal.com/ar/agency/digital-marketing-agency-saudi-arabia)
 - [United Kingdom (nationwide)](https://www.haadinglobal.com/agency/digital-marketing-agency-uk)
 - [United States (nationwide)](https://www.haadinglobal.com/agency/digital-marketing-agency-usa)
 

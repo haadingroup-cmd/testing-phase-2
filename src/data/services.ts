@@ -272,6 +272,27 @@ export function serviceQuickAnswer(svc: Service, currency: PriceCurrency = "PKR"
  * country and leave these out of FAQPage JSON-LD (the Offer schema and
  * llms.txt carry prices for both markets).
  */
+/** Questions only one service gets — keeps each page's FAQ distinct. */
+const SERVICE_EXTRA_FAQS: Record<string, { q: string; a: string }[]> = {
+  seo: [
+    { q: "Do you do local SEO and Google Business Profile optimisation?", a: "Yes, for businesses with a real customer-facing location or service base. We optimise your categories, services, photos, reviews process and website links. We don't create profiles for cities or countries you only serve remotely; Google's rules don't allow it and it puts your listing at risk." },
+    { q: "How do you build backlinks?", a: "Through genuine sources: industry and business directories that fit you, suppliers, partners, local organisations and useful content others want to reference. We don't sell paid link packages or use private blog networks, because they can get a site penalised." },
+    { q: "Can you do SEO for an Arabic or bilingual website?", a: "Yes. For Saudi Arabia and the UAE we research Arabic and English searches separately and build pages for each language, with the correct language tags so Google shows the right version." },
+    { q: "Do you offer white-label SEO for agencies?", a: "Yes. Agencies in the UK and USA can hand us technical SEO, on-page optimisation and reporting, delivered under their brand with clear monthly deliverables." },
+  ],
+  "web-development": [
+    { q: "Will a new website lose my current Google rankings?", a: "Not if the move is planned. We list your existing URLs, keep the ones that rank, and set permanent redirects from old addresses to the matching new pages before launch, then check Search Console afterwards." },
+    { q: "Do I own the website and its content?", a: "Yes. The domain, hosting account, content and finished site are yours. Paid themes, plugins and subscriptions are set up in your name so you stay in control." },
+    { q: "Which technology do you use?", a: "Next.js for most business websites and custom web apps, because it is fast and search-friendly, and Shopify for online stores. We recommend the platform that fits your goals and budget, not the other way round." },
+    { q: "Can you build an Arabic (right-to-left) website?", a: "Yes. We build Arabic and bilingual sites with right-to-left layouts, Arabic fonts and separate language URLs so each version can rank." },
+  ],
+  shopify: [
+    { q: "Can you set up cash on delivery for a Pakistani store?", a: "Yes. Most Pakistani Shopify stores use cash on delivery alongside local payment options. We configure the payment methods, shipping zones and order notifications that suit your market." },
+    { q: "Do you work on existing Shopify stores?", a: "Yes. We review product pages, navigation, speed, apps and checkout, then fix what is stopping visitors from buying, and improve collection and product SEO." },
+    { q: "Who pays for the Shopify plan, theme and apps?", a: "You do, directly to Shopify or the app provider, so the store stays fully in your name. Our fee covers the design, setup and build work." },
+  ],
+};
+
 /** Honest, service-type-specific timing answer (no guaranteed dates). */
 function resultsTimeline(svc: Service, title: string): string {
   if (svc.category === "Paid Ads")
@@ -320,6 +341,7 @@ export function serviceFaqs(svc: Service): { q: string; a: string; aUsd?: string
           q: `Do I need a long-term contract for ${title}?`,
           a: `No. We recommend a 3-month minimum for ${title} so there's enough time to see meaningful results, but after that it's month-to-month — no long lock-in contracts. Most clients stay long-term because of results, not because they're locked in.`,
         },
+    ...(SERVICE_EXTRA_FAQS[svc.id] ?? []),
     {
       q: `How do you measure success for ${title}?`,
       a: `We track the metrics that actually matter for ${title} — leads, sales, ROAS or rankings, depending on the service — not vanity numbers like impressions or likes. You get a dedicated dashboard and regular reports so you always know exactly how it's performing.`,

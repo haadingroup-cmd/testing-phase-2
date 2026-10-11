@@ -583,42 +583,31 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency in Dubai",
     subhead:
-      "HaadinGlobal helps Dubai businesses — from retail and real estate to hospitality, e-commerce and startups — grow with offshore-competitive Meta Ads, Google Ads and SEO, without the high overhead of a local agency.",
+      "HaadinGlobal builds websites and runs SEO for Dubai home-service companies — painting, maintenance, cleaning and similar trades — so people searching for a service in their area find you and call or WhatsApp you. For Royal Painter Dubai we built a lead-focused website and logo, did on-page SEO and set up Google Ads.",
     metaTitle: "Digital Marketing Agency in Dubai, UAE",
     metaDescription:
-      "Affordable digital marketing agency for Dubai businesses. Meta Ads, Google Ads, SEO and web development at offshore-competitive rates. Free consultation.",
+      "Websites, SEO and Google Ads for Dubai businesses, especially home-service companies like painters and maintenance firms. Free website and SEO review.",
     heroPoints: [
-      "Offshore-competitive pricing",
-      "Serving Dubai & the UAE",
-      "Free strategy consultation",
-      "24-hour response time",
+      "Websites & SEO for home-service firms",
+      "Built for calls & WhatsApp enquiries",
+      "Serving Dubai & the wider UAE",
+      "Free website & SEO review",
     ],
     painPoints: [
-      {
-        problem: "Local Dubai agencies charge a premium for the same results",
-        solution:
-          "We deliver the same quality — Meta Ads, Google Ads, SEO — at offshore-competitive rates, so more of your budget goes to media spend, not overhead.",
-      },
-      {
-        problem: "Ad spend disappearing with unclear returns",
-        solution:
-          "Transparent, real-time reporting so you see exactly what every dirham returns, with campaigns optimised weekly.",
-      },
-      {
-        problem: "A generic website that doesn't reflect a premium Dubai brand",
-        solution:
-          "Modern, fast, conversion-focused websites and Shopify stores built to match Dubai's high customer expectations.",
-      },
+      { problem: "Customers search for a painter or technician and find your competitors", solution: "Service and area pages built around what Dubai customers actually search, plus Google Business Profile optimisation if you have a UAE location." },
+      { problem: "A website that looks fine but doesn't bring calls", solution: "Clear service pages with call and WhatsApp buttons on every screen, fast on mobile, with every enquiry tracked in Google Analytics." },
+      { problem: "Paying for ads without knowing which ones bring jobs", solution: "Google Ads with call and form tracking, so you see the cost per enquiry rather than just clicks." },
     ],
     services: [
-      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tailored to Dubai's multicultural, high-spending audience." },
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers across Dubai the moment they search." },
-      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the searches your Dubai customers make." },
-      { name: "Website & Shopify Development", desc: "Premium, fast websites and online stores built to convert." },
-      { name: "Social Media Management", desc: "On-brand content that builds trust with a Dubai audience." },
-      { name: "Branding & Creative", desc: "Identity and ad creative that match a premium Dubai market." },
+      { name: "SEO & Local SEO", desc: "Service and area pages and local SEO for home-service searches across Dubai." },
+      { name: "Website Development", desc: "Lead-focused websites with call and WhatsApp buttons, like the one we built for Royal Painter Dubai." },
+      { name: "Google Ads (Search)", desc: "Ads for high-intent searches such as 'painting company Dubai', with enquiry tracking." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Campaigns that show your finished work to homeowners and property managers." },
+      { name: "Social Media Management", desc: "Before-and-after content that builds trust with a Dubai audience." },
+      { name: "Branding & Creative", desc: "Logos and creative for service businesses, as we did for Royal Painter Dubai." },
     ],
     faqs: [
+      { q: "Have you worked with home-service companies in Dubai?", a: "Yes. For Royal Painter Dubai we built a lead-focused website and brand logo, did on-page SEO and set up Google Ads for the Dubai market. You can see the live site in our portfolio." },
       { q: "Do you work with businesses in Dubai?", a: "Yes. We work with clients across Dubai and the wider UAE, managing campaigns remotely with regular reporting and fast communication across your time zone." },
       { q: "Why choose an offshore agency over a local Dubai one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often significantly less than local Dubai agency fees — without compromising results." },
       { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
@@ -687,42 +676,31 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency in Saudi Arabia",
     subhead:
-      "HaadinGlobal helps businesses across Riyadh, Jeddah and the wider Kingdom — retail, real estate, e-commerce and professional services — scale with data-driven Meta Ads, Google Ads and SEO.",
+      "HaadinGlobal builds Arabic and English websites and runs SEO for service and rental businesses across Saudi Arabia — Riyadh, Jeddah and the wider Kingdom — with a page for each service and city your customers really search for. Our current Saudi project is the website and SEO foundation for Abdulla Events, an event-rental company.",
     metaTitle: "Digital Marketing Agency in Saudi Arabia",
     metaDescription:
-      "Affordable digital marketing agency for Saudi Arabia. Meta Ads, Google Ads, SEO and web development for Riyadh, Jeddah and the Kingdom. Free consultation.",
+      "Arabic and English websites and SEO for service and rental businesses in Saudi Arabia, plus Google and Meta Ads for Riyadh, Jeddah and the Kingdom.",
     heroPoints: [
-      "Affordable, data-driven campaigns",
+      "Arabic & English websites and SEO",
+      "For service & rental businesses",
       "Serving Riyadh, Jeddah & the Kingdom",
-      "Free strategy consultation",
-      "Arabic & English campaigns",
+      "Free website & SEO review",
     ],
     painPoints: [
-      {
-        problem: "Marketing that doesn't speak to Saudi buyers",
-        solution:
-          "Localised, Arabic-first campaigns tuned to how customers in the Kingdom actually search and buy.",
-      },
-      {
-        problem: "Ad budget spent without a clear return",
-        solution:
-          "Transparent tracking so you see exactly what every riyal returns, with weekly optimisation.",
-      },
-      {
-        problem: "An outdated website losing customers to competitors",
-        solution:
-          "Modern, fast, mobile-first websites and Shopify stores built to convert Saudi shoppers.",
-      },
+      { problem: "Your website isn't found for Arabic searches", solution: "Separate Arabic and English pages, researched for each language and tagged correctly, so Google shows Saudi customers the right version." },
+      { problem: "Service pages that don't match what customers search for", solution: "One clear page per service and city you actually cover, with photos of real work and an easy WhatsApp enquiry." },
+      { problem: "Ad budget spent without a clear return", solution: "Google and Meta Ads with enquiry tracking, so you see what every riyal returns." },
     ],
     services: [
-      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tailored to Saudi Arabia's fast-growing digital audience." },
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent buyers across the Kingdom the moment they search." },
-      { name: "SEO & Local SEO", desc: "Rank on Google and Maps for the searches your Saudi customers make." },
-      { name: "Website & Shopify Development", desc: "Fast, mobile-first websites and online stores built to sell." },
+      { name: "SEO in Arabic & English", desc: "Keyword research per language and pages built for how customers in the Kingdom search." },
+      { name: "Website Development", desc: "Fast, mobile-first Arabic and English websites with right-to-left layouts." },
+      { name: "Google Ads (Search)", desc: "Capture high-intent searches across Riyadh, Jeddah and the Kingdom." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Campaigns in Arabic and English for Saudi audiences." },
       { name: "Social Media Management", desc: "Arabic and English content that builds trust with a Saudi audience." },
-      { name: "Branding & Creative", desc: "Identity and ad creative built for the Saudi market." },
+      { name: "Branding & Creative", desc: "Identity and creative built for the Saudi market." },
     ],
     faqs: [
+      { q: "Have you worked with businesses in Saudi Arabia?", a: "Yes. We are building the website and SEO foundation for Abdulla Events, an event-rental business in Saudi Arabia (tables, chairs, tents, qahwa service and full event setups). The project is in progress, so we don't publish results for it yet." },
       { q: "Do you work with businesses in Saudi Arabia?", a: "Yes. We work with clients across Riyadh, Jeddah and the wider Kingdom, managing campaigns remotely with regular reporting and communication across your time zone." },
       { q: "Do you run campaigns in Arabic?", a: "Yes. We create and run campaigns in both Arabic and English to reach your full Saudi audience." },
       { q: "How quickly will I see results?", a: "Paid ads (Meta/Google) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months for lasting organic traffic." },
@@ -739,42 +717,31 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency for UK Businesses",
     subhead:
-      "HaadinGlobal helps UK businesses — from local trades and clinics to e-commerce brands and B2B firms — win more customers with Meta Ads, Google Ads and SEO, at offshore-competitive rates without cutting corners on quality.",
+      "HaadinGlobal builds and optimises Shopify stores for small UK online brands — store setup, product and collection pages, speed and Shopify SEO — and builds lead-focused websites for UK service businesses. We're a remote team in Pakistan and arrange calls in UK hours.",
     metaTitle: "Digital Marketing Agency for UK Businesses",
     metaDescription:
-      "Affordable digital marketing agency for UK businesses. Google Ads, Meta Ads, SEO and web development at competitive rates, with real ROI. Free consultation.",
+      "Shopify store builds and Shopify SEO for small UK online brands, plus websites and Google Ads for UK service businesses. Clear scope, free store review.",
     heroPoints: [
-      "Serving businesses across the UK",
-      "Offshore-competitive pricing",
-      "Google & Meta Ads specialists",
-      "Fast response in your time zone",
+      "Shopify builds & Shopify SEO",
+      "For small UK online brands",
+      "Calls arranged in UK hours",
+      "Free store review",
     ],
     painPoints: [
-      {
-        problem: "UK agencies charge premium retainers for the same work",
-        solution:
-          "We deliver the same strategy and execution — Google Ads, Meta Ads, SEO — at offshore-competitive rates, so more of your budget goes to results, not overhead.",
-      },
-      {
-        problem: "Ad spend going out with no clear return",
-        solution:
-          "Transparent, real-time reporting so you see exactly what every pound returns, with campaigns optimised every week.",
-      },
-      {
-        problem: "Ranking below bigger competitors on Google",
-        solution:
-          "Local and national SEO built around the searches your UK customers actually make — steady, compounding organic traffic over time.",
-      },
+      { problem: "Your store gets visitors but few sales", solution: "We review product pages, navigation, speed and checkout, then fix what stops people from buying." },
+      { problem: "Collections and products don't rank on Google", solution: "Collection and product copy written around real searches, plus structured data, image alt text and redirects for changed URLs." },
+      { problem: "UK agency retainers are too expensive for a small store", solution: "Fixed-scope projects and monthly SEO at offshore-competitive rates, with written deliverables." },
     ],
     services: [
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent UK buyers the moment they search for what you offer." },
-      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tuned to your UK audience and offers." },
-      { name: "SEO & Local SEO", desc: "Rank on Google and in the local map pack for UK cities and 'near me' searches." },
-      { name: "Website & Shopify Development", desc: "Fast, conversion-focused websites and online stores built to sell." },
-      { name: "Social Media Management", desc: "On-brand content that builds trust with a UK audience." },
-      { name: "Lead Generation Systems", desc: "Full-funnel setups that turn traffic into booked calls and enquiries." },
+      { name: "Shopify Store Development", desc: "New stores and redesigns built to sell, with product pages your customers trust." },
+      { name: "Shopify SEO", desc: "Collection, product and technical SEO for small UK stores." },
+      { name: "Website Development", desc: "Fast, lead-focused websites for UK service businesses." },
+      { name: "Google Ads (Search & Shopping)", desc: "Shopping and search campaigns with sales tracking." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Product campaigns tuned to your UK audience." },
+      { name: "Lead Generation Systems", desc: "Funnels that turn traffic into enquiries and booked calls." },
     ],
     faqs: [
+      { q: "Do you work with small UK Shopify stores?", a: "Yes. That is our main focus in the UK: building new Shopify stores, improving stores that get traffic but few sales, and Shopify SEO for collections and products. We arrange calls in UK hours." },
       { q: "Do you work with businesses in the UK?", a: "Yes. We work with clients across England, Scotland, Wales and Northern Ireland, managing everything remotely with regular reporting and fast communication in your time zone." },
       { q: "Why choose an offshore agency over a UK one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often far less than a UK agency retainer — without compromising on results or reporting." },
       { q: "How quickly will I see results?", a: "Paid ads (Google/Meta) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before we start." },
@@ -791,42 +758,31 @@ export const LANDINGS: Landing[] = [
     currency: "$",
     headline: "Digital Marketing Agency for US Businesses",
     subhead:
-      "HaadinGlobal helps US businesses — from local service providers to e-commerce and B2B companies — grow with Google Ads, Meta Ads and SEO, delivering agency-quality work at offshore-competitive rates.",
+      "HaadinGlobal is a white-label SEO and web development partner for US agencies — technical SEO, on-page optimisation, websites and Shopify builds delivered under your brand. We also work directly with small US online stores. We're a remote team in Pakistan and arrange calls across US time zones.",
     metaTitle: "Digital Marketing Agency for US Businesses",
     metaDescription:
-      "Affordable digital marketing agency for US businesses. Google Ads, Meta Ads, SEO and web development with real ROI and clear reporting. Free consultation.",
+      "White-label SEO and web development for US agencies, plus Shopify builds and SEO for small US online stores. Clear scope and written deliverables.",
     heroPoints: [
-      "Serving businesses across the US",
-      "Offshore-competitive pricing",
-      "Google & Meta Ads specialists",
-      "Coverage across US time zones",
+      "White-label SEO & web development",
+      "For US agencies & small online stores",
+      "Clear scope, written deliverables",
+      "Calls across US time zones",
     ],
     painPoints: [
-      {
-        problem: "US agency retainers eat most of your marketing budget",
-        solution:
-          "We deliver the same strategy and execution — Google Ads, Meta Ads, SEO — at offshore-competitive rates, so more of your budget drives actual results.",
-      },
-      {
-        problem: "Ad spend with no clear line to revenue",
-        solution:
-          "Transparent, real-time reporting tied to leads and sales, with campaigns optimised every week for return.",
-      },
-      {
-        problem: "Losing local searches to bigger competitors",
-        solution:
-          "Local and national SEO built around how US customers search — compounding organic traffic that lowers your cost per lead over time.",
-      },
+      { problem: "Your agency has more SEO and web work than your team can deliver", solution: "We take on technical SEO, on-page work, websites and Shopify builds under your brand, with deliverables you can pass straight to clients." },
+      { problem: "Freelancers and new hires are expensive for overflow work", solution: "Offshore-competitive rates with a fixed scope per project or month, so your margins stay healthy." },
+      { problem: "Worried about quality and communication with an offshore team", solution: "Written plans, agreed deadlines, regular updates and calls arranged in your time zone." },
     ],
     services: [
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent US buyers the moment they search." },
-      { name: "Meta Ads (Facebook & Instagram)", desc: "High-ROAS campaigns tuned to your US market and offers." },
-      { name: "SEO & Local SEO", desc: "Rank on Google and in the local map pack across US cities." },
-      { name: "Website & Shopify Development", desc: "Fast, conversion-focused websites and online stores built to sell." },
-      { name: "Social Media Management", desc: "On-brand content that builds trust with a US audience." },
-      { name: "Lead Generation Systems", desc: "Full-funnel setups that turn traffic into booked calls and enquiries." },
+      { name: "White-label SEO", desc: "Technical audits, on-page optimisation and reporting under your agency's brand." },
+      { name: "White-label Web Development", desc: "Fast websites and landing pages built to your agency's specs." },
+      { name: "Shopify Store Development", desc: "Store builds and Shopify SEO for small US online brands." },
+      { name: "SEO & Local SEO", desc: "Search visibility for service businesses across US cities." },
+      { name: "Google Ads (Search & Shopping)", desc: "High-intent campaigns with conversion tracking." },
+      { name: "Meta Ads (Facebook & Instagram)", desc: "Campaigns tuned to your US market and offers." },
     ],
     faqs: [
+      { q: "Do you offer white-label services for US agencies?", a: "Yes. We deliver SEO, website and Shopify work under your agency's brand. You keep the client relationship; we follow your process and reporting format." },
       { q: "Do you work with businesses in the US?", a: "Yes. We work with clients across all US states, managing everything remotely with regular reporting and communication across US time zones." },
       { q: "Why choose an offshore agency over a US one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often a fraction of US agency fees — without compromising on results or reporting." },
       { q: "How quickly will I see results?", a: "Paid ads (Google/Meta) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
