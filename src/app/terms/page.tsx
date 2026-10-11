@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Terms & Conditions",
-  description: "HaadinGlobal terms and conditions for digital marketing services.",
-  alternates: { canonical: "/terms" },
-};
+  description:
+    "HaadinGlobal terms of service: services, payment terms, delivery, intellectual property, 30-day termination notice, liability and governing law.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

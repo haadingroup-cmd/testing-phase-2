@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { BLOG_POSTS } from "@/data/blog";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Blog — Digital Marketing Insights",
-  description: "Expert insights on Meta Ads, Google Ads, SEO, YouTube, Shopify, and digital marketing strategies from HaadinGlobal.",
-  alternates: { canonical: "/blog" },
-};
+  description:
+    "Practical guides on SEO, web development, Shopify, Meta Ads and Google Ads from the HaadinGlobal team: costs, timelines and what brings leads.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

@@ -11,12 +11,11 @@ Read this file first in every new session, then continue the next unblocked task
 - Publishing authority: the owner asked Claude to make changes and deploy them itself (2026-10-10). Changes that need owner facts or decisions are listed in BLOCKERS.md and are not published until answered.
 
 ## Current phase
-Phase 2 (defects and commercial clarity): first batch shipped in the PR of 2026-10-10. See CHANGELOG.md.
+Batch 2 shipped 2026-10-11 (Ahrefs warnings, business facts, London/NY consolidation). Batch 3 next: deep rewrite of /services/seo, /services/web-development and /services/shopify (they are "Discovered – not indexed"), plus niche positioning of the market hubs.
 
-## Next three actions
-1. Owner answers BLOCKERS B1–B4. Then align the money-back wording, publish the case studies and set the hero/stat claims.
-2. Phase 1 baseline: as soon as the GSC and Ahrefs exports arrive (B5, B6), fill BASELINE.md and classify the Ahrefs 404 URLs.
-3. Phase 6: first 5-post keyword batch. Seed list is in BACKLOG.md K01; the export request is B6.
-
-## Status keys
-`pending`, `in_progress`, `blocked`, `ready_for_review`, `deployed`, `verified`.
+## Owner decisions (2026-10-11)
+- B1: money-back guarantee removed.
+- B2: clients gave permission. Results numbers and month/year per client are still needed; no invented dates or metrics.
+- B3: no Arabic reviewer. Claude writes the Arabic; flag it for a later native review.
+- B4: focus on SEO and development; markets KSA, UAE, Pakistan, UK and USA; Claude picks the niches (see GSC-ANALYSIS §6).
+- B7: LinkedIn company page 135118415; address "Canal View Town, near Pakpattan Chowk Flyover, Sahiwal 57000"; hours Mon–Sat 9–5 PKT.

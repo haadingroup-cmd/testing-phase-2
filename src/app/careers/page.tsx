@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CTASection } from "@/components/home/SiteSections";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Careers — Join Our Team",
-  description: "Join results-driven digital marketing agency. Exciting roles in Meta Ads, SEO, web development, AI automation and more.",
-  alternates: { canonical: "/careers" },
-};
+  description:
+    "Careers at HaadinGlobal: open roles in Meta Ads, SEO, content, web development and AI automation, in Sahiwal or remote. Apply to join our team.",
+  path: "/careers",
+});
 
 const OPENINGS = [
   { title:"Meta Ads Specialist", type:"Full-time", location:"Sahiwal / Remote", dept:"Paid Media" },

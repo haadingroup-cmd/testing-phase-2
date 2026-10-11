@@ -5,12 +5,14 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 import StatsSection from "@/components/home/StatsSection";
 import { CTASection } from "@/components/home/SiteSections";
 import { TEAM as ROSTER } from "@/data/team";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About Us — Digital Marketing Agency",
-  description: "Learn about HaadinGlobal — our story, mission, values, and the team behind results-driven digital marketing agency.",
-  alternates: { canonical: "/about" },
-};
+  description:
+    "HaadinGlobal is a Sahiwal-based digital agency founded in 2025, delivering SEO, web development and paid ads in Pakistan, the Gulf, the UK and the USA.",
+  path: "/about",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",

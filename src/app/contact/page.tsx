@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 import { SITE, GBP_MAPS_URL, GBP_REVIEW_URL } from "@/data/siteConfig";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact Us",
-  description: "Get in touch with HaadinGlobal. Book a free consultation or reach us via WhatsApp, email, or phone.",
-  alternates: { canonical: "/contact" },
-};
+  description:
+    "Contact HaadinGlobal in Sahiwal, Pakistan: call or WhatsApp +92 305 4782677, email us, or book a free strategy call. We reply within 24 hours.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -29,10 +31,10 @@ export default function ContactPage() {
                 {[
                   {icon:"📞",t:"Phone & WhatsApp",v:SITE.phone,h:SITE.social.whatsapp,cta:"Chat Now",whatsapp:true},
                   {icon:"📧",t:"Primary Email",v:SITE.email,h:`mailto:${SITE.email}`,cta:"Send Email",whatsapp:false},
-                  {icon:"📍",t:"Office",v:SITE.address,h:GBP_MAPS_URL,cta:"View on Google Maps",whatsapp:false},
+                  {icon:"📍",t:"Office",v:`${SITE.address}. ${SITE.addressDirections}.`,h:GBP_MAPS_URL,cta:"View on Google Maps",whatsapp:false},
                   {icon:"⭐",t:"Google Reviews",v:"Worked with us? We'd love your feedback.",h:GBP_REVIEW_URL,cta:"Leave a Review",whatsapp:false},
-                  {icon:"🕐",t:"Business Hours",v:"Mon–Sat: 9AM–5PM PKT",h:"#",cta:"",whatsapp:false},
-                  {icon:"⚡",t:"Avg Response",v:"Within 2–4 hours",h:"#",cta:"",whatsapp:false},
+                  {icon:"🕐",t:"Business Hours",v:SITE.hours,h:"#",cta:"",whatsapp:false},
+                  {icon:"⚡",t:"Avg Response",v:"2–4 hours in business hours",h:"#",cta:"",whatsapp:false},
                 ].map(c => (
                   <div key={c.t} className="card p-5 flex items-start gap-4">
                     <span className="text-2xl">{c.icon}</span>

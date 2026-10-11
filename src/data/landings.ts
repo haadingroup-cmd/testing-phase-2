@@ -784,58 +784,6 @@ export const LANDINGS: Landing[] = [
     priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
   },
   {
-    slug: "digital-marketing-agency-london",
-    city: "London",
-    country: "the UK",
-    countryCode: "GB",
-    currency: "$",
-    headline: "Digital Marketing Agency in London",
-    subhead:
-      "HaadinGlobal helps London businesses stand out in one of the world's most competitive markets — with Google Ads, Meta Ads and SEO that turn a crowded city of searchers into real leads and sales, at offshore-competitive rates.",
-    metaTitle: "Digital Marketing Agency in London",
-    metaDescription:
-      "Digital marketing agency for London businesses. Google Ads, Meta Ads, SEO and web development that convert, at competitive rates. Free consultation.",
-    heroPoints: [
-      "Serving London & Greater London",
-      "Competitive rates vs local agencies",
-      "High-ROAS Google & Meta Ads",
-      "Transparent weekly reporting",
-    ],
-    painPoints: [
-      {
-        problem: "London agency retainers are among the highest anywhere",
-        solution:
-          "We deliver the same quality — Google Ads, Meta Ads, SEO — at offshore-competitive rates, freeing up budget for the media spend that actually drives sales.",
-      },
-      {
-        problem: "Getting lost in a hyper-competitive London market",
-        solution:
-          "Sharp targeting and strong ad creative that cut through the noise and reach the exact London customers you want.",
-      },
-      {
-        problem: "Paying for clicks that never convert",
-        solution:
-          "Conversion-focused landing pages plus weekly optimisation, so your budget goes to leads and sales — not vanity clicks.",
-      },
-    ],
-    services: [
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent London buyers at the exact moment they search." },
-      { name: "Meta Ads (Facebook & Instagram)", desc: "Scroll-stopping campaigns tuned to London's diverse, high-value audience." },
-      { name: "SEO & Local SEO", desc: "Rank for competitive London searches and the local map pack." },
-      { name: "Website & Shopify Development", desc: "Premium, fast websites built to match London customer expectations." },
-      { name: "Social Media Management", desc: "On-brand content that builds a trusted presence in London." },
-      { name: "Branding & Creative", desc: "Identity and ad creative that stand out in a premium market." },
-    ],
-    faqs: [
-      { q: "Do you work with businesses in London?", a: "Yes. We work with clients across London and Greater London, managing campaigns remotely with regular reporting and fast communication in your time zone." },
-      { q: "Why choose you over a London agency?", a: "You get the same strategy and execution quality at offshore-competitive rates — typically far below London agency retainers — without compromising results." },
-      { q: "How quickly will I see results?", a: "Paid ads usually show measurable results within 2-4 weeks. SEO in a competitive market like London builds over 3-6 months for lasting traffic." },
-      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
-      { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
-    ],
-    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
-  },
-  {
     slug: "digital-marketing-agency-usa",
     city: "the USA",
     country: "the United States",
@@ -882,58 +830,6 @@ export const LANDINGS: Landing[] = [
       { q: "Do you work with businesses in the US?", a: "Yes. We work with clients across all US states, managing everything remotely with regular reporting and communication across US time zones." },
       { q: "Why choose an offshore agency over a US one?", a: "You get the same strategy and execution quality at offshore-competitive rates — often a fraction of US agency fees — without compromising on results or reporting." },
       { q: "How quickly will I see results?", a: "Paid ads (Google/Meta) typically show measurable results within 2-4 weeks. SEO builds over 3-6 months. We share a clear timeline before starting." },
-      { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
-      { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
-    ],
-    priceNote: `Packages from $${STARTING_PRICE.usd}/month + ad budget`,
-  },
-  {
-    slug: "digital-marketing-agency-new-york",
-    city: "New York",
-    country: "the USA",
-    countryCode: "US",
-    currency: "$",
-    headline: "Digital Marketing Agency in New York",
-    subhead:
-      "HaadinGlobal helps New York businesses compete and win in one of the toughest markets on earth — with Google Ads, Meta Ads and SEO that turn NYC searchers into customers, at offshore-competitive rates.",
-    metaTitle: "Digital Marketing Agency in New York",
-    metaDescription:
-      "Digital marketing agency for New York businesses. Google Ads, Meta Ads, SEO and web development that convert, at competitive rates. Free consultation.",
-    heroPoints: [
-      "Serving New York & the tri-state area",
-      "Competitive rates vs local agencies",
-      "High-ROAS Google & Meta Ads",
-      "Transparent weekly reporting",
-    ],
-    painPoints: [
-      {
-        problem: "NYC agency rates are some of the highest in the world",
-        solution:
-          "We deliver the same quality — Google Ads, Meta Ads, SEO — at offshore-competitive rates, so more of your budget goes to the media spend that drives sales.",
-      },
-      {
-        problem: "Standing out in an ultra-competitive New York market",
-        solution:
-          "Precise targeting and strong ad creative that cut through the noise and reach the exact NYC customers you want.",
-      },
-      {
-        problem: "High click costs with weak conversion",
-        solution:
-          "Conversion-focused landing pages and weekly optimisation, so your budget turns into leads and sales — not expensive clicks.",
-      },
-    ],
-    services: [
-      { name: "Google Ads (Search & Shopping)", desc: "Capture high-intent New York buyers at the moment they search." },
-      { name: "Meta Ads (Facebook & Instagram)", desc: "Scroll-stopping campaigns tuned to NYC's high-value audience." },
-      { name: "SEO & Local SEO", desc: "Rank for competitive New York searches and the local map pack." },
-      { name: "Website & Shopify Development", desc: "Premium, fast websites built to match New York expectations." },
-      { name: "Social Media Management", desc: "On-brand content that builds a trusted presence in New York." },
-      { name: "Branding & Creative", desc: "Identity and ad creative that stand out in a premium market." },
-    ],
-    faqs: [
-      { q: "Do you work with businesses in New York?", a: "Yes. We work with clients across New York City and the tri-state area, managing campaigns remotely with regular reporting and communication in your time zone." },
-      { q: "Why choose you over a New York agency?", a: "You get the same strategy and execution quality at offshore-competitive rates — typically far below NYC agency fees — without compromising results." },
-      { q: "How quickly will I see results?", a: "Paid ads usually show measurable results within 2-4 weeks. SEO in a market as competitive as New York builds over 3-6 months for lasting traffic." },
       { q: "What does it cost?", a: `Management packages start from $${STARTING_PRICE.usd}/month depending on scope, plus your ad budget. Book a free consultation for an exact quote.` },
       { q: "Do I need a long-term contract?", a: "No. We recommend a 3-month minimum for meaningful results, then work month-to-month." },
     ],

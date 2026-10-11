@@ -34,7 +34,6 @@ export default function robots(): MetadataRoute.Robots {
       // Explicitly allow every AI answer-engine crawler.
       ...AI_BOTS.map((bot) => ({ userAgent: bot, allow: '/', disallow: DISALLOW })),
     ],
-    host: 'https://www.haadinglobal.com',
     sitemap: 'https://www.haadinglobal.com/sitemap.xml',
   }
 }

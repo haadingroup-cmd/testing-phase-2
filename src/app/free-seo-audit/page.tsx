@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 const canonical = `${brand.website}/free-seo-audit`;
 const title = "Free SEO Analyzer | Website SEO Audit Tool | HaadinGlobal";
 const description =
-  "Analyze your website SEO for free with HaadinGlobal's SEO Analyzer. Find technical, on-page, content, local and social SEO issues and get actionable recommendations.";
+  "Analyze your website's SEO for free with HaadinGlobal's SEO Analyzer. Find technical, on-page, content, local and social issues with clear fixes.";
 export const metadata: Metadata = {
   title: { absolute: title },
   description,

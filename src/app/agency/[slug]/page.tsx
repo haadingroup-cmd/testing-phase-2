@@ -26,6 +26,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: l.metaDescription,
     alternates: { canonical: `/agency/${l.slug}` },
     openGraph: {
+      type: "website",
+      siteName: "HaadinGlobal",
       title: l.metaTitle,
       description: l.metaDescription,
       url: `https://www.haadinglobal.com/agency/${l.slug}`,

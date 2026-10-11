@@ -1,5 +1,17 @@
 # SEO changelog
 
+## 2026-10-11 — Batch 2 (GSC + Ahrefs findings, business facts)
+**Evidence:** `seo/GSC-ANALYSIS-2026-10-10.md`, Ahrefs Site Audit 2026-10-11.
+**Changed**
+- Share metadata: new `pageMeta()` helper. 11 static pages no longer inherit the homepage og:url, title and description. City pages get og:type; team pages get og:url, longer descriptions and titles that fit. Short and long descriptions rewritten to 139–156 characters.
+- Internal links: related posts ranked by shared tags (posts at the end of the list were linked only from /blog); a "Guides on …" block on every service page links 1–3 matching posts.
+- London → UK and New York → USA hubs (301). Google had crawled them but declined to index them, and they had 0 impressions.
+- Service FAQ timing is now service-specific and honest (the old "1–3 months" contradicted "3–6 months"). Removed the fake "Limited slots available this month".
+- Owner decisions: removed the 14-day money-back guarantee (B1); LinkedIn now points to the company page (B7); professional address on the Contact page, footer and schema, with directions shown separately (B7).
+- robots.txt: removed the `Host:` line, which Google ignores and which caused the Search Console warning.
+
+**Rollback:** revert the merge commit.
+
 ## 2026-10-10 — Audit batch 1 (defects, claims, measurement)
 **Changed**
 - `/agency/*`: fixed UK/USA H1 ("…UK Businessesthe UK") and "your the UK business"; Saudi Arabia and Qatar URLs now have a country H1; removed the unsourced 5-star decoration; hid the empty "Nearby Cities" block; market schema is now `Service` provided by `#org` (no implied extra offices).

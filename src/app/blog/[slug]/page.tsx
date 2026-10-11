@@ -46,12 +46,18 @@ function authorSchema(name: string) {
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) notFound();
-  // Related posts: prefer same category, then fill with the newest others — max 3.
-  const others = BLOG_POSTS.filter(p => p.slug !== post.slug);
-  const related = [
-    ...others.filter(p => p.category === post.category),
-    ...others.filter(p => p.category !== post.category),
-  ].slice(0, 3);
+  // Related posts: most shared tags first (same category breaks ties). Ranking by
+  // topic instead of list order spreads internal links across every post, so
+  // older guides aren't left with a single link from /blog.
+  const tagSet = new Set(post.tags.map((t) => t.toLowerCase()));
+  const related = BLOG_POSTS.filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      p,
+      score: p.tags.filter((t) => tagSet.has(t.toLowerCase())).length * 2 + (p.category === post.category ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(({ p }) => p);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

@@ -5,13 +5,14 @@ import { Star } from "lucide-react";
 import { TEAM } from "@/data/team";
 import { CTASection } from "@/components/home/SiteSections";
 import { supabaseServer } from "@/lib/supabase-server";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Our Team",
   description:
-    "Meet the HaadinGlobal team — developers, marketers, designers and strategists delivering results for clients across Pakistan, the UAE, Qatar, Saudi Arabia, the UK and the USA.",
-  alternates: { canonical: "/team" },
-};
+    "Meet the HaadinGlobal team: developers, SEO specialists, marketers and designers serving clients in Pakistan, the UAE, Saudi Arabia, the UK and the USA.",
+  path: "/team",
+});
 
 export const dynamic = "force-dynamic";
 

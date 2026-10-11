@@ -272,6 +272,17 @@ export function serviceQuickAnswer(svc: Service, currency: PriceCurrency = "PKR"
  * country and leave these out of FAQPage JSON-LD (the Offer schema and
  * llms.txt carry prices for both markets).
  */
+/** Honest, service-type-specific timing answer (no guaranteed dates). */
+function resultsTimeline(svc: Service, title: string): string {
+  if (svc.category === "Paid Ads")
+    return `Paid campaigns like ${title} start getting traffic as soon as ads are approved; the first 2–4 weeks are for testing audiences and creatives, and results improve as we optimise. We share a clear plan and regular reports from the start — results depend on your offer, budget and market.`;
+  if (svc.billing === "one-time")
+    return `${title} is a project with a defined scope. Delivery time depends on the number of pages, features and integrations, so we confirm the timeline in your proposal before work starts. Revisions are free until delivery.`;
+  if (svc.id === "seo" || svc.id === "content-writing")
+    return `Technical fixes and on-page improvements go live in the first month. Rankings for low-competition and local searches often start moving within 2–4 months; competitive national or international terms usually take 6 months or more. Nobody can guarantee rankings — we report progress against an agreed baseline.`;
+  return `${title} builds over time: the first month sets up strategy, content and tracking, and consistent results usually take a few months of regular work. We set clear expectations and report progress every month.`;
+}
+
 export function serviceFaqs(svc: Service): { q: string; a: string; aUsd?: string }[] {
   const title = svc.title.replace(/ Services?$/i, "");
   const resultLine = svc.results ? ` Clients typically see results like ${svc.results.toLowerCase()}.` : "";
@@ -290,9 +301,7 @@ export function serviceFaqs(svc: Service): { q: string; a: string; aUsd?: string
     },
     {
       q: `How long until I see results from ${title}?`,
-      a: svc.category === "Paid Ads"
-        ? `Paid campaigns like ${title} usually show measurable results within 2–4 weeks as we test and optimise. We share a clear timeline and regular performance reports from the start.`
-        : `${title} builds over time — typically meaningful results in 1–3 months, with SEO and organic work compounding over 3–6 months. We set clear expectations before we begin.`,
+      a: resultsTimeline(svc, title),
     },
     {
       q: `Do you offer ${title} for international clients?`,

@@ -109,17 +109,29 @@ export function generateStaticParams() {
   return TEAM.map((m) => ({ slug: m.slug }));
 }
 
+function clip(text: string, max: number) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const m = await load(params.slug);
   if (!m) return { title: "Team Member Not Found" };
+  // Lead with name + role so the description is never just a 55-character tagline.
+  const description = clip(`${m.full_name}, ${m.title} at HaadinGlobal. ${m.tagline || m.bio}`, 155);
+  const title = `${m.full_name} - ${m.title}`;
   return {
-    title: `${m.full_name} - ${m.title}`,
-    description: (m.tagline || m.bio).slice(0, 155),
+    // Long role names would push "| HaadinGlobal" past what Google shows.
+    title: title.length > 45 ? { absolute: title } : title,
+    description,
     alternates: { canonical: `/team/${params.slug}` },
     openGraph: {
       type: "profile",
+      url: `https://www.haadinglobal.com/team/${params.slug}`,
+      siteName: "HaadinGlobal",
       title: `${m.full_name} - ${m.title} at HaadinGlobal`,
-      description: (m.tagline || m.bio).slice(0, 155),
+      description,
       images: [{ url: m.photo_url }],
     },
   };

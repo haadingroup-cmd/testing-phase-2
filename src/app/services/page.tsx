@@ -5,12 +5,14 @@ import { ArrowRight } from "lucide-react";
 import { CTASection } from "@/components/home/SiteSections";
 import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceCardText from "@/components/services/ServiceCardText";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Digital Marketing Services",
-  description: "12 premium digital marketing services: Meta Ads, Google Ads, SEO, YouTube Channel Management, Shopify, Web Development, Branding & AI Automation.",
-  alternates: { canonical: "/services" },
-};
+  description:
+    "SEO, web development, Shopify, Meta Ads, Google Ads and more from HaadinGlobal, with clear pricing for Pakistan (PKR) and international clients (USD).",
+  path: "/services",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",
