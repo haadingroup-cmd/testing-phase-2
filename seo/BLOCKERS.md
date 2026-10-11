@@ -5,7 +5,7 @@
 |---|---|---|---|
 | B2 | For each case-study client (Royal Painter Dubai, Kaashan, plus at least one more): **month and year** of the project, **one real result number** (leads, sales, rankings or traffic) and where it comes from (GA4, Ads, Shopify or a screenshot). Permission: given. | Proof pages are the biggest ranking and conversion gap. Dates and metrics cannot be invented. | Case studies describe only the work done, with no result claims; the period shows as "2025–2026". |
 | B6 | Optional: Ahrefs Keywords Explorer and Keyword Planner CSVs for the blog batch seeds (BACKLOG K01). | Real volumes for the blog rewrites. | GSC queries plus live SERP checks; volumes are marked provisional. |
-| B8 | After each batch: in GSC → URL Inspection → **Request indexing** for the URLs listed in the batch report. | 10 of 12 service pages are "Discovered – not indexed". | Sitemap and IndexNow only. |
+| B8 | In GSC → URL Inspection → **Request indexing** (a few per day) for: /services/seo, /services/web-development, /services/shopify, /ar/agency/digital-marketing-agency-saudi-arabia, /ar/agency/digital-marketing-agency-dubai, /agency/digital-marketing-agency-dubai, /agency/digital-marketing-agency-saudi-arabia, /agency/digital-marketing-agency-uk, /agency/digital-marketing-agency-usa. Then resubmit sitemap.xml. | 10 of 12 service pages are "Discovered – not indexed"; the new Arabic URLs are unknown to Google. | Sitemap and IndexNow only. |
 
 ## Resolved
 | ID | Decision (date) |

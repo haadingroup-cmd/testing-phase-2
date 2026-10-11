@@ -2,8 +2,22 @@ import { MetadataRoute } from 'next'
 import { LANDINGS } from '@/data/landings'
 import { BLOG_POSTS } from '@/data/blog'
 import { TEAM } from '@/data/team'
+import { LANDINGS_AR } from '@/data/landings-ar'
 
 const base = 'https://www.haadinglobal.com'
+
+// Real content-edit dates only (never the build time). Add an entry when a
+// page's content changes meaningfully, so lastmod stays trustworthy.
+const EDITED: Record<string, string> = {
+  '/services/seo': '2026-10-11',
+  '/services/web-development': '2026-10-11',
+  '/services/shopify': '2026-10-11',
+  '/agency/digital-marketing-agency-dubai': '2026-10-11',
+  '/agency/digital-marketing-agency-saudi-arabia': '2026-10-11',
+  '/agency/digital-marketing-agency-uk': '2026-10-11',
+  '/agency/digital-marketing-agency-usa': '2026-10-11',
+}
+const edited = (path: string) => (EDITED[path] ? { lastModified: new Date(`${EDITED[path]}T00:00:00Z`) } : {})
 
 const pages = [
   { url: '/', pri: 1.0, chg: 'weekly' as const },
@@ -40,10 +54,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // All city landing pages (Pakistan + Gulf) generated straight from data,
   // so every city we add is automatically in the sitemap — no manual editing.
+  const arSlugs = new Set(LANDINGS_AR.map((l) => l.slug))
+  const hubAlternates = (slug: string) =>
+    arSlugs.has(slug)
+      ? { alternates: { languages: { en: `${base}/agency/${slug}`, ar: `${base}/ar/agency/${slug}` } } }
+      : {}
   const cityPages = LANDINGS.map((l) => ({
     url: `${base}/agency/${l.slug}`,
+    ...edited(`/agency/${l.slug}`),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
+    ...hubAlternates(l.slug),
+  }))
+
+  const arabicPages = LANDINGS_AR.map((l) => ({
+    url: `${base}/ar/agency/${l.slug}`,
+    lastModified: new Date('2026-10-11T00:00:00Z'),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+    ...hubAlternates(l.slug),
   }))
 
   const blogPages = BLOG_POSTS.map((post) => ({
@@ -62,9 +91,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages = pages.map(p => ({
     url: `${base}${p.url}`,
+    ...edited(p.url),
     changeFrequency: p.chg,
     priority: p.pri,
   }))
 
-  return [...staticPages, ...cityPages, ...blogPages, ...teamPages]
+  return [...staticPages, ...cityPages, ...arabicPages, ...blogPages, ...teamPages]
 }

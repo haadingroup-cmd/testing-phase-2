@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, ArrowRight, Shield, Clock, Globe } from "lucide-react";
 import { LANDINGS, getLanding } from "@/data/landings";
+import { getLandingAr } from "@/data/landings-ar";
 import { SITE } from "@/data/siteConfig";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
@@ -24,7 +25,17 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: l.metaTitle,
     description: l.metaDescription,
-    alternates: { canonical: `/agency/${l.slug}` },
+    alternates: getLandingAr(l.slug)
+      ? {
+          canonical: `/agency/${l.slug}`,
+          // Reciprocal hreflang with the Arabic version of this hub.
+          languages: {
+            en: `https://www.haadinglobal.com/agency/${l.slug}`,
+            ar: `https://www.haadinglobal.com/ar/agency/${l.slug}`,
+            "x-default": `https://www.haadinglobal.com/agency/${l.slug}`,
+          },
+        }
+      : { canonical: `/agency/${l.slug}` },
     openGraph: {
       type: "website",
       siteName: "HaadinGlobal",
@@ -99,6 +110,11 @@ export default function LandingPage({ params }: { params: { slug: string } }) {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-white text-xs font-semibold mb-6">
                 <Globe size={12} className="text-red-400" /> Serving {l.country}
               </div>
+              {getLandingAr(l.slug) && (
+                <Link href={`/ar/agency/${l.slug}`} hrefLang="ar" lang="ar" dir="rtl" className="inline-block ms-3 mb-6 text-sm text-slate-300 hover:text-white underline">
+                  اقرأ بالعربية
+                </Link>
+              )}
               <h1 className="font-display font-black text-white text-4xl md:text-5xl leading-tight mb-5">
                 {headlineCut >= 0 ? (
                   <>{l.headline.slice(0, headlineCut)}<span className="gradient-text">{l.city}</span>{l.headline.slice(headlineCut + l.city.length)}</>

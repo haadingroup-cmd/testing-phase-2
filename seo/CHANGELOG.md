@@ -1,5 +1,16 @@
 # SEO changelog
 
+## 2026-10-11 — Batch 3 (money pages, niches, Arabic)
+**Evidence:** GSC shows 10 of 12 service pages "Discovered – currently not indexed". They come from one template, have ~600 words each and near-identical FAQs (GSC-ANALYSIS §4).
+**Changed**
+- /services/seo, /services/web-development, /services/shopify: new in-depth overview (who it's for by market, 90-day plan, deliverables, exclusions, real portfolio projects linked), service-specific FAQs, new titles and descriptions. Web development was at position 4.6 with 0 clicks; its snippet now states the offer instead of a price.
+- Market hubs repositioned on the chosen niches (titles and URLs unchanged): Dubai → home-service companies (Royal Painter Dubai proof); Saudi Arabia → service and rental businesses, Arabic and English (Abdulla Events, in progress); UK → small Shopify stores; USA → white-label SEO and web development for agencies, plus small stores.
+- Arabic hubs: /ar/agency/digital-marketing-agency-saudi-arabia and /ar/agency/digital-marketing-agency-dubai, with reciprocal hreflang (en, ar, x-default), sitemap alternates and an Arabic/English switch link. Written by Claude; a native review is recommended (B3).
+- Sitemap: real lastmod for the pages edited today (not build time).
+
+**Owner action:** request indexing (see BLOCKERS B8).
+**Rollback:** revert the merge commit.
+
 ## 2026-10-11 — Batch 2 (GSC + Ahrefs findings, business facts)
 **Evidence:** `seo/GSC-ANALYSIS-2026-10-10.md`, Ahrefs Site Audit 2026-10-11.
 **Changed**
