@@ -3,12 +3,14 @@ import { PricingCards } from "@/components/pricing/PricingCards";
 import PricingCalculator from "@/components/pricing/PricingCalculator";
 import { CTASection } from "@/components/home/SiteSections";
 import LandingLeadForm from "@/components/landing/LandingLeadForm";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Pricing — Transparent Plans",
-  description: "Clear, transparent pricing for Meta Ads, Google Ads, SEO, web development, and more. No hidden fees.",
-  alternates: { canonical: "/pricing" },
-};
+  description:
+    "Transparent pricing for SEO, web development, Shopify, Meta and Google Ads: PKR for Pakistan, USD for international clients. Monthly and one-time.",
+  path: "/pricing",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",

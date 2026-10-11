@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
-  description: "HaadinGlobal privacy policy — how we collect, use, and protect your personal information.",
-  alternates: { canonical: "/privacy-policy" },
-};
+  description:
+    "How HaadinGlobal collects, uses, stores and protects the personal information you share through our website, forms, WhatsApp and analytics.",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPage() {
   return (

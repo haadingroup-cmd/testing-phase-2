@@ -4,13 +4,14 @@ import { ProofCallSection, CTASection } from "@/components/home/SiteSections";
 import ResultsGallery from "@/components/portfolio/ResultsGallery";
 import { PROJECTS } from "@/data/portfolio";
 import { TrendingUp, Search, ShoppingBag, Megaphone, ExternalLink, ArrowRight } from "lucide-react";
+import { pageMeta } from "@/lib/pageMeta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Our Work & Client Results",
   description:
     "Real projects HaadinGlobal has delivered — Shopify stores, web apps, SEO and Google/Meta Ads for clients in Pakistan, UAE and Saudi Arabia. See our results.",
-  alternates: { canonical: "/portfolio" },
-};
+  path: "/portfolio",
+});
 
 const focus = [
   { icon: <Megaphone size={20} />, title: "Paid Ads (Meta & Google)", detail: "High-ROAS campaigns that turn ad spend into real leads and sales." },

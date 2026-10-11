@@ -70,7 +70,7 @@ const jsonLd = {
       foundingLocation: { "@type": "Place", name: "Sahiwal, Pakistan" },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "M439+5P4, Pakpattan Chowk Flyover, near New Bulbul Hotel, Canal View Town",
+        streetAddress: "Canal View Town, near Pakpattan Chowk Flyover",
         addressLocality: "Sahiwal",
         addressRegion: "Punjab",
         postalCode: "57000",
@@ -89,7 +89,7 @@ const jsonLd = {
         "https://web.facebook.com/haadinglobal",
         "https://www.instagram.com/haadinglobal",
         "https://www.tiktok.com/@haadinglobal",
-        "https://www.linkedin.com/in/haadinglobal",
+        "https://www.linkedin.com/company/135118415",
         "https://www.youtube.com/@haadinglobal",
       ],
     },
@@ -112,7 +112,7 @@ const jsonLd = {
       parentOrganization: { "@id": "https://www.haadinglobal.com/#org" },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "M439+5P4, Pakpattan Chowk Flyover, near New Bulbul Hotel, Canal View Town",
+        streetAddress: "Canal View Town, near Pakpattan Chowk Flyover",
         addressLocality: "Sahiwal",
         addressRegion: "Punjab",
         postalCode: "57000",
@@ -140,7 +140,7 @@ const jsonLd = {
         "https://web.facebook.com/haadinglobal",
         "https://www.instagram.com/haadinglobal",
         "https://www.tiktok.com/@haadinglobal",
-        "https://www.linkedin.com/in/haadinglobal",
+        "https://www.linkedin.com/company/135118415",
         "https://www.youtube.com/@haadinglobal",
         // Only the real profile link identifies the listing; a Maps search does not.
         ...(SITE.gbp.profileUrl ? [SITE.gbp.profileUrl] : []),

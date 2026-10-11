@@ -12,12 +12,15 @@ export const SITE = {
     facebook:  "https://web.facebook.com/haadinglobal",
     tiktok:    "https://www.tiktok.com/@haadinglobal",
     whatsapp:  "https://wa.me/923054782677",
-    linkedin:  "https://www.linkedin.com/in/haadinglobal/",
+    linkedin:  "https://www.linkedin.com/company/135118415/",
     instagram: "https://www.instagram.com/haadinglobal/",
     youtube:   "https://www.youtube.com/@haadinglobal",
     clutch:    "https://clutch.co/profile/haadinglobal",
   },
-  address: "Sahiwal, Punjab, Pakistan",
+  // Same wording everywhere (footer, contact page, schema, GBP, Clutch) so the NAP matches.
+  address: "Canal View Town, near Pakpattan Chowk Flyover, Sahiwal 57000, Punjab, Pakistan",
+  addressDirections: "Near New Bulbul Hotel, Pakpattan Chowk Flyover",
+  hours: "Mon–Sat, 9:00 AM – 5:00 PM (PKT)",
   markets: ["Pakistan 🇵🇰","UAE 🇦🇪","Qatar 🇶🇦","Saudi Arabia 🇸🇦","United Kingdom 🇬🇧","United States 🇺🇸"],
   // Google Business Profile. Paste the profile's Share link (maps.app.goo.gl/…
   // or g.page/…) into profileUrl and the "Ask for reviews" link
@@ -89,7 +92,5 @@ export const FOOTER_AREAS = [
   { label: "Qatar", href: "/agency/digital-marketing-agency-qatar" },
   { label: "Saudi Arabia", href: "/agency/digital-marketing-agency-saudi-arabia" },
   { label: "UK", href: "/agency/digital-marketing-agency-uk" },
-  { label: "London", href: "/agency/digital-marketing-agency-london" },
   { label: "USA", href: "/agency/digital-marketing-agency-usa" },
-  { label: "New York", href: "/agency/digital-marketing-agency-new-york" },
 ];

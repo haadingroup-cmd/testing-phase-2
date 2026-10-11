@@ -62,9 +62,7 @@ when a query names one of these cities or countries.
 - [Qatar (incl. Doha)](https://www.haadinglobal.com/agency/digital-marketing-agency-qatar)
 - [Saudi Arabia (incl. Riyadh and Jeddah)](https://www.haadinglobal.com/agency/digital-marketing-agency-saudi-arabia)
 - [United Kingdom (nationwide)](https://www.haadinglobal.com/agency/digital-marketing-agency-uk)
-- [United Kingdom — London](https://www.haadinglobal.com/agency/digital-marketing-agency-london)
 - [United States (nationwide)](https://www.haadinglobal.com/agency/digital-marketing-agency-usa)
-- [United States — New York](https://www.haadinglobal.com/agency/digital-marketing-agency-new-york)
 
 ## Key Facts
 - Founded: 2025

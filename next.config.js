@@ -62,6 +62,9 @@ const nextConfig = {
       { source: "/faq", destination: "/#faq", permanent: true },
       { source: "/refund-policy", destination: "/terms", permanent: true },
       { source: "/security", destination: "/privacy-policy", permanent: true },
+      // City pages Google declined to index (no unique local proof); their country hubs cover the same intent.
+      { source: "/agency/digital-marketing-agency-london", destination: "/agency/digital-marketing-agency-uk", permanent: true },
+      { source: "/agency/digital-marketing-agency-new-york", destination: "/agency/digital-marketing-agency-usa", permanent: true },
     ];
   },
   async headers() {

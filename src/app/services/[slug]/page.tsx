@@ -9,6 +9,7 @@ import ServicePriceTag from "@/components/services/ServicePriceTag";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 import WhatsAppCTA from "@/components/common/WhatsAppCTA";
 import RegionalText from "@/components/common/RegionalText";
+import { BLOG_POSTS } from "@/data/blog";
 
 // Keyword-optimized SEO titles & meta descriptions per service (Phase 2).
 const SEO_TITLES: Record<string, string> = {
@@ -89,11 +90,29 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
+// Hand-picked guides per service: gives each blog post links from the service it
+// supports (not just from /blog) and gives buyers a next step to read.
+const SERVICE_GUIDES: Record<string, string[]> = {
+  "seo": ["how-long-does-seo-take-to-show-results", "how-to-choose-an-seo-agency-pakistan", "local-seo-guide-small-business-pakistan"],
+  "web-development": ["website-development-cost-pakistan-2026", "why-your-website-isnt-getting-leads", "shopify-vs-wordpress-pakistan-ecommerce"],
+  "shopify": ["shopify-seo-rank-store-google-2026", "shopify-cro-tactics", "shopify-vs-wordpress-pakistan-ecommerce"],
+  "meta-ads": ["meta-ads-roas-case-study", "choosing-meta-ads-agency-pakistan", "meta-ads-vs-google-ads-2026"],
+  "google-ads": ["meta-ads-vs-google-ads-2026", "seo-vs-paid-ads-which-first-2026", "digital-marketing-cost-dubai-uae"],
+  "tiktok-ads": ["tiktok-ads-vs-meta-ads-2026", "meta-ads-vs-google-ads-2026"],
+  "social-media": ["how-to-get-more-leads-2026-playbook", "digital-marketing-cost-pakistan"],
+  "youtube-channel-management": ["youtube-automation-2025"],
+  "ai-automation": ["ai-automation-for-small-business-2026", "how-to-get-more-leads-2026-playbook"],
+  "content-writing": ["how-to-rank-in-ai-search-2026", "how-long-does-seo-take-to-show-results"],
+  "branding": ["best-digital-marketing-agencies-pakistan-2026", "digital-marketing-uk-small-business-2026"],
+  "graphic-design": ["digital-marketing-cost-pakistan", "local-seo-google-business-profile-uae-2026"],
+};
+
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const svc = SERVICES.find(s => s.id === params.slug);
   if (!svc) notFound();
 
   const faqs = serviceFaqs(svc);
+  const guides = (SERVICE_GUIDES[svc.id] ?? []).map((slug) => BLOG_POSTS.find((p) => p.slug === slug)).filter((p): p is (typeof BLOG_POSTS)[number] => Boolean(p));
   const url = `https://www.haadinglobal.com/services/${svc.id}`;
 
   // Combined structured data (@graph): Service + FAQPage + Breadcrumb.
@@ -265,6 +284,26 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+      {/* RELATED GUIDES — contextual links to the blog posts that support this service */}
+      {guides.length > 0 && (
+        <section className="py-14 bg-[#030306] border-t border-white/8">
+          <div className="container max-w-5xl mx-auto">
+            <h2 className="font-display font-black text-white text-2xl mb-6 text-center">
+              Guides on <span className="gradient-text">{svc.title}</span>
+            </h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              {guides.map((g) => (
+                <Link key={g.slug} href={`/blog/${g.slug}`} className="card p-5 hover:-translate-y-1 transition-all block">
+                  <p className="text-xs text-red-400 font-semibold mb-2">{g.category}</p>
+                  <h3 className="text-white font-bold text-[15px] leading-snug mb-2">{g.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{g.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FREE QUOTE / LEAD FORM — captures straight into the CRM */}
       <section className="py-16 bg-[#030306]">
         <div className="container max-w-xl mx-auto">

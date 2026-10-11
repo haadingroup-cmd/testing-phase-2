@@ -12,7 +12,7 @@ const WHY = [
   { text: "International expertise (UAE, UK, USA, PK, KSA)", route: "/portfolio" },
   { text: "All services under one roof", route: "/services" },
   { text: "AI-powered tools and automation", route: "/services/ai-automation" },
-  { text: "14-day money-back guarantee", route: "/pricing" },
+  { text: "Month-to-month, 30 days’ notice to cancel", route: "/terms" },
 ];
 
 export default function AboutSection() {
